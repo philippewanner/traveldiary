@@ -14,8 +14,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject:AnyObject]?) -> Bool {
+
+        let currentViewController = CurrentViewController(nibName: "CurrentViewController", bundle: nil)
+        let tripsViewController = TripsViewController(nibName: "TripsViewController", bundle: nil)
+        let currentTripImage = UIImage(named: "tab_bar_icon_current")
+        let tripsImage = UIImage(named: "tab_bar_icon_trips")
+        currentViewController.tabBarItem = UITabBarItem(title: "Current",
+                image: currentTripImage,
+                tag: 1)
+        tripsViewController.tabBarItem = UITabBarItem(title: "Trips",
+                image: tripsImage,
+                tag: 2)
+        let controllers = [currentViewController, tripsViewController]
+
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = controllers
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
