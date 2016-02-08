@@ -15,6 +15,7 @@
 		D6EF6ED71C68CD03006D098B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6EF6ED51C68CD03006D098B /* LaunchScreen.storyboard */; };
 		D6EF6EE21C68CD03006D098B /* TravelDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6EE11C68CD03006D098B /* TravelDiaryTests.swift */; };
 		D6EF6EED1C68CD03006D098B /* TravelDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6EEC1C68CD03006D098B /* TravelDiaryUITests.swift */; };
+		F0DA6C101C68CFF3007753F8 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0DA6C0E1C68CFF3007753F8 /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		D6EF6EE81C68CD03006D098B /* TravelDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelDiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EF6EEC1C68CD03006D098B /* TravelDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDiaryUITests.swift; sourceTree = "<group>"; };
 		D6EF6EEE1C68CD03006D098B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0DA6C0F1C68CFF3007753F8 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		D6EF6EBE1C68CD03006D098B = {
 			isa = PBXGroup;
 			children = (
+				F0DA6C0E1C68CFF3007753F8 /* DataModel.xcdatamodeld */,
 				D6EF6EC91C68CD03006D098B /* TravelDiary */,
 				D6EF6EE01C68CD03006D098B /* TravelDiaryTests */,
 				D6EF6EEB1C68CD03006D098B /* TravelDiaryUITests */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6EF6ECF1C68CD03006D098B /* SecondViewController.swift in Sources */,
+				F0DA6C101C68CFF3007753F8 /* DataModel.xcdatamodeld in Sources */,
 				D6EF6ECB1C68CD03006D098B /* AppDelegate.swift in Sources */,
 				D6EF6ECD1C68CD03006D098B /* FirstViewController.swift in Sources */,
 			);
@@ -486,6 +490,7 @@
 				D6EF6EF31C68CD03006D098B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6EF6EF41C68CD03006D098B /* Build configuration list for PBXNativeTarget "TravelDiaryTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +499,7 @@
 				D6EF6EF61C68CD03006D098B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6EF6EF71C68CD03006D098B /* Build configuration list for PBXNativeTarget "TravelDiaryUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,8 +508,22 @@
 				D6EF6EF91C68CD03006D098B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F0DA6C0E1C68CFF3007753F8 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F0DA6C0F1C68CFF3007753F8 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = F0DA6C0F1C68CFF3007753F8 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D6EF6EBF1C68CD03006D098B /* Project object */;
 }
