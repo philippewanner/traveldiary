@@ -18,21 +18,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let currentViewController = CurrentViewController(nibName: "CurrentViewController", bundle: nil)
         let tripsViewController = TripsViewController(nibName: "TripsViewController", bundle: nil)
+        let mapViewController = MapViewController(nibName: "MapViewController", bundle: nil)
+        let photosViewController = PhotosViewController(nibName: "PhotosViewController", bundle: nil)
         let currentTripImage = UIImage(named: "tab_bar_icon_current")
         let tripsImage = UIImage(named: "tab_bar_icon_trips")
+        let mapImage = UIImage(named: "tab_bar_icon_map")
+        let photosImage = UIImage(named: "tab_bar_icon_photos")
         currentViewController.tabBarItem = UITabBarItem(title: "Current",
                 image: currentTripImage,
                 tag: 1)
         tripsViewController.tabBarItem = UITabBarItem(title: "Trips",
                 image: tripsImage,
                 tag: 2)
-        let controllers = [currentViewController, tripsViewController]
+        mapViewController.tabBarItem = UITabBarItem(title: "Map",
+                image: mapImage,
+                tag: 3)
+        photosViewController.tabBarItem = UITabBarItem(title: "Photos",
+                image: photosImage,
+                tag: 4)
+
+        let controllers = [currentViewController, tripsViewController, mapViewController, photosViewController]
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = controllers
         window?.rootViewController = tabBarController
-        window?.makeKeyAndVisible()
-        
+
         return true
     }
 
