@@ -15,6 +15,8 @@
 		D251CA941C694135005B955E /* PhotosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D251CA921C694135005B955E /* PhotosViewController.xib */; };
 		D251CAB91C6951B6005B955E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D251CAB71C6951B6005B955E /* MapViewController.swift */; };
 		D251CABA1C6951B6005B955E /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D251CAB81C6951B6005B955E /* MapViewController.xib */; };
+		D69DBCBF1C6BA21C000B41E5 /* TripActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69DBCBD1C6BA21C000B41E5 /* TripActivitiesViewController.swift */; };
+		D69DBCC01C6BA21C000B41E5 /* TripActivitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69DBCBE1C6BA21C000B41E5 /* TripActivitiesViewController.xib */; };
 		D6EF6ECB1C68CD03006D098B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */; };
 		D6EF6ED41C68CD03006D098B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6EF6ED31C68CD03006D098B /* Assets.xcassets */; };
 		D6EF6ED71C68CD03006D098B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6EF6ED51C68CD03006D098B /* LaunchScreen.storyboard */; };
@@ -49,6 +51,8 @@
 		D251CA921C694135005B955E /* PhotosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosViewController.xib; sourceTree = "<group>"; };
 		D251CAB71C6951B6005B955E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D251CAB81C6951B6005B955E /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		D69DBCBD1C6BA21C000B41E5 /* TripActivitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripActivitiesViewController.swift; sourceTree = "<group>"; };
+		D69DBCBE1C6BA21C000B41E5 /* TripActivitiesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripActivitiesViewController.xib; sourceTree = "<group>"; };
 		D6EF6EC71C68CD03006D098B /* TravelDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6EF6ED31C68CD03006D098B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 		D6EF6EC91C68CD03006D098B /* TravelDiary */ = {
 			isa = PBXGroup;
 			children = (
+				D69DBCBD1C6BA21C000B41E5 /* TripActivitiesViewController.swift */,
+				D69DBCBE1C6BA21C000B41E5 /* TripActivitiesViewController.xib */,
 				D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */,
 				D6EF6ED31C68CD03006D098B /* Assets.xcassets */,
 				D6EF6ED51C68CD03006D098B /* LaunchScreen.storyboard */,
@@ -251,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D251CA8C1C6940C1005B955E /* CurrentViewController.xib in Resources */,
+				D69DBCC01C6BA21C000B41E5 /* TripActivitiesViewController.xib in Resources */,
 				D251CABA1C6951B6005B955E /* MapViewController.xib in Resources */,
 				D251CA901C694102005B955E /* TripsViewController.xib in Resources */,
 				D6EF6ED71C68CD03006D098B /* LaunchScreen.storyboard in Resources */,
@@ -281,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D251CA8B1C6940C1005B955E /* CurrentViewController.swift in Sources */,
+				D69DBCBF1C6BA21C000B41E5 /* TripActivitiesViewController.swift in Sources */,
 				D251CA8F1C694102005B955E /* TripsViewController.swift in Sources */,
 				F0DA6C101C68CFF3007753F8 /* DataModel.xcdatamodeld in Sources */,
 				D251CAB91C6951B6005B955E /* MapViewController.swift in Sources */,
