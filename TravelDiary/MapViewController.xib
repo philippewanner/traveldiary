@@ -5,8 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapsViewController" customModule="TravelDiary" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="TravelDiary" customModuleProvider="target">
             <connections>
+                <outlet property="mapView" destination="lkW-KR-riK" id="yXz-im-JEj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +15,18 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lkW-KR-riK">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </mapView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="lkW-KR-riK" secondAttribute="trailing" id="6l9-iU-6df"/>
+                <constraint firstAttribute="bottom" secondItem="lkW-KR-riK" secondAttribute="bottom" id="LVR-bj-Mi9"/>
+                <constraint firstItem="lkW-KR-riK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OBf-Cd-Xvo"/>
+                <constraint firstItem="lkW-KR-riK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="cen-KJ-OlP"/>
+            </constraints>
         </view>
     </objects>
 </document>
