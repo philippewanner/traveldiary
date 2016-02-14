@@ -17,17 +17,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Co-x8-smb">
-                                <rect key="frame" x="149" y="255" width="34" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Qr3-d2-f2M">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Qr3-d2-f2M" secondAttribute="trailing" id="6I2-8G-gIo"/>
+                            <constraint firstItem="Qr3-d2-f2M" firstAttribute="leading" secondItem="Vn0-HJ-Hkh" secondAttribute="leading" id="A2d-Fs-uIG"/>
+                            <constraint firstItem="Qr3-d2-f2M" firstAttribute="bottom" secondItem="QqP-1A-JCx" secondAttribute="top" id="QoH-v9-VgP"/>
+                            <constraint firstItem="Qr3-d2-f2M" firstAttribute="top" secondItem="Vn0-HJ-Hkh" secondAttribute="top" id="Uoa-fc-yaQ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="first" id="mFI-ho-ZFj"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="Qr3-d2-f2M" id="Bca-hs-X07"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XEh-3s-lIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

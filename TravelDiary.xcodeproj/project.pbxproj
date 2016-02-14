@@ -13,6 +13,7 @@
 		D274EC691C70B484000AA29D /* Photos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D274EC671C70B484000AA29D /* Photos.storyboard */; };
 		D274EC6B1C70B552000AA29D /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D274EC6A1C70B552000AA29D /* MapController.swift */; };
 		D274EC701C70B65D000AA29D /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D274EC6F1C70B65D000AA29D /* Map.storyboard */; };
+		D274EC721C70C009000AA29D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D274EC711C70C009000AA29D /* MapKit.framework */; };
 		D6EF6ECB1C68CD03006D098B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */; };
 		D6EF6ECD1C68CD03006D098B /* CurrentTripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */; };
 		D6EF6ECF1C68CD03006D098B /* TripsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECE1C68CD03006D098B /* TripsController.swift */; };
@@ -48,6 +49,7 @@
 		D274EC681C70B484000AA29D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Photos.storyboard; sourceTree = "<group>"; };
 		D274EC6A1C70B552000AA29D /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		D274EC6F1C70B65D000AA29D /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		D274EC711C70C009000AA29D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D6EF6EC71C68CD03006D098B /* TravelDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTripController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D274EC721C70C009000AA29D /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +96,7 @@
 		D6EF6EBE1C68CD03006D098B = {
 			isa = PBXGroup;
 			children = (
+				D274EC711C70C009000AA29D /* MapKit.framework */,
 				F0DA6C0E1C68CFF3007753F8 /* DataModel.xcdatamodeld */,
 				D6EF6EC91C68CD03006D098B /* TravelDiary */,
 				D6EF6EE01C68CD03006D098B /* TravelDiaryTests */,
@@ -217,6 +221,11 @@
 				TargetAttributes = {
 					D6EF6EC61C68CD03006D098B = {
 						CreatedOnToolsVersion = 7.2;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					D6EF6EDC1C68CD03006D098B = {
 						CreatedOnToolsVersion = 7.2;
