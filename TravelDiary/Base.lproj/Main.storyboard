@@ -18,6 +18,8 @@
                     <connections>
                         <segue destination="2SH-uM-15n" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="vf7-Km-Uy1" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="hit-9p-Ezu" kind="relationship" relationship="viewControllers" id="iZN-zr-vo2"/>
+                        <segue destination="hSw-f2-sXO" kind="relationship" relationship="viewControllers" id="zWK-gb-JHV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -44,5 +46,29 @@
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
         </scene>
+        <!--Photos-->
+        <scene sceneID="3Oj-WP-rwU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Photos" id="hit-9p-Ezu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Photos" image="first" id="0n0-zS-sBu"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="efS-vc-DIG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="589" y="205"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="woG-L0-9iz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" id="hSw-f2-sXO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="second" id="LKK-Kf-tjI"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cDW-BA-ARQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="582" y="827"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
+    </resources>
 </document>
