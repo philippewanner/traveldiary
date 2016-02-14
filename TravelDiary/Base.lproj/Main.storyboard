@@ -24,20 +24,20 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Second-->
+        <!--Trips-->
         <scene sceneID="g8I-ya-Ok8">
             <objects>
-                <viewControllerPlaceholder storyboardName="Second" id="vf7-Km-Uy1" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Trips" id="vf7-Km-Uy1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="8yO-bX-cJu"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZH-m8-Aps" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--First-->
+        <!--CurrentTrip-->
         <scene sceneID="qM3-MR-2ve">
             <objects>
-                <viewControllerPlaceholder storyboardName="First" id="2SH-uM-15n" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="CurrentTrip" id="2SH-uM-15n" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="wuu-7w-JMm"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hLr-p1-dJx" userLabel="First Responder" sceneMemberID="firstResponder"/>
