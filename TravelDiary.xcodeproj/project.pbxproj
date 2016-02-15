@@ -22,7 +22,6 @@
 		D60083BE1C71DC6A00D2E4A4 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B61C71DC6A00D2E4A4 /* Trip.swift */; };
 		D60083BF1C71DC6A00D2E4A4 /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B71C71DC6A00D2E4A4 /* Activity+CoreDataProperties.swift */; };
 		D60083C01C71DC6A00D2E4A4 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B81C71DC6A00D2E4A4 /* Activity.swift */; };
-		D60083C31C71EE2E00D2E4A4 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083C21C71EE2E00D2E4A4 /* DataController.swift */; };
 		D6EF6ECB1C68CD03006D098B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */; };
 		D6EF6ECD1C68CD03006D098B /* CurrentTripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */; };
 		D6EF6ECF1C68CD03006D098B /* TripsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECE1C68CD03006D098B /* TripsController.swift */; };
@@ -67,7 +66,6 @@
 		D60083B61C71DC6A00D2E4A4 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		D60083B71C71DC6A00D2E4A4 /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D60083B81C71DC6A00D2E4A4 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
-		D60083C21C71EE2E00D2E4A4 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		D6EF6EC71C68CD03006D098B /* TravelDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTripController.swift; sourceTree = "<group>"; };
@@ -148,14 +146,6 @@
 			name = photo;
 			sourceTree = "<group>";
 		};
-		D60083C11C71EDF800D2E4A4 /* persistence */ = {
-			isa = PBXGroup;
-			children = (
-				D60083C21C71EE2E00D2E4A4 /* DataController.swift */,
-			);
-			name = persistence;
-			sourceTree = "<group>";
-		};
 		D6EF6EBE1C68CD03006D098B = {
 			isa = PBXGroup;
 			children = (
@@ -181,7 +171,6 @@
 		D6EF6EC91C68CD03006D098B /* TravelDiary */ = {
 			isa = PBXGroup;
 			children = (
-				D60083C11C71EDF800D2E4A4 /* persistence */,
 				D60083B01C71CBF600D2E4A4 /* photo */,
 				D60083AF1C71CBED00D2E4A4 /* trip */,
 				D60083AE1C71CBE700D2E4A4 /* map */,
@@ -362,7 +351,6 @@
 				D6EF6ECF1C68CD03006D098B /* TripsController.swift in Sources */,
 				D274EC661C70B3A5000AA29D /* PhotosController.swift in Sources */,
 				F0DA6C101C68CFF3007753F8 /* DataModel.xcdatamodeld in Sources */,
-				D60083C31C71EE2E00D2E4A4 /* DataController.swift in Sources */,
 				D60083BB1C71DC6A00D2E4A4 /* Location+CoreDataProperties.swift in Sources */,
 				D6EF6ECB1C68CD03006D098B /* AppDelegate.swift in Sources */,
 				D274EC6B1C70B552000AA29D /* MapController.swift in Sources */,
