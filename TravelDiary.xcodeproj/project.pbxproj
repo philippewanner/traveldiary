@@ -93,6 +93,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D60083AE1C71CBE700D2E4A4 /* map */ = {
+			isa = PBXGroup;
+			children = (
+				D274EC6F1C70B65D000AA29D /* Map.storyboard */,
+				D274EC6A1C70B552000AA29D /* MapController.swift */,
+			);
+			name = map;
+			sourceTree = "<group>";
+		};
+		D60083AF1C71CBED00D2E4A4 /* trip */ = {
+			isa = PBXGroup;
+			children = (
+				D274EC611C70A5B7000AA29D /* CurrentTrip.storyboard */,
+				D6EF6ECE1C68CD03006D098B /* TripsController.swift */,
+				D274EC5E1C70A589000AA29D /* Trips.storyboard */,
+				D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */,
+			);
+			name = trip;
+			sourceTree = "<group>";
+		};
+		D60083B01C71CBF600D2E4A4 /* photo */ = {
+			isa = PBXGroup;
+			children = (
+				D274EC671C70B484000AA29D /* Photos.storyboard */,
+				D274EC651C70B3A5000AA29D /* PhotosController.swift */,
+			);
+			name = photo;
+			sourceTree = "<group>";
+		};
 		D6EF6EBE1C68CD03006D098B = {
 			isa = PBXGroup;
 			children = (
@@ -118,19 +147,14 @@
 		D6EF6EC91C68CD03006D098B /* TravelDiary */ = {
 			isa = PBXGroup;
 			children = (
+				D60083B01C71CBF600D2E4A4 /* photo */,
+				D60083AF1C71CBED00D2E4A4 /* trip */,
+				D60083AE1C71CBE700D2E4A4 /* map */,
 				D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */,
-				D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */,
-				D6EF6ECE1C68CD03006D098B /* TripsController.swift */,
 				D6EF6ED01C68CD03006D098B /* Main.storyboard */,
-				D274EC6F1C70B65D000AA29D /* Map.storyboard */,
-				D274EC671C70B484000AA29D /* Photos.storyboard */,
-				D274EC651C70B3A5000AA29D /* PhotosController.swift */,
-				D274EC611C70A5B7000AA29D /* CurrentTrip.storyboard */,
-				D274EC5E1C70A589000AA29D /* Trips.storyboard */,
 				D6EF6ED31C68CD03006D098B /* Assets.xcassets */,
 				D6EF6ED51C68CD03006D098B /* LaunchScreen.storyboard */,
 				D6EF6ED81C68CD03006D098B /* Info.plist */,
-				D274EC6A1C70B552000AA29D /* MapController.swift */,
 			);
 			path = TravelDiary;
 			sourceTree = "<group>";
