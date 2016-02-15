@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="Activity" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="descr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Location" inverseName="inActivity" inverseEntity="Location" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Photo" inverseName="inActivity" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="trip" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Trip" inverseName="activities" inverseEntity="Trip" syncable="YES"/>
+    </entity>
+    <entity name="Location" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="inActivity" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Activity" inverseName="location" inverseEntity="Activity" syncable="YES"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Photo" inverseName="location" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="tripEndLocation" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Trip" inverseName="endLocation" inverseEntity="Trip" syncable="YES"/>
+        <relationship name="tripStartLocation" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Trip" inverseName="startLocation" inverseEntity="Trip" syncable="YES"/>
+    </entity>
+    <entity name="Photo" syncable="YES">
+        <attribute name="createDate" attributeType="Date" syncable="YES"/>
+        <attribute name="picture" attributeType="Binary" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="inActivity" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Activity" inverseName="photos" inverseEntity="Activity" syncable="YES"/>
+        <relationship name="location" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Location" inverseName="pictures" inverseEntity="Location" syncable="YES"/>
+        <relationship name="trip" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Trip" inverseName="pictures" inverseEntity="Trip" syncable="YES"/>
+    </entity>
+    <entity name="Trip" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startDate" attributeType="Date" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Activity" inverseName="trip" inverseEntity="Activity" syncable="YES"/>
+        <relationship name="endLocation" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Location" inverseName="tripEndLocation" inverseEntity="Location" syncable="YES"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Photo" inverseName="trip" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="startLocation" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Location" inverseName="tripStartLocation" inverseEntity="Location" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Photo" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Trip" positionX="-54" positionY="-9" width="128" height="150"/>
+        <element name="Location" positionX="-36" positionY="9" width="128" height="180"/>
+        <element name="Activity" positionX="-18" positionY="27" width="128" height="135"/>
+    </elements>
+</model>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NrB-HY-KCW">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--Photos-->
+        <scene sceneID="Xuj-Ct-rkS">
+            <objects>
+                <viewController id="NrB-HY-KCW" customClass="PhotosController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BS6-SN-ZFB"/>
+                        <viewControllerLayoutGuide type="bottom" id="ifK-rP-NA0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="n0h-qW-Jja">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrY-Gw-A7J">
+                                <rect key="frame" x="315" y="222" width="54" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ifK-rP-NA0" firstAttribute="top" secondItem="CrY-Gw-A7J" secondAttribute="bottom" constant="308" id="GbP-7T-1cO"/>
+                            <constraint firstItem="CrY-Gw-A7J" firstAttribute="top" secondItem="BS6-SN-ZFB" secondAttribute="bottom" constant="202" id="mUP-A5-jIX"/>
+                            <constraint firstAttribute="trailing" secondItem="CrY-Gw-A7J" secondAttribute="trailing" constant="231" id="snZ-wj-abZ"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Photos" image="first" id="Xgy-cA-b3N"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Yo-Hu-004" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="589" y="205"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="first" width="30" height="30"/>
+    </resources>
+</document>

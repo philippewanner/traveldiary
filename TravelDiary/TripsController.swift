@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  TripsController.swift
 //  TravelDiary
 //
 //  Created by Andreas Heubeck on 08/02/16.
