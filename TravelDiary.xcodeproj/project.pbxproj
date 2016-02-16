@@ -22,6 +22,8 @@
 		D60083BE1C71DC6A00D2E4A4 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B61C71DC6A00D2E4A4 /* Trip.swift */; };
 		D60083BF1C71DC6A00D2E4A4 /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B71C71DC6A00D2E4A4 /* Activity+CoreDataProperties.swift */; };
 		D60083C01C71DC6A00D2E4A4 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B81C71DC6A00D2E4A4 /* Activity.swift */; };
+		D644B8FC1C73B34000B2D908 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D644B8FB1C73B34000B2D908 /* CoreDataHelper.swift */; };
+		D644B9011C73C3A300B2D908 /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D644B9001C73C3A300B2D908 /* NSManagedObject.swift */; };
 		D6EF6ECB1C68CD03006D098B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */; };
 		D6EF6ECD1C68CD03006D098B /* CurrentTripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */; };
 		D6EF6ECF1C68CD03006D098B /* TripsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECE1C68CD03006D098B /* TripsController.swift */; };
@@ -66,6 +68,8 @@
 		D60083B61C71DC6A00D2E4A4 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		D60083B71C71DC6A00D2E4A4 /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D60083B81C71DC6A00D2E4A4 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		D644B8FB1C73B34000B2D908 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		D644B9001C73C3A300B2D908 /* NSManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObject.swift; sourceTree = "<group>"; };
 		D6EF6EC71C68CD03006D098B /* TravelDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTripController.swift; sourceTree = "<group>"; };
@@ -146,6 +150,14 @@
 			name = photo;
 			sourceTree = "<group>";
 		};
+		D644B8FF1C73C38000B2D908 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				D644B9001C73C3A300B2D908 /* NSManagedObject.swift */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
 		D6EF6EBE1C68CD03006D098B = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +183,7 @@
 		D6EF6EC91C68CD03006D098B /* TravelDiary */ = {
 			isa = PBXGroup;
 			children = (
+				D644B8FF1C73C38000B2D908 /* common */,
 				D60083B01C71CBF600D2E4A4 /* photo */,
 				D60083AF1C71CBED00D2E4A4 /* trip */,
 				D60083AE1C71CBE700D2E4A4 /* map */,
@@ -188,6 +201,7 @@
 			children = (
 				D6EF6EE11C68CD03006D098B /* TravelDiaryTests.swift */,
 				D6EF6EE31C68CD03006D098B /* Info.plist */,
+				D644B8FB1C73B34000B2D908 /* CoreDataHelper.swift */,
 			);
 			path = TravelDiaryTests;
 			sourceTree = "<group>";
@@ -350,6 +364,7 @@
 				D60083BC1C71DC6A00D2E4A4 /* Location.swift in Sources */,
 				D6EF6ECF1C68CD03006D098B /* TripsController.swift in Sources */,
 				D274EC661C70B3A5000AA29D /* PhotosController.swift in Sources */,
+				D644B9011C73C3A300B2D908 /* NSManagedObject.swift in Sources */,
 				F0DA6C101C68CFF3007753F8 /* DataModel.xcdatamodeld in Sources */,
 				D60083BB1C71DC6A00D2E4A4 /* Location+CoreDataProperties.swift in Sources */,
 				D6EF6ECB1C68CD03006D098B /* AppDelegate.swift in Sources */,
@@ -362,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D644B8FC1C73B34000B2D908 /* CoreDataHelper.swift in Sources */,
 				D6EF6EE21C68CD03006D098B /* TravelDiaryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

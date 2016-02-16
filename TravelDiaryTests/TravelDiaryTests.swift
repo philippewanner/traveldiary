@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import CoreData
+
 @testable import TravelDiary
 
 class TravelDiaryTests: XCTestCase {
@@ -22,8 +24,9 @@ class TravelDiaryTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let managedObjectContext = setUpInMemoryManagedObjectContext()
+        let entity = NSEntityDescription.insertNewObjectForEntityForName("Activity", inManagedObjectContext: managedObjectContext)
+        //let Trip = Trip(entity: entity!, insertIntoManagedObjectContext: managedContext)
     }
     
     func testPerformanceExample() {
