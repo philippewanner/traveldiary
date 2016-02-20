@@ -16,8 +16,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="2SH-uM-15n" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="vf7-Km-Uy1" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="r7F-WP-g80" kind="relationship" relationship="viewControllers" id="sph-gj-mDB"/>
                         <segue destination="hit-9p-Ezu" kind="relationship" relationship="viewControllers" id="iZN-zr-vo2"/>
                         <segue destination="hSw-f2-sXO" kind="relationship" relationship="viewControllers" id="zWK-gb-JHV"/>
                     </connections>
@@ -30,21 +30,11 @@
         <scene sceneID="g8I-ya-Ok8">
             <objects>
                 <viewControllerPlaceholder storyboardName="Trips" id="vf7-Km-Uy1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="8yO-bX-cJu"/>
+                    <tabBarItem key="tabBarItem" title="Trips" id="8yO-bX-cJu"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZH-m8-Aps" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
-        </scene>
-        <!--CurrentTrip-->
-        <scene sceneID="qM3-MR-2ve">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CurrentTrip" id="2SH-uM-15n" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="wuu-7w-JMm"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hLr-p1-dJx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
         </scene>
         <!--Photos-->
         <scene sceneID="3Oj-WP-rwU">
@@ -65,6 +55,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDW-BA-ARQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="582" y="827"/>
+        </scene>
+        <!--CurrentTrips-->
+        <scene sceneID="cSE-vY-XDx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CurrentTrips" id="r7F-WP-g80" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Current Trips" image="first" id="eGh-R0-tWI"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W4q-uF-J6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="822.5" y="-255"/>
         </scene>
     </scenes>
     <resources>
