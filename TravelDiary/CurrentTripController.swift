@@ -8,18 +8,33 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class CurrentTripController: UITableViewController {
+    
+    var tableData:[String] = ["Machu Picchu","Arequipa", "Lima","Titicaca"]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let nib = UINib(nibName: "ActivityTableViewCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "reuseCell")
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tableData.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: ActivityCell = self.tableView.dequeueReusableCellWithIdentifier("reuseCell") as! ActivityCell
+        cell.activityDescription.text = self.tableData[indexPath.row]
+        cell.activityDate.text = "not yet done"
+        return cell;
+    }
 }
 

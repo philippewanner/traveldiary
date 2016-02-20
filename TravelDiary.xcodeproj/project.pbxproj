@@ -24,6 +24,8 @@
 		D644B8FC1C73B34000B2D908 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D644B8FB1C73B34000B2D908 /* CoreDataHelper.swift */; };
 		D644B9011C73C3A300B2D908 /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D644B9001C73C3A300B2D908 /* NSManagedObject.swift */; };
 		D68212651C78BCA30046122E /* CurrentTrips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D68212631C78BCA30046122E /* CurrentTrips.storyboard */; };
+		D682126F1C78C7490046122E /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D682126E1C78C7490046122E /* ActivityCell.swift */; };
+		D68212711C78DD820046122E /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68212701C78DD810046122E /* ActivityTableViewCell.xib */; };
 		D6EF6ECB1C68CD03006D098B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */; };
 		D6EF6ECD1C68CD03006D098B /* CurrentTripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */; };
 		D6EF6ECF1C68CD03006D098B /* TripsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECE1C68CD03006D098B /* TripsController.swift */; };
@@ -70,6 +72,8 @@
 		D644B8FB1C73B34000B2D908 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		D644B9001C73C3A300B2D908 /* NSManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObject.swift; sourceTree = "<group>"; };
 		D68212641C78BCA30046122E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CurrentTrips.storyboard; sourceTree = "<group>"; };
+		D682126E1C78C7490046122E /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		D68212701C78DD810046122E /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		D6EF6EC71C68CD03006D098B /* TravelDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTripController.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		D60083AF1C71CBED00D2E4A4 /* trip */ = {
 			isa = PBXGroup;
 			children = (
+				D68212701C78DD810046122E /* ActivityTableViewCell.xib */,
 				D68212631C78BCA30046122E /* CurrentTrips.storyboard */,
 				D60083B51C71DC6A00D2E4A4 /* Trip+CoreDataProperties.swift */,
 				D60083B61C71DC6A00D2E4A4 /* Trip.swift */,
@@ -135,6 +140,7 @@
 				D6EF6ECE1C68CD03006D098B /* TripsController.swift */,
 				D274EC5E1C70A589000AA29D /* Trips.storyboard */,
 				D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */,
+				D682126E1C78C7490046122E /* ActivityCell.swift */,
 			);
 			name = trip;
 			sourceTree = "<group>";
@@ -330,6 +336,7 @@
 				D6EF6ED41C68CD03006D098B /* Assets.xcassets in Resources */,
 				D274EC691C70B484000AA29D /* Photos.storyboard in Resources */,
 				D68212651C78BCA30046122E /* CurrentTrips.storyboard in Resources */,
+				D68212711C78DD820046122E /* ActivityTableViewCell.xib in Resources */,
 				D6EF6ED21C68CD03006D098B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +368,7 @@
 				D60083BA1C71DC6A00D2E4A4 /* Photo.swift in Sources */,
 				D60083BF1C71DC6A00D2E4A4 /* Activity+CoreDataProperties.swift in Sources */,
 				D60083B91C71DC6A00D2E4A4 /* Photo+CoreDataProperties.swift in Sources */,
+				D682126F1C78C7490046122E /* ActivityCell.swift in Sources */,
 				D60083BC1C71DC6A00D2E4A4 /* Location.swift in Sources */,
 				D6EF6ECF1C68CD03006D098B /* TripsController.swift in Sources */,
 				D274EC661C70B3A5000AA29D /* PhotosController.swift in Sources */,
