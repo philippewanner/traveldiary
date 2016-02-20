@@ -13,6 +13,8 @@ import CoreData
 
 class TravelDiaryTests: XCTestCase {
     
+    let managedObjectContext = CoreDataHelper.setUpInMemoryManagedObjectContext()
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -23,13 +25,10 @@ class TravelDiaryTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        let managedObjectContext = CoreDataHelper.setUpInMemoryManagedObjectContext()
+    func saveTrip() {
         let newTrip = Trip(managedObjectContext: managedObjectContext)
-        //Not really sexy with string to search for membervariables...
-        newTrip.setValue("Tokyo to Nagano", forKey: "title")
-        newTrip.setValue(NSDate(), forKey: "startDate")
-        
+        newTrip.title = "Tokyo to Nagano"
+        newTrip.startDate = NSDate()
         do {
             try managedObjectContext.save()
         } catch let error as NSError  {
@@ -45,6 +44,21 @@ class TravelDiaryTests: XCTestCase {
             results = try managedObjectContext.executeFetchRequest(request)
             XCTAssertEqual(results.count,1)
         }catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    func saveActivity(){
+        let newTrip = Trip(managedObjectContext: managedObjectContext)
+        newTrip.title = "America del Sur"
+        newTrip.startDate = NSDate()
+        
+        let newActivity = Activity(managedObjectContext: managedObjectContext)
+        newActivity.trip = newTrip
+        
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
     }
