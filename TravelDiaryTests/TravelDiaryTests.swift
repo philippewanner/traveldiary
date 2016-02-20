@@ -25,8 +25,8 @@ class TravelDiaryTests: XCTestCase {
     
     func testExample() {
         let managedObjectContext = CoreDataHelper.setUpInMemoryManagedObjectContext()
-//        let entity = NSEntityDescription.insertNewObjectForEntityForName("Activity", inManagedObjectContext: managedObjectContext)
         let newTrip = Trip(managedObjectContext: managedObjectContext)
+        //Not really sexy with string to search for membervariables...
         newTrip.setValue("Tokyo to Nagano", forKey: "title")
         newTrip.setValue(NSDate(), forKey: "startDate")
         
@@ -35,8 +35,10 @@ class TravelDiaryTests: XCTestCase {
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
-        let request = NSFetchRequest(entityName: "Trip")
+        
+        let request = NSFetchRequest(entityName: Trip.entityName())
         request.returnsObjectsAsFaults = false;
+        //Something like sql
         request.predicate = NSPredicate(format:"title CONTAINS 'Tokyo to Nagano' ")
         var results:NSArray
         do{
