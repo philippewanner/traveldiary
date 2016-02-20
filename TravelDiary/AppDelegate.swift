@@ -16,7 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        let machuPicchu = Activity(managedObjectContext: self.managedObjectContext)
+        machuPicchu.descr = "Machu Picchu"
+        machuPicchu.date = NSDate()
+        
+        let lima = Activity(managedObjectContext: managedObjectContext)
+        lima.descr = "Lima"
+        lima.date = NSDate()
+        
+        let activities = NSMutableSet()
+        activities.addObject(machuPicchu)
+        activities.addObject(lima)
+        
+        let exampleTrip = Trip(managedObjectContext: self.managedObjectContext)
+        exampleTrip.title = "ExampleTrip"
+        exampleTrip.startDate = NSDate()
+        exampleTrip.activities = activities
+        
+        self.saveContext()
+        
         return true
     }
 
@@ -31,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
+        
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 

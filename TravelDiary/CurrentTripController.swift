@@ -13,7 +13,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     
-    var tableData:[String] = ["Machu Picchu","Arequipa", "Lima","Titicaca"]
+    var tableData:[String] = ["Machu Picchu","Arequipa", "Lima","Titicaca", "Desierto de Atacama", "Pantanal", "Ciudad Perdida" ,"Perito Moreno" , "Torres del Paine", "Cali" ,"Iguazu"]
     
     
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
-   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tableData.count
     }
     
