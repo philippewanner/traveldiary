@@ -54,6 +54,7 @@ class TravelDiaryTests: XCTestCase {
         newTrip.startDate = NSDate()
         
         let newActivity = Activity(managedObjectContext: managedObjectContext)
+        newActivity.descr = "Machu Picchu"
         newActivity.trip = newTrip
         
         do {
@@ -61,13 +62,23 @@ class TravelDiaryTests: XCTestCase {
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+        
+        let request = NSFetchRequest(entityName: Activity.entityName())
+        request.returnsObjectsAsFaults = false;
+        //Something like sql
+        request.predicate = NSPredicate(format:"descr CONTAINS 'Machu Picchu' ")
+        var results:NSArray
+        
+        do{
+            results = try managedObjectContext.executeFetchRequest(request)
+            XCTAssertEqual(results.count,1)
+            let fetchedActivity = results[0] as! Activity
+            XCTAssertEqual(fetchedActivity.descr, "Machu Picchu")
+            XCTAssertNotNil(fetchedActivity.trip)
+        }catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
         }
+
     }
     
 }
