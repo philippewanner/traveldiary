@@ -16,25 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let machuPicchu = Activity(managedObjectContext: self.managedObjectContext)
-        machuPicchu.descr = "Machu Picchu"
-        machuPicchu.date = NSDate()
-        
-        let lima = Activity(managedObjectContext: managedObjectContext)
-        lima.descr = "Lima"
-        lima.date = NSDate()
-        
-        let activities = NSMutableSet()
-        activities.addObject(machuPicchu)
-        activities.addObject(lima)
-        
-        let exampleTrip = Trip(managedObjectContext: self.managedObjectContext)
-        exampleTrip.title = "ExampleTrip"
-        exampleTrip.startDate = NSDate()
-        exampleTrip.activities = activities
-        
-        self.saveContext()
-        
+        self.loadExampleData()
         return true
     }
 
@@ -123,7 +105,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
-
+    // TODO Move to another class
+    func loadExampleData(){
+        let request = NSFetchRequest(entityName: Trip.entityName())
+        request.returnsObjectsAsFaults = false;
+        request.predicate = NSPredicate(format:"title MATCHES 'ExampleTrip' ")
+        var results:NSArray
+        do{
+            results = try managedObjectContext.executeFetchRequest(request)
+            //Write only if the example is not present
+            if(results.count == 0){
+                let machuPicchu = Activity(managedObjectContext: self.managedObjectContext)
+                machuPicchu.descr = "Machu Picchu"
+                machuPicchu.date = NSDate()
+                
+                let lima = Activity(managedObjectContext: managedObjectContext)
+                lima.descr = "Lima"
+                lima.date = NSDate()
+                
+                let activities = NSMutableSet()
+                activities.addObject(machuPicchu)
+                activities.addObject(lima)
+                
+                let exampleTrip = Trip(managedObjectContext: self.managedObjectContext)
+                exampleTrip.title = "ExampleTrip"
+                exampleTrip.startDate = NSDate()
+                exampleTrip.activities = activities
+                self.saveContext()
+            }
+        }catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
 }
 

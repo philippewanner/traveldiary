@@ -26,6 +26,7 @@
 		D682126F1C78C7490046122E /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D682126E1C78C7490046122E /* ActivityCell.swift */; };
 		D68212711C78DD820046122E /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68212701C78DD810046122E /* ActivityTableViewCell.xib */; };
 		D68212741C78ED220046122E /* CurrentTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D68212721C78ED220046122E /* CurrentTrip.storyboard */; };
+		D68212761C7915600046122E /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68212751C7915600046122E /* UIViewController.swift */; };
 		D6EF6ECB1C68CD03006D098B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */; };
 		D6EF6ECD1C68CD03006D098B /* CurrentTripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */; };
 		D6EF6ECF1C68CD03006D098B /* TripsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECE1C68CD03006D098B /* TripsController.swift */; };
@@ -74,6 +75,7 @@
 		D682126E1C78C7490046122E /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		D68212701C78DD810046122E /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		D68212731C78ED220046122E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CurrentTrip.storyboard; sourceTree = "<group>"; };
+		D68212751C7915600046122E /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		D6EF6EC71C68CD03006D098B /* TravelDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTripController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				D644B9001C73C3A300B2D908 /* NSManagedObject.swift */,
+				D68212751C7915600046122E /* UIViewController.swift */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				D60083B91C71DC6A00D2E4A4 /* Photo+CoreDataProperties.swift in Sources */,
 				D682126F1C78C7490046122E /* ActivityCell.swift in Sources */,
 				D60083BC1C71DC6A00D2E4A4 /* Location.swift in Sources */,
+				D68212761C7915600046122E /* UIViewController.swift in Sources */,
 				D6EF6ECF1C68CD03006D098B /* TripsController.swift in Sources */,
 				D274EC661C70B3A5000AA29D /* PhotosController.swift in Sources */,
 				D644B9011C73C3A300B2D908 /* NSManagedObject.swift in Sources */,

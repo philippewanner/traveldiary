@@ -7,14 +7,28 @@
 //
 
 import UIKit
+import CoreData
 
-class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    
+class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     
-    var tableData:[String] = ["Machu Picchu","Arequipa", "Lima","Titicaca", "Desierto de Atacama", "Pantanal", "Ciudad Perdida" ,"Perito Moreno" , "Torres del Paine", "Cali" ,"Iguazu"]
-    
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest(entityName: Activity.entityName())
+        
+        // Add Sort Descriptors
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // Initialize Fetched Results Controller
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // Configure Fetched Results Controller
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +36,12 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         let nib = UINib(nibName: "ActivityTableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "reuseCell")
         
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("\(fetchError), \(fetchError.userInfo)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,12 +50,17 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tableData.count
+        if let sections = fetchedResultsController.sections {
+            let currentSection = sections[section]
+            return currentSection.numberOfObjects
+        }
+        return 0
     }
     
    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: ActivityCell = self.tableView.dequeueReusableCellWithIdentifier("reuseCell") as! ActivityCell
-        cell.activityDescription.text = self.tableData[indexPath.row]
+        let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
+        cell.activityDescription.text = actitvity.descr
         cell.activityDate.text = "not yet done"
         return cell
     }

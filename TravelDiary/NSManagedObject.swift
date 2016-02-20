@@ -8,8 +8,14 @@
 
 import CoreData
 
+/* !
+    Extension for NSManagedObject
+*/
 extension NSManagedObject {
     
+    /*!
+        Returns the name of the entity
+    */
     public class func entityName() -> String {
         // NSStringFromClass is available in Swift 2.
         // If the data model is in a framework, then
@@ -22,6 +28,8 @@ extension NSManagedObject {
         return name.componentsSeparatedByString(".").last!
     }
     
+    /*! Convinience initializer to avoid calling all the methods to create an entity
+    */
     convenience init(managedObjectContext: NSManagedObjectContext) {
         let entityName = self.dynamicType.entityName()
         let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: managedObjectContext)!
