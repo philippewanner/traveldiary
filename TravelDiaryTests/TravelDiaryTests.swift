@@ -24,9 +24,9 @@ class TravelDiaryTests: XCTestCase {
     }
     
     func testExample() {
-        let managedObjectContext = setUpInMemoryManagedObjectContext()
-        let entity = NSEntityDescription.insertNewObjectForEntityForName("Activity", inManagedObjectContext: managedObjectContext)
-        //let Trip = Trip(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let managedObjectContext = CoreDataHelper.setUpInMemoryManagedObjectContext()
+//        let entity = NSEntityDescription.insertNewObjectForEntityForName("Activity", inManagedObjectContext: managedObjectContext)
+        let trip = Trip(managedContext)
     }
     
     func testPerformanceExample() {
