@@ -26,7 +26,25 @@ class TravelDiaryTests: XCTestCase {
     func testExample() {
         let managedObjectContext = CoreDataHelper.setUpInMemoryManagedObjectContext()
 //        let entity = NSEntityDescription.insertNewObjectForEntityForName("Activity", inManagedObjectContext: managedObjectContext)
-        let trip = Trip(managedContext)
+        let newTrip = Trip(managedObjectContext: managedObjectContext)
+        newTrip.setValue("Tokyo to Nagano", forKey: "title")
+        newTrip.setValue(NSDate(), forKey: "startDate")
+        
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+        let request = NSFetchRequest(entityName: "Trip")
+        request.returnsObjectsAsFaults = false;
+        request.predicate = NSPredicate(format:"title CONTAINS 'Tokyo to Nagano' ")
+        var results:NSArray
+        do{
+            results = try managedObjectContext.executeFetchRequest(request)
+            XCTAssertEqual(results.count,1)
+        }catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
     }
     
     func testPerformanceExample() {
