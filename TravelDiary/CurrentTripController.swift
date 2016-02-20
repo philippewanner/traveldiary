@@ -8,13 +8,15 @@
 
 import UIKit
 
-class CurrentTripController: UITableViewController {
+class CurrentTripController: UITableViewController, UIToolbarDelegate {
     
     var tableData:[String] = ["Machu Picchu","Arequipa", "Lima","Titicaca"]
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.extendedLayoutIncludesOpaqueBars=false
+        //self.automaticallyAdjustsScrollViewInsets=false
         // Do any additional setup after loading the view, typically from a nib.
         let nib = UINib(nibName: "ActivityTableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "reuseCell")
