@@ -9,9 +9,11 @@
 import UIKit
 import CoreData
 
-class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate{
+class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UINavigationControllerDelegate{
     
     @IBOutlet weak var tableView: UITableView!
+    
+    let SegueActivityDetailController = "ActivityDetailController"
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         // Initialize Fetch Request
@@ -63,6 +65,20 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         cell.activityDescription.text = actitvity.descr
         cell.activityDate.text = "not yet done"
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // Perform Segue
+        performSegueWithIdentifier(SegueActivityDetailController, sender: self)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SegueActivityDetailController {
+            if let destination = segue.destinationViewController as? ActivityDetailController {
+               destination.selectedActivity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
+            }
+        }
     }
 }
 

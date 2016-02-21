@@ -38,11 +38,47 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="CPV-pR-c2v" id="ZHQ-rf-q2S"/>
+                        <segue destination="3nw-cG-smY" kind="showDetail" identifier="ActivityDetailController" id="HIo-4W-mn1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZGm-VU-YDy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-393" y="1139"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="Ljq-Sn-Wd1">
+            <objects>
+                <viewController id="3nw-cG-smY" customClass="ActivityDetailController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p9P-E5-FbQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="2vk-HN-amp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xri-Hx-4gr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-80-xVs">
+                                <rect key="frame" x="46" y="89" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2xX-Zb-QZ1">
+                                <rect key="frame" x="46" y="150" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="BiH-JR-oCd"/>
+                    <connections>
+                        <outlet property="activityDate" destination="2xX-Zb-QZ1" id="pff-Bw-tei"/>
+                        <outlet property="descr" destination="Dyo-80-xVs" id="0UG-ga-LfL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bbv-9N-TLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="405" y="1139"/>
         </scene>
     </scenes>
     <resources>
