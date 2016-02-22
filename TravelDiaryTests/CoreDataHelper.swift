@@ -20,7 +20,7 @@ public class CoreDataHelper {
             print("Adding in-memory persistent store coordinator failed")
         }
         
-        let managedObjectContext = NSManagedObjectContext()
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
         
         return managedObjectContext
