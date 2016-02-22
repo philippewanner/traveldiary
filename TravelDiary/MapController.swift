@@ -86,8 +86,15 @@ class MapController: UIViewController, MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         if let annotation = view.annotation as? LocationAnnotation {
-            if let randomPhoto = annotation.location.photos?.allObjects[0] {
-                randomPhoto
+            let location = annotation.location
+            if let randomPhoto = location.photos?.anyObject() {
+                
+                // TODO: Loads the whole image on the main thread: should be done async (maybe we should also store thumbnails..)
+                let imageData = (randomPhoto as! Photo).imageData
+                let imageView = UIImageView(image: UIImage(data: imageData))
+                imageView.frame = CGRectMake(0, 0, view.frame.size.height, view.frame.size.height)
+                imageView.contentMode = .ScaleAspectFit
+                view.leftCalloutAccessoryView = imageView
             }
         }
     }
