@@ -21,6 +21,8 @@ class MapController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    let ReuseIdentifierAnnotation = "identifier_annotation_view"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,30 +33,33 @@ class MapController: UIViewController, MKMapViewDelegate {
                 self.showAnnotations(annotations)
             },
             failed: {error in
-                print("Could not save \(error)")
+                print("Could not fetch locations \(error)")
             }
         )
     }
     
     func loadLocations(managedObjectContext: NSManagedObjectContext, success: ([Location]) -> Void, failed: (NSError) -> Void) {
-        let privateContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-        privateContext.parentContext = managedObjectContext
-        privateContext.performBlock {
-            let request = NSFetchRequest(entityName: Location.entityName())
-            request.predicate = NSPredicate(format:"longitude != nil AND latitude != nil")
-            do {
-                let locations: [Location] = try managedObjectContext.executeFetchRequest(request) as! [Location]
-                success(locations)
-            } catch let error as NSError {
-                failed(error)
-            }
+        let fetchRequest = NSFetchRequest(entityName: Location.entityName())
+        fetchRequest.predicate = NSPredicate(format:"longitude != nil AND latitude != nil")
+        let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { (asynchronousFetchResult) -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                if let locations = asynchronousFetchResult.finalResult{
+                    success(locations as! [Location])
+                }
+            })
+        }
+        
+        do {
+            try managedObjectContext.executeRequest(asynchronousFetchRequest)
+        } catch let error as NSError {
+            failed(error)
         }
     }
     
     func convertLocationsToAnnotations(locations: [Location]) -> [MKAnnotation]{
-        return locations.map({location in
+        return locations.map {location in
             LocationAnnotation(location: location)
-        })
+        }
     }
     
     func showAnnotations(annotations: [MKAnnotation]){
@@ -64,14 +69,13 @@ class MapController: UIViewController, MKMapViewDelegate {
 
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? LocationAnnotation {
-            let identifier = "identifier_annotation_view"
             let view: MKPinAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(ReuseIdentifierAnnotation)
                 as? MKPinAnnotationView {
                     dequeuedView.annotation = annotation
                     view = dequeuedView
             } else {
-                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: ReuseIdentifierAnnotation)
                 view.canShowCallout = true
                 view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
             }
