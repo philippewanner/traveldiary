@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4rn-fb-mYu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4rn-fb-mYu">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -21,7 +21,7 @@
             </objects>
             <point key="canvasLocation" x="-647" y="1133"/>
         </scene>
-        <!--Hello-->
+        <!--Item-->
         <scene sceneID="Oxh-qg-6IT">
             <objects>
                 <viewController id="O3k-QT-qpv" customClass="CurrentTripController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,6 +33,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xvS-d2-d7u">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Item" id="cYa-u4-ej1"/>
+                                </items>
+                            </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CPV-pR-c2v">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,23 +47,23 @@
                                     <outlet property="delegate" destination="O3k-QT-qpv" id="njE-7O-PSv"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xvS-d2-d7u">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem title="Item" id="cYa-u4-ej1"/>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="first" id="5iz-N8-tpY"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Hello" id="qp8-EX-eja">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="CeS-M1-All"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="NSE-mc-HRO"/>
+                    <navigationItem key="navigationItem" id="qp8-EX-eja">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="CeS-M1-All">
+                            <connections>
+                                <segue destination="9cW-2f-bWL" kind="show" identifier="addActivitySegue" id="4hC-OT-jlt"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="NSE-mc-HRO"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addButton" destination="CeS-M1-All" id="wu6-3s-I1l"/>
+                        <outlet property="editButton" destination="NSE-mc-HRO" id="odU-bK-qLT"/>
                         <outlet property="tableView" destination="CPV-pR-c2v" id="ZHQ-rf-q2S"/>
                         <segue destination="3nw-cG-smY" kind="show" identifier="ActivityDetailController" id="DgK-cg-ozC"/>
                     </connections>
@@ -65,6 +71,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZGm-VU-YDy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="1139"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="JyK-kZ-CDb">
+            <objects>
+                <viewController id="9cW-2f-bWL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ITh-05-mmz"/>
+                        <viewControllerLayoutGuide type="bottom" id="cph-EG-ka6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gzu-cV-oCY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="KZu-ni-457">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="v6G-yP-H0g" userLabel="Cancel"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="ivh-cG-7mT" userLabel="Done"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IaB-E1-cIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749" y="434"/>
         </scene>
         <!--Title-->
         <scene sceneID="Ljq-Sn-Wd1">

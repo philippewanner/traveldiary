@@ -12,8 +12,11 @@ import CoreData
 class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate{
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
     let SegueActivityDetailController = "ActivityDetailController"
+    let addActivitySegue = "addActivitySegue"
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         // Initialize Fetch Request
@@ -78,6 +81,8 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
             if let destination = segue.destinationViewController as? ActivityDetailController {
                destination.selectedActivity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
             }
+        }
+        if segue.identifier == addActivitySegue {
         }
     }
 }
