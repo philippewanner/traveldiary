@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O3k-QT-qpv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4rn-fb-mYu">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--Current Trip-->
+        <!--Navigation Controller-->
+        <scene sceneID="RTn-kA-Ktd">
+            <objects>
+                <navigationController id="4rn-fb-mYu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gH9-xC-0Pn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="O3k-QT-qpv" kind="relationship" relationship="rootViewController" id="5QZ-rn-4Ki"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HH4-Lp-9xf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-647" y="1133"/>
+        </scene>
+        <!--Hello-->
         <scene sceneID="Oxh-qg-6IT">
             <objects>
                 <viewController id="O3k-QT-qpv" customClass="CurrentTripController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,16 +50,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Current Trip" image="second" id="cFW-9O-5Vo"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="first" id="5iz-N8-tpY"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Hello" id="qp8-EX-eja">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="CeS-M1-All"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="NSE-mc-HRO"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="CPV-pR-c2v" id="ZHQ-rf-q2S"/>
-                        <segue destination="3nw-cG-smY" kind="showDetail" identifier="ActivityDetailController" id="HIo-4W-mn1"/>
+                        <segue destination="3nw-cG-smY" kind="show" identifier="ActivityDetailController" id="DgK-cg-ozC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZGm-VU-YDy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-393" y="1139"/>
+            <point key="canvasLocation" x="75" y="1139"/>
         </scene>
         <!--Title-->
         <scene sceneID="Ljq-Sn-Wd1">
@@ -78,10 +99,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbv-9N-TLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405" y="1139"/>
+            <point key="canvasLocation" x="971" y="1139"/>
         </scene>
     </scenes>
     <resources>
-        <image name="second" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
     </resources>
 </document>

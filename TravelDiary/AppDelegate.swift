@@ -115,6 +115,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             results = try managedObjectContext.executeFetchRequest(request)
             //Write only if the example is not present
             if(results.count == 0){
+                let exampleTrip = Trip(managedObjectContext: self.managedObjectContext)
+                exampleTrip.title = "ExampleTrip"
+                exampleTrip.startDate = NSDate()
+                
+                
                 let machuPicchu = Activity(managedObjectContext: self.managedObjectContext)
                 machuPicchu.descr = "Machu Picchu"
                 machuPicchu.date = NSDate()
@@ -123,14 +128,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 lima.descr = "Lima"
                 lima.date = NSDate()
                 
+                let locationLima = Location(managedObjectContext: self.managedObjectContext)
+                locationLima.longitude = -77.0539401
+                locationLima.latitude = -12.0553441
+                locationLima.name = "Lima"
+                locationLima.address = "AddressLima"
+                locationLima.inActivity = lima
+                locationLima.countryCode = "PE"
+                lima.location = locationLima
+
+                let photoLima = Photo(managedObjectContext: self.managedObjectContext)
+                photoLima.createDate = NSDate()
+                photoLima.title = "Lima"
+                photoLima.location = locationLima
+                photoLima.inActivity = lima
+                photoLima.trip = exampleTrip
+                let imgPeru = UIImage(named: "lima_peru")
+                let compressionQuality = CGFloat(1.0)
+                photoLima.imageData = UIImageJPEGRepresentation(imgPeru!, compressionQuality)
+                
+                
                 let activities = NSMutableSet()
                 activities.addObject(machuPicchu)
                 activities.addObject(lima)
                 
-                let exampleTrip = Trip(managedObjectContext: self.managedObjectContext)
-                exampleTrip.title = "ExampleTrip"
-                exampleTrip.startDate = NSDate()
+
                 exampleTrip.activities = activities
+                
+
                 self.saveContext()
             }
         }catch let error as NSError  {

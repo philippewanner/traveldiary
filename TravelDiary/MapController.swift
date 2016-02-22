@@ -6,10 +6,12 @@
 //  Copyright © 2016 PTPA. All rights reserved.
 //
 // http://stackoverflow.com/questions/21912339/ios-mkmapview-showannotationsanimated-with-padding
+//     // TODO: Was ist mit starken Referenzen? Könnte es ein Memory Leak geben?
 //
 
 import UIKit
 import MapKit
+import CoreData
 
 class MapController: UIViewController, MKMapViewDelegate {
 
@@ -21,20 +23,54 @@ class MapController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
-        let point1:MKPointAnnotation = MKPointAnnotation()
-        point1.coordinate = CLLocationCoordinate2DMake(40.283921, 9.831661)
-        let point2:MKPointAnnotation = MKPointAnnotation()
-        point2.coordinate = CLLocationCoordinate2DMake(47.036512, 12.521782)
-        let point3:MKPointAnnotation = MKPointAnnotation()
-        point3.coordinate = CLLocationCoordinate2DMake(35.707032, 139.715278)
-        
-        
-        let annotations:[MKAnnotation] = [point1, point2, point3]
-        //mapView.addAnnotations(annotations)
-        mapView.showAnnotations(annotations, animated: false)
-        //mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0), animated: false)
+        loadLocations(
+            managedObjectContext,
+            success: {locations in
+                let annotations = self.convertLocationsToMKPointAnnotations(locations)
+                self.showAnnotations(annotations)
+            },
+            failed: {error in
+                print("Could not save \(error)")
+            }
+        )
     }
+    
+    func loadLocations(managedObjectContext: NSManagedObjectContext, success: ([Location]) -> Void, failed: (NSError) -> Void) {
+        let privateContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        privateContext.parentContext = managedObjectContext
+        privateContext.performBlock {
+            let request = NSFetchRequest(entityName: Location.entityName())
+            request.predicate = NSPredicate(format:"longitude != nil AND latitude != nil")
+            do {
+                let locations: [Location] = try managedObjectContext.executeFetchRequest(request) as! [Location]
+                success(locations)
+            } catch let error as NSError {
+                failed(error)
+            }
+        }
+    }
+    
+    func convertLocationsToMKPointAnnotations(locations: [Location]) -> [MKPointAnnotation]{
+        return locations.map({location in
+            let point: MKPointAnnotation = MKPointAnnotation()
+            point.coordinate = CLLocationCoordinate2DMake(
+                CLLocationDegrees(location.latitude!),
+                CLLocationDegrees(location.longitude!))
+            return point
+        })
+    }
+    
+    func showAnnotations(annotations: [MKPointAnnotation]){
+        mapView.addAnnotations(annotations)
+        mapView.showAnnotations(mapView.annotations, animated: false)
+    }
+    
+    enum CoreDataError: ErrorType {
+        case FetchError
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
