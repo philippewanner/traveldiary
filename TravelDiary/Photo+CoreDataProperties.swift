@@ -14,11 +14,11 @@ import CoreData
 
 extension Photo {
 
-    @NSManaged var createDate: NSDate?
-    @NSManaged var picture: NSData?
+    @NSManaged var createDate: NSDate!
+    @NSManaged var imageData: NSData!
     @NSManaged var title: String?
     @NSManaged var inActivity: NSManagedObject?
-    @NSManaged var location: NSSet?
+    @NSManaged var location: NSManagedObject?
     @NSManaged var trip: NSManagedObject?
 
 }

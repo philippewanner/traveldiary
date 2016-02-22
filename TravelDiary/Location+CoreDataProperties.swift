@@ -20,6 +20,6 @@ extension Location {
     @NSManaged var longitude: NSNumber?
     @NSManaged var name: String?
     @NSManaged var inActivity: NSManagedObject?
-    @NSManaged var pictures: NSSet?
+    @NSManaged var photos: NSSet?
 
 }
