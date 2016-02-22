@@ -23,12 +23,11 @@ class MapController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         loadLocations(
             managedObjectContext,
             success: {locations in
-                let annotations = self.convertLocationsToMKPointAnnotations(locations)
+                let annotations = self.convertLocationsToAnnotations(locations)
                 self.showAnnotations(annotations)
             },
             failed: {error in
@@ -52,25 +51,62 @@ class MapController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func convertLocationsToMKPointAnnotations(locations: [Location]) -> [MKPointAnnotation]{
+    func convertLocationsToAnnotations(locations: [Location]) -> [MKAnnotation]{
         return locations.map({location in
-            let point: MKPointAnnotation = MKPointAnnotation()
-            point.coordinate = CLLocationCoordinate2DMake(
-                CLLocationDegrees(location.latitude!),
-                CLLocationDegrees(location.longitude!))
-            return point
+            LocationAnnotation(location: location)
         })
     }
     
-    func showAnnotations(annotations: [MKPointAnnotation]){
+    func showAnnotations(annotations: [MKAnnotation]){
         mapView.addAnnotations(annotations)
-        mapView.showAnnotations(mapView.annotations, animated: false)
+        mapView.showAnnotations(mapView.annotations, animated: true)
+    }
+
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? LocationAnnotation {
+            let identifier = "identifier_annotation_view"
+            let view: MKPinAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+                as? MKPinAnnotationView {
+                    dequeuedView.annotation = annotation
+                    view = dequeuedView
+            } else {
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = true
+                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+            }
+            return view
+        }
+        return nil
     }
     
-    enum CoreDataError: ErrorType {
-        case FetchError
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        if let annotation = view.annotation as? LocationAnnotation {
+            if let randomPhoto = annotation.location.photos?.allObjects[0] {
+                randomPhoto
+            }
+        }
     }
     
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let locationAnnotation = view.annotation as! LocationAnnotation
+        print(locationAnnotation.location.inActivity);
+        // TODO: Switch tab and show activity
+    }
+    
+    class LocationAnnotation: NSObject, MKAnnotation {
+        let location: Location
+        let title: String?
+        let coordinate: CLLocationCoordinate2D
+        
+        init(location: Location) {
+            self.location = location
+            title = location.name
+            coordinate = CLLocationCoordinate2DMake(
+                CLLocationDegrees(location.latitude!),
+                CLLocationDegrees(location.longitude!))
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
