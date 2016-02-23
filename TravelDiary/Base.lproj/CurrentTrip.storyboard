@@ -55,7 +55,7 @@
                     <navigationItem key="navigationItem" id="qp8-EX-eja">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="CeS-M1-All">
                             <connections>
-                                <segue destination="9cW-2f-bWL" kind="show" identifier="addActivitySegue" id="4hC-OT-jlt"/>
+                                <segue destination="Ivu-xv-Jdl" kind="presentation" identifier="addActivitySegue" id="4hC-OT-jlt"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="NSE-mc-HRO"/>
@@ -75,7 +75,7 @@
         <!--Title-->
         <scene sceneID="JyK-kZ-CDb">
             <objects>
-                <viewController id="9cW-2f-bWL" sceneMemberID="viewController">
+                <viewController id="9cW-2f-bWL" customClass="AddActivityViewController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ITh-05-mmz"/>
                         <viewControllerLayoutGuide type="bottom" id="cph-EG-ka6"/>
@@ -85,14 +85,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="KZu-ni-457">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="v6G-yP-H0g" userLabel="Cancel"/>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="ivh-cG-7mT" userLabel="Done"/>
+                    <navigationItem key="navigationItem" title="Title" id="rcl-oM-0Y7">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="ZuT-QK-UZI">
+                            <connections>
+                                <segue destination="nyR-qZ-IEz" kind="unwind" unwindAction="unwindSegueAddActivity:" id="vY4-mu-cnU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="5vn-Tx-0BC"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaB-E1-cIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nyR-qZ-IEz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="749" y="434"/>
+            <point key="canvasLocation" x="1561" y="434"/>
         </scene>
         <!--Title-->
         <scene sceneID="Ljq-Sn-Wd1">
@@ -128,6 +133,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbv-9N-TLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="971" y="1139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FIk-kG-McO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ivu-xv-Jdl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ihy-PN-Mys">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9cW-2f-bWL" kind="relationship" relationship="rootViewController" id="Ugr-4L-Fy2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LBN-vx-rQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749" y="434"/>
         </scene>
     </scenes>
     <resources>

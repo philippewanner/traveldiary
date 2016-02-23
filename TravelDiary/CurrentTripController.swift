@@ -85,5 +85,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         if segue.identifier == addActivitySegue {
         }
     }
+    
+    @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {}
 }
 
