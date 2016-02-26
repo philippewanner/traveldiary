@@ -21,7 +21,10 @@ class MapController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    let ReuseIdentifierAnnotation = "identifier_annotation_view"
+    private struct Constants {
+        static let ReuseIdentifierAnnotation = "identifier_annotation_view"
+        //static let ShowActivitySeque = "Show Photos"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,12 +73,12 @@ class MapController: UIViewController, MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? LocationAnnotation {
             let view: MKPinAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(ReuseIdentifierAnnotation)
+            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(Constants.ReuseIdentifierAnnotation)
                 as? MKPinAnnotationView {
                     dequeuedView.annotation = annotation
                     view = dequeuedView
             } else {
-                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: ReuseIdentifierAnnotation)
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: Constants.ReuseIdentifierAnnotation)
                 view.canShowCallout = true
                 view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
             }
@@ -102,9 +105,9 @@ class MapController: UIViewController, MKMapViewDelegate {
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let locationAnnotation = view.annotation as! LocationAnnotation
         print(locationAnnotation.location.inActivity);
-        // TODO: Switch tab and show activity
+        self.tabBarController?.selectedIndex = 1
     }
-    
+
     class LocationAnnotation: NSObject, MKAnnotation {
         let location: Location
         let title: String?
