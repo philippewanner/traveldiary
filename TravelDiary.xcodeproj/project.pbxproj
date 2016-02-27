@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7EA2AD151C7F89E000A47422 /* TripTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EA2AD141C7F89E000A47422 /* TripTableViewCell.xib */; };
-		7EA2AD171C7F94A300A47422 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA2AD161C7F94A300A47422 /* TripCell.swift */; };
+		7EA2AD171C7F94A300A47422 /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA2AD161C7F94A300A47422 /* TripTableViewCell.swift */; };
+		7EB3514B1C82048300323D5E /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3514A1C82048300323D5E /* TripsTableViewController.swift */; };
 		D274EC601C70A589000AA29D /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D274EC5E1C70A589000AA29D /* Trips.storyboard */; };
 		D274EC661C70B3A5000AA29D /* PhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D274EC651C70B3A5000AA29D /* PhotosController.swift */; };
 		D274EC691C70B484000AA29D /* Photos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D274EC671C70B484000AA29D /* Photos.storyboard */; };
@@ -61,7 +62,8 @@
 
 /* Begin PBXFileReference section */
 		7EA2AD141C7F89E000A47422 /* TripTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripTableViewCell.xib; sourceTree = "<group>"; };
-		7EA2AD161C7F94A300A47422 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
+		7EA2AD161C7F94A300A47422 /* TripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
+		7EB3514A1C82048300323D5E /* TripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 		D274EC5F1C70A589000AA29D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Trips.storyboard; sourceTree = "<group>"; };
 		D274EC651C70B3A5000AA29D /* PhotosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosController.swift; sourceTree = "<group>"; };
 		D274EC681C70B484000AA29D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Photos.storyboard; sourceTree = "<group>"; };
@@ -133,7 +135,8 @@
 				D6EF6ECE1C68CD03006D098B /* TripsViewController.swift */,
 				D274EC5E1C70A589000AA29D /* Trips.storyboard */,
 				7EA2AD141C7F89E000A47422 /* TripTableViewCell.xib */,
-				7EA2AD161C7F94A300A47422 /* TripCell.swift */,
+				7EA2AD161C7F94A300A47422 /* TripTableViewCell.swift */,
+				7EB3514A1C82048300323D5E /* TripsTableViewController.swift */,
 			);
 			name = trips;
 			sourceTree = "<group>";
@@ -390,8 +393,9 @@
 				D661C4C51C7CECE9000C3F7C /* AddActivityViewController.swift in Sources */,
 				D64D30B21C7A0E91009E3740 /* ActivityDetailController.swift in Sources */,
 				D60083BD1C71DC6A00D2E4A4 /* Trip+CoreDataProperties.swift in Sources */,
-				7EA2AD171C7F94A300A47422 /* TripCell.swift in Sources */,
+				7EA2AD171C7F94A300A47422 /* TripTableViewCell.swift in Sources */,
 				D60083C01C71DC6A00D2E4A4 /* Activity.swift in Sources */,
+				7EB3514B1C82048300323D5E /* TripsTableViewController.swift in Sources */,
 				D60083BA1C71DC6A00D2E4A4 /* Photo.swift in Sources */,
 				D60083BF1C71DC6A00D2E4A4 /* Activity+CoreDataProperties.swift in Sources */,
 				D60083B91C71DC6A00D2E4A4 /* Photo+CoreDataProperties.swift in Sources */,

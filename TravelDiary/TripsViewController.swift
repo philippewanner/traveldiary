@@ -1,9 +1,5 @@
 //
-//  TripsController.swift
-//  TravelDiary
 //
-//  Created by Andreas Heubeck on 08/02/16.
-//  Copyright © 2016 PTPA. All rights reserved.
 //
 
 import UIKit
@@ -13,6 +9,8 @@ class TripsViewController: UIViewController{
 
     @IBOutlet weak var trips: UITableView!
     @IBOutlet var tripsTitle: UILabel!
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,5 +22,9 @@ class TripsViewController: UIViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //var destViewController : CurrentTripController = segue.destinationViewController as! CurrentTripController
     }
 }
