@@ -19,7 +19,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HH4-Lp-9xf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-647" y="1133"/>
+            <point key="canvasLocation" x="-773" y="379"/>
         </scene>
         <!--Item-->
         <scene sceneID="Oxh-qg-6IT">
@@ -63,19 +63,18 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="CeS-M1-All" id="wu6-3s-I1l"/>
-                        <outlet property="editButton" destination="NSE-mc-HRO" id="odU-bK-qLT"/>
                         <outlet property="tableView" destination="CPV-pR-c2v" id="ZHQ-rf-q2S"/>
-                        <segue destination="3nw-cG-smY" kind="show" identifier="ActivityDetailController" id="DgK-cg-ozC"/>
+                        <segue destination="9cW-2f-bWL" kind="show" identifier="showActivitySegue" id="3dR-om-fDI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZGm-VU-YDy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1139"/>
+            <point key="canvasLocation" x="-9" y="379"/>
         </scene>
-        <!--Title-->
+        <!--Activity-->
         <scene sceneID="JyK-kZ-CDb">
             <objects>
-                <viewController id="9cW-2f-bWL" customClass="AddActivityViewController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9cW-2f-bWL" customClass="ActivityDetailController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ITh-05-mmz"/>
                         <viewControllerLayoutGuide type="bottom" id="cph-EG-ka6"/>
@@ -83,56 +82,59 @@
                     <view key="view" contentMode="scaleToFill" id="gzu-cV-oCY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KTU-jz-GTN">
+                                <rect key="frame" x="163" y="111" width="162" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c0n-JH-6Xa">
+                                <rect key="frame" x="163" y="149" width="162" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AiQ-6B-1KE">
+                                <rect key="frame" x="20" y="111" width="113" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzH-n9-dmD">
+                                <rect key="frame" x="20" y="149" width="113" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Na-Eo-Rd5">
+                                <rect key="frame" x="20" y="207" width="113" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="rcl-oM-0Y7">
+                    <navigationItem key="navigationItem" title="Activity" id="rcl-oM-0Y7">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="ZuT-QK-UZI">
                             <connections>
                                 <segue destination="nyR-qZ-IEz" kind="unwind" unwindAction="unwindSegueAddActivity:" id="vY4-mu-cnU"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="5vn-Tx-0BC"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="5vn-Tx-0BC">
+                            <connections>
+                                <segue destination="nyR-qZ-IEz" kind="unwind" identifier="SaveActivity" unwindAction="unwindSequeSaveActiviy:" id="PGK-zT-Smz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="activityDate" destination="c0n-JH-6Xa" id="x6y-FO-UF1"/>
+                        <outlet property="activityDescription" destination="KTU-jz-GTN" id="oJW-PU-b1g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaB-E1-cIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nyR-qZ-IEz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1561" y="434"/>
-        </scene>
-        <!--Title-->
-        <scene sceneID="Ljq-Sn-Wd1">
-            <objects>
-                <viewController id="3nw-cG-smY" customClass="ActivityDetailController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="p9P-E5-FbQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="2vk-HN-amp"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xri-Hx-4gr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-80-xVs">
-                                <rect key="frame" x="46" y="89" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2xX-Zb-QZ1">
-                                <rect key="frame" x="46" y="150" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Title" id="BiH-JR-oCd"/>
-                    <connections>
-                        <outlet property="activityDate" destination="2xX-Zb-QZ1" id="pff-Bw-tei"/>
-                        <outlet property="descr" destination="Dyo-80-xVs" id="0UG-ga-LfL"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bbv-9N-TLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="971" y="1139"/>
+            <point key="canvasLocation" x="1485" y="379"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FIk-kG-McO">
@@ -150,10 +152,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBN-vx-rQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749" y="434"/>
+            <point key="canvasLocation" x="739" y="866"/>
         </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3dR-om-fDI"/>
+    </inferredMetricsTieBreakers>
 </document>

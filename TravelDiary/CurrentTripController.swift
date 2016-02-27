@@ -15,7 +15,8 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
-    let SegueActivityDetailController = "ActivityDetailController"
+    let dateFormatter = NSDateFormatter()
+    let SegueActivityDetailController = "showActivitySegue"
     let addActivitySegue = "addActivitySegue"
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
@@ -40,6 +41,8 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view, typically from a nib.
         let nib = UINib(nibName: "ActivityTableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "reuseCell")
+        dateFormatter.locale = NSLocale(localeIdentifier: "de_CH")
+        dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
         
         do {
             try self.fetchedResultsController.performFetch()
@@ -66,7 +69,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         let cell: ActivityCell = self.tableView.dequeueReusableCellWithIdentifier("reuseCell") as! ActivityCell
         let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
         cell.activityDescription.text = actitvity.descr
-        cell.activityDate.text = "not yet done"
+        cell.activityDate.text = dateFormatter.stringFromDate((actitvity.date)!)
         return cell
     }
     
@@ -82,10 +85,27 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
                destination.selectedActivity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
             }
         }
-        if segue.identifier == addActivitySegue {
-        }
     }
     
-    @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {}
+    @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {
+        
+    }
+    
+    @IBAction func unwindSequeSaveActiviy(segue: UIStoryboardSegue){
+        //if let addActivityController = segue.sourceViewController as? ActivityDetailController {
+        //    print("test")
+        //}
+    }
+    
+    // Override to support editing the table view.
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            //
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
 }
 
