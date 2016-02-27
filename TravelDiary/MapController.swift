@@ -5,7 +5,6 @@
 //  Created by Tobias Rindlisbacher on 14/02/16.
 //  Copyright © 2016 PTPA. All rights reserved.
 //
-// http://stackoverflow.com/questions/21912339/ios-mkmapview-showannotationsanimated-with-padding
 //     // TODO: Was ist mit starken Referenzen? Könnte es ein Memory Leak geben?
 //
 
@@ -13,13 +12,21 @@ import UIKit
 import MapKit
 import CoreData
 
-class MapController: UIViewController, MKMapViewDelegate {
+protocol HandleMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark)
+}
+
+class MapController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
             mapView.delegate = self
         }
     }
+    
+    let locationManager = CLLocationManager()
+    var resultSearchController:UISearchController? = nil
+    var selectedPin:MKPlacemark? = nil
     
     private struct Constants {
         static let ReuseIdentifierAnnotation = "identifier_annotation_view"
@@ -28,6 +35,27 @@ class MapController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
+        let locationSearchTable = storyboard!.instantiateViewControllerWithIdentifier("LocationSearchTable") as! LocationSearchTable
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
+        
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        navigationItem.titleView = resultSearchController?.searchBar
+        
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        
+        locationSearchTable.mapView = mapView
+        locationSearchTable.handleMapSearchDelegate = self
 
         loadLocations(
             managedObjectContext,
@@ -69,7 +97,32 @@ class MapController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotations(annotations)
         mapView.showAnnotations(mapView.annotations, animated: true)
     }
+    
+    func getDirections(){
+        if let selectedPin = selectedPin {
+            let mapItem = MKMapItem(placemark: selectedPin)
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+            mapItem.openInMapsWithLaunchOptions(launchOptions)
+        }
+    }
+}
 
+class LocationAnnotation: NSObject, MKAnnotation {
+    let location: Location
+    let title: String?
+    let coordinate: CLLocationCoordinate2D
+    
+    init(location: Location) {
+        self.location = location
+        title = location.name
+        coordinate = CLLocationCoordinate2DMake(
+            CLLocationDegrees(location.latitude!),
+            CLLocationDegrees(location.longitude!))
+    }
+}
+
+extension MapController : MKMapViewDelegate {
+    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? LocationAnnotation {
             let view: MKPinAnnotationView
@@ -107,23 +160,44 @@ class MapController: UIViewController, MKMapViewDelegate {
         print(locationAnnotation.location.inActivity);
         self.tabBarController?.selectedIndex = 1
     }
+}
 
-    class LocationAnnotation: NSObject, MKAnnotation {
-        let location: Location
-        let title: String?
-        let coordinate: CLLocationCoordinate2D
-        
-        init(location: Location) {
-            self.location = location
-            title = location.name
-            coordinate = CLLocationCoordinate2DMake(
-                CLLocationDegrees(location.latitude!),
-                CLLocationDegrees(location.longitude!))
+extension MapController: HandleMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark){
+        // cache the pin
+        selectedPin = placemark
+        // clear existing pins
+        //mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea {
+                annotation.subtitle = "\(city) \(state)"
+        }
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        mapView.setRegion(region, animated: true)
+    }
+}
+
+extension MapController : CLLocationManagerDelegate {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedWhenInUse {
+            locationManager.requestLocation()
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            let span = MKCoordinateSpanMake(0.05, 0.05)
+            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("locationManager error:: \(error)")
     }
 }
