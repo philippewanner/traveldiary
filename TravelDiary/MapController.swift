@@ -5,8 +5,6 @@
 //  Created by Tobias Rindlisbacher on 14/02/16.
 //  Copyright © 2016 PTPA. All rights reserved.
 //
-//     // TODO: Was ist mit starken Referenzen? Könnte es ein Memory Leak geben?
-//
 
 import UIKit
 import MapKit
@@ -24,22 +22,23 @@ class MapController: UIViewController {
         }
     }
     
-    let locationManager = CLLocationManager()
+    lazy var locationManager: CLLocationManager = {
+        let locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        return locationManager
+    }()
+    
     var resultSearchController:UISearchController? = nil
     var selectedPin:MKPlacemark? = nil
     
     private struct Constants {
         static let ReuseIdentifierAnnotation = "identifier_annotation_view"
-        //static let ShowActivitySeque = "Show Photos"
     }
+    
+    @IBOutlet weak var toolbar: UIToolbar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
         
         let locationSearchTable = storyboard!.instantiateViewControllerWithIdentifier("LocationSearchTable") as! LocationSearchTable
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
@@ -49,6 +48,9 @@ class MapController: UIViewController {
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
         navigationItem.titleView = resultSearchController?.searchBar
+        
+        let tracktingBarButton = MKUserTrackingBarButtonItem(mapView: mapView)
+        navigationItem.rightBarButtonItem = tracktingBarButton
         
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.dimsBackgroundDuringPresentation = true
@@ -160,44 +162,41 @@ extension MapController : MKMapViewDelegate {
         print(locationAnnotation.location.inActivity);
         self.tabBarController?.selectedIndex = 1
     }
+    
+    func mapViewWillStartLocatingUser(mapView: MKMapView) {
+        let status = CLLocationManager.authorizationStatus()
+        if (status == .NotDetermined) {
+            locationManager.requestWhenInUseAuthorization()
+        } else if (status == .Denied) {
+            let alertController = UIAlertController(
+                title: "Location Access Disabled",
+                message: "In order to display your current location, please open this app's settings and allow access to location.",
+                preferredStyle: .Alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                    UIApplication.sharedApplication().openURL(url)
+                }
+            }
+            alertController.addAction(openAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
 }
 
 extension MapController: HandleMapSearch {
     func dropPinZoomIn(placemark:MKPlacemark){
         // cache the pin
         selectedPin = placemark
-        // clear existing pins
-        //mapView.removeAnnotations(mapView.annotations)
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
-        annotation.title = placemark.name
-        if let city = placemark.locality,
-            let state = placemark.administrativeArea {
-                annotation.subtitle = "\(city) \(state)"
-        }
-        mapView.addAnnotation(annotation)
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        let region = MKCoordinateRegionMake(placemark.coordinate, span)
-        mapView.setRegion(region, animated: true)
-    }
-}
-
-extension MapController : CLLocationManagerDelegate {
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .AuthorizedWhenInUse {
-            locationManager.requestLocation()
-        }
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            let span = MKCoordinateSpanMake(0.05, 0.05)
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            mapView.setRegion(region, animated: true)
-        }
-    }
-    
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("locationManager error:: \(error)")
+        annotation.title = placemark.title
+        annotation.subtitle = placemark.name
+        let annotations = [annotation]
+        mapView.showAnnotations(annotations, animated: true)
     }
 }

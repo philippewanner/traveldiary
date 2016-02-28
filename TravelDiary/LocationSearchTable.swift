@@ -1,48 +1,26 @@
 //
 //  LocationSearchTable.swift
-//  MapKitTutorial
+//  TravelDiary
 //
-//  Created by Robert Chen on 12/28/15.
-//  Copyright © 2015 Thorn Technologies. All rights reserved.
+//  Created by Tobias Rindlisbacher on 28/02/16.
+//  Copyright © 2016 PTPA. All rights reserved.
 //
 
 import UIKit
 import MapKit
 
 class LocationSearchTable : UITableViewController {
+    
     var handleMapSearchDelegate:HandleMapSearch? = nil
     var matchingItems:[MKMapItem] = []
     var mapView: MKMapView? = nil
-    
-    func parseAddress(selectedItem:MKPlacemark) -> String {
-        // put a space between "4" and "Melrose Place"
-        let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : ""
-        // put a comma between street and city/state
-        let comma = (selectedItem.subThoroughfare != nil || selectedItem.thoroughfare != nil) && (selectedItem.subAdministrativeArea != nil || selectedItem.administrativeArea != nil) ? ", " : ""
-        // put a space between "Washington" and "DC"
-        let secondSpace = (selectedItem.subAdministrativeArea != nil && selectedItem.administrativeArea != nil) ? " " : ""
-        let addressLine = String(
-            format:"%@%@%@%@%@%@%@",
-            // street number
-            selectedItem.subThoroughfare ?? "",
-            firstSpace,
-            // street name
-            selectedItem.thoroughfare ?? "",
-            comma,
-            // city
-            selectedItem.locality ?? "",
-            secondSpace,
-            // state
-            selectedItem.administrativeArea ?? ""
-        )
-        return addressLine
-    }
 }
 
 extension LocationSearchTable : UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        guard let mapView = mapView,
-            let searchBarText = searchController.searchBar.text else { return }
+        guard let mapView = mapView, let searchBarText = searchController.searchBar.text else {
+            return
+        }
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchBarText
         request.region = mapView.region
@@ -66,12 +44,10 @@ extension LocationSearchTable {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell")!
         let selectedItem = matchingItems[indexPath.row].placemark
         cell.textLabel?.text = selectedItem.name
-        cell.detailTextLabel?.text = parseAddress(selectedItem)
+        cell.detailTextLabel?.text = selectedItem.title
         return cell
     }
-}
 
-extension LocationSearchTable {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedItem = matchingItems[indexPath.row].placemark
         handleMapSearchDelegate?.dropPinZoomIn(selectedItem)
