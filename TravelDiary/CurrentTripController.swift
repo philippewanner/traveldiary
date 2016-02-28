@@ -31,7 +31,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: Activity.entityName())
-        fetchRequest.predicate = NSPredicate(format: "ANY trip == %@", currentTrip!)
+        fetchRequest.predicate = NSPredicate(format: "trip == %@", currentTrip!)
         
         // Add Sort Descriptors
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
@@ -43,6 +43,34 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
         
+    }
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.beginUpdates()
+    }
+    
+    /* called:
+    - when a new model is created
+    - when an existing model is updated
+    - when an existing model is deleted */
+    func controller(controller: NSFetchedResultsController, didChangeObject object: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+            switch type {
+            case .Insert:
+                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            case .Update:
+                self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            case .Move:
+                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            case .Delete:
+                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            }
+    }
+    
+    /* called last
+    tells `UITableView` updates are complete */
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.endUpdates()
     }
     
     override func viewDidLoad() {
@@ -124,11 +152,9 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
     func saveFetchReload(){
         do {
             try managedObjectContext.save()
-            try fetchedResultsController.performFetch()
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
-        self.tableView.reloadData()
     }
     
     // Override to support editing the table view.
