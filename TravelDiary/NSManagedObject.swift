@@ -28,7 +28,8 @@ extension NSManagedObject {
         return name.componentsSeparatedByString(".").last!
     }
     
-    /*! Convinience initializer to avoid calling all the methods to create an entity
+    /*!
+        Convinience initializer to avoid calling all the methods to create an entity
     */
     convenience init(managedObjectContext: NSManagedObjectContext) {
         let entityName = self.dynamicType.entityName()

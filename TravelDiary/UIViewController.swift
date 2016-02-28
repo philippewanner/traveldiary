@@ -17,4 +17,15 @@ extension UIViewController {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         return appDelegate.managedObjectContext
     }
+    
+    /*!
+        saves the managedObjectContext
+    */
+    func saveContext(){
+        do {
+            try self.managedObjectContext.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
 }

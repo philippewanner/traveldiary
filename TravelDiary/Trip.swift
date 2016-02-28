@@ -13,8 +13,13 @@ import CoreData
 class Trip: NSManagedObject {
 
     func addActitiesObject(activity:Activity){
-        let act = self.mutableSetValueForKey("activities")
-        act.addObject(activity)
+        let activities = self.mutableSetValueForKey("activities")
+        activities.addObject(activity)
+    }
+    
+    func removeActivity(activity:Activity){
+        let activities = self.mutableSetValueForKey("activities")
+        activities.removeObject(activity)
     }
     
 }

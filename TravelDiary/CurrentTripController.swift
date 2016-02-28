@@ -24,11 +24,9 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
     var currentTrip : Trip?
     
     func initializeFetchedResultsController(){
-        
         if currentTrip == nil{
             loadCurrenTrip()
         }
-        
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: Activity.entityName())
         fetchRequest.predicate = NSPredicate(format: "trip == %@", currentTrip!)
@@ -49,10 +47,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         self.tableView.beginUpdates()
     }
     
-    /* called:
-    - when a new model is created
-    - when an existing model is updated
-    - when an existing model is deleted */
+    
     func controller(controller: NSFetchedResultsController, didChangeObject object: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
             switch type {
             case .Insert:
@@ -67,8 +62,6 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
             }
     }
     
-    /* called last
-    tells `UITableView` updates are complete */
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
     }
@@ -140,31 +133,27 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    /*!
+        segue which is called when the cancel button on the ActivityDetailContoller is called
+    */
     @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {}
     
+    /*!
+        segue which is called when the save button on the ActivityDetailContoller is pressed
+    */
     @IBAction func unwindSequeSaveActiviy(segue: UIStoryboardSegue){
         if let detailController = segue.sourceViewController as? ActivityDetailController {
             let activityToSave = detailController.selectedActivity
             currentTrip?.addActitiesObject(activityToSave!)
-            saveFetchReload()
-        }
-    }
-    func saveFetchReload(){
-        do {
-            try managedObjectContext.save()
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
+            saveContext()
         }
     }
     
     // Override to support editing the table view.
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
-            //
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
+            currentTrip?.removeActivity(actitvity)
         }
     }
 }
