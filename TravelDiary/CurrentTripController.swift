@@ -112,20 +112,23 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {
-        
-    }
+    @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {}
     
     @IBAction func unwindSequeSaveActiviy(segue: UIStoryboardSegue){
         if let detailController = segue.sourceViewController as? ActivityDetailController {
             let activityToSave = detailController.selectedActivity
             currentTrip?.addActitiesObject(activityToSave!)
-            do {
-                try managedObjectContext.save()
-            } catch let error as NSError  {
-                print("Could not save \(error), \(error.userInfo)")
-            }
+            saveFetchReload()
         }
+    }
+    func saveFetchReload(){
+        do {
+            try managedObjectContext.save()
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+        self.tableView.reloadData()
     }
     
     // Override to support editing the table view.
