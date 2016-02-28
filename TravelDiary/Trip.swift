@@ -12,6 +12,9 @@ import CoreData
 
 class Trip: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
-
+    func addActitiesObject(activity:Activity){
+        let act = self.mutableSetValueForKey("activities")
+        act.addObject(activity)
+    }
+    
 }

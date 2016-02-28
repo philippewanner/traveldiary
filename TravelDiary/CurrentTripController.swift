@@ -19,22 +19,31 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
     let SegueActivityDetailController = "showActivitySegue"
     let addActivitySegue = "addActivitySegue"
     
-    lazy var fetchedResultsController: NSFetchedResultsController = {
+    var fetchedResultsController: NSFetchedResultsController!
+    
+    var currentTrip : Trip?
+    
+    func initializeFetchedResultsController(){
+        
+        if currentTrip == nil{
+            loadCurrenTrip()
+        }
+        
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: Activity.entityName())
+        fetchRequest.predicate = NSPredicate(format: "ANY trip == %@", currentTrip!)
         
         // Add Sort Descriptors
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         // Initialize Fetched Results Controller
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         
         // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
         
-        return fetchedResultsController
-    }()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +52,29 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.registerNib(nib, forCellReuseIdentifier: "reuseCell")
         dateFormatter.locale = NSLocale(localeIdentifier: "de_CH")
         dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+        initializeFetchedResultsController()
         
         do {
-            try self.fetchedResultsController.performFetch()
+            try fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
         }
+    }
+    
+    func loadCurrenTrip(){
+        let request = NSFetchRequest(entityName: Trip.entityName())
+        request.returnsObjectsAsFaults = false;
+        //TODO search for current trip 1. CurrentDate within trip range 2. future 3. last
+        request.predicate = NSPredicate(format:"title CONTAINS 'ExampleTrip' ")
+        var results:NSArray
+        do{
+            results = try managedObjectContext.executeFetchRequest(request)
+            currentTrip = results[0] as? Trip
+        }catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,7 +94,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         let cell: ActivityCell = self.tableView.dequeueReusableCellWithIdentifier("reuseCell") as! ActivityCell
         let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
         cell.activityDescription.text = actitvity.descr
-        cell.activityDate.text = dateFormatter.stringFromDate((actitvity.date)!)
+        //cell.activityDate.text = dateFormatter.stringFromDate((actitvity.date)!)
         return cell
     }
     
@@ -92,9 +117,15 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func unwindSequeSaveActiviy(segue: UIStoryboardSegue){
-        //if let addActivityController = segue.sourceViewController as? ActivityDetailController {
-        //    print("test")
-        //}
+        if let detailController = segue.sourceViewController as? ActivityDetailController {
+            let activityToSave = detailController.selectedActivity
+            currentTrip?.addActitiesObject(activityToSave!)
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
+            }
+        }
     }
     
     // Override to support editing the table view.

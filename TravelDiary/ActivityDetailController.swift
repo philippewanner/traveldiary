@@ -23,13 +23,15 @@ class ActivityDetailController: UIViewController {
         if selectedActivity != nil{
             dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
             activityDescription.text = selectedActivity?.descr
-            activityDate.text = dateFormatter.stringFromDate((selectedActivity?.date)!)
+            //activityDate.text = dateFormatter.stringFromDate((selectedActivity?.date)!)
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SaveActivity"{
-            selectedActivity = Activity(managedObjectContext: self.managedObjectContext)
+            if selectedActivity == nil{
+                selectedActivity = Activity(managedObjectContext: self.managedObjectContext)
+            }
             selectedActivity?.descr = activityDescription.text
         }
     }
