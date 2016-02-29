@@ -125,25 +125,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 machuPicchu.date = NSDate()
                 
                 let lima = Activity(managedObjectContext: managedObjectContext)
-                lima.descr = "Lima"
+                lima.descr = "Lima, wir werden dich nie vergessen."
                 lima.date = NSDate()
                 
                 let locationLima = Location(managedObjectContext: self.managedObjectContext)
                 locationLima.longitude = -77.0539401
                 locationLima.latitude = -12.0553441
-                locationLima.name = "Lima"
-                locationLima.address = "AddressLima"
+                locationLima.name = "Lima, die tollste Stadt der Welt"
+                locationLima.address = "Addresse Lima 23"
                 locationLima.inActivity = lima
                 locationLima.countryCode = "PE"
                 lima.location = locationLima
 
                 let photoLima = Photo(managedObjectContext: self.managedObjectContext)
                 photoLima.createDate = NSDate()
-                photoLima.title = "Lima"
+                photoLima.title = "Lima Photo, so schön"
                 photoLima.location = locationLima
                 photoLima.inActivity = lima
                 photoLima.trip = exampleTrip
-                let imgPeru = UIImage(named: "lima_peru")
+                let imgPeru = UIImage(named: "lima_peru_thumb")
                 let compressionQuality = CGFloat(1.0)
                 photoLima.imageData = UIImageJPEGRepresentation(imgPeru!, compressionQuality)
                 

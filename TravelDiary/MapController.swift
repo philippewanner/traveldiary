@@ -5,13 +5,16 @@
 //  Created by Tobias Rindlisbacher on 14/02/16.
 //  Copyright © 2016 PTPA. All rights reserved.
 //
+//  Idea: Clustering pins with https://github.com/ribl/FBAnnotationClusteringSwift
+//  Take snapshots of location: http://stackoverflow.com/questions/30793315/customize-mkannotation-callout-view
+//
 
 import UIKit
 import MapKit
 import CoreData
 
-protocol HandleMapSearch {
-    func dropPinZoomIn(placemark:MKPlacemark)
+protocol MapSearchDelegate {
+    func placeFound(placemark:MKPlacemark)
 }
 
 class MapController: UIViewController {
@@ -22,17 +25,16 @@ class MapController: UIViewController {
         }
     }
     
-    lazy var locationManager: CLLocationManager = {
-        let locationManager = CLLocationManager()
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        return locationManager
-    }()
+    let locationManager = CLLocationManager()
     
     var resultSearchController:UISearchController? = nil
     var selectedPin:MKPlacemark? = nil
     
     private struct Constants {
         static let ReuseIdentifierAnnotation = "identifier_annotation_view"
+        static let SearchBarPlaceHolder = "Search for places"
+        static let LocationSearchControllerId = "LocationSearchController"
+        static let CalloutImageFrame = CGRectMake(0, 0, 50, 50)
     }
     
     @IBOutlet weak var toolbar: UIToolbar!
@@ -40,13 +42,16 @@ class MapController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let locationSearchTable = storyboard!.instantiateViewControllerWithIdentifier("LocationSearchTable") as! LocationSearchTable
-        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
-        resultSearchController?.searchResultsUpdater = locationSearchTable
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        requestLocationAuthorization()
+        
+        let locationSearchController = storyboard!.instantiateViewControllerWithIdentifier(Constants.LocationSearchControllerId) as! LocationSearchController
+        resultSearchController = UISearchController(searchResultsController: locationSearchController)
+        resultSearchController?.searchResultsUpdater = locationSearchController
         
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
-        searchBar.placeholder = "Search for places"
+        searchBar.placeholder = Constants.SearchBarPlaceHolder
         navigationItem.titleView = resultSearchController?.searchBar
         
         let tracktingBarButton = MKUserTrackingBarButtonItem(mapView: mapView)
@@ -56,8 +61,8 @@ class MapController: UIViewController {
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
         
-        locationSearchTable.mapView = mapView
-        locationSearchTable.handleMapSearchDelegate = self
+        locationSearchController.mapView = mapView
+        locationSearchController.mapSearchDelegate = self
 
         loadLocations(
             managedObjectContext,
@@ -100,11 +105,27 @@ class MapController: UIViewController {
         mapView.showAnnotations(mapView.annotations, animated: true)
     }
     
-    func getDirections(){
-        if let selectedPin = selectedPin {
-            let mapItem = MKMapItem(placemark: selectedPin)
-            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
-            mapItem.openInMapsWithLaunchOptions(launchOptions)
+    func requestLocationAuthorization() {
+        let status = CLLocationManager.authorizationStatus()
+        if (status == .NotDetermined) {
+            locationManager.requestWhenInUseAuthorization()
+        } else if (status == .Denied) {
+            let alertController = UIAlertController(
+                title: "Location Access Disabled",
+                message: "In order to display your current location, please open this app's settings and allow access to location.",
+                preferredStyle: .Alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                    UIApplication.sharedApplication().openURL(url)
+                }
+            }
+            alertController.addAction(openAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
 }
@@ -136,6 +157,9 @@ extension MapController : MKMapViewDelegate {
                 view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: Constants.ReuseIdentifierAnnotation)
                 view.canShowCallout = true
                 view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+                let imageView = UIImageView(frame: Constants.CalloutImageFrame)
+                view.detailCalloutAccessoryView = imageView
+
             }
             return view
         }
@@ -145,14 +169,17 @@ extension MapController : MKMapViewDelegate {
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         if let annotation = view.annotation as? LocationAnnotation {
             let location = annotation.location
-            if let randomPhoto = location.photos?.anyObject() {
-                
-                // TODO: Loads the whole image on the main thread: should be done async (maybe we should also store thumbnails..)
-                let imageData = (randomPhoto as! Photo).imageData
-                let imageView = UIImageView(image: UIImage(data: imageData))
-                imageView.frame = CGRectMake(0, 0, view.frame.size.height, view.frame.size.height)
-                imageView.contentMode = .ScaleAspectFit
-                view.leftCalloutAccessoryView = imageView
+            let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
+            dispatch_async(dispatch_get_global_queue(qos, 0)) { _ in
+                if let randomPhoto = location.photos?.anyObject() {
+                    let imageData = (randomPhoto as! Photo).imageData
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        let imageView = view.detailCalloutAccessoryView as! UIImageView
+                        imageView.image = UIImage(data: imageData)
+                        imageView.frame = Constants.CalloutImageFrame
+                    }
+                }
             }
         }
     }
@@ -160,37 +187,11 @@ extension MapController : MKMapViewDelegate {
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let locationAnnotation = view.annotation as! LocationAnnotation
         print(locationAnnotation.location.inActivity);
-        self.tabBarController?.selectedIndex = 1
-    }
-    
-    func mapViewWillStartLocatingUser(mapView: MKMapView) {
-        let status = CLLocationManager.authorizationStatus()
-        if (status == .NotDetermined) {
-            locationManager.requestWhenInUseAuthorization()
-        } else if (status == .Denied) {
-            let alertController = UIAlertController(
-                title: "Location Access Disabled",
-                message: "In order to display your current location, please open this app's settings and allow access to location.",
-                preferredStyle: .Alert)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-            alertController.addAction(cancelAction)
-            
-            let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
-                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
-                    UIApplication.sharedApplication().openURL(url)
-                }
-            }
-            alertController.addAction(openAction)
-            
-            self.presentViewController(alertController, animated: true, completion: nil)
-        }
     }
 }
 
-extension MapController: HandleMapSearch {
-    func dropPinZoomIn(placemark:MKPlacemark){
-        // cache the pin
+extension MapController: MapSearchDelegate {
+    func placeFound(placemark: MKPlacemark) {
         selectedPin = placemark
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
