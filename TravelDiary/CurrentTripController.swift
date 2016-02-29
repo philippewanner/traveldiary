@@ -15,6 +15,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
+    
     let dateFormatter = NSDateFormatter()
     let SegueActivityDetailController = "showActivitySegue"
     let addActivitySegue = "addActivitySegue"
@@ -115,7 +116,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         let cell: ActivityCell = self.tableView.dequeueReusableCellWithIdentifier("reuseCell") as! ActivityCell
         let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
         cell.activityDescription.text = actitvity.descr
-        //cell.activityDate.text = dateFormatter.stringFromDate((actitvity.date)!)
+        cell.activityDate.text = dateFormatter.stringFromDate((actitvity.date)!)
         return cell
     }
     
@@ -147,6 +148,10 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
             currentTrip?.addActitiesObject(activityToSave!)
             saveContext()
         }
+    }
+    
+    @IBAction func editTable(sender: AnyObject) {
+        tableView.editing = !tableView.editing
     }
     
     // Override to support editing the table view.

@@ -21,7 +21,7 @@
             </objects>
             <point key="canvasLocation" x="-773" y="379"/>
         </scene>
-        <!--Item-->
+        <!--Activities-->
         <scene sceneID="Oxh-qg-6IT">
             <objects>
                 <viewController id="O3k-QT-qpv" customClass="CurrentTripController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -50,15 +50,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="first" id="5iz-N8-tpY"/>
+                    <tabBarItem key="tabBarItem" title="Current Trip" image="first" id="5iz-N8-tpY"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="qp8-EX-eja">
+                    <navigationItem key="navigationItem" title="Activities" id="qp8-EX-eja">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="CeS-M1-All">
                             <connections>
                                 <segue destination="Ivu-xv-Jdl" kind="presentation" identifier="addActivitySegue" id="4hC-OT-jlt"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="NSE-mc-HRO"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="NSE-mc-HRO">
+                            <connections>
+                                <action selector="editTable:" destination="O3k-QT-qpv" id="0Lb-ag-Mj8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -84,12 +88,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KTU-jz-GTN">
-                                <rect key="frame" x="163" y="111" width="162" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c0n-JH-6Xa">
-                                <rect key="frame" x="163" y="149" width="162" height="30"/>
+                                <rect key="frame" x="20" y="149" width="330" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -100,17 +99,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzH-n9-dmD">
-                                <rect key="frame" x="20" y="149" width="113" height="30"/>
+                                <rect key="frame" x="20" y="187" width="113" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Na-Eo-Rd5">
-                                <rect key="frame" x="20" y="207" width="113" height="30"/>
+                                <rect key="frame" x="20" y="293" width="113" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="LVf-CZ-1IG">
+                                <rect key="frame" x="20" y="225" width="330" height="45"/>
+                                <date key="date" timeIntervalSinceReferenceDate="478434836.131396">
+                                    <!--2016-02-29 10:33:56 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -127,7 +132,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="activityDate" destination="c0n-JH-6Xa" id="x6y-FO-UF1"/>
+                        <outlet property="activityDate" destination="LVf-CZ-1IG" id="tM6-0G-mMT"/>
                         <outlet property="activityDescription" destination="KTU-jz-GTN" id="oJW-PU-b1g"/>
                     </connections>
                 </viewController>
@@ -136,10 +141,10 @@
             </objects>
             <point key="canvasLocation" x="1485" y="379"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Activities-->
         <scene sceneID="FIk-kG-McO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ivu-xv-Jdl" sceneMemberID="viewController">
+                <navigationController title="Activities" automaticallyAdjustsScrollViewInsets="NO" id="Ivu-xv-Jdl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ihy-PN-Mys">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

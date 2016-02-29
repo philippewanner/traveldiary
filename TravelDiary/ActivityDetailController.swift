@@ -15,7 +15,8 @@ class ActivityDetailController: UIViewController {
     
     
     @IBOutlet weak var activityDescription: UITextField!
-    @IBOutlet weak var activityDate: UITextField!
+  
+    @IBOutlet weak var activityDate: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class ActivityDetailController: UIViewController {
         if selectedActivity != nil{
             dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
             activityDescription.text = selectedActivity?.descr
-            //activityDate.text = dateFormatter.stringFromDate((selectedActivity?.date)!)
+            activityDate.date = (selectedActivity?.date)!
         }
     }
     
@@ -33,6 +34,7 @@ class ActivityDetailController: UIViewController {
                 selectedActivity = Activity(managedObjectContext: self.managedObjectContext)
             }
             selectedActivity?.descr = activityDescription.text
+            selectedActivity?.date = activityDate.date
         }
     }
 }
