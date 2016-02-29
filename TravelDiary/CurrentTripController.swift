@@ -72,6 +72,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view, typically from a nib.
         let nib = UINib(nibName: "ActivityTableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "reuseCell")
+        tableView.separatorColor = UIColor.clearColor()
         dateFormatter.locale = NSLocale(localeIdentifier: "de_CH")
         dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
         initializeFetchedResultsController()

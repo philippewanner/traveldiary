@@ -105,7 +105,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Na-Eo-Rd5">
-                                <rect key="frame" x="20" y="293" width="113" height="30"/>
+                                <rect key="frame" x="20" y="299" width="113" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -116,6 +116,16 @@
                                     <!--2016-02-29 10:33:56 +0000-->
                                 </date>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PbO-BW-ZRi">
+                                <rect key="frame" x="136" y="299" width="59" height="30"/>
+                                <state key="normal" title="take"/>
+                                <connections>
+                                    <action selector="takePicture:" destination="9cW-2f-bWL" eventType="touchUpInside" id="ksf-v8-hw0"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KLu-4f-wdK">
+                                <rect key="frame" x="86" y="355" width="429" height="317"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -134,6 +144,7 @@
                     <connections>
                         <outlet property="activityDate" destination="LVf-CZ-1IG" id="tM6-0G-mMT"/>
                         <outlet property="activityDescription" destination="KTU-jz-GTN" id="oJW-PU-b1g"/>
+                        <outlet property="image" destination="KLu-4f-wdK" id="Yjo-n2-d35"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaB-E1-cIh" userLabel="First Responder" sceneMemberID="firstResponder"/>

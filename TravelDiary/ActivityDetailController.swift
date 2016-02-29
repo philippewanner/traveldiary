@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ActivityDetailController: UIViewController {
+class ActivityDetailController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var selectedActivity: Activity?
     let dateFormatter = NSDateFormatter()
     
+    @IBOutlet weak var image: UIImageView!
     
     @IBOutlet weak var activityDescription: UITextField!
   
@@ -37,4 +38,19 @@ class ActivityDetailController: UIViewController {
             selectedActivity?.date = activityDate.date
         }
     }
+    
+  
+//    @IBAction func takePicture(sender: UIButton) {
+//        let picker = UIImagePickerController()
+//        picker.delegate = self
+//        picker.sourceType = .Camera
+//        
+//        presentedViewController?.presentViewController(picker, animated: true, completion: nil)
+//        
+//    }
+//    
+//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//        image.image = info [UIImagePickerControllerOriginalImage] as? UIImage;
+//        dismissViewControllerAnimated(true, completion: nil)
+//    }
 }
