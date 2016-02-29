@@ -154,6 +154,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         if editingStyle == .Delete {
             let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
             currentTrip?.removeActivity(actitvity)
+            saveContext()
         }
     }
 }
