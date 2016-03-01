@@ -9,9 +9,8 @@
 import UIKit
 import CoreData
 
-class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate{
+class CurrentTripController: UITableViewController, NSFetchedResultsControllerDelegate{
     
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
@@ -69,6 +68,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
         // Do any additional setup after loading the view, typically from a nib.
         let nib = UINib(nibName: "ActivityTableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "reuseCell")
@@ -105,7 +105,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections {
             let currentSection = sections[section]
             return currentSection.numberOfObjects
@@ -113,7 +113,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         return 0
     }
     
-   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: ActivityCell = self.tableView.dequeueReusableCellWithIdentifier("reuseCell") as! ActivityCell
         let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
         cell.activityDescription.text = actitvity.descr
@@ -121,7 +121,7 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Perform Segue
         performSegueWithIdentifier(SegueActivityDetailController, sender: self)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -134,6 +134,17 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
+    
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
+            currentTrip?.removeActivity(actitvity)
+            saveContext()
+        }
+    }
+    
+    
     
     /*!
         segue which is called when the cancel button on the ActivityDetailContoller is called
@@ -150,18 +161,4 @@ class CurrentTripController: UIViewController, UITableViewDelegate, UITableViewD
             saveContext()
         }
     }
-    
-    @IBAction func editTable(sender: AnyObject) {
-        tableView.editing = !tableView.editing
-    }
-    
-    // Override to support editing the table view.
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
-            currentTrip?.removeActivity(actitvity)
-            saveContext()
-        }
-    }
 }
-

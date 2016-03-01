@@ -1,79 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4rn-fb-mYu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kA8-a7-bzY">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="RTn-kA-Ktd">
+        <!--Current Trip-->
+        <scene sceneID="nr4-dQ-YG4">
             <objects>
-                <navigationController id="4rn-fb-mYu" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gH9-xC-0Pn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="O3k-QT-qpv" kind="relationship" relationship="rootViewController" id="5QZ-rn-4Ki"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HH4-Lp-9xf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-773" y="379"/>
-        </scene>
-        <!--Activities-->
-        <scene sceneID="Oxh-qg-6IT">
-            <objects>
-                <viewController id="O3k-QT-qpv" customClass="CurrentTripController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Vuu-gV-5v5"/>
-                        <viewControllerLayoutGuide type="bottom" id="HlQ-9D-Lmb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LA8-oP-kJz">
+                <tableViewController id="2KO-I6-JCj" customClass="CurrentTripController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" sectionHeaderHeight="28" sectionFooterHeight="28" id="aYJ-RI-EC2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xvS-d2-d7u">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem title="Item" id="cYa-u4-ej1"/>
-                                </items>
-                            </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CPV-pR-c2v">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="O3k-QT-qpv" id="zdW-yE-xgR"/>
-                                    <outlet property="delegate" destination="O3k-QT-qpv" id="njE-7O-PSv"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseCell" rowHeight="92" id="NDv-an-eGR" customClass="ActivityCell" customModule="TravelDiary" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="92"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="NDv-an-eGR" id="Yyw-3K-csf">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="91.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
                     <tabBarItem key="tabBarItem" title="Current Trip" image="first" id="5iz-N8-tpY"/>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Activities" id="qp8-EX-eja">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="CeS-M1-All">
+                    <navigationItem key="navigationItem" id="yjU-5u-0cy">
+                        <barButtonItem key="leftBarButtonItem" title="Add" id="XLl-Ha-wfb">
                             <connections>
-                                <segue destination="Ivu-xv-Jdl" kind="presentation" identifier="addActivitySegue" id="4hC-OT-jlt"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="NSE-mc-HRO">
-                            <connections>
-                                <action selector="editTable:" destination="O3k-QT-qpv" id="0Lb-ag-Mj8"/>
+                                <segue destination="Ivu-xv-Jdl" kind="presentation" id="K3d-hP-AGR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addButton" destination="CeS-M1-All" id="wu6-3s-I1l"/>
-                        <outlet property="tableView" destination="CPV-pR-c2v" id="ZHQ-rf-q2S"/>
-                        <segue destination="9cW-2f-bWL" kind="show" identifier="showActivitySegue" id="3dR-om-fDI"/>
+                        <segue destination="9cW-2f-bWL" kind="show" identifier="showActivitySegue" id="Ctn-qI-dYw"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZGm-VU-YDy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BfS-Eg-cLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-9" y="379"/>
+            <point key="canvasLocation" x="546" y="477"/>
         </scene>
         <!--Activity-->
         <scene sceneID="JyK-kZ-CDb">
@@ -150,7 +116,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaB-E1-cIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nyR-qZ-IEz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1485" y="379"/>
+            <point key="canvasLocation" x="2025" y="477"/>
         </scene>
         <!--Activities-->
         <scene sceneID="FIk-kG-McO">
@@ -168,13 +134,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBN-vx-rQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="739" y="866"/>
+            <point key="canvasLocation" x="1302" y="930"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GFZ-dU-1zG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kA8-a7-bzY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mcb-6u-Kpo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2KO-I6-JCj" kind="relationship" relationship="rootViewController" id="qfJ-e3-noN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DQf-Uu-j8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-353" y="477"/>
         </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3dR-om-fDI"/>
+        <segue reference="Ctn-qI-dYw"/>
     </inferredMetricsTieBreakers>
 </document>
