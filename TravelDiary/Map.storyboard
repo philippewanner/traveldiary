@@ -39,16 +39,16 @@
             </objects>
             <point key="canvasLocation" x="1394" y="827"/>
         </scene>
-        <!--Location Search Table-->
+        <!--Location Search Controller-->
         <scene sceneID="v2I-tc-iQk">
             <objects>
-                <tableViewController storyboardIdentifier="LocationSearchTable" id="nbx-ll-Rzd" customClass="LocationSearchTable" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LocationSearchController" id="nbx-ll-Rzd" customClass="LocationSearchController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5th-Tw-zcn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="6sy-Gm-ww5" detailTextLabel="BMV-3w-1ob" style="IBUITableViewCellStyleSubtitle" id="TWp-Qg-CO2">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifierCell" textLabel="6sy-Gm-ww5" detailTextLabel="BMV-3w-1ob" style="IBUITableViewCellStyleSubtitle" id="TWp-Qg-CO2">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TWp-Qg-CO2" id="1s9-2r-OPS">
