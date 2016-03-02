@@ -147,11 +147,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let compressionQuality = CGFloat(1.0)
                 photoLima.imageData = UIImageJPEGRepresentation(imgPeru!, compressionQuality)
                 
+                let cusco = Activity(managedObjectContext: managedObjectContext)
+                cusco.descr = "Cusco"
+                cusco.date = NSDate()
                 
                 let activities = NSMutableSet()
                 activities.addObject(machuPicchu)
                 activities.addObject(lima)
-                
+                activities.addObject(cusco)
+
+                let locationCusco = Location(managedObjectContext: self.managedObjectContext)
+                locationCusco.longitude = -72.0092897
+                locationCusco.latitude = -13.5298427
+                locationCusco.name = "Cusco halt"
+                locationCusco.address = "Adresse Cusco, isch chaud dört"
+                locationCusco.inActivity = cusco
+                locationCusco.countryCode = "PE"
+                cusco.location = locationCusco
 
                 exampleTrip.activities = activities
                 

@@ -5,8 +5,10 @@
 //  Created by Tobias Rindlisbacher on 14/02/16.
 //  Copyright © 2016 PTPA. All rights reserved.
 //
-//  Idea: Clustering pins with https://github.com/ribl/FBAnnotationClusteringSwift
+//  Ideas: 
+//  Clustering pins with https://github.com/ribl/FBAnnotationClusteringSwift
 //  Take snapshots of location: http://stackoverflow.com/questions/30793315/customize-mkannotation-callout-view
+//  Connect locations with http://nshipster.com/mkgeodesicpolyline/
 //
 
 import UIKit
@@ -69,6 +71,9 @@ class MapController: UIViewController {
             success: {locations in
                 let annotations = self.convertLocationsToAnnotations(locations)
                 self.showAnnotations(annotations)
+                var coordinates = annotations.map {annotation in annotation.coordinate}
+                let geodesicPolyline = MKGeodesicPolyline(coordinates: &coordinates, count: annotations.count)
+                self.mapView.addOverlay(geodesicPolyline)
             },
             failed: {error in
                 print("Could not fetch locations \(error)")
@@ -187,6 +192,19 @@ extension MapController : MKMapViewDelegate {
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let locationAnnotation = view.annotation as! LocationAnnotation
         print(locationAnnotation.location.inActivity);
+    }
+    
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let polyline = overlay as? MKPolyline else {
+            return MKOverlayRenderer()
+        }
+        
+        let renderer = MKPolylineRenderer(polyline: polyline)
+        renderer.lineWidth = 1.0
+        renderer.alpha = 0.5
+        renderer.strokeColor = UIColor.blueColor()
+        
+        return renderer
     }
 }
 
