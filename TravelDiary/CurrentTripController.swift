@@ -144,8 +144,6 @@ class CurrentTripController: UITableViewController, NSFetchedResultsControllerDe
         }
     }
     
-    
-    
     /*!
         segue which is called when the cancel button on the ActivityDetailContoller is called
     */
