@@ -16,7 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        self.loadExampleData()
+        
+        let dataLoader = SampleDataLoader(managedObjectContext: managedObjectContext)
+        dataLoader.loadSampleDataIfNotExists()
         return true
     }
 
@@ -90,89 +92,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return managedObjectContext
     }()
     
-    // MARK: - Core Data Saving support
-    
-    func saveContext () {
-        if managedObjectContext.hasChanges {
-            do {
-                try managedObjectContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-                abort()
-            }
-        }
-    }
-    // TODO Move to another class
-    func loadExampleData(){
-        let request = NSFetchRequest(entityName: Trip.entityName())
-        request.returnsObjectsAsFaults = false;
-        request.predicate = NSPredicate(format:"title MATCHES 'ExampleTrip' ")
-        var results:NSArray
-        do{
-            results = try managedObjectContext.executeFetchRequest(request)
-            //Write only if the example is not present
-            if(results.count == 0){
-                let exampleTrip = Trip(managedObjectContext: self.managedObjectContext)
-                exampleTrip.title = "ExampleTrip"
-                exampleTrip.startDate = NSDate()
-                
-                
-                let machuPicchu = Activity(managedObjectContext: self.managedObjectContext)
-                machuPicchu.descr = "Machu Picchu"
-                machuPicchu.date = NSDate()
-                
-                let lima = Activity(managedObjectContext: managedObjectContext)
-                lima.descr = "Lima, wir werden dich nie vergessen."
-                lima.date = NSDate()
-                
-                let locationLima = Location(managedObjectContext: self.managedObjectContext)
-                locationLima.longitude = -77.0539401
-                locationLima.latitude = -12.0553441
-                locationLima.name = "Lima, die tollste Stadt der Welt"
-                locationLima.address = "Addresse Lima 23"
-                locationLima.inActivity = lima
-                locationLima.countryCode = "PE"
-                lima.location = locationLima
-
-                let photoLima = Photo(managedObjectContext: self.managedObjectContext)
-                photoLima.createDate = NSDate()
-                photoLima.title = "Lima Photo, so schön"
-                photoLima.location = locationLima
-                photoLima.inActivity = lima
-                photoLima.trip = exampleTrip
-                let imgPeru = UIImage(named: "lima_peru_thumb")
-                let compressionQuality = CGFloat(1.0)
-                photoLima.imageData = UIImageJPEGRepresentation(imgPeru!, compressionQuality)
-                
-                let cusco = Activity(managedObjectContext: managedObjectContext)
-                cusco.descr = "Cusco"
-                cusco.date = NSDate()
-                
-                let activities = NSMutableSet()
-                activities.addObject(machuPicchu)
-                activities.addObject(lima)
-                activities.addObject(cusco)
-
-                let locationCusco = Location(managedObjectContext: self.managedObjectContext)
-                locationCusco.longitude = -72.0092897
-                locationCusco.latitude = -13.5298427
-                locationCusco.name = "Cusco halt"
-                locationCusco.address = "Adresse Cusco, isch chaud dört"
-                locationCusco.inActivity = cusco
-                locationCusco.countryCode = "PE"
-                cusco.location = locationCusco
-
-                exampleTrip.activities = activities
-                
-
-                self.saveContext()
-            }
-        }catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        }
-    }
 }
 
