@@ -1,28 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WTW-cP-gCF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="a4N-TO-8yT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Trips-->
-        <scene sceneID="dIv-by-dbn">
+        <!--Trips Overview-->
+        <scene sceneID="drr-h5-XTr">
             <objects>
-                <tableViewController id="WTW-cP-gCF" customClass="TripsTableViewController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="H0d-KK-yzi">
+                <tableViewController title="Trips Overview" id="Xn7-I5-s14" customClass="TripsTableViewController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EAh-yT-oyz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SqV-ZE-QAY" customClass="TripTableViewCell" customModule="TravelDiary" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SqV-ZE-QAY" id="fYY-k3-dGZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="WTW-cP-gCF" id="WEY-Qd-xGv"/>
-                            <outlet property="delegate" destination="WTW-cP-gCF" id="GIk-5d-3er"/>
+                            <outlet property="dataSource" destination="Xn7-I5-s14" id="bzC-aC-ksb"/>
+                            <outlet property="delegate" destination="Xn7-I5-s14" id="hOJ-Ah-nUx"/>
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Trips" image="second" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" id="IC9-SC-Zqf"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jJX-9y-2Oq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hlo-VP-DBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="324" y="-361"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Zwq-Iw-Sv0">
+            <objects>
+                <navigationController id="a4N-TO-8yT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="m56-PU-Lt7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Xn7-I5-s14" kind="relationship" relationship="rootViewController" id="wSe-iN-GtH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LKs-e6-xxA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-484" y="-361"/>
         </scene>
     </scenes>
     <resources>
