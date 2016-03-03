@@ -76,7 +76,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     
     private func initializeDateFormatter() {
         dateFormatter.locale = NSLocale(localeIdentifier: localeIdentifier)
-        dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
     }
     
     private func fetchTripsData() {
