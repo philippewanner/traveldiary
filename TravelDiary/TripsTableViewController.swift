@@ -28,9 +28,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
         let tripCell: TripTableViewCell = self.tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! TripTableViewCell
         let currentTrip = fetchedResultsController.objectAtIndexPath(indexPath) as! Trip
         
-        tripCell.tripTitle.text = currentTrip.title
-        print("trip title set: \(currentTrip.title)")
-        
+        tripCell.tripTitle.text = getTripTitle(currentTrip)
         tripCell.tripDate.text = getTripPeriod(currentTrip)
         
         return tripCell
@@ -46,6 +44,16 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
+    }
+    
+    private func getTripTitle(trip:Trip) -> String {
+        var tripTitle = ""
+        if let title = trip.title {
+            tripTitle = title
+        }
+        print("trip title set: " + tripTitle)
+        
+        return tripTitle
     }
     
     private func getTripPeriod(trip: Trip) -> String{
