@@ -3,11 +3,11 @@ import CoreData
 
 class TripsTableViewController : UITableViewController, NSFetchedResultsControllerDelegate{
     
-    @IBOutlet weak var tripsTableView: UITableView!
-    
     private let tripTableViewCellNibName = "TripTableViewCell"
     private let cellReuseIdentifier = "reuseCell"
     private let localeIdentifier = "de_CH"
+    private let sortKey = "startDate"
+    private let sortAscending = true
     private let dateFormatter = NSDateFormatter()
     
     private var fetchedResultsController:NSFetchedResultsController!
@@ -25,7 +25,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let tripCell: TripTableViewCell = self.tripsTableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! TripTableViewCell
+        let tripCell: TripTableViewCell = self.tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! TripTableViewCell
         let trip = fetchedResultsController.objectAtIndexPath(indexPath) as! Trip
         tripCell.tripTitle.text = trip.title
         tripCell.tripDate.text = dateFormatter.stringFromDate((trip.startDate)!)
@@ -64,7 +64,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     
     private func registerNibFile(nibName: String){
         let nib = UINib(nibName: nibName, bundle: nil)
-        tripsTableView.registerNib(nib, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.registerNib(nib, forCellReuseIdentifier: cellReuseIdentifier)
     }
     
     private func initializeFetchedResultsController(){
@@ -72,7 +72,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
         let fetchRequest = NSFetchRequest(entityName: Trip.entityName())
         
         // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: sortKey, ascending: sortAscending)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         // Initialize Fetched Results Controller
