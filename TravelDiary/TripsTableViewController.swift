@@ -26,9 +26,13 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let tripCell: TripTableViewCell = self.tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! TripTableViewCell
-        let trip = fetchedResultsController.objectAtIndexPath(indexPath) as! Trip
-        tripCell.tripTitle.text = trip.title
-        tripCell.tripDate.text = dateFormatter.stringFromDate((trip.startDate)!)
+        let currentTrip = fetchedResultsController.objectAtIndexPath(indexPath) as! Trip
+        
+        tripCell.tripTitle.text = currentTrip.title
+        print("trip title set: \(currentTrip.title)")
+        
+        tripCell.tripDate.text = getTripPeriod(currentTrip)
+        
         return tripCell
     }
     
@@ -44,6 +48,20 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
         return fetchedResultsController.sections?.count ?? 0
     }
     
+    private func getTripPeriod(trip: Trip) -> String{
+        var tripPeriod = ""
+        if let startDate = trip.startDate {
+            tripPeriod = dateFormatter.stringFromDate((startDate))
+        }else{
+            dateFormatter.stringFromDate((NSDate()))
+        }
+        if let endDate = trip.endDate {
+            tripPeriod += " - " + dateFormatter.stringFromDate((endDate))
+        }
+        print("trip period set: " + tripPeriod)
+        return tripPeriod
+    }
+    
     private func initializeTableViewColor() {
         tableView.separatorColor = UIColor.clearColor()
     }
@@ -56,6 +74,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     private func fetchTripsData() {
         do {
             try fetchedResultsController.performFetch()
+            print("data fetching successfully accomplished")
         } catch {
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
