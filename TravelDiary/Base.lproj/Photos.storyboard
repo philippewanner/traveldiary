@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NrB-HY-KCW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WID-iT-h8S">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Photos-->
+        <!--Photos Controller-->
         <scene sceneID="Xuj-Ct-rkS">
             <objects>
                 <viewController id="NrB-HY-KCW" customClass="PhotosController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,24 +17,108 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrY-Gw-A7J">
-                                <rect key="frame" x="315" y="222" width="54" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eUD-hH-te5">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EfU-Fc-iUk">
+                                    <size key="itemSize" width="180" height="140"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="L9F-Xt-CCJ" customClass="CollectionViewCell" customModule="TravelDiary" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="74" width="180" height="140"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NMv-Uo-1OJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="140"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pb0-jE-6PA">
+                                                    <rect key="frame" x="0.0" y="98" width="180" height="34"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="NMv-Uo-1OJ" firstAttribute="top" secondItem="L9F-Xt-CCJ" secondAttribute="top" id="05d-Fb-FUH"/>
+                                            <constraint firstItem="NMv-Uo-1OJ" firstAttribute="leading" secondItem="L9F-Xt-CCJ" secondAttribute="leading" id="lco-6T-laa"/>
+                                            <constraint firstAttribute="bottom" secondItem="NMv-Uo-1OJ" secondAttribute="bottom" id="scf-vo-ALC"/>
+                                            <constraint firstAttribute="trailing" secondItem="NMv-Uo-1OJ" secondAttribute="trailing" id="w4c-xN-3MJ"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ifK-rP-NA0" firstAttribute="top" secondItem="CrY-Gw-A7J" secondAttribute="bottom" constant="308" id="GbP-7T-1cO"/>
-                            <constraint firstItem="CrY-Gw-A7J" firstAttribute="top" secondItem="BS6-SN-ZFB" secondAttribute="bottom" constant="202" id="mUP-A5-jIX"/>
-                            <constraint firstAttribute="trailing" secondItem="CrY-Gw-A7J" secondAttribute="trailing" constant="231" id="snZ-wj-abZ"/>
+                            <constraint firstAttribute="trailing" secondItem="eUD-hH-te5" secondAttribute="trailing" id="Gce-Lr-XOH"/>
+                            <constraint firstItem="eUD-hH-te5" firstAttribute="bottom" secondItem="ifK-rP-NA0" secondAttribute="top" id="HZX-ds-doY"/>
+                            <constraint firstItem="eUD-hH-te5" firstAttribute="leading" secondItem="n0h-qW-Jja" secondAttribute="leading" id="PJt-kt-Aq5"/>
+                            <constraint firstItem="eUD-hH-te5" firstAttribute="top" secondItem="n0h-qW-Jja" secondAttribute="top" id="QHa-hg-NQT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Photos" image="first" id="Xgy-cA-b3N"/>
+                    <navigationItem key="navigationItem" id="l3X-dB-LEe"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="YJD-qQ-bJh" kind="show" identifier="showImage" id="s72-L4-GRy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Yo-Hu-004" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1401" y="205"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="u1a-vG-xU4">
+            <objects>
+                <viewController id="YJD-qQ-bJh" customClass="ImageViewController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q91-Md-aJ1"/>
+                        <viewControllerLayoutGuide type="bottom" id="ceY-uw-uNx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A3x-TN-GJO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mZg-9k-YBS">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mZg-9k-YBS" firstAttribute="leading" secondItem="A3x-TN-GJO" secondAttribute="leading" id="0kW-hs-JtB"/>
+                            <constraint firstAttribute="trailing" secondItem="mZg-9k-YBS" secondAttribute="trailing" id="8CQ-Hp-ZAS"/>
+                            <constraint firstItem="mZg-9k-YBS" firstAttribute="bottom" secondItem="ceY-uw-uNx" secondAttribute="top" id="RAb-l3-9Lv"/>
+                            <constraint firstItem="mZg-9k-YBS" firstAttribute="top" secondItem="q91-Md-aJ1" secondAttribute="bottom" id="ecP-2M-nVe"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7dw-et-XeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2119" y="205"/>
+        </scene>
+        <!--Photos-->
+        <scene sceneID="vEM-dg-sSb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WID-iT-h8S" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Photos" image="first" id="Xgy-cA-b3N"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x6U-tO-Au8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NrB-HY-KCW" kind="relationship" relationship="rootViewController" id="nfR-a4-XbG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QSm-1J-8hN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="589" y="205"/>
         </scene>
