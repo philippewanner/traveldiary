@@ -52,8 +52,16 @@
                                             <constraint firstAttribute="bottom" secondItem="NMv-Uo-1OJ" secondAttribute="bottom" id="scf-vo-ALC"/>
                                             <constraint firstAttribute="trailing" secondItem="NMv-Uo-1OJ" secondAttribute="trailing" id="w4c-xN-3MJ"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="NMv-Uo-1OJ" id="wUv-Dc-50e"/>
+                                            <outlet property="titleLabel" destination="pb0-jE-6PA" id="lff-JY-xBg"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="NrB-HY-KCW" id="A5Q-7K-g2K"/>
+                                    <outlet property="delegate" destination="NrB-HY-KCW" id="vPI-ql-LIQ"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -67,6 +75,7 @@
                     <navigationItem key="navigationItem" id="l3X-dB-LEe"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="collectionView" destination="eUD-hH-te5" id="oBa-A7-gcX"/>
                         <segue destination="YJD-qQ-bJh" kind="show" identifier="showImage" id="s72-L4-GRy"/>
                     </connections>
                 </viewController>
@@ -98,6 +107,9 @@
                             <constraint firstItem="mZg-9k-YBS" firstAttribute="top" secondItem="q91-Md-aJ1" secondAttribute="bottom" id="ecP-2M-nVe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="mZg-9k-YBS" id="ndG-Lt-Woh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7dw-et-XeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
