@@ -17,13 +17,13 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date Period" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84Q-yt-68C">
                         <rect key="frame" x="21" y="0.0" width="291" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trip Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iZ-k1-aSi">
                         <rect key="frame" x="21" y="22" width="283" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>

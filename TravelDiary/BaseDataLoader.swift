@@ -29,14 +29,14 @@ class BaseDataLoader {
         do{
             results = try managedObjectContext.executeFetchRequest(createRequest(tripTitle))
             if (results.count > 0){
-                print("sample data already loaded")
+                NSLog("sample data already loaded")
                 return true
             } else {
-                print("sample data not yet loaded")
+                NSLog("sample data not yet loaded")
                 return false
             }
         }catch let error as NSError  {
-            print("Fetch error: \(error), \(error.userInfo)")
+            NSLog("Fetch error: \(error), \(error.userInfo)")
         }
         return true
     }

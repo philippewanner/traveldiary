@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
         <!--Trips Overview-->
@@ -14,13 +15,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SqV-ZE-QAY" customClass="TripTableViewCell" customModule="TravelDiary" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseTripTableViewCell" id="SqV-ZE-QAY" customClass="TripTableViewCell" customModule="TravelDiary" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SqV-ZE-QAY" id="fYY-k3-dGZ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="glL-DF-wp3" kind="show" identifier="showCurrentTripSegue" id="8DN-Em-exH">
+                                        <segue key="commit" inheritsFrom="parent" id="abb-Yl-Ava"/>
+                                        <segue key="preview" inheritsFrom="commit" id="Jqq-nB-bfq"/>
+                                    </segue>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -34,7 +41,15 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlo-VP-DBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="324" y="-361"/>
+            <point key="canvasLocation" x="226" y="-361"/>
+        </scene>
+        <!--CurrentTrip-->
+        <scene sceneID="pab-Y5-DN2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CurrentTrip" id="glL-DF-wp3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mmY-ND-PHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="652.5" y="-361"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zwq-Iw-Sv0">
@@ -56,4 +71,7 @@
     <resources>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8DN-Em-exH"/>
+    </inferredMetricsTieBreakers>
 </document>

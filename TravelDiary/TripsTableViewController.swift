@@ -12,6 +12,8 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     
     private var fetchedResultsController:NSFetchedResultsController!
     
+    let SegueCurrentTripController = "showCurrentTripSegue"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +36,19 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
         return tripCell
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SegueCurrentTripController {
+            if let destination = segue.destinationViewController as? CurrentTripController {
+                destination.currentTrip = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Trip
+            }
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier(SegueCurrentTripController, sender: self)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections {
             let currentSection = sections[section]
@@ -51,7 +66,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
         if let title = trip.title {
             tripTitle = title
         }
-        print("trip title set: " + tripTitle)
+        NSLog("trip title set: " + tripTitle)
         
         return tripTitle
     }
@@ -66,7 +81,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
         if let endDate = trip.endDate {
             tripPeriod += " - " + dateFormatter.stringFromDate((endDate))
         }
-        print("trip period set: " + tripPeriod)
+        NSLog("trip period set: " + tripPeriod)
         return tripPeriod
     }
     
@@ -82,10 +97,10 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     private func fetchTripsData() {
         do {
             try fetchedResultsController.performFetch()
-            print("data fetching successfully accomplished")
+            NSLog("data fetching successfully accomplished")
         } catch {
             let fetchError = error as NSError
-            print("\(fetchError), \(fetchError.userInfo)")
+            NSLog("\(fetchError), \(fetchError.userInfo)")
         }
     }
     
@@ -93,7 +108,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
         let nib = UINib(nibName: nibName, bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: cellReuseIdentifier)
         
-        print("nib file registered: " + tripTableViewCellNibName)
+        NSLog("nib file registered: " + tripTableViewCellNibName)
     }
     
     private func initializeFetchedResultsController(){
