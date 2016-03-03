@@ -4,7 +4,7 @@ import CoreData
 class TripsTableViewController : UITableViewController, NSFetchedResultsControllerDelegate{
     
     private let tripTableViewCellNibName = "TripTableViewCell"
-    private let cellReuseIdentifier = "reuseCell"
+    private let cellReuseIdentifier = "reuseTripTableViewCell"
     private let localeIdentifier = "de_CH"
     private let sortKey = "startDate"
     private let sortAscending = true
@@ -29,7 +29,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
         let currentTrip = fetchedResultsController.objectAtIndexPath(indexPath) as! Trip
         
         tripCell.tripTitle.text = getTripTitle(currentTrip)
-        tripCell.tripDate.text = getTripPeriod(currentTrip)
+        tripCell.tripPeriod.text = getTripPeriod(currentTrip)
         
         return tripCell
     }
@@ -92,6 +92,8 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     private func registerNibFile(nibName: String){
         let nib = UINib(nibName: nibName, bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: cellReuseIdentifier)
+        
+        print("nib file registered: " + tripTableViewCellNibName)
     }
     
     private func initializeFetchedResultsController(){
