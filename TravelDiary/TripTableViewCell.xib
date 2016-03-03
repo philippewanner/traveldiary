@@ -31,7 +31,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="tripDate" destination="UXv-Ei-ONB" id="DFT-a4-E78"/>
-                <outlet property="tripName" destination="CqO-ja-aDP" id="sfY-Al-5RL"/>
+                <outlet property="tripTitle" destination="CqO-ja-aDP" id="3xr-cu-7sy"/>
             </connections>
             <point key="canvasLocation" x="270.5" y="37"/>
         </tableViewCell>
