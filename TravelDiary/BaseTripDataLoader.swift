@@ -1,5 +1,5 @@
 //
-//  BaseDataBuilder.swift
+//  BaseTripDataLoader.swift
 //  TravelDiary
 //
 //  Created by Peter K. Mäder on 03/03/16.
@@ -8,15 +8,20 @@
 
 import CoreData;
 
-class BaseDataLoader {
+class BaseTripDataLoader {
     
     var managedObjectContext: NSManagedObjectContext
     var activityBuilder: ActivityBuilder
     var tripBuilder: TripBuilder
     var locationBuilder: LocationBuilder
     var photoBuilder: PhotoBuilder
+    var tripTitle: String
+    var trip: Trip!
+    var activities = NSMutableSet()
+    var currentLocation: Location?
     
-    init(managedObjectContext: NSManagedObjectContext){
+    init(tripTitle title: String, managedObjectContext: NSManagedObjectContext){
+        self.tripTitle = title
         self.managedObjectContext = managedObjectContext
         activityBuilder = ActivityBuilder(managedObjectContext: managedObjectContext)
         tripBuilder = TripBuilder(managedObjectContext: managedObjectContext)
@@ -24,7 +29,19 @@ class BaseDataLoader {
         locationBuilder = LocationBuilder(managedObjectContext: managedObjectContext)
     }
     
-    func isSampleTripDataAlreadyLoaded(sampleTripTitle tripTitle: String) -> Bool{
+    func createWholeTripData(){
+        // Delegate function, which needs to be overriden!
+    }
+    
+    func buildAndSaveIfNotExists(){
+        if(isSampleTripDataAlreadyLoaded()) {return}
+        self.trip = tripBuilder.with(title: tripTitle).build()
+        self.createWholeTripData()
+        trip.activities = self.activities
+        self.saveData()
+    }
+    
+    private func isSampleTripDataAlreadyLoaded() -> Bool{
         var results:NSArray
         do{
             results = try managedObjectContext.executeFetchRequest(createRequest(tripTitle))
@@ -49,7 +66,7 @@ class BaseDataLoader {
     }
     
     
-    func saveData() {
+    private func saveData() {
         if self.managedObjectContext.hasChanges {
             do {
                 try self.managedObjectContext.save()

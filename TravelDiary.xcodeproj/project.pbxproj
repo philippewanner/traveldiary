@@ -11,11 +11,14 @@
 		7E0DB17B1C88A891003D6B38 /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0DB17A1C88A891003D6B38 /* TripTableViewCell.swift */; };
 		7E0DB17D1C88CF46003D6B38 /* TripBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0DB17C1C88CF46003D6B38 /* TripBuilder.swift */; };
 		7E0DB1801C88D4E4003D6B38 /* SampleDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0DB17F1C88D4E4003D6B38 /* SampleDataLoader.swift */; };
-		7E0DB1821C88DCAF003D6B38 /* BaseDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0DB1811C88DCAF003D6B38 /* BaseDataLoader.swift */; };
+		7E0DB1821C88DCAF003D6B38 /* BaseTripDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0DB1811C88DCAF003D6B38 /* BaseTripDataLoader.swift */; };
 		7E0DB1841C88DF47003D6B38 /* BaseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0DB1831C88DF47003D6B38 /* BaseBuilder.swift */; };
 		7E0DB1861C88E009003D6B38 /* ActivityBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0DB1851C88E009003D6B38 /* ActivityBuilder.swift */; };
 		7E0DB1881C88E57F003D6B38 /* LocationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0DB1871C88E57F003D6B38 /* LocationBuilder.swift */; };
 		7E371ABD1C88E76700ECACB9 /* PhotoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E371ABC1C88E76700ECACB9 /* PhotoBuilder.swift */; };
+		7E371AC31C89D28500ECACB9 /* ExampleTripDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E371AC21C89D28500ECACB9 /* ExampleTripDataLoader.swift */; };
+		7E371AC51C89DC7100ECACB9 /* AustraliaTripDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E371AC41C89DC7100ECACB9 /* AustraliaTripDataLoader.swift */; };
+		7E371AC71C89E04500ECACB9 /* BaseSampleDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E371AC61C89E04500ECACB9 /* BaseSampleDataLoader.swift */; };
 		7EB3514B1C82048300323D5E /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3514A1C82048300323D5E /* TripsTableViewController.swift */; };
 		7EFA1F211C887C560063CC48 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA1F1E1C887C560063CC48 /* CollectionViewCell.swift */; };
 		7EFA1F221C887C560063CC48 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA1F1F1C887C560063CC48 /* ImageViewController.swift */; };
@@ -74,11 +77,14 @@
 		7E0DB17A1C88A891003D6B38 /* TripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
 		7E0DB17C1C88CF46003D6B38 /* TripBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripBuilder.swift; sourceTree = "<group>"; };
 		7E0DB17F1C88D4E4003D6B38 /* SampleDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleDataLoader.swift; sourceTree = "<group>"; };
-		7E0DB1811C88DCAF003D6B38 /* BaseDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataLoader.swift; sourceTree = "<group>"; };
+		7E0DB1811C88DCAF003D6B38 /* BaseTripDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTripDataLoader.swift; sourceTree = "<group>"; };
 		7E0DB1831C88DF47003D6B38 /* BaseBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBuilder.swift; sourceTree = "<group>"; };
 		7E0DB1851C88E009003D6B38 /* ActivityBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityBuilder.swift; sourceTree = "<group>"; };
 		7E0DB1871C88E57F003D6B38 /* LocationBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationBuilder.swift; sourceTree = "<group>"; };
 		7E371ABC1C88E76700ECACB9 /* PhotoBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBuilder.swift; sourceTree = "<group>"; };
+		7E371AC21C89D28500ECACB9 /* ExampleTripDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleTripDataLoader.swift; sourceTree = "<group>"; };
+		7E371AC41C89DC7100ECACB9 /* AustraliaTripDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AustraliaTripDataLoader.swift; sourceTree = "<group>"; };
+		7E371AC61C89E04500ECACB9 /* BaseSampleDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSampleDataLoader.swift; sourceTree = "<group>"; };
 		7EB3514A1C82048300323D5E /* TripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 		7EFA1F1E1C887C560063CC48 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		7EFA1F1F1C887C560063CC48 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
@@ -150,15 +156,41 @@
 		7E0DB17E1C88CF53003D6B38 /* sampleData */ = {
 			isa = PBXGroup;
 			children = (
-				7E0DB17C1C88CF46003D6B38 /* TripBuilder.swift */,
 				7E0DB17F1C88D4E4003D6B38 /* SampleDataLoader.swift */,
-				7E0DB1811C88DCAF003D6B38 /* BaseDataLoader.swift */,
-				7E0DB1831C88DF47003D6B38 /* BaseBuilder.swift */,
+				7E371AC21C89D28500ECACB9 /* ExampleTripDataLoader.swift */,
+				7E371AC41C89DC7100ECACB9 /* AustraliaTripDataLoader.swift */,
+				7E0DB1811C88DCAF003D6B38 /* BaseTripDataLoader.swift */,
+				7E371AC61C89E04500ECACB9 /* BaseSampleDataLoader.swift */,
+				7E371AC11C89D1CC00ECACB9 /* dataBuilderClasses */,
+			);
+			name = sampleData;
+			sourceTree = "<group>";
+		};
+		7E371AC01C89D00100ECACB9 /* managedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				D60083B21C71DC6A00D2E4A4 /* Photo.swift */,
+				D60083B11C71DC6A00D2E4A4 /* Photo+CoreDataProperties.swift */,
+				D60083B61C71DC6A00D2E4A4 /* Trip.swift */,
+				D60083B51C71DC6A00D2E4A4 /* Trip+CoreDataProperties.swift */,
+				D60083B81C71DC6A00D2E4A4 /* Activity.swift */,
+				D60083B71C71DC6A00D2E4A4 /* Activity+CoreDataProperties.swift */,
+				D60083B41C71DC6A00D2E4A4 /* Location.swift */,
+				D60083B31C71DC6A00D2E4A4 /* Location+CoreDataProperties.swift */,
+			);
+			name = managedObjects;
+			sourceTree = "<group>";
+		};
+		7E371AC11C89D1CC00ECACB9 /* dataBuilderClasses */ = {
+			isa = PBXGroup;
+			children = (
+				7E0DB17C1C88CF46003D6B38 /* TripBuilder.swift */,
 				7E0DB1851C88E009003D6B38 /* ActivityBuilder.swift */,
 				7E0DB1871C88E57F003D6B38 /* LocationBuilder.swift */,
 				7E371ABC1C88E76700ECACB9 /* PhotoBuilder.swift */,
+				7E0DB1831C88DF47003D6B38 /* BaseBuilder.swift */,
 			);
-			name = sampleData;
+			name = dataBuilderClasses;
 			sourceTree = "<group>";
 		};
 		7EA2AD131C7F886800A47422 /* trips */ = {
@@ -176,8 +208,6 @@
 		D60083AE1C71CBE700D2E4A4 /* map */ = {
 			isa = PBXGroup;
 			children = (
-				D60083B31C71DC6A00D2E4A4 /* Location+CoreDataProperties.swift */,
-				D60083B41C71DC6A00D2E4A4 /* Location.swift */,
 				D274EC6F1C70B65D000AA29D /* Map.storyboard */,
 				D274EC6A1C70B552000AA29D /* MapController.swift */,
 			);
@@ -189,10 +219,6 @@
 			children = (
 				D68212721C78ED220046122E /* CurrentTrip.storyboard */,
 				D68212701C78DD810046122E /* ActivityTableViewCell.xib */,
-				D60083B51C71DC6A00D2E4A4 /* Trip+CoreDataProperties.swift */,
-				D60083B61C71DC6A00D2E4A4 /* Trip.swift */,
-				D60083B71C71DC6A00D2E4A4 /* Activity+CoreDataProperties.swift */,
-				D60083B81C71DC6A00D2E4A4 /* Activity.swift */,
 				D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */,
 				D682126E1C78C7490046122E /* ActivityCell.swift */,
 				D64D30B11C7A0E91009E3740 /* ActivityDetailController.swift */,
@@ -206,8 +232,6 @@
 				7EFA1F1E1C887C560063CC48 /* CollectionViewCell.swift */,
 				7EFA1F1F1C887C560063CC48 /* ImageViewController.swift */,
 				7EFA1F201C887C560063CC48 /* LocationSearchController.swift */,
-				D60083B11C71DC6A00D2E4A4 /* Photo+CoreDataProperties.swift */,
-				D60083B21C71DC6A00D2E4A4 /* Photo.swift */,
 				D274EC671C70B484000AA29D /* Photos.storyboard */,
 				D274EC651C70B3A5000AA29D /* PhotosController.swift */,
 			);
@@ -249,14 +273,15 @@
 			isa = PBXGroup;
 			children = (
 				D644B8FF1C73C38000B2D908 /* common */,
-				D60083B01C71CBF600D2E4A4 /* photo */,
-				D60083AF1C71CBED00D2E4A4 /* trip */,
+				7E371AC01C89D00100ECACB9 /* managedObjects */,
 				7EA2AD131C7F886800A47422 /* trips */,
+				D60083AF1C71CBED00D2E4A4 /* trip */,
+				D60083B01C71CBF600D2E4A4 /* photo */,
 				D60083AE1C71CBE700D2E4A4 /* map */,
-				D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */,
 				D6EF6ED01C68CD03006D098B /* Main.storyboard */,
-				D6EF6ED31C68CD03006D098B /* Assets.xcassets */,
 				D6EF6ED51C68CD03006D098B /* LaunchScreen.storyboard */,
+				D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */,
+				D6EF6ED31C68CD03006D098B /* Assets.xcassets */,
 				D6EF6ED81C68CD03006D098B /* Info.plist */,
 				7E0DB17E1C88CF53003D6B38 /* sampleData */,
 			);
@@ -432,17 +457,20 @@
 				7E0DB1881C88E57F003D6B38 /* LocationBuilder.swift in Sources */,
 				D60083C01C71DC6A00D2E4A4 /* Activity.swift in Sources */,
 				7EB3514B1C82048300323D5E /* TripsTableViewController.swift in Sources */,
+				7E371AC71C89E04500ECACB9 /* BaseSampleDataLoader.swift in Sources */,
 				7EFA1F231C887C560063CC48 /* LocationSearchController.swift in Sources */,
 				D60083BA1C71DC6A00D2E4A4 /* Photo.swift in Sources */,
 				7E371ABD1C88E76700ECACB9 /* PhotoBuilder.swift in Sources */,
 				7E0DB1841C88DF47003D6B38 /* BaseBuilder.swift in Sources */,
 				D60083BF1C71DC6A00D2E4A4 /* Activity+CoreDataProperties.swift in Sources */,
 				D60083B91C71DC6A00D2E4A4 /* Photo+CoreDataProperties.swift in Sources */,
-				7E0DB1821C88DCAF003D6B38 /* BaseDataLoader.swift in Sources */,
+				7E371AC51C89DC7100ECACB9 /* AustraliaTripDataLoader.swift in Sources */,
+				7E0DB1821C88DCAF003D6B38 /* BaseTripDataLoader.swift in Sources */,
 				D682126F1C78C7490046122E /* ActivityCell.swift in Sources */,
 				D60083BC1C71DC6A00D2E4A4 /* Location.swift in Sources */,
 				D68212761C7915600046122E /* UIViewController.swift in Sources */,
 				7E0DB1801C88D4E4003D6B38 /* SampleDataLoader.swift in Sources */,
+				7E371AC31C89D28500ECACB9 /* ExampleTripDataLoader.swift in Sources */,
 				D6EF6ECF1C68CD03006D098B /* TripsViewController.swift in Sources */,
 				D274EC661C70B3A5000AA29D /* PhotosController.swift in Sources */,
 				D644B9011C73C3A300B2D908 /* NSManagedObject.swift in Sources */,
