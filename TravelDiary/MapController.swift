@@ -15,10 +15,6 @@ import UIKit
 import MapKit
 import CoreData
 
-protocol MapSearchDelegate {
-    func placeFound(placemark:MKPlacemark)
-}
-
 class MapController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView! {
@@ -28,15 +24,13 @@ class MapController: UIViewController {
     }
     
     let locationManager = CLLocationManager()
-    
-    var resultSearchController:UISearchController? = nil
-    var selectedPin:MKPlacemark? = nil
-    
+    var resultSearchController:UISearchController?
+ 
     private struct Constants {
         static let ReuseIdentifierAnnotation = "identifier_annotation_view"
-        static let SearchBarPlaceHolder = "Search for places"
-        static let LocationSearchControllerId = "LocationSearchController"
-        static let CalloutImageFrame = CGRectMake(0, 0, 50, 50)
+        static let TripSearchControllerId = "TripSearchController"
+        static let CalloutImageFrame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        static let SearchBarPlaceholder = "Search for trips"
     }
     
     @IBOutlet weak var toolbar: UIToolbar!
@@ -45,35 +39,31 @@ class MapController: UIViewController {
         super.viewDidLoad()
         
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        requestLocationAuthorization()
+        locationManager.requestLocationAuthorization(self)
         
-        let locationSearchController = storyboard!.instantiateViewControllerWithIdentifier(Constants.LocationSearchControllerId) as! LocationSearchController
-        resultSearchController = UISearchController(searchResultsController: locationSearchController)
-        resultSearchController?.searchResultsUpdater = locationSearchController
+        let tripSearchController = storyboard!.instantiateViewControllerWithIdentifier(Constants.TripSearchControllerId) as! TripSearchController
+        resultSearchController = UISearchController(searchResultsController: tripSearchController)
+        resultSearchController?.searchResultsUpdater = tripSearchController
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
         
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
-        searchBar.placeholder = Constants.SearchBarPlaceHolder
-        navigationItem.titleView = resultSearchController?.searchBar
+        searchBar.placeholder = Constants.SearchBarPlaceholder
+        navigationItem.titleView = searchBar
         
-        let tracktingBarButton = MKUserTrackingBarButtonItem(mapView: mapView)
-        navigationItem.rightBarButtonItem = tracktingBarButton
-        
-        resultSearchController?.hidesNavigationBarDuringPresentation = false
-        resultSearchController?.dimsBackgroundDuringPresentation = true
+        let trackingBarButton = MKUserTrackingBarButtonItem(mapView: mapView)
+        navigationItem.rightBarButtonItem = trackingBarButton
         definesPresentationContext = true
         
-        locationSearchController.mapView = mapView
-        locationSearchController.mapSearchDelegate = self
+        tripSearchController.tripSearchDelegate = self
 
         loadLocations(
             managedObjectContext,
             success: {locations in
-                let annotations = self.convertLocationsToAnnotations(locations)
-                self.showAnnotations(annotations)
-                var coordinates = annotations.map {annotation in annotation.coordinate}
-                let geodesicPolyline = MKGeodesicPolyline(coordinates: &coordinates, count: annotations.count)
-                self.mapView.addOverlay(geodesicPolyline)
+                let annotations = locations.map {location in LocationAnnotation(location: location)}
+                self.mapView.addAnnotations(annotations)
+                self.mapView.showAnnotations(self.mapView.annotations, animated: true)
             },
             failed: {error in
                 print("Could not fetch locations \(error)")
@@ -83,6 +73,9 @@ class MapController: UIViewController {
     
     func loadLocations(managedObjectContext: NSManagedObjectContext, success: ([Location]) -> Void, failed: (NSError) -> Void) {
         let fetchRequest = NSFetchRequest(entityName: Location.entityName())
+        fetchRequest.returnsObjectsAsFaults = false
+        fetchRequest.relationshipKeyPathsForPrefetching = ["activities", "activities.location"]
+        
         fetchRequest.predicate = NSPredicate(format:"longitude != nil AND latitude != nil")
         let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { (asynchronousFetchResult) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -98,43 +91,9 @@ class MapController: UIViewController {
             failed(error)
         }
     }
-    
-    func convertLocationsToAnnotations(locations: [Location]) -> [MKAnnotation]{
-        return locations.map {location in
-            LocationAnnotation(location: location)
-        }
-    }
-    
-    func showAnnotations(annotations: [MKAnnotation]){
-        mapView.addAnnotations(annotations)
-        mapView.showAnnotations(mapView.annotations, animated: true)
-    }
-    
-    func requestLocationAuthorization() {
-        let status = CLLocationManager.authorizationStatus()
-        if (status == .NotDetermined) {
-            locationManager.requestWhenInUseAuthorization()
-        } else if (status == .Denied) {
-            let alertController = UIAlertController(
-                title: "Location Access Disabled",
-                message: "In order to display your current location, please open this app's settings and allow access to location.",
-                preferredStyle: .Alert)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-            alertController.addAction(cancelAction)
-            
-            let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
-                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
-                    UIApplication.sharedApplication().openURL(url)
-                }
-            }
-            alertController.addAction(openAction)
-            
-            self.presentViewController(alertController, animated: true, completion: nil)
-        }
-    }
 }
 
+// MARK: - LocationAnnotation
 class LocationAnnotation: NSObject, MKAnnotation {
     let location: Location
     let title: String?
@@ -149,6 +108,7 @@ class LocationAnnotation: NSObject, MKAnnotation {
     }
 }
 
+// MARK: - MKMapViewDelegate
 extension MapController : MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -208,14 +168,22 @@ extension MapController : MKMapViewDelegate {
     }
 }
 
-extension MapController: MapSearchDelegate {
-    func placeFound(placemark: MKPlacemark) {
-        selectedPin = placemark
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = placemark.coordinate
-        annotation.title = placemark.title
-        annotation.subtitle = placemark.name
-        let annotations = [annotation]
-        mapView.showAnnotations(annotations, animated: true)
+// MARK: - TripSearchDelegate
+extension MapController: TripSearchDelegate {
+    
+    func tripFound(trip: Trip) {
+        resultSearchController?.searchBar.text = trip.title
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+        let activities: [Activity] = trip.activities?.allObjects as! [Activity]
+        let locations = activities.flatMap{activity in activity.location}
+        let annotations = locations.map {location in LocationAnnotation(location: location)}
+        var coordinates = annotations.flatMap {annotation in annotation.coordinate}
+        if annotations.count >= 2 {
+            let geodesicPolyline = MKGeodesicPolyline(coordinates: &coordinates, count: annotations.count)
+            mapView.addOverlay(geodesicPolyline)
+        }
+        mapView.addAnnotations(annotations)
+        mapView.showAnnotations(self.mapView.annotations, animated: true)
     }
 }

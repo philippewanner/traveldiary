@@ -11,6 +11,20 @@ import CoreData
 
 
 class Trip: NSManagedObject {
+    
+    private static var dateFormatter: NSDateFormatter {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.currentLocale()
+        dateFormatter.dateStyle = .MediumStyle
+        return dateFormatter
+    }
+    
+    var tripPeriod: String? {
+        guard let startDate = startDate, let endDate = endDate else {
+            return nil
+        }
+        return Trip.dateFormatter.stringFromDate(startDate) + " - " + Trip.dateFormatter.stringFromDate(endDate)
+    }
 
     func addActitiesObject(activity:Activity){
         let activities = self.mutableSetValueForKey("activities")
