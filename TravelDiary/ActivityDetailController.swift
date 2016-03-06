@@ -53,7 +53,7 @@ class ActivityDetailController: UIViewController, UIImagePickerControllerDelegat
     */
     @IBAction func unwindSequeSaveLocation(segue: UIStoryboardSegue){
         if let addChangeLocationController = segue.sourceViewController as? AddChangeLocationController {
-            let locationToSave = addChangeLocationController.newLocation
+            _ = addChangeLocationController.newLocation
         }
     }
     
