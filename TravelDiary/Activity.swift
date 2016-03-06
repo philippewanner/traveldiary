@@ -12,6 +12,11 @@ import CoreData
 
 class Activity: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
-
+    func addLocation(newLocation:Location){
+        self.location = newLocation
+    }
+    
+    func removeLocation(){
+        self.location = nil
+    }
 }

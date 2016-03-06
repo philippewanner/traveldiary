@@ -6,7 +6,7 @@
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--Current Trip-->
+        <!--Activities-->
         <scene sceneID="nr4-dQ-YG4">
             <objects>
                 <tableViewController id="2KO-I6-JCj" customClass="CurrentTripController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -26,7 +26,7 @@
                         </prototypes>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Current Trip" image="first" id="5iz-N8-tpY"/>
-                    <navigationItem key="navigationItem" id="yjU-5u-0cy">
+                    <navigationItem key="navigationItem" title="Activities" id="yjU-5u-0cy">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="May-FJ-9x4"/>
                             <barButtonItem title="Add" id="XLl-Ha-wfb">
@@ -38,6 +38,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="navigationBar" destination="yjU-5u-0cy" id="hHf-cY-y69"/>
                         <segue destination="pzj-Bu-Mlc" kind="show" identifier="showActivitySegue" id="Ctn-qI-dYw"/>
                     </connections>
                 </tableViewController>

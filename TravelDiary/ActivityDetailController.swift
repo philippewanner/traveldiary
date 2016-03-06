@@ -19,6 +19,8 @@ class ActivityDetailController: UIViewController, UIImagePickerControllerDelegat
   
     @IBOutlet weak var activityDate: UIDatePicker!
     
+    @IBOutlet weak var locationName: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dateFormatter.locale = NSLocale(localeIdentifier: "de_CH")
@@ -26,6 +28,8 @@ class ActivityDetailController: UIViewController, UIImagePickerControllerDelegat
             dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
             activityDescription.text = selectedActivity?.descr
             activityDate.date = (selectedActivity?.date)!
+            locationName.text = selectedActivity?.location?.name
+            locationName.userInteractionEnabled = false
         }
     }
     
@@ -36,6 +40,20 @@ class ActivityDetailController: UIViewController, UIImagePickerControllerDelegat
             }
             selectedActivity?.descr = activityDescription.text
             selectedActivity?.date = activityDate.date
+        }
+    }
+    
+    /*!
+    segue which is called when the cancel button on the AddChangeLocationController is called
+    */
+    @IBAction func unwindSegueCancelLocation(segue:UIStoryboardSegue) {}
+    
+    /*!
+    segue which is called when the save button on the ActivityDetailContoller is pressed
+    */
+    @IBAction func unwindSequeSaveLocation(segue: UIStoryboardSegue){
+        if let addChangeLocationController = segue.sourceViewController as? AddChangeLocationController {
+            let locationToSave = addChangeLocationController.newLocation
         }
     }
     

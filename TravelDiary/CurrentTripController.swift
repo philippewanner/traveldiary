@@ -14,6 +14,7 @@ class CurrentTripController: UITableViewController, NSFetchedResultsControllerDe
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
+    @IBOutlet weak var navigationBar: UINavigationItem!
     
     let dateFormatter = NSDateFormatter()
     let SegueActivityDetailController = "showActivitySegue"
@@ -76,13 +77,14 @@ class CurrentTripController: UITableViewController, NSFetchedResultsControllerDe
         dateFormatter.locale = NSLocale(localeIdentifier: "de_CH")
         dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
         initializeFetchedResultsController()
-        
+       
         do {
             try fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
         }
+        //navigationBar.title = currentTrip?.title
     }
     
     func loadCurrenTrip(){
