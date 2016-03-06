@@ -212,6 +212,7 @@
 		D60083AE1C71CBE700D2E4A4 /* map */ = {
 			isa = PBXGroup;
 			children = (
+				7EFA1F201C887C560063CC48 /* LocationSearchController.swift */,
 				D274EC6F1C70B65D000AA29D /* Map.storyboard */,
 				D274EC6A1C70B552000AA29D /* MapController.swift */,
 			);
@@ -237,7 +238,6 @@
 			children = (
 				7EFA1F1E1C887C560063CC48 /* CollectionViewCell.swift */,
 				7EFA1F1F1C887C560063CC48 /* ImageViewController.swift */,
-				7EFA1F201C887C560063CC48 /* LocationSearchController.swift */,
 				D274EC671C70B484000AA29D /* Photos.storyboard */,
 				D274EC651C70B3A5000AA29D /* PhotosController.swift */,
 			);
