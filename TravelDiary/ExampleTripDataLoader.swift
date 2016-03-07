@@ -18,7 +18,10 @@ class ExampleTripDataBuilder: BaseTripDataLoader{
     }
     
     private func createActivityMachuPicchu(){
-        let machuPicchu = activityBuilder.with(description: "Machu Picchu").build()
+        let machuPicchu = activityBuilder
+            .with(description: "Reise nach Machu Picchu über den Inka Trail")
+            .with(title: "Machu Picchu")
+            .build()
         self.currentLocation = locationBuilder
             .with(longitude: -77.0539401)
             .with(latitude: -12.0553441)
@@ -41,7 +44,10 @@ class ExampleTripDataBuilder: BaseTripDataLoader{
     }
     
     private func createActivityLima(){
-        let lima = activityBuilder.with(description: "Lima, wir werden dich nie vergessen.").build()
+        let lima = activityBuilder
+            .with(description: "Lima, wir werden dich nie vergessen.")
+            .with(title: "Lima")
+            .build()
         self.currentLocation = locationBuilder
             .with(longitude: -75.0539401)
             .with(latitude: -18.0553441)
@@ -64,7 +70,10 @@ class ExampleTripDataBuilder: BaseTripDataLoader{
     }
     
     private func createActivityCusco(){
-        let cusco = activityBuilder.with(description: "Cusco").build()
+        let cusco = activityBuilder
+            .with(description: "Sightseeing in Cusco.")
+            .with(title: "Cusco")
+            .build()
         self.currentLocation = locationBuilder
             .with(longitude: -72.0092897)
             .with(latitude: -13.5298427)

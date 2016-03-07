@@ -1,8 +1,8 @@
 //
-//  Trip+CoreDataProperties.swift
+//  Photo+CoreDataProperties.swift
 //  TravelDiary
 //
-//  Created by Andreas Heubeck on 15/02/16.
+//  Created by Andreas Heubeck on 07/03/16.
 //  Copyright © 2016 PTPA. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,12 +12,13 @@
 import Foundation
 import CoreData
 
-extension Trip {
+extension Photo {
 
-    @NSManaged var endDate: NSDate?
-    @NSManaged var startDate: NSDate?
+    @NSManaged var createDate: NSDate?
+    @NSManaged var imageData: NSData?
     @NSManaged var title: String?
-    @NSManaged var activities: NSSet?
-    @NSManaged var pictures: NSSet?
+    @NSManaged var inActivity: Activity?
+    @NSManaged var location: Location?
+    @NSManaged var trip: Trip?
 
 }

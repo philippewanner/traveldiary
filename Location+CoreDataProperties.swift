@@ -2,7 +2,7 @@
 //  Location+CoreDataProperties.swift
 //  TravelDiary
 //
-//  Created by Andreas Heubeck on 15/02/16.
+//  Created by Andreas Heubeck on 07/03/16.
 //  Copyright © 2016 PTPA. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -19,7 +19,7 @@ extension Location {
     @NSManaged var latitude: NSNumber?
     @NSManaged var longitude: NSNumber?
     @NSManaged var name: String?
-    @NSManaged var inActivity: NSManagedObject?
+    @NSManaged var inActivity: Activity?
     @NSManaged var photos: NSSet?
 
 }

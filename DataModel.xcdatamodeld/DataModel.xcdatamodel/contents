@@ -3,6 +3,7 @@
     <entity name="Activity" representedClassName=".Activity" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="descr" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="inActivity" inverseEntity="Location" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="inActivity" inverseEntity="Photo" syncable="YES"/>
@@ -33,7 +34,7 @@
         <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="trip" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="-27" positionY="63" width="128" height="135"/>
+        <element name="Activity" positionX="-27" positionY="63" width="128" height="150"/>
         <element name="Location" positionX="135" positionY="212" width="128" height="150"/>
         <element name="Photo" positionX="468" positionY="225" width="128" height="135"/>
         <element name="Trip" positionX="-2" positionY="423" width="128" height="120"/>

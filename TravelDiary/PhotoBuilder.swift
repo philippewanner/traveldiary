@@ -15,9 +15,9 @@ class PhotoBuilder: BaseBuilder{
     private var createDate = NSDate()
     private var imageData = NSData()
     private var title: String?
-    private var inActivity: NSManagedObject?
-    private var location: NSManagedObject?
-    private var trip: NSManagedObject?
+    private var inActivity: Activity?
+    private var location: Location?
+    private var trip: Trip?
     
     func build() -> Photo {
         let photo = Photo(managedObjectContext: self.managedObjectContext)
@@ -30,17 +30,17 @@ class PhotoBuilder: BaseBuilder{
         return photo
     }
     
-    func with(trip trip: NSManagedObject) -> PhotoBuilder {
+    func with(trip trip: Trip) -> PhotoBuilder {
         self.trip = trip
         return self
     }
     
-    func with(location location: NSManagedObject) -> PhotoBuilder {
+    func with(location location: Location) -> PhotoBuilder {
         self.location = location
         return self
     }
     
-    func with(inActivity inActivity: NSManagedObject) -> PhotoBuilder {
+    func with(inActivity inActivity: Activity) -> PhotoBuilder {
         self.inActivity = inActivity
         return self
     }

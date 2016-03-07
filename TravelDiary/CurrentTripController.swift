@@ -91,7 +91,7 @@ class CurrentTripController: UITableViewController, NSFetchedResultsControllerDe
         let request = NSFetchRequest(entityName: Trip.entityName())
         request.returnsObjectsAsFaults = false;
         //TODO search for current trip 1. CurrentDate within trip range 2. future 3. last
-        request.predicate = NSPredicate(format:"title CONTAINS 'ExampleTrip' ")
+        request.predicate = NSPredicate(format:"title CONTAINS 'An Example Trip' ")
         var results:NSArray
         do{
             results = try managedObjectContext.executeFetchRequest(request)
