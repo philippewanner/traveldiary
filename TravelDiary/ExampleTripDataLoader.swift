@@ -74,6 +74,15 @@ class ExampleTripDataBuilder: BaseTripDataLoader{
             .with(countryCode: "PE").build()
         cusco.location = self.currentLocation
         
+        let imgCusco = UIImage(named: "cusco_peru")
+        let compressionQuality = CGFloat(1.0)
+        photoBuilder.with(title: "Cusco Photo, so wooaa")
+            .with(location: self.currentLocation!)
+            .with(inActivity: cusco)
+            .with(trip: trip)
+            .with(imageData: UIImageJPEGRepresentation(imgCusco!, compressionQuality)!)
+            .build()
+        
         self.activities.addObject(cusco)
     }
 }
