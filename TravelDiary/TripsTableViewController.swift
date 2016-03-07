@@ -10,6 +10,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     private struct Constants {
         static let tripTableViewCellNibName = "TripTableViewCell"
         static let cellReuseIdentifier = "reuseTripTableViewCell"
+        static let currentTripControllerSegue = "showCurrentTripSegue"
         static let localeIdentifier = "de_CH"
         static let sortKey = "startDate"
         static let sortAscending = true
@@ -17,7 +18,6 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     
     private let dateFormatter = NSDateFormatter()
     private var fetchedResultsController:NSFetchedResultsController!
-    private let SegueCurrentTripController = "showCurrentTripSegue"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +66,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SegueCurrentTripController {
+        if segue.identifier == Constants.currentTripControllerSegue {
             if let destination = segue.destinationViewController as? CurrentTripController {
                 destination.currentTrip = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Trip
             }
@@ -74,7 +74,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(SegueCurrentTripController, sender: self)
+        performSegueWithIdentifier(Constants.currentTripControllerSegue, sender: self)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
