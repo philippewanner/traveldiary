@@ -17,8 +17,8 @@ extension Photo {
     @NSManaged var createDate: NSDate!
     @NSManaged var imageData: NSData!
     @NSManaged var title: String?
-    @NSManaged var inActivity: NSManagedObject?
-    @NSManaged var location: NSManagedObject?
-    @NSManaged var trip: NSManagedObject?
+    @NSManaged var inActivity: Activity?
+    @NSManaged var location: Location?
+    @NSManaged var trip: Trip?
 
 }

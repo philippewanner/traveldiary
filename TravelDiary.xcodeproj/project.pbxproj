@@ -55,6 +55,7 @@
 		D6EF6ED71C68CD03006D098B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6EF6ED51C68CD03006D098B /* LaunchScreen.storyboard */; };
 		D6EF6EE21C68CD03006D098B /* TravelDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6EE11C68CD03006D098B /* TravelDiaryTests.swift */; };
 		D6EF6EED1C68CD03006D098B /* TravelDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6EEC1C68CD03006D098B /* TravelDiaryUITests.swift */; };
+		F083872F1C8D779D00D52107 /* Photo-UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083872E1C8D779D00D52107 /* Photo-UIImage.swift */; };
 		F0DA6C101C68CFF3007753F8 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0DA6C0E1C68CFF3007753F8 /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +131,7 @@
 		D6EF6EE81C68CD03006D098B /* TravelDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelDiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EF6EEC1C68CD03006D098B /* TravelDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDiaryUITests.swift; sourceTree = "<group>"; };
 		D6EF6EEE1C68CD03006D098B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F083872E1C8D779D00D52107 /* Photo-UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo-UIImage.swift"; sourceTree = "<group>"; };
 		F0DA6C0F1C68CFF3007753F8 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				D60083B21C71DC6A00D2E4A4 /* Photo.swift */,
+				F083872E1C8D779D00D52107 /* Photo-UIImage.swift */,
 				D60083B11C71DC6A00D2E4A4 /* Photo+CoreDataProperties.swift */,
 				D60083B61C71DC6A00D2E4A4 /* Trip.swift */,
 				D60083B51C71DC6A00D2E4A4 /* Trip+CoreDataProperties.swift */,
@@ -473,6 +476,7 @@
 				7E371ABD1C88E76700ECACB9 /* PhotoBuilder.swift in Sources */,
 				7E0DB1841C88DF47003D6B38 /* BaseBuilder.swift in Sources */,
 				D60083BF1C71DC6A00D2E4A4 /* Activity+CoreDataProperties.swift in Sources */,
+				F083872F1C8D779D00D52107 /* Photo-UIImage.swift in Sources */,
 				D60083B91C71DC6A00D2E4A4 /* Photo+CoreDataProperties.swift in Sources */,
 				7E371AC51C89DC7100ECACB9 /* AustraliaTripDataLoader.swift in Sources */,
 				7E0DB1821C88DCAF003D6B38 /* BaseTripDataLoader.swift in Sources */,

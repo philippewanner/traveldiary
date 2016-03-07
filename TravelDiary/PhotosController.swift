@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
-class PhotosController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class PhotosController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -17,9 +18,15 @@ class PhotosController: UIViewController, UICollectionViewDelegate, UICollection
     let images = [UIImage(named: "image1"), UIImage(named: "image2"), UIImage(named: "image3"), UIImage(named: "image4"), UIImage(named: "image5"), UIImage(named: "image6"), UIImage(named: "image7"), UIImage(named: "image8"), UIImage(named: "image9"), UIImage(named: "image10")]
     
     
+    private var fetchedResultsController:NSFetchedResultsController!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.initializeFetchedResultsController()
+        
+        self.fetchTripsData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,8 +66,11 @@ class PhotosController: UIViewController, UICollectionViewDelegate, UICollection
         
         NSLog("load image&title number %i in a cell", indexPath.row)
         cell.imageView?.image = self.images[indexPath.row]
+//        let photo = (fetchedResultsController.objectAtIndexPath(indexPath) as! Photo)
+
         
         cell.titleLabel?.text = self.titles[indexPath.row]
+//        cell.imageView?.image = photo
         
         return cell
     }
@@ -68,9 +78,34 @@ class PhotosController: UIViewController, UICollectionViewDelegate, UICollection
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         //For the number of cells in our collection
-        return self.titles.count
+//        return fetchedResultsController.sections?.count ?? 0
+        return images.count
     }
     
+    private func fetchTripsData() {
+        do {
+            try fetchedResultsController.performFetch()
+            NSLog("data fetching successfully accomplished")
+        } catch {
+            let fetchError = error as NSError
+            NSLog("\(fetchError), \(fetchError.userInfo)")
+        }
+    }
+    
+    private func initializeFetchedResultsController(){
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest(entityName: Trip.entityName())
+        
+        // Add Sort Descriptors
+        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // Initialize Fetched Results Controller
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // Configure Fetched Results Controller
+        fetchedResultsController.delegate = self
+    }
     
 }
 
