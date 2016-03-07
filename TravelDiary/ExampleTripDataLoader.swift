@@ -28,6 +28,15 @@ class ExampleTripDataBuilder: BaseTripDataLoader{
             .with(inActivity: machuPicchu).build()
         machuPicchu.location = self.currentLocation
         
+        let imgMachu = UIImage(named: "machu_picchu")
+        let compressionQuality = CGFloat(1.0)
+        photoBuilder.with(title: "Machu Picchu Photo, so wunderbar")
+            .with(location: self.currentLocation!)
+            .with(inActivity: machuPicchu)
+            .with(trip: trip)
+            .with(imageData: UIImageJPEGRepresentation(imgMachu!, compressionQuality)!)
+            .build()
+        
         self.activities.addObject(machuPicchu)
     }
     
@@ -42,7 +51,7 @@ class ExampleTripDataBuilder: BaseTripDataLoader{
             .with(countryCode: "PE").build()
         lima.location = self.currentLocation
         
-        let imgPeru = UIImage(named: "lima_peru_thumb")
+        let imgPeru = UIImage(named: "lima_peru")
         let compressionQuality = CGFloat(1.0)
         photoBuilder.with(title: "Lima Photo, so schön")
             .with(location: self.currentLocation!)
