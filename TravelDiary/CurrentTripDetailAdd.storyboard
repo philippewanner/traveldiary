@@ -167,37 +167,6 @@
             </objects>
             <point key="canvasLocation" x="2025" y="477"/>
         </scene>
-        <!--Add Change Location Controller-->
-        <scene sceneID="ZxX-Ok-Nh7">
-            <objects>
-                <viewController id="bTm-jz-WgZ" customClass="AddChangeLocationController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="HNO-DR-5U9"/>
-                        <viewControllerLayoutGuide type="bottom" id="Fj3-QN-GJ1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Xph-eh-AHg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="uKK-Y4-GKJ">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="jQQ-zM-l4H">
-                            <connections>
-                                <segue destination="6Qs-gg-ElJ" kind="unwind" unwindAction="unwindSegueCancelLocation:" id="kdt-Ba-diC"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="JVo-KV-ydQ">
-                            <connections>
-                                <segue destination="6Qs-gg-ElJ" kind="unwind" unwindAction="unwindSequeSaveLocation:" id="yIX-Cl-RDn"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="94B-Ig-4qo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="6Qs-gg-ElJ" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="3525" y="402"/>
-        </scene>
         <!--Activities-->
         <scene sceneID="FIk-kG-McO">
             <objects>
@@ -227,12 +196,22 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="bTm-jz-WgZ" kind="relationship" relationship="rootViewController" id="1aa-4n-QYC"/>
+                        <segue destination="GGK-6p-cWP" kind="relationship" relationship="rootViewController" id="1aa-4n-QYC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0WN-a7-xe7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2841" y="402"/>
+        </scene>
+        <!--SelectLocation-->
+        <scene sceneID="xRD-aH-4rP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SelectLocation" id="GGK-6p-cWP" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="EKV-1i-ISg"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0tt-XK-li5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3525" y="402"/>
         </scene>
     </scenes>
 </document>
