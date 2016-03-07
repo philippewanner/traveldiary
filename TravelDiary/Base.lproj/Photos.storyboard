@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Photos Controller-->
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eUD-hH-te5">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="526"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EfU-Fc-iUk">
                                     <size key="itemSize" width="180" height="140"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -36,7 +37,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NMv-Uo-1OJ">
                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="140"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pb0-jE-6PA">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pb0-jE-6PA">
                                                     <rect key="frame" x="0.0" y="98" width="180" height="34"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -48,7 +49,11 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="NMv-Uo-1OJ" firstAttribute="top" secondItem="L9F-Xt-CCJ" secondAttribute="top" id="05d-Fb-FUH"/>
+                                            <constraint firstItem="pb0-jE-6PA" firstAttribute="bottom" secondItem="L9F-Xt-CCJ" secondAttribute="bottomMargin" id="Eyd-5e-W3d"/>
+                                            <constraint firstItem="pb0-jE-6PA" firstAttribute="trailing" secondItem="NMv-Uo-1OJ" secondAttribute="trailing" id="Yhu-FT-LBW"/>
+                                            <constraint firstItem="pb0-jE-6PA" firstAttribute="leading" secondItem="NMv-Uo-1OJ" secondAttribute="leading" id="aIm-xd-LKs"/>
                                             <constraint firstItem="NMv-Uo-1OJ" firstAttribute="leading" secondItem="L9F-Xt-CCJ" secondAttribute="leading" id="lco-6T-laa"/>
+                                            <constraint firstItem="pb0-jE-6PA" firstAttribute="top" secondItem="L9F-Xt-CCJ" secondAttribute="topMargin" constant="90" id="sLU-KW-USU"/>
                                             <constraint firstAttribute="bottom" secondItem="NMv-Uo-1OJ" secondAttribute="bottom" id="scf-vo-ALC"/>
                                             <constraint firstAttribute="trailing" secondItem="NMv-Uo-1OJ" secondAttribute="trailing" id="w4c-xN-3MJ"/>
                                         </constraints>
@@ -63,19 +68,29 @@
                                     <outlet property="delegate" destination="NrB-HY-KCW" id="vPI-ql-LIQ"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CT7-Sg-39Y">
+                                <rect key="frame" x="20" y="526" width="560" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.77646233974358969" green="0.77646233974358969" blue="0.77646233974358969" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="leading" secondItem="n0h-qW-Jja" secondAttribute="leadingMargin" id="Dka-oN-kK8"/>
+                            <constraint firstItem="ifK-rP-NA0" firstAttribute="top" secondItem="eUD-hH-te5" secondAttribute="bottom" constant="25" id="Gbr-qY-kyV"/>
                             <constraint firstAttribute="trailing" secondItem="eUD-hH-te5" secondAttribute="trailing" id="Gce-Lr-XOH"/>
-                            <constraint firstItem="eUD-hH-te5" firstAttribute="bottom" secondItem="ifK-rP-NA0" secondAttribute="top" id="HZX-ds-doY"/>
                             <constraint firstItem="eUD-hH-te5" firstAttribute="leading" secondItem="n0h-qW-Jja" secondAttribute="leading" id="PJt-kt-Aq5"/>
                             <constraint firstItem="eUD-hH-te5" firstAttribute="top" secondItem="n0h-qW-Jja" secondAttribute="top" id="QHa-hg-NQT"/>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="centerX" secondItem="n0h-qW-Jja" secondAttribute="centerX" id="hxt-Q6-OgP"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="CT7-Sg-39Y" secondAttribute="bottom" constant="48" id="nUU-c6-bZe"/>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="top" secondItem="eUD-hH-te5" secondAttribute="bottom" id="r4Z-7r-E7v"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="l3X-dB-LEe">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Gb3-Qc-4S6">
-                            <rect key="frame" x="230.5" y="7" width="139" height="30"/>
+                            <rect key="frame" x="231" y="7" width="139" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="All"/>
@@ -86,6 +101,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="eUD-hH-te5" id="oBa-A7-gcX"/>
+                        <outlet property="totalLabel" destination="CT7-Sg-39Y" id="HfH-8I-Rqu"/>
                         <segue destination="YJD-qQ-bJh" kind="show" identifier="showImage" id="s72-L4-GRy"/>
                     </connections>
                 </viewController>

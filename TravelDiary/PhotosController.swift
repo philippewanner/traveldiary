@@ -11,6 +11,7 @@ import CoreData
 
 class PhotosController: UIViewController, UICollectionViewDelegate {
     
+    @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     // Data Source for UICollectionView
@@ -28,6 +29,8 @@ class PhotosController: UIViewController, UICollectionViewDelegate {
         loadPhotos()
         // Attached the data source to the collection view
         collectionView.dataSource = collectionViewDataSource
+        //Update total photos label
+        totalLabel.text = String(collectionViewDataSource.data.count) + " photos"
     }
     
     override func didReceiveMemoryWarning() {
