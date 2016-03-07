@@ -8,7 +8,6 @@
 //  Ideas: 
 //  Clustering pins with https://github.com/ribl/FBAnnotationClusteringSwift
 //  Take snapshots of location: http://stackoverflow.com/questions/30793315/customize-mkannotation-callout-view
-//  Connect locations with http://nshipster.com/mkgeodesicpolyline/
 //
 
 import UIKit
@@ -23,8 +22,8 @@ class MapController: UIViewController {
         }
     }
     
-    let locationManager = CLLocationManager()
-    var resultSearchController:UISearchController?
+    private let locationManager = CLLocationManager()
+    private var resultSearchController:UISearchController?
  
     private struct Constants {
         static let ReuseIdentifierAnnotation = "identifier_annotation_view"

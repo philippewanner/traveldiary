@@ -11,7 +11,7 @@ import UIKit
 class ActivityDetailController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var selectedActivity: Activity?
-    let dateFormatter = NSDateFormatter()
+    private let dateFormatter = NSDateFormatter()
     
     @IBOutlet weak var image: UIImageView!
     
@@ -23,8 +23,9 @@ class ActivityDetailController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateFormatter.locale = NSLocale(localeIdentifier: "de_CH")
-        if selectedActivity != nil{
+        dateFormatter.locale = NSLocale.currentLocale()
+        
+        if selectedActivity != nil {
             dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
             activityDescription.text = selectedActivity?.descr
             activityDate.date = (selectedActivity?.date)!
