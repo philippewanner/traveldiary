@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SqV-ZE-QAY" id="fYY-k3-dGZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -33,8 +33,14 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Trips" image="second" id="cPa-gy-q4n"/>
-                    <navigationItem key="navigationItem" id="IC9-SC-Zqf"/>
+                    <navigationItem key="navigationItem" id="IC9-SC-Zqf" userLabel="Navigation Bar">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="41M-Xt-gDr"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addButton" destination="41M-Xt-gDr" id="3to-dj-EN5"/>
+                        <outlet property="navigationBar" destination="IC9-SC-Zqf" id="5oV-sh-YVz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlo-VP-DBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -53,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8VW-Ru-gfa" id="TeQ-bS-WYQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="91.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="92"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>

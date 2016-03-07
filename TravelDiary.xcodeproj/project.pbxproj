@@ -50,7 +50,6 @@
 		D6CA868D1C8A144D00C06550 /* CurrentTripDetailAdd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6CA868C1C8A144D00C06550 /* CurrentTripDetailAdd.storyboard */; };
 		D6EF6ECB1C68CD03006D098B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */; };
 		D6EF6ECD1C68CD03006D098B /* CurrentTripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */; };
-		D6EF6ECF1C68CD03006D098B /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6ECE1C68CD03006D098B /* TripsViewController.swift */; };
 		D6EF6ED21C68CD03006D098B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6EF6ED01C68CD03006D098B /* Main.storyboard */; };
 		D6EF6ED41C68CD03006D098B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6EF6ED31C68CD03006D098B /* Assets.xcassets */; };
 		D6EF6ED71C68CD03006D098B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6EF6ED51C68CD03006D098B /* LaunchScreen.storyboard */; };
@@ -121,7 +120,6 @@
 		D6EF6EC71C68CD03006D098B /* TravelDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTripController.swift; sourceTree = "<group>"; };
-		D6EF6ECE1C68CD03006D098B /* TripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
 		D6EF6ED11C68CD03006D098B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6EF6ED31C68CD03006D098B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6EF6ED61C68CD03006D098B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -204,10 +202,9 @@
 		7EA2AD131C7F886800A47422 /* trips */ = {
 			isa = PBXGroup;
 			children = (
-				D6EF6ECE1C68CD03006D098B /* TripsViewController.swift */,
 				D274EC5E1C70A589000AA29D /* Trips.storyboard */,
-				7EB3514A1C82048300323D5E /* TripsTableViewController.swift */,
 				7E0DB1781C88A78B003D6B38 /* TripTableViewCell.xib */,
+				7EB3514A1C82048300323D5E /* TripsTableViewController.swift */,
 				7E0DB17A1C88A891003D6B38 /* TripTableViewCell.swift */,
 			);
 			name = trips;
@@ -486,7 +483,6 @@
 				D68212761C7915600046122E /* UIViewController+ManagedObjectContext.swift in Sources */,
 				7E0DB1801C88D4E4003D6B38 /* SampleDataLoader.swift in Sources */,
 				7E371AC31C89D28500ECACB9 /* ExampleTripDataLoader.swift in Sources */,
-				D6EF6ECF1C68CD03006D098B /* TripsViewController.swift in Sources */,
 				D274EC661C70B3A5000AA29D /* PhotosController.swift in Sources */,
 				D644B9011C73C3A300B2D908 /* NSManagedObject+EntityName.swift in Sources */,
 				7E0DB17B1C88A891003D6B38 /* TripTableViewCell.swift in Sources */,
