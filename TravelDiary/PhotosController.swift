@@ -9,20 +9,18 @@
 import UIKit
 import CoreData
 
-class PhotosController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate {
+class PhotosController: UIViewController, UICollectionViewDelegate, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let titles = ["title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "title9", "title10"]
-    
-    let images = [UIImage(named: "image1"), UIImage(named: "image2"), UIImage(named: "image3"), UIImage(named: "image4"), UIImage(named: "image5"), UIImage(named: "image6"), UIImage(named: "image7"), UIImage(named: "image8"), UIImage(named: "image9"), UIImage(named: "image10")]
-    
-    
     private var fetchedResultsController:NSFetchedResultsController!
-    
+    // Data Source for UICollectionView
+    var collectionViewDataSource = CollectionDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.dataSource = collectionViewDataSource
         
         self.initializeFetchedResultsController()
         
@@ -47,10 +45,10 @@ class PhotosController: UIViewController, UICollectionViewDelegate, UICollection
             let controller = segue.destinationViewController as! ImageViewController
             
             //Set the image in the ImageViewController to the selected item in the collection view
-            controller.image = self.images[indexPath.row]!
+            controller.image = self.collectionViewDataSource.images[indexPath.row]!
             
             //Set the title of this image depending of the selected item in the collection view
-            controller.title = self.titles[indexPath.row]
+            controller.title = self.collectionViewDataSource.titles[indexPath.row]
         }
     }
     
@@ -58,28 +56,6 @@ class PhotosController: UIViewController, UICollectionViewDelegate, UICollection
         //When someone clicks on the cell
         NSLog("click on image")
         self.performSegueWithIdentifier("showImage", sender: self)
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CollectionViewCell
-        
-        NSLog("load image&title number %i in a cell", indexPath.row)
-        cell.imageView?.image = self.images[indexPath.row]
-//        let photo = (fetchedResultsController.objectAtIndexPath(indexPath) as! Photo)
-
-        
-        cell.titleLabel?.text = self.titles[indexPath.row]
-//        cell.imageView?.image = photo
-        
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        //For the number of cells in our collection
-//        return fetchedResultsController.sections?.count ?? 0
-        return images.count
     }
     
     private func fetchTripsData() {
