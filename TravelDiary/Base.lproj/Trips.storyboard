@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Trips Overview-->
@@ -33,11 +34,15 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Trips" image="second" id="cPa-gy-q4n"/>
                     <navigationItem key="navigationItem" id="IC9-SC-Zqf" userLabel="Navigation Bar">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="41M-Xt-gDr"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Edit" id="VBS-et-sh8" userLabel="Edit Button"/>
+                            <barButtonItem title="Add" id="41M-Xt-gDr"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="41M-Xt-gDr" id="3to-dj-EN5"/>
+                        <outlet property="editButton" destination="VBS-et-sh8" id="ARm-gW-fMQ"/>
                         <outlet property="navigationBar" destination="IC9-SC-Zqf" id="5oV-sh-YVz"/>
                     </connections>
                 </tableViewController>

@@ -4,8 +4,8 @@ import CoreData
 class TripsTableViewController : UITableViewController, NSFetchedResultsControllerDelegate{
     
     @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var navigationBar: UINavigationItem!
-    
     
     private struct Constants {
         static let tripTableViewCellNibName = "TripTableViewCell"
@@ -21,7 +21,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.rightBarButtonItem = self.addButton
+        self.navigationBar.rightBarButtonItem = self.editButtonItem()
         
         self.registerNibFile(Constants.tripTableViewCellNibName)
         
