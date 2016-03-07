@@ -53,7 +53,7 @@ extension TripSearchController : UISearchResultsUpdating {
 
         let fetchRequest = NSFetchRequest(entityName: Trip.entityName())
         fetchRequest.relationshipKeyPathsForPrefetching = ["inActivity", "inActivity.trip"]
-        fetchRequest.predicate = NSPredicate(format:"title BEGINSWITH[c] %@", searchBarText)
+        fetchRequest.predicate = NSPredicate(format:"title CONTAINS[c] %@", searchBarText)
         let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { (asynchronousFetchResult) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if let trips = asynchronousFetchResult.finalResult {
