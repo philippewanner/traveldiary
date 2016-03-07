@@ -14,5 +14,6 @@ class SampleDataLoader: BaseSampleDataLoader{
     func loadSampleDataIfNotExists() {
         ExampleTripDataBuilder(tripTitle: "An Example Trip", managedObjectContext: self.context).buildAndSaveIfNotExists()
         AustraliaTripDataLoader(tripTitle: "Australia", managedObjectContext: self.context).buildAndSaveIfNotExists()
+        SouthAmericaTripLoader(tripTitle: "America del Sur", managedObjectContext: self.context).buildAndSaveIfNotExists()
     }
 }

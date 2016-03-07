@@ -42,6 +42,7 @@
 		D644B9011C73C3A300B2D908 /* NSManagedObject+EntityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D644B9001C73C3A300B2D908 /* NSManagedObject+EntityName.swift */; };
 		D64D30B21C7A0E91009E3740 /* ActivityDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D30B11C7A0E91009E3740 /* ActivityDetailController.swift */; };
 		D65525FB1C8C93A300B74BE1 /* AddChangeLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65525FA1C8C93A300B74BE1 /* AddChangeLocationController.swift */; };
+		D665DC341C8DD986002A77CB /* SouthAmericaTripLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D665DC331C8DD986002A77CB /* SouthAmericaTripLoader.swift */; };
 		D682126F1C78C7490046122E /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D682126E1C78C7490046122E /* ActivityCell.swift */; };
 		D68212711C78DD820046122E /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68212701C78DD810046122E /* ActivityTableViewCell.xib */; };
 		D68212741C78ED220046122E /* CurrentTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D68212721C78ED220046122E /* CurrentTrip.storyboard */; };
@@ -117,6 +118,7 @@
 		D644B9001C73C3A300B2D908 /* NSManagedObject+EntityName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+EntityName.swift"; sourceTree = "<group>"; };
 		D64D30B11C7A0E91009E3740 /* ActivityDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailController.swift; sourceTree = "<group>"; };
 		D65525FA1C8C93A300B74BE1 /* AddChangeLocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddChangeLocationController.swift; sourceTree = "<group>"; };
+		D665DC331C8DD986002A77CB /* SouthAmericaTripLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SouthAmericaTripLoader.swift; sourceTree = "<group>"; };
 		D682126E1C78C7490046122E /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		D68212701C78DD810046122E /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		D68212731C78ED220046122E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CurrentTrip.storyboard; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				7E0DB1811C88DCAF003D6B38 /* BaseTripDataLoader.swift */,
 				7E371AC61C89E04500ECACB9 /* BaseSampleDataLoader.swift */,
 				7E371AC11C89D1CC00ECACB9 /* dataBuilderClasses */,
+				D665DC331C8DD986002A77CB /* SouthAmericaTripLoader.swift */,
 			);
 			name = sampleData;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				D21C68971C8CD105000C264C /* TripSearchDelegate.swift in Sources */,
 				7EC3E5121C8D87EF00BDA035 /* TripEditViewController.swift in Sources */,
 				D682126F1C78C7490046122E /* ActivityCell.swift in Sources */,
+				D665DC341C8DD986002A77CB /* SouthAmericaTripLoader.swift in Sources */,
 				D69E7E881C8D81E300638D7C /* Activity+CoreDataProperties.swift in Sources */,
 				D21C68951C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift in Sources */,
 				D60083BC1C71DC6A00D2E4A4 /* Location.swift in Sources */,
