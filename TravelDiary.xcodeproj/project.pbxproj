@@ -59,6 +59,7 @@
 		D6EF6EE21C68CD03006D098B /* TravelDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6EE11C68CD03006D098B /* TravelDiaryTests.swift */; };
 		D6EF6EED1C68CD03006D098B /* TravelDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6EEC1C68CD03006D098B /* TravelDiaryUITests.swift */; };
 		F08387311C8D79EE00D52107 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08387301C8D79EE00D52107 /* CollectionDataSource.swift */; };
+		F0A2B9B01C8DEE7600709ECF /* PhotosTripsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2B9AF1C8DEE7600709ECF /* PhotosTripsController.swift */; };
 		F0C3695E1C8DB6DB0013D461 /* PhotosLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C3695D1C8DB6DB0013D461 /* PhotosLoading.swift */; };
 		F0C369621C8DCA550013D461 /* PhotosAllController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C369611C8DCA550013D461 /* PhotosAllController.swift */; };
 		F0DA6C101C68CFF3007753F8 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0DA6C0E1C68CFF3007753F8 /* DataModel.xcdatamodeld */; };
@@ -140,6 +141,7 @@
 		D6EF6EEC1C68CD03006D098B /* TravelDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDiaryUITests.swift; sourceTree = "<group>"; };
 		D6EF6EEE1C68CD03006D098B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F08387301C8D79EE00D52107 /* CollectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionDataSource.swift; sourceTree = "<group>"; };
+		F0A2B9AF1C8DEE7600709ECF /* PhotosTripsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTripsController.swift; sourceTree = "<group>"; };
 		F0C3695D1C8DB6DB0013D461 /* PhotosLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosLoading.swift; sourceTree = "<group>"; };
 		F0C369611C8DCA550013D461 /* PhotosAllController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosAllController.swift; sourceTree = "<group>"; };
 		F0DA6C0F1C68CFF3007753F8 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				D274EC651C70B3A5000AA29D /* PhotosController.swift */,
 				F08387301C8D79EE00D52107 /* CollectionDataSource.swift */,
 				F0C369611C8DCA550013D461 /* PhotosAllController.swift */,
+				F0A2B9AF1C8DEE7600709ECF /* PhotosTripsController.swift */,
 			);
 			name = photo;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				7E0DB1821C88DCAF003D6B38 /* BaseTripDataLoader.swift in Sources */,
 				D21C68971C8CD105000C264C /* TripSearchDelegate.swift in Sources */,
 				7EC3E5121C8D87EF00BDA035 /* TripEditViewController.swift in Sources */,
+				F0A2B9B01C8DEE7600709ECF /* PhotosTripsController.swift in Sources */,
 				D682126F1C78C7490046122E /* ActivityCell.swift in Sources */,
 				D69E7E881C8D81E300638D7C /* Activity+CoreDataProperties.swift in Sources */,
 				D21C68951C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift in Sources */,
