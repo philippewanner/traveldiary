@@ -17,7 +17,7 @@ class LocationBuilder: BaseBuilder{
     private var latitude: NSNumber?
     private var longitude: NSNumber?
     private var name: String?
-    private var inActivity: NSManagedObject?
+    private var inActivity: Activity?
     private var photos: NSSet?
     
     func build() -> Location {
@@ -37,7 +37,7 @@ class LocationBuilder: BaseBuilder{
         return self
     }
     
-    func with(inActivity inActivity: NSManagedObject) -> LocationBuilder {
+    func with(inActivity inActivity: Activity) -> LocationBuilder {
         self.inActivity = inActivity
         return self
     }

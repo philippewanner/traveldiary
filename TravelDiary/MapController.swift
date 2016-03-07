@@ -141,7 +141,7 @@ extension MapController : MKMapViewDelegate {
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         let imageView = view.detailCalloutAccessoryView as! UIImageView
-                        imageView.image = UIImage(data: imageData)
+                        imageView.image = UIImage(data: imageData!)
                         imageView.frame = Constants.CalloutImageFrame
                     }
                 }

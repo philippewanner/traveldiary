@@ -12,11 +12,13 @@ class ActivityBuilder: BaseBuilder{
     
     private var description: String?
     private var date: NSDate = NSDate()
+    private var title: String?
     
     func build() -> Activity{
         let activity = Activity(managedObjectContext: managedObjectContext)
         activity.descr = self.description
         activity.date = self.date
+        activity.title = self.title
         return activity
     }
     
@@ -27,6 +29,11 @@ class ActivityBuilder: BaseBuilder{
     
     func with(date date: NSDate) -> ActivityBuilder{
         self.date = date
+        return self
+    }
+    
+    func with(title title: String) -> ActivityBuilder{
+        self.title = title
         return self
     }
 }

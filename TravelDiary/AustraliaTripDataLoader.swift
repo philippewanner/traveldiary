@@ -16,7 +16,10 @@ class AustraliaTripDataLoader: BaseTripDataLoader{
     }
     
     private func createActivityDownUnder(){
-        let australia = activityBuilder.with(description: "Another trip far far away").build()
+        let australia = activityBuilder
+            .with(description: "Ausflug zum Uluru, Olga's, Kings canyon")
+            .with(title: "Outback")
+            .build()
         self.currentLocation = locationBuilder
             .with(longitude: -102.0539401)
             .with(latitude: -99.0553441)
