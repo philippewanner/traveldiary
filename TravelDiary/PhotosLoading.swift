@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 
 
-extension PhotosController {
+extension PhotosAllController {
     
     /**
      Load all images saved by Core Data
