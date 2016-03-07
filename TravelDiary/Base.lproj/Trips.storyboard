@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Trips Overview-->
@@ -19,7 +18,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SqV-ZE-QAY" id="fYY-k3-dGZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -59,7 +58,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8VW-Ru-gfa" id="TeQ-bS-WYQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="92"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="91.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -73,15 +72,12 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Trips" image="second" id="NJ2-k1-Xpb"/>
-                    <navigationItem key="navigationItem" title="Title" id="Qel-9j-LQo">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Item" id="Dkt-CC-QBB"/>
-                            <barButtonItem title="Add" id="l3O-1F-PP2">
-                                <connections>
-                                    <segue destination="yrz-ZJ-fkE" kind="presentation" id="2K3-fM-IJ1"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                    <navigationItem key="navigationItem" title="Title" id="Qel-9j-LQo" userLabel="Navigation Bar">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="l3O-1F-PP2">
+                            <connections>
+                                <segue destination="yrz-ZJ-fkE" kind="presentation" id="2K3-fM-IJ1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Peb-hy-mpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
