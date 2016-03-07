@@ -20,6 +20,8 @@
 		7E371AC51C89DC7100ECACB9 /* AustraliaTripDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E371AC41C89DC7100ECACB9 /* AustraliaTripDataLoader.swift */; };
 		7E371AC71C89E04500ECACB9 /* BaseSampleDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E371AC61C89E04500ECACB9 /* BaseSampleDataLoader.swift */; };
 		7EB3514B1C82048300323D5E /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3514A1C82048300323D5E /* TripsTableViewController.swift */; };
+		7EC3E50E1C8D804300BDA035 /* TripEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EC3E50D1C8D804300BDA035 /* TripEdit.storyboard */; };
+		7EC3E5121C8D87EF00BDA035 /* TripEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC3E5111C8D87EF00BDA035 /* TripEditViewController.swift */; };
 		7EFA1F211C887C560063CC48 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA1F1E1C887C560063CC48 /* CollectionViewCell.swift */; };
 		7EFA1F221C887C560063CC48 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA1F1F1C887C560063CC48 /* ImageViewController.swift */; };
 		7EFA1F231C887C560063CC48 /* TripSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA1F201C887C560063CC48 /* TripSearchController.swift */; };
@@ -90,6 +92,8 @@
 		7E371AC41C89DC7100ECACB9 /* AustraliaTripDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AustraliaTripDataLoader.swift; sourceTree = "<group>"; };
 		7E371AC61C89E04500ECACB9 /* BaseSampleDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSampleDataLoader.swift; sourceTree = "<group>"; };
 		7EB3514A1C82048300323D5E /* TripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
+		7EC3E50D1C8D804300BDA035 /* TripEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TripEdit.storyboard; sourceTree = "<group>"; };
+		7EC3E5111C8D87EF00BDA035 /* TripEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripEditViewController.swift; sourceTree = "<group>"; };
 		7EFA1F1E1C887C560063CC48 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		7EFA1F1F1C887C560063CC48 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		7EFA1F201C887C560063CC48 /* TripSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSearchController.swift; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 				7E0DB1781C88A78B003D6B38 /* TripTableViewCell.xib */,
 				7EB3514A1C82048300323D5E /* TripsTableViewController.swift */,
 				7E0DB17A1C88A891003D6B38 /* TripTableViewCell.swift */,
+				7EC3E50D1C8D804300BDA035 /* TripEdit.storyboard */,
+				7EC3E5111C8D87EF00BDA035 /* TripEditViewController.swift */,
 			);
 			name = trips;
 			sourceTree = "<group>";
@@ -433,6 +439,7 @@
 				D6EF6ED71C68CD03006D098B /* LaunchScreen.storyboard in Resources */,
 				D274EC701C70B65D000AA29D /* Map.storyboard in Resources */,
 				D6EF6ED41C68CD03006D098B /* Assets.xcassets in Resources */,
+				7EC3E50E1C8D804300BDA035 /* TripEdit.storyboard in Resources */,
 				D274EC691C70B484000AA29D /* Photos.storyboard in Resources */,
 				D68212711C78DD820046122E /* ActivityTableViewCell.xib in Resources */,
 				D6EF6ED21C68CD03006D098B /* Main.storyboard in Resources */,
@@ -481,6 +488,7 @@
 				7E371AC51C89DC7100ECACB9 /* AustraliaTripDataLoader.swift in Sources */,
 				7E0DB1821C88DCAF003D6B38 /* BaseTripDataLoader.swift in Sources */,
 				D21C68971C8CD105000C264C /* TripSearchDelegate.swift in Sources */,
+				7EC3E5121C8D87EF00BDA035 /* TripEditViewController.swift in Sources */,
 				D682126F1C78C7490046122E /* ActivityCell.swift in Sources */,
 				D21C68951C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift in Sources */,
 				D60083BC1C71DC6A00D2E4A4 /* Location.swift in Sources */,

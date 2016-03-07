@@ -78,11 +78,14 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Trips" image="second" id="NJ2-k1-Xpb"/>
                     <navigationItem key="navigationItem" title="Title" id="Qel-9j-LQo" userLabel="Navigation Bar">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="l3O-1F-PP2">
-                            <connections>
-                                <segue destination="yrz-ZJ-fkE" kind="presentation" id="2K3-fM-IJ1"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Edit" id="ej8-fs-RjJ" userLabel="Edit"/>
+                            <barButtonItem title="Add" id="l3O-1F-PP2">
+                                <connections>
+                                    <segue destination="yrz-ZJ-fkE" kind="presentation" id="2K3-fM-IJ1"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Peb-hy-mpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
