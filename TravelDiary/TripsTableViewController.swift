@@ -6,22 +6,24 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var navigationBar: UINavigationItem!
     
-    private let tripTableViewCellNibName = "TripTableViewCell"
-    private let cellReuseIdentifier = "reuseTripTableViewCell"
-    private let localeIdentifier = "de_CH"
-    private let sortKey = "startDate"
-    private let sortAscending = true
-    private let dateFormatter = NSDateFormatter()
     
+    private struct Constants {
+        static let tripTableViewCellNibName = "TripTableViewCell"
+        static let cellReuseIdentifier = "reuseTripTableViewCell"
+        static let localeIdentifier = "de_CH"
+        static let sortKey = "startDate"
+        static let sortAscending = true
+    }
+    
+    private let dateFormatter = NSDateFormatter()
     private var fetchedResultsController:NSFetchedResultsController!
     private let SegueCurrentTripController = "showCurrentTripSegue"
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.rightBarButtonItem = self.addButton
         
-        self.registerNibFile(tripTableViewCellNibName)
+        self.registerNibFile(Constants.tripTableViewCellNibName)
         
         self.initializeTableViewColor()
         self.initializeDateFormatter()
@@ -54,7 +56,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let tripCell: TripTableViewCell = self.tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! TripTableViewCell
+        let tripCell: TripTableViewCell = self.tableView.dequeueReusableCellWithIdentifier(Constants.cellReuseIdentifier) as! TripTableViewCell
         let currentTrip = fetchedResultsController.objectAtIndexPath(indexPath) as! Trip
         
         tripCell.tripTitle.text = getTripTitle(currentTrip)
@@ -117,7 +119,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     }
     
     private func initializeDateFormatter() {
-        dateFormatter.locale = NSLocale(localeIdentifier: localeIdentifier)
+        dateFormatter.locale = NSLocale(localeIdentifier: Constants.localeIdentifier)
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
     }
     
@@ -133,9 +135,9 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     
     private func registerNibFile(nibName: String){
         let nib = UINib(nibName: nibName, bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.registerNib(nib, forCellReuseIdentifier: Constants.cellReuseIdentifier)
         
-        NSLog("nib file registered: " + tripTableViewCellNibName)
+        NSLog("nib file registered: " + Constants.tripTableViewCellNibName)
     }
     
     private func initializeFetchedResultsController(){
@@ -143,7 +145,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
         let fetchRequest = NSFetchRequest(entityName: Trip.entityName())
         
         // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: sortKey, ascending: sortAscending)
+        let sortDescriptor = NSSortDescriptor(key: Constants.sortKey, ascending: Constants.sortAscending)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         // Initialize Fetched Results Controller
