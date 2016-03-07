@@ -24,13 +24,23 @@
                                     <segue destination="NeM-YK-NzX" kind="embed" identifier="showAllPhotos" id="nvK-Y3-pQz"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgQ-O6-b8a">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <connections>
+                                    <segue destination="f4h-Vk-aJ9" kind="embed" id="puW-5N-jbb"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="hgQ-O6-b8a" firstAttribute="top" secondItem="G2t-pJ-Bbz" secondAttribute="top" id="7Dp-Zw-Wb1"/>
                             <constraint firstItem="G2t-pJ-Bbz" firstAttribute="leading" secondItem="n0h-qW-Jja" secondAttribute="leading" id="AEl-lP-yCv"/>
                             <constraint firstAttribute="trailing" secondItem="G2t-pJ-Bbz" secondAttribute="trailing" id="P2O-29-hv7"/>
+                            <constraint firstItem="hgQ-O6-b8a" firstAttribute="trailing" secondItem="G2t-pJ-Bbz" secondAttribute="trailing" id="VJ1-QH-qeC"/>
                             <constraint firstItem="G2t-pJ-Bbz" firstAttribute="bottom" secondItem="ifK-rP-NA0" secondAttribute="top" id="XWt-M8-Ztz"/>
                             <constraint firstItem="G2t-pJ-Bbz" firstAttribute="top" secondItem="n0h-qW-Jja" secondAttribute="top" id="dpL-LN-KiZ"/>
+                            <constraint firstItem="hgQ-O6-b8a" firstAttribute="bottom" secondItem="ifK-rP-NA0" secondAttribute="top" id="hGC-lh-Fw9"/>
+                            <constraint firstItem="hgQ-O6-b8a" firstAttribute="leading" secondItem="G2t-pJ-Bbz" secondAttribute="leading" id="uR3-c2-5MG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="l3X-dB-LEe">
@@ -42,9 +52,17 @@
                                 <segment title="All"/>
                                 <segment title="Trips"/>
                             </segments>
+                            <connections>
+                                <action selector="photosViewChanged:" destination="NrB-HY-KCW" eventType="valueChanged" id="Pgs-84-3wy"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="allPhotosView" destination="G2t-pJ-Bbz" id="sCc-F3-PuG"/>
+                        <outlet property="segmentedControl" destination="Gb3-Qc-4S6" id="d35-lb-zt3"/>
+                        <outlet property="tripsPhotosView" destination="hgQ-O6-b8a" id="bDi-Vz-zAg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Yo-Hu-004" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,6 +123,10 @@
         <scene sceneID="pre-m4-JJt">
             <objects>
                 <viewController id="NeM-YK-NzX" customClass="PhotosAllController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bZT-z9-Bb9"/>
+                        <viewControllerLayoutGuide type="bottom" id="xEk-Bl-KCl"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cdR-8Y-IqC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,6 +213,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V9r-hS-yef" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1401" y="1039.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="4dR-9G-Ztv">
+            <objects>
+                <viewController id="f4h-Vk-aJ9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AOl-OM-NeN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e79-WV-wkj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2215" y="204.5"/>
         </scene>
     </scenes>
     <resources>
