@@ -72,7 +72,17 @@
                             <constraint firstItem="eUD-hH-te5" firstAttribute="top" secondItem="n0h-qW-Jja" secondAttribute="top" id="QHa-hg-NQT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="l3X-dB-LEe"/>
+                    <navigationItem key="navigationItem" id="l3X-dB-LEe">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Gb3-Qc-4S6">
+                            <rect key="frame" x="230.5" y="7" width="139" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="All"/>
+                                <segment title="Trips"/>
+                            </segments>
+                        </segmentedControl>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="eUD-hH-te5" id="oBa-A7-gcX"/>
@@ -115,11 +125,11 @@
             </objects>
             <point key="canvasLocation" x="2119" y="205"/>
         </scene>
-        <!--Photos-->
+        <!--Gallery-->
         <scene sceneID="vEM-dg-sSb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WID-iT-h8S" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Photos" image="first" id="Xgy-cA-b3N"/>
+                    <tabBarItem key="tabBarItem" title="Gallery" image="first" id="Xgy-cA-b3N"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x6U-tO-Au8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
