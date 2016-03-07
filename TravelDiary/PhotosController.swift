@@ -9,22 +9,25 @@
 import UIKit
 import CoreData
 
-class PhotosController: UIViewController, UICollectionViewDelegate, NSFetchedResultsControllerDelegate {
+class PhotosController: UIViewController, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var fetchedResultsController:NSFetchedResultsController!
     // Data Source for UICollectionView
     var collectionViewDataSource = CollectionDataSource()
     
+    // Core Data managed context
+    var managedContext : NSManagedObjectContext?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NSLog("wiewDidLoad")
+        // setup Core Data context
+        coreDataSetup()
+        // load photos in memory
+        loadPhotos()
+        // Attached the data source to the collection view
         collectionView.dataSource = collectionViewDataSource
-        
-        self.initializeFetchedResultsController()
-        
-        self.fetchTripsData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,10 +48,10 @@ class PhotosController: UIViewController, UICollectionViewDelegate, NSFetchedRes
             let controller = segue.destinationViewController as! ImageViewController
             
             //Set the image in the ImageViewController to the selected item in the collection view
-            controller.image = self.collectionViewDataSource.images[indexPath.row]!
+            controller.image = self.collectionViewDataSource.data[indexPath.row].image
             
             //Set the title of this image depending of the selected item in the collection view
-            controller.title = self.collectionViewDataSource.titles[indexPath.row]
+            controller.title = self.collectionViewDataSource.data[indexPath.row].title
         }
     }
     
@@ -58,30 +61,22 @@ class PhotosController: UIViewController, UICollectionViewDelegate, NSFetchedRes
         self.performSegueWithIdentifier("showImage", sender: self)
     }
     
-    private func fetchTripsData() {
-        do {
-            try fetchedResultsController.performFetch()
-            NSLog("data fetching successfully accomplished")
-        } catch {
-            let fetchError = error as NSError
-            NSLog("\(fetchError), \(fetchError.userInfo)")
+    func loadPhotos(){
+        
+        NSLog("loadPhotos")
+        // loadCoreDataImages fct with a completion block
+        loadCoreDataImages { (images) -> Void in
+            NSLog("loadCoreDataImages in")
+            if let images = images {
+                
+                self.collectionViewDataSource.data += images.map { return (image:$0.image ?? UIImage(),title:$0.title ?? "") }
+                
+                NSLog("start dataSource:%d", self.collectionViewDataSource.data.count)
+
+            } else {
+                self.noImagesFound()
+            }
         }
     }
-    
-    private func initializeFetchedResultsController(){
-        // Initialize Fetch Request
-        let fetchRequest = NSFetchRequest(entityName: Trip.entityName())
-        
-        // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        // Initialize Fetched Results Controller
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        // Configure Fetched Results Controller
-        fetchedResultsController.delegate = self
-    }
-    
 }
 
