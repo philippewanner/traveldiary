@@ -33,7 +33,7 @@ class ExampleTripDataBuilder: BaseTripDataLoader{
         
         let imgMachu = UIImage(named: "machu_picchu")
         let compressionQuality = CGFloat(1.0)
-        photoBuilder.with(title: "Machu Picchu Photo, so wunderbar")
+        photoBuilder.with(title: "Machu Picchu, so wunderbar")
             .with(location: self.currentLocation!)
             .with(inActivity: machuPicchu)
             .with(trip: trip)
