@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CurrentTripController: UITableViewController, NSFetchedResultsControllerDelegate{
+class CurrentTripController: UITableViewController{
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -44,28 +44,6 @@ class CurrentTripController: UITableViewController, NSFetchedResultsControllerDe
         
     }
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.beginUpdates()
-    }
-    
-    
-    func controller(controller: NSFetchedResultsController, didChangeObject object: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-            switch type {
-            case .Insert:
-                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-            case .Update:
-                self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            case .Move:
-                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-            case .Delete:
-                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            }
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.endUpdates()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,7 +115,9 @@ class CurrentTripController: UITableViewController, NSFetchedResultsControllerDe
         }
     }
     
-    // Override to support editing the table view.
+    /*!
+        Override to support editing the table view.
+    */
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
@@ -160,5 +140,30 @@ class CurrentTripController: UITableViewController, NSFetchedResultsControllerDe
             currentTrip?.addActitiesObject(activityToSave!)
             saveContext()
         }
+    }
+}
+
+//MARK: - NSFetchedResultsControllerDelegate
+extension CurrentTripController: NSFetchedResultsControllerDelegate{
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject object: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type {
+        case .Insert:
+            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+        case .Update:
+            self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+        case .Move:
+            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+        case .Delete:
+            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+        }
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.endUpdates()
     }
 }
