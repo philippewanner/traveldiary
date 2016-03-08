@@ -132,10 +132,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eUD-hH-te5">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="497"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="497" id="Whg-g3-VDs"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EfU-Fc-iUk">
                                     <size key="itemSize" width="180" height="140"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -184,25 +181,39 @@
                                     <outlet property="delegate" destination="NeM-YK-NzX" id="gFx-xQ-5xG"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CT7-Sg-39Y">
-                                <rect key="frame" x="20" y="521" width="560" height="30"/>
+                            <label userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CT7-Sg-39Y">
+                                <rect key="frame" x="0.0" y="521" width="600" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Ojr-mw-MgU"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <color key="textColor" red="0.55939503205128205" green="0.55939503205128205" blue="0.55939503205128205" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="CT7-Sg-39Y" firstAttribute="leading" secondItem="cdR-8Y-IqC" secondAttribute="leadingMargin" id="3ny-gx-8jo"/>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="trailing" secondItem="cdR-8Y-IqC" secondAttribute="trailingMargin" constant="20" id="AiB-Bk-Efb"/>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="leading" secondItem="cdR-8Y-IqC" secondAttribute="leadingMargin" id="DHt-wj-86t"/>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="leading" secondItem="cdR-8Y-IqC" secondAttribute="leadingMargin" id="Foo-tR-oN1"/>
+                            <constraint firstItem="xEk-Bl-KCl" firstAttribute="top" secondItem="CT7-Sg-39Y" secondAttribute="bottom" id="Jo7-3R-sCJ"/>
                             <constraint firstItem="eUD-hH-te5" firstAttribute="top" secondItem="cdR-8Y-IqC" secondAttribute="top" id="U8d-kZ-VRN"/>
                             <constraint firstAttribute="bottom" secondItem="CT7-Sg-39Y" secondAttribute="bottom" id="YBY-Ab-7l7"/>
                             <constraint firstItem="eUD-hH-te5" firstAttribute="leading" secondItem="cdR-8Y-IqC" secondAttribute="leading" id="aIf-IQ-z5R"/>
-                            <constraint firstItem="eUD-hH-te5" firstAttribute="centerX" secondItem="CT7-Sg-39Y" secondAttribute="centerX" id="wdM-Jx-pOX"/>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="top" secondItem="eUD-hH-te5" secondAttribute="bottom" constant="-30" id="bIQ-Pw-QYt"/>
+                            <constraint firstItem="eUD-hH-te5" firstAttribute="leading" secondItem="CT7-Sg-39Y" secondAttribute="leading" id="gDh-J5-vI8"/>
                             <constraint firstAttribute="trailing" secondItem="eUD-hH-te5" secondAttribute="trailing" id="ybz-WZ-rqp"/>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="trailing" secondItem="cdR-8Y-IqC" secondAttribute="trailingMargin" constant="20" id="zM1-uc-RZk"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3ny-gx-8jo"/>
+                                <exclude reference="DHt-wj-86t"/>
+                                <exclude reference="Foo-tR-oN1"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="eUD-hH-te5" id="Xid-s9-Cht"/>
