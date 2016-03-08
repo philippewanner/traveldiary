@@ -32,7 +32,7 @@ class LocationSearchController : UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.ReuseIdentifierCell)!
         let mapItem = mapItemsFound[indexPath.row]
         cell.textLabel?.text = mapItem.name
-        //cell.detailTextLabel?.text = mapItem.
+        cell.detailTextLabel?.text = mapItem.placemark.thoroughfare
         return cell
     }
     

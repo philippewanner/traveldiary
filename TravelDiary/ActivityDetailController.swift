@@ -53,8 +53,10 @@ class ActivityDetailController: UIViewController, UIImagePickerControllerDelegat
     segue which is called when the save button on the ActivityDetailContoller is pressed
     */
     @IBAction func unwindSequeSaveLocation(segue: UIStoryboardSegue){
-        if let addChangeLocationController = segue.sourceViewController as? AddChangeLocationController {
-            _ = addChangeLocationController.newLocation
+        if let selectLocationController = segue.sourceViewController as? ActivitySelectLocationController {
+            let mapItem = selectLocationController.selectedMapItem
+            locationName.text = mapItem?.name
+            selectedActivity?.location?.name = locationName.text
         }
     }
     

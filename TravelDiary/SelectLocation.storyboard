@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Select Location Controller-->
+        <!--Activity Select Location Controller-->
         <scene sceneID="ZxX-Ok-Nh7">
             <objects>
-                <viewController id="bTm-jz-WgZ" customClass="SelectLocationController" customModule="TravelDiary" sceneMemberID="viewController">
+                <viewController id="bTm-jz-WgZ" customClass="ActivitySelectLocationController" customModule="TravelDiary" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HNO-DR-5U9"/>
                         <viewControllerLayoutGuide type="bottom" id="Fj3-QN-GJ1"/>
@@ -30,12 +30,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uKK-Y4-GKJ">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="jQQ-zM-l4H">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jQQ-zM-l4H">
                             <connections>
                                 <segue destination="6Qs-gg-ElJ" kind="unwind" unwindAction="unwindSegueCancelLocation:" id="kdt-Ba-diC"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="JVo-KV-ydQ">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="JVo-KV-ydQ">
                             <connections>
                                 <segue destination="6Qs-gg-ElJ" kind="unwind" unwindAction="unwindSequeSaveLocation:" id="yIX-Cl-RDn"/>
                             </connections>

@@ -12,7 +12,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class SelectLocationController: UIViewController {
+class ActivitySelectLocationController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
@@ -22,8 +22,10 @@ class SelectLocationController: UIViewController {
     
     @IBOutlet weak var toolbar: UIToolbar!
     
+    var selectedMapItem: MKMapItem?
+    
     private let locationManager = CLLocationManager()
-    private var resultSearchController:UISearchController?
+    private var searchController:UISearchController?
     
     private struct Constants {
         static let LocationSearchControllerId = "LocationSearchController"
@@ -38,14 +40,13 @@ class SelectLocationController: UIViewController {
         locationManager.requestLocationAuthorization(self)
         
         let locationSearchController = storyboard!.instantiateViewControllerWithIdentifier(Constants.LocationSearchControllerId) as! LocationSearchController
-        resultSearchController = UISearchController(searchResultsController: locationSearchController)
-        resultSearchController?.searchResultsUpdater = locationSearchController
-        resultSearchController?.hidesNavigationBarDuringPresentation = false
-        resultSearchController?.dimsBackgroundDuringPresentation = true
+        searchController = UISearchController(searchResultsController: locationSearchController)
+        searchController?.searchResultsUpdater = locationSearchController
+        searchController?.hidesNavigationBarDuringPresentation = false
         
-        let searchBar = resultSearchController!.searchBar
-        searchBar.sizeToFit()
+        let searchBar = searchController!.searchBar
         searchBar.placeholder = Constants.SearchBarPlaceholder
+        searchBar.sizeToFit()
         navigationItem.titleView = searchBar
         
         definesPresentationContext = true
@@ -55,10 +56,10 @@ class SelectLocationController: UIViewController {
 }
 
 // MARK: - LocationSearchDelegate
-extension SelectLocationController: LocationSearchDelegate {
+extension ActivitySelectLocationController: LocationSearchDelegate {
     
     func locationFound(mapItem: MKMapItem) {
-        resultSearchController?.searchBar.text = mapItem.name
+        searchController?.searchBar.text = mapItem.name
         mapView.removeAnnotations(mapView.annotations)
         
         let annotation = MKPointAnnotation()
@@ -66,11 +67,13 @@ extension SelectLocationController: LocationSearchDelegate {
         annotation.title = mapItem.placemark.name
         mapView.addAnnotation(annotation)
         mapView.showAnnotations(mapView.annotations, animated: true)
+        
+        selectedMapItem = mapItem
     }
 }
 
 // MARK: - MKMapViewDelegate
-extension SelectLocationController: MKMapViewDelegate {
+extension ActivitySelectLocationController: MKMapViewDelegate {
     
 
 }
