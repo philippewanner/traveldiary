@@ -96,7 +96,7 @@
                                         <rect key="frame" x="20" y="316" width="48" height="30"/>
                                         <state key="normal" title="Search"/>
                                         <connections>
-                                            <segue destination="Awx-66-bMs" kind="presentation" id="M6N-nh-Kkd"/>
+                                            <segue destination="Awx-66-bMs" kind="presentation" identifier="SelectLocation" id="M6N-nh-Kkd"/>
                                         </connections>
                                     </button>
                                 </subviews>

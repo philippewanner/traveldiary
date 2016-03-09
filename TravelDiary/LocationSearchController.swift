@@ -32,8 +32,13 @@ class LocationSearchController : UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.ReuseIdentifierCell)!
         let mapItem = mapItemsFound[indexPath.row]
         cell.textLabel?.text = mapItem.name
-        cell.detailTextLabel?.text = mapItem.placemark.thoroughfare
+        cell.detailTextLabel?.text = formatAddressFromPlacemark(mapItem.placemark)
+        
         return cell
+    }
+    
+    func formatAddressFromPlacemark(placemark: CLPlacemark) -> String {
+        return (placemark.addressDictionary!["FormattedAddressLines"] as! [String]).joinWithSeparator(", ")
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

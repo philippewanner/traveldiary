@@ -7,12 +7,12 @@
 //
 //  Ideas: 
 //  Clustering pins with https://github.com/ribl/FBAnnotationClusteringSwift
-//  Take snapshots of location: http://stackoverflow.com/questions/30793315/customize-mkannotation-callout-view
 //
 
 import UIKit
 import MapKit
 import CoreData
+import ImageIO
 
 class MapController: UIViewController {
 
@@ -92,21 +92,6 @@ class MapController: UIViewController {
     }
 }
 
-// MARK: - LocationAnnotation
-class LocationAnnotation: NSObject, MKAnnotation {
-    let location: Location
-    let title: String?
-    let coordinate: CLLocationCoordinate2D
-    
-    init(location: Location) {
-        self.location = location
-        title = location.name
-        coordinate = CLLocationCoordinate2DMake(
-            CLLocationDegrees(location.latitude!),
-            CLLocationDegrees(location.longitude!))
-    }
-}
-
 // MARK: - MKMapViewDelegate
 extension MapController : MKMapViewDelegate {
     
@@ -172,11 +157,22 @@ extension MapController: TripSearchDelegate {
     
     func tripFound(trip: Trip) {
         resultSearchController?.searchBar.text = trip.title
+        
         mapView.removeAnnotations(mapView.annotations)
         mapView.removeOverlays(mapView.overlays)
+        
         let activities: [Activity] = trip.activities?.allObjects as! [Activity]
-        let locations = activities.flatMap{activity in activity.location}
-        let annotations = locations.map {location in LocationAnnotation(location: location)}
+        let annotations = activities
+            .filter { activity in
+                activity.location?.latitude != nil && activity.location?.longitude != nil}
+            .sort { (activity1, activity2) in
+                let date1 = activity1.date ?? NSDate.distantPast()
+                let date2 = activity2.date ?? NSDate.distantPast()
+                return date1.compare(date2) == .OrderedAscending
+            }
+            .flatMap {activity in activity.location}
+            .map {location in LocationAnnotation(location: location)}
+        
         var coordinates = annotations.flatMap {annotation in annotation.coordinate}
         if annotations.count >= 2 {
             let geodesicPolyline = MKGeodesicPolyline(coordinates: &coordinates, count: annotations.count)

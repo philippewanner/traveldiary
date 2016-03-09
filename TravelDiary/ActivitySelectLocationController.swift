@@ -23,6 +23,7 @@ class ActivitySelectLocationController: UIViewController {
     @IBOutlet weak var toolbar: UIToolbar!
     
     var selectedMapItem: MKMapItem?
+    var initialSearchBarText: String?
     
     private let locationManager = CLLocationManager()
     private var searchController:UISearchController?
@@ -52,6 +53,10 @@ class ActivitySelectLocationController: UIViewController {
         definesPresentationContext = true
         
         locationSearchController.delegate = self
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        searchController?.searchBar.text = initialSearchBarText
     }
 }
 

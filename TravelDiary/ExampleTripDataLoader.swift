@@ -12,9 +12,10 @@ import CoreData;
 class ExampleTripDataBuilder: BaseTripDataLoader{
     
     override func createWholeTripData() {
-        self.createActivityMachuPicchu()
-        self.createActivityCusco()
-        self.createActivityLima()
+        createActivityMachuPicchu()
+        createActivityCusco()
+        createActivityLima()
+        createActivityAre()
     }
     
     private func createActivityMachuPicchu(){
@@ -93,5 +94,27 @@ class ExampleTripDataBuilder: BaseTripDataLoader{
             .build()
         
         self.activities.addObject(cusco)
+    }
+    
+    private func createActivityAre(){
+        let are = activityBuilder
+            .with(description: "orem lipsum larum orem lipsum larum orem lipsum larum orem lipsum larum Lorem lipsum larum glorious text whatever. it is what it is.")
+            .with(title: "Hiking in Arequipa")
+            .build()
+        self.currentLocation = locationBuilder
+            .with(name: "Arequipa")
+            .with(inActivity: are)
+            .with(countryCode: "PE").build()
+        are.location = self.currentLocation
+        
+        let imgCusco = UIImage(named: "cusco_peru")
+        let compressionQuality = CGFloat(1.0)
+        photoBuilder
+            .with(inActivity: are)
+            .with(trip: trip)
+            .with(imageData: UIImageJPEGRepresentation(imgCusco!, compressionQuality)!)
+            .build()
+        
+        self.activities.addObject(are)
     }
 }

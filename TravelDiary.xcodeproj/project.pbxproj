@@ -27,6 +27,7 @@
 		7EFA1F231C887C560063CC48 /* TripSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA1F201C887C560063CC48 /* TripSearchController.swift */; };
 		D21C68951C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C68941C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift */; };
 		D21C68971C8CD105000C264C /* TripSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C68961C8CD105000C264C /* TripSearchDelegate.swift */; };
+		D2519C611C90B57F005B2F68 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2519C601C90B57F005B2F68 /* LocationAnnotation.swift */; };
 		D25734051C8DA57F0017B94E /* SelectLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D25734041C8DA57F0017B94E /* SelectLocation.storyboard */; };
 		D25734091C8DCCFC0017B94E /* LocationSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25734081C8DCCFC0017B94E /* LocationSearchController.swift */; };
 		D257340D1C8DD0F80017B94E /* LocationSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D257340C1C8DD0F80017B94E /* LocationSearchDelegate.swift */; };
@@ -107,6 +108,7 @@
 		7EFA1F201C887C560063CC48 /* TripSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSearchController.swift; sourceTree = "<group>"; };
 		D21C68941C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+RequestAuthorization.swift"; sourceTree = "<group>"; };
 		D21C68961C8CD105000C264C /* TripSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSearchDelegate.swift; sourceTree = "<group>"; };
+		D2519C601C90B57F005B2F68 /* LocationAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		D25734041C8DA57F0017B94E /* SelectLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectLocation.storyboard; sourceTree = "<group>"; };
 		D25734081C8DCCFC0017B94E /* LocationSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchController.swift; sourceTree = "<group>"; };
 		D257340C1C8DD0F80017B94E /* LocationSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				D274EC6F1C70B65D000AA29D /* Map.storyboard */,
 				D274EC6A1C70B552000AA29D /* MapController.swift */,
 				D21C68961C8CD105000C264C /* TripSearchDelegate.swift */,
+				D2519C601C90B57F005B2F68 /* LocationAnnotation.swift */,
 			);
 			name = map;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				7E371ABD1C88E76700ECACB9 /* PhotoBuilder.swift in Sources */,
 				F0C3695E1C8DB6DB0013D461 /* PhotosLoading.swift in Sources */,
 				7E0DB1841C88DF47003D6B38 /* BaseBuilder.swift in Sources */,
+				D2519C611C90B57F005B2F68 /* LocationAnnotation.swift in Sources */,
 				7E371AC51C89DC7100ECACB9 /* AustraliaTripDataLoader.swift in Sources */,
 				7E0DB1821C88DCAF003D6B38 /* BaseTripDataLoader.swift in Sources */,
 				D21C68971C8CD105000C264C /* TripSearchDelegate.swift in Sources */,

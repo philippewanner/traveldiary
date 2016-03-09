@@ -35,12 +35,16 @@ class ActivityDetailController: UIViewController, UIImagePickerControllerDelegat
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "SaveActivity"{
+        if segue.identifier == "SaveActivity" {
             if selectedActivity == nil{
                 selectedActivity = Activity(managedObjectContext: self.managedObjectContext)
             }
             selectedActivity?.descr = activityDescription.text
             selectedActivity?.date = activityDate.date
+        } else if segue.identifier == "SelectLocation" {
+            let navController = segue.destinationViewController as! UINavigationController
+            let selectLocationController = navController.topViewController as!ActivitySelectLocationController
+            selectLocationController.initialSearchBarText = locationName.text
         }
     }
     
@@ -55,8 +59,11 @@ class ActivityDetailController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func unwindSequeSaveLocation(segue: UIStoryboardSegue){
         if let selectLocationController = segue.sourceViewController as? ActivitySelectLocationController {
             let mapItem = selectLocationController.selectedMapItem
+            let coordinate = mapItem?.placemark.location?.coordinate
             locationName.text = mapItem?.name
             selectedActivity?.location?.name = locationName.text
+            selectedActivity?.location?.longitude = coordinate?.longitude
+            selectedActivity?.location?.latitude = coordinate?.latitude
         }
     }
     
