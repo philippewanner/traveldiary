@@ -13,11 +13,11 @@ class TripPhotoDataSource: NSObject, UITableViewDataSource {
     
     var categories = ["cat 1", "cat 2", "cat 3", "cat 4", "cat 5", "cat 6"]
     
-    var data : [(image:UIImage, title: String)] = []
+    var data : [(image:UIImage, tripTitle: String)] = []
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         //Number of row in the table view cell.
-        return categories.count
+        return data.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,7 +26,7 @@ class TripPhotoDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return categories[section]
+        return data[section].tripTitle
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

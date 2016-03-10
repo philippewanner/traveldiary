@@ -45,7 +45,7 @@ class TripPhotosController: UIViewController  {
             NSLog("loadCoreDataImages in")
             if let images = images {
                 
-                self.tripPhotosDataSource.data += images.map { return (image:$0.image ?? UIImage(),title:$0.title ?? "") }
+                self.tripPhotosDataSource.data += images.map { return (image:$0.image ?? UIImage(),tripTitle:$0.trip?.title ?? "") }
                 
                 NSLog("start dataSource:%d", self.tripPhotosDataSource.data.count)
                 
