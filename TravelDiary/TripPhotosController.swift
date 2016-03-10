@@ -27,7 +27,7 @@ class TripPhotosController: UIViewController  {
         // setup Core Data context
         coreDataSetup()
         // load photos in memory
-        loadPhotos()
+        loadData()
         // Attached the data source to the collection view
         tableView.dataSource = tripPhotosDataSource
     }
@@ -37,15 +37,20 @@ class TripPhotosController: UIViewController  {
         // Dispose of any resources that can be recreated.
     }
     
-    func loadPhotos(){
+    func loadData(){
         
-        NSLog("loadPhotos")
+        NSLog("loadData")
         // loadCoreDataImages fct with a completion block
         loadCoreDataImages { (images) -> Void in
             NSLog("loadCoreDataImages in")
             if let images = images {
                 
-                self.tripPhotosDataSource.data += images.map { return (image:$0.image ?? UIImage(),tripTitle:$0.trip?.title ?? "") }
+                self.tripPhotosDataSource.data += images.map {
+                    return (image:$0.image ?? UIImage(), title: $0.title ?? "", tripTitle:$0.trip?.title ?? "")
+                }
+                
+                let s = images.map { val -> String in val.trip?.title ?? "" }
+                self.tripPhotosDataSource.tripTitles = Set(s)
                 
                 NSLog("start dataSource:%d", self.tripPhotosDataSource.data.count)
                 
