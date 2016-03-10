@@ -11,62 +11,53 @@ import UIKit
 class ActivityDetailController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var selectedActivity: Activity?
-    private let dateFormatter = NSDateFormatter()
     
     @IBOutlet weak var image: UIImageView!
-    
     @IBOutlet weak var activityDescription: UITextField!
-  
     @IBOutlet weak var activityDate: UIDatePicker!
-    
     @IBOutlet weak var locationName: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        dateFormatter.locale = NSLocale.currentLocale()
-        
-        if selectedActivity != nil {
-            dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
-            activityDescription.text = selectedActivity?.descr
-            activityDate.date = (selectedActivity?.date)!
-            locationName.text = selectedActivity?.location?.name
-            locationName.userInteractionEnabled = false
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let selectedActivity = selectedActivity {
+            activityDescription.text = selectedActivity.descr
+            activityDate.date = selectedActivity.date!
+            locationName.text = selectedActivity.location?.name
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SaveActivity" {
-            if selectedActivity == nil{
-                selectedActivity = Activity(managedObjectContext: self.managedObjectContext)
-            }
+            selectedActivity = selectedActivity ?? Activity(managedObjectContext: self.managedObjectContext)
             selectedActivity?.descr = activityDescription.text
             selectedActivity?.date = activityDate.date
+            if locationName.text == nil {
+                selectedActivity?.location = nil
+            }
         } else if segue.identifier == "SelectLocation" {
             let navController = segue.destinationViewController as! UINavigationController
             let selectLocationController = navController.topViewController as!ActivitySelectLocationController
-            selectLocationController.initialSearchBarText = locationName.text
+            selectLocationController.selectedLocation = selectedActivity?.location
         }
     }
     
     /*!
-    segue which is called when the cancel button on the AddChangeLocationController is called
+    segue which is called when the cancel button on the  modal map view is pressed
     */
-    @IBAction func unwindSegueCancelLocation(segue:UIStoryboardSegue) {}
+    @IBAction func unwindSegueCancelLocation(segue:UIStoryboardSegue) {
+    }
     
     /*!
-    segue which is called when the save button on the ActivityDetailContoller is pressed
+    segue which is called when the save button on the modal map view is pressed
     */
     @IBAction func unwindSequeSaveLocation(segue: UIStoryboardSegue){
         if let selectLocationController = segue.sourceViewController as? ActivitySelectLocationController {
-            let mapItem = selectLocationController.selectedMapItem
-            let coordinate = mapItem?.placemark.location?.coordinate
-            locationName.text = mapItem?.name
-            selectedActivity?.location?.name = locationName.text
-            selectedActivity?.location?.longitude = coordinate?.longitude
-            selectedActivity?.location?.latitude = coordinate?.latitude
+            selectedActivity?.location = selectLocationController.selectedLocation
         }
     }
-    
+
+}
+
   
 //    @IBAction func takePicture(sender: UIButton) {
 //        let picker = UIImagePickerController()
@@ -81,4 +72,4 @@ class ActivityDetailController: UIViewController, UIImagePickerControllerDelegat
 //        image.image = info [UIImagePickerControllerOriginalImage] as? UIImage;
 //        dismissViewControllerAnimated(true, completion: nil)
 //    }
-}
+

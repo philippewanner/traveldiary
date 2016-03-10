@@ -14,24 +14,16 @@ import MapKit
 
 class ActivitySelectLocationController: UIViewController {
     
-    @IBOutlet weak var mapView: MKMapView! {
-        didSet {
-            mapView.delegate = self
-        }
-    }
-    
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var toolbar: UIToolbar!
     
-    var selectedMapItem: MKMapItem?
-    var initialSearchBarText: String?
+    var selectedLocation: Location?
     
     private let locationManager = CLLocationManager()
     private var searchController:UISearchController?
     
     private struct Constants {
         static let LocationSearchControllerId = "LocationSearchController"
-        static let CalloutImageFrame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        static let SearchBarPlaceholder = "Search for places"
     }
     
     override func viewDidLoad() {
@@ -39,6 +31,7 @@ class ActivitySelectLocationController: UIViewController {
         
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestLocationAuthorization(self)
+        locationManager.delegate = self
         
         let locationSearchController = storyboard!.instantiateViewControllerWithIdentifier(Constants.LocationSearchControllerId) as! LocationSearchController
         searchController = UISearchController(searchResultsController: locationSearchController)
@@ -46,9 +39,11 @@ class ActivitySelectLocationController: UIViewController {
         searchController?.hidesNavigationBarDuringPresentation = false
         
         let searchBar = searchController!.searchBar
-        searchBar.placeholder = Constants.SearchBarPlaceholder
+        searchBar.showsCancelButton = false
         searchBar.sizeToFit()
         navigationItem.titleView = searchBar
+        let trackingBarButton = MKUserTrackingBarButtonItem(mapView: mapView)
+        navigationItem.rightBarButtonItems?.append(trackingBarButton)
         
         definesPresentationContext = true
         
@@ -56,7 +51,55 @@ class ActivitySelectLocationController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        searchController?.searchBar.text = initialSearchBarText
+        super.viewDidAppear(animated)
+        if let location = selectedLocation {
+            showLocation(location)
+        } else {
+            locationManager.requestLocation()
+        }
+    }
+    
+    func showLocation(location: Location) {
+        mapView.removeAnnotations(mapView.annotations)
+        searchController?.searchBar.text = location.name
+        if location.hasCoordinates() {
+            let annotation = LocationAnnotation(location: location)
+            mapView.addAnnotation(annotation)
+            mapView.selectAnnotation(annotation, animated: true)
+        }
+    }
+    
+    func setLocationFrom(placemark placemark: MKPlacemark) -> Location {
+        let location = selectedLocation ?? Location(managedObjectContext: managedObjectContext)
+        location.name = placemark.name
+        location.latitude = placemark.coordinate.latitude
+        location.longitude = placemark.coordinate.longitude
+        location.address = placemark.thoroughfare
+        location.countryCode = placemark.countryCode
+        return location
+    }
+}
+
+// MARK: - LocationSearchDelegate
+extension ActivitySelectLocationController: CLLocationManagerDelegate {
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let currentLocation = locations.first {
+            CLGeocoder().reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) -> Void in
+                if let error = error {
+                    print("Reverse geocoder failed with error" + error.localizedDescription)
+                    return
+                }
+                if let placemarks = placemarks {
+                    if placemarks.count > 0 {
+                        let placemark = placemarks[0]
+                        self.setLocationFrom(placemark: MKPlacemark(placemark: placemark))
+                    } else {
+                        print("Problem with the data received from geocoder")
+                    }
+                }
+        })
+        }
     }
 }
 
@@ -64,21 +107,8 @@ class ActivitySelectLocationController: UIViewController {
 extension ActivitySelectLocationController: LocationSearchDelegate {
     
     func locationFound(mapItem: MKMapItem) {
-        searchController?.searchBar.text = mapItem.name
-        mapView.removeAnnotations(mapView.annotations)
-        
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = mapItem.placemark.coordinate
-        annotation.title = mapItem.placemark.name
-        mapView.addAnnotation(annotation)
-        mapView.showAnnotations(mapView.annotations, animated: true)
-        
-        selectedMapItem = mapItem
+        let location = setLocationFrom(placemark: mapItem.placemark)
+        showLocation(location)
     }
 }
 
-// MARK: - MKMapViewDelegate
-extension ActivitySelectLocationController: MKMapViewDelegate {
-    
-
-}
