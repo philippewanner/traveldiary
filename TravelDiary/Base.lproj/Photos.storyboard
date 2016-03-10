@@ -27,7 +27,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgQ-O6-b8a">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <connections>
-                                    <segue destination="8Su-nS-cZa" kind="embed" id="f1d-vf-gVo"/>
+                                    <segue destination="skA-bI-75l" kind="embed" id="Ied-fJ-ipa"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -61,7 +61,7 @@
                     <connections>
                         <outlet property="allPhotosView" destination="G2t-pJ-Bbz" id="sCc-F3-PuG"/>
                         <outlet property="segmentedControl" destination="Gb3-Qc-4S6" id="d35-lb-zt3"/>
-                        <outlet property="tripsPhotosView" destination="hgQ-O6-b8a" id="VLb-10-kYa"/>
+                        <outlet property="tripsPhotosView" destination="hgQ-O6-b8a" id="WKQ-0S-28u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Yo-Hu-004" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -69,65 +69,82 @@
             <point key="canvasLocation" x="1401" y="205"/>
         </scene>
         <!--Trip Photos Controller-->
-        <scene sceneID="YH9-Om-3E9">
+        <scene sceneID="dFE-vv-bWL">
             <objects>
-                <tableViewController id="8Su-nS-cZa" customClass="TripPhotosController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" id="P7j-jZ-R69">
+                <viewController id="skA-bI-75l" customClass="TripPhotosController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ODg-g5-swe"/>
+                        <viewControllerLayoutGuide type="bottom" id="FbF-9B-mcc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mC6-P8-dcM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" rowHeight="130" id="zch-pg-53u" customClass="TripPhotosRow" customModule="TravelDiary" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="130"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zch-pg-53u" id="G9K-tR-qvn">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="129.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4ra-CA-LQy">
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P7j-jZ-R69">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" rowHeight="130" id="zch-pg-53u" customClass="TripPhotosRow" customModule="TravelDiary" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="130"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zch-pg-53u" id="G9K-tR-qvn">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="129.5"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wu8-dv-xmS">
-                                                <size key="itemSize" width="65" height="65"/>
-                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                            </collectionViewFlowLayout>
-                                            <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tripPhotoCell" id="glr-so-VxY">
-                                                    <rect key="frame" x="10" y="32.5" width="65" height="65"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    </view>
-                                                    <color key="backgroundColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
-                                                </collectionViewCell>
-                                            </cells>
-                                            <connections>
-                                                <outlet property="dataSource" destination="zch-pg-53u" id="gYR-k9-qOh"/>
-                                                <outlet property="delegate" destination="zch-pg-53u" id="pbu-fV-hZg"/>
-                                            </connections>
-                                        </collectionView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="4ra-CA-LQy" firstAttribute="centerY" secondItem="G9K-tR-qvn" secondAttribute="centerY" id="FY4-Us-kRz"/>
-                                        <constraint firstItem="4ra-CA-LQy" firstAttribute="centerX" secondItem="G9K-tR-qvn" secondAttribute="centerX" id="ee1-RB-Ohr"/>
-                                        <constraint firstItem="4ra-CA-LQy" firstAttribute="width" secondItem="G9K-tR-qvn" secondAttribute="width" id="sV6-9f-SfU"/>
-                                        <constraint firstItem="4ra-CA-LQy" firstAttribute="height" secondItem="G9K-tR-qvn" secondAttribute="height" id="wOu-VD-mHl"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="8Su-nS-cZa" id="vKC-9C-3ae"/>
-                            <outlet property="delegate" destination="8Su-nS-cZa" id="o1P-GR-X2Q"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="56p-JT-Nhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4ra-CA-LQy">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="129.5"/>
+                                                    <inset key="scrollIndicatorInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wu8-dv-xmS">
+                                                        <size key="itemSize" width="65" height="65"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tripPhotoCell" id="glr-so-VxY">
+                                                            <rect key="frame" x="10" y="32.5" width="65" height="65"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                            <color key="backgroundColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="zch-pg-53u" id="gYR-k9-qOh"/>
+                                                        <outlet property="delegate" destination="zch-pg-53u" id="pbu-fV-hZg"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4ra-CA-LQy" firstAttribute="centerY" secondItem="G9K-tR-qvn" secondAttribute="centerY" id="FY4-Us-kRz"/>
+                                                <constraint firstItem="4ra-CA-LQy" firstAttribute="centerX" secondItem="G9K-tR-qvn" secondAttribute="centerX" id="ee1-RB-Ohr"/>
+                                                <constraint firstItem="4ra-CA-LQy" firstAttribute="width" secondItem="G9K-tR-qvn" secondAttribute="width" id="sV6-9f-SfU"/>
+                                                <constraint firstItem="4ra-CA-LQy" firstAttribute="height" secondItem="G9K-tR-qvn" secondAttribute="height" id="wOu-VD-mHl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="skA-bI-75l" id="gJk-LD-4Ib"/>
+                                    <outlet property="delegate" destination="skA-bI-75l" id="cht-M2-w7j"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="P7j-jZ-R69" firstAttribute="width" secondItem="mC6-P8-dcM" secondAttribute="width" id="ItN-UM-Ikd"/>
+                            <constraint firstItem="P7j-jZ-R69" firstAttribute="height" secondItem="mC6-P8-dcM" secondAttribute="height" id="PZW-pR-a2T"/>
+                            <constraint firstItem="P7j-jZ-R69" firstAttribute="centerX" secondItem="mC6-P8-dcM" secondAttribute="centerX" id="SLa-Lw-Jnh"/>
+                            <constraint firstItem="P7j-jZ-R69" firstAttribute="centerY" secondItem="mC6-P8-dcM" secondAttribute="centerY" id="ssZ-3e-aTo"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h5g-pI-feT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2206" y="205"/>
+            <point key="canvasLocation" x="2239" y="205"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="u1a-vG-xU4">

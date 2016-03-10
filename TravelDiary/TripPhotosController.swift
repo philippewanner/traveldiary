@@ -8,25 +8,25 @@
 
 import UIKit
 
-class TripPhotosController: UITableViewController {
+class TripPhotosController: UIViewController, UITableViewDataSource  {
     
     var categories = ["cat 1", "cat 2", "cat 3", "cat 4", "cat 5", "cat 6"]
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         //Number of row in the table view cell.
         return categories.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //Number of row in the collection view cell.
         return 1
     }
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return categories[section]
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tripCell") as! TripPhotosRow
         return cell
     }
