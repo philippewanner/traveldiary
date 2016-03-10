@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SqV-ZE-QAY" id="fYY-k3-dGZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -36,7 +36,11 @@
                     <navigationItem key="navigationItem" id="IC9-SC-Zqf" userLabel="Navigation Bar">
                         <rightBarButtonItems>
                             <barButtonItem title="Edit" id="VBS-et-sh8" userLabel="Edit Button"/>
-                            <barButtonItem title="Add" id="41M-Xt-gDr"/>
+                            <barButtonItem title="Add" id="41M-Xt-gDr">
+                                <connections>
+                                    <segue destination="KTM-L9-OcI" kind="presentation" identifier="addNewTripSegue" id="e2P-wg-aHo"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -49,6 +53,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlo-VP-DBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="226" y="-361"/>
+        </scene>
+        <!--TripEditNavigationController-->
+        <scene sceneID="7Ik-KR-CRG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TripEdit" referencedIdentifier="TripEditNavigationController" id="KTM-L9-OcI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XpT-ju-DkR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="710" y="-387"/>
         </scene>
         <!--Title-->
         <scene sceneID="Rng-lT-F8p">
@@ -63,7 +75,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8VW-Ru-gfa" id="TeQ-bS-WYQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="91.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="92"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -90,7 +102,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Peb-hy-mpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="960" y="-361"/>
+            <point key="canvasLocation" x="1178" y="-337"/>
         </scene>
         <!--UIViewController-9cW-2f-bWL-->
         <scene sceneID="BQP-CK-rty">
@@ -98,7 +110,7 @@
                 <viewControllerPlaceholder storyboardName="CurrentTripDetailAdd" referencedIdentifier="UIViewController-9cW-2f-bWL" id="psy-oE-dlI" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ldl-bW-BPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1440.5" y="-254"/>
+            <point key="canvasLocation" x="1757" y="-311"/>
         </scene>
         <!--UINavigationController-Ivu-xv-Jdl-->
         <scene sceneID="xVe-py-o8P">
@@ -106,7 +118,7 @@
                 <viewControllerPlaceholder storyboardName="CurrentTripDetailAdd" referencedIdentifier="UINavigationController-Ivu-xv-Jdl" id="yrz-ZJ-fkE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeC-Yd-rEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1193.5" y="97"/>
+            <point key="canvasLocation" x="1767" y="-363"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zwq-Iw-Sv0">

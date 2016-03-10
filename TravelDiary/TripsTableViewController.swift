@@ -10,7 +10,9 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     private struct Constants {
         static let tripTableViewCellNibName = "TripTableViewCell"
         static let cellReuseIdentifier = "reuseTripTableViewCell"
-        static let currentTripControllerSegue = "showCurrentTripSegue"
+        static let showCurrentTripSegue = "showCurrentTripSegue"
+        static let addNewTripSegue = "addNewTripSegue"
+        static let editTripSegue = "editTripSegue"
         static let localeIdentifier = "de_CH"
         static let sortKey = "startDate"
         static let sortAscending = true
@@ -18,6 +20,7 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     
     private let dateFormatter = NSDateFormatter()
     private var fetchedResultsController:NSFetchedResultsController!
+    private var currentTrip: Trip!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,24 +60,28 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let tripCell: TripTableViewCell = self.tableView.dequeueReusableCellWithIdentifier(Constants.cellReuseIdentifier) as! TripTableViewCell
-        let currentTrip = fetchedResultsController.objectAtIndexPath(indexPath) as! Trip
+        self.currentTrip = fetchedResultsController.objectAtIndexPath(indexPath) as! Trip
         
-        tripCell.tripTitle.text = getTripTitle(currentTrip)
-        tripCell.tripPeriod.text = getTripPeriod(currentTrip)
+        tripCell.tripTitle.text = getTripTitle(self.currentTrip)
+        tripCell.tripPeriod.text = getTripPeriod(self.currentTrip)
         
         return tripCell
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Constants.currentTripControllerSegue {
-            if let destination = segue.destinationViewController as? CurrentTripController {
-                destination.currentTrip = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Trip
+        if segue.identifier == Constants.showCurrentTripSegue {
+            if let currentTripController = segue.destinationViewController as? CurrentTripController {
+                currentTripController.currentTrip = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Trip
+            }
+        } else if segue.identifier == Constants.editTripSegue {
+            if let tripEditController = segue.destinationViewController as? TripEditViewController {
+                tripEditController.selectedTrip = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Trip
             }
         }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(Constants.currentTripControllerSegue, sender: self)
+        performSegueWithIdentifier(Constants.showCurrentTripSegue, sender: self)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -88,6 +95,14 @@ class TripsTableViewController : UITableViewController, NSFetchedResultsControll
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
+    }
+    
+    // segue which is called when the cancel button on the TripEditViewController is called
+    @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {}
+    
+    // segue which is called when the save button on the TripEditViewController is pressed
+    @IBAction func unwindSequeSaveActiviy(segue: UIStoryboardSegue){
+        saveContext()
     }
     
     private func getTripTitle(trip:Trip) -> String {

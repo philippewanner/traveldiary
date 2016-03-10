@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Trip Edit View Controller-->
+        <!--Edit Trip-->
         <scene sceneID="Vir-gX-GRX">
             <objects>
-                <viewController id="ira-WP-H41" customClass="TripEditViewController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TripEditView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ira-WP-H41" userLabel="Edit Trip" customClass="TripEditViewController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l3a-vu-pbK"/>
                         <viewControllerLayoutGuide type="bottom" id="ZP9-4R-EXJ"/>
@@ -55,19 +55,35 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pPl-wV-PGD">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="MUW-a8-oEb"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="WrE-FL-8Oo"/>
+                    <navigationItem key="navigationItem" title="New Trip" id="pPl-wV-PGD">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="MUW-a8-oEb">
+                            <connections>
+                                <segue destination="2vw-sP-YzI" kind="unwind" identifier="cancelEditTripUnwindSegue" unwindAction="unwindSegueAddActivity:" id="nX9-X5-MgB"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="WrE-FL-8Oo">
+                            <connections>
+                                <segue destination="2vw-sP-YzI" kind="unwind" identifier="saveTripUnwindSegue" unwindAction="unwindSequeSaveActiviy:" id="lI7-t1-APQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="endDate" destination="vmt-6h-xJc" id="GQO-0s-EPr"/>
+                        <outlet property="navItem" destination="pPl-wV-PGD" id="jwi-cy-LwZ"/>
+                        <outlet property="navigationItem" destination="pPl-wV-PGD" id="05H-eo-M9b"/>
+                        <outlet property="startDate" destination="ZGn-Zd-4QP" id="euz-bB-Ouu"/>
+                        <outlet property="tripTitle" destination="Jex-bq-cP3" id="wI4-ph-oID"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D9v-P5-3y8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2vw-sP-YzI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="446" y="531"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--TripEdit Navigation Controller-->
         <scene sceneID="QLu-Lu-mlX">
             <objects>
-                <navigationController id="wme-5E-J5g" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TripEditNavigationController" id="wme-5E-J5g" userLabel="TripEdit Navigation Controller" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sSF-lN-xvO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
