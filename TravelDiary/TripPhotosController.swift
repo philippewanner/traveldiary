@@ -7,27 +7,51 @@
 //
 
 import UIKit
+import CoreData
 
-class TripPhotosController: UIViewController, UITableViewDataSource  {
+class TripPhotosController: UIViewController  {
     
-    var categories = ["cat 1", "cat 2", "cat 3", "cat 4", "cat 5", "cat 6"]
+    @IBOutlet weak var tableView: UITableView!
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        //Number of row in the table view cell.
-        return categories.count
+//    var categories = ["cat 1", "cat 2", "cat 3", "cat 4", "cat 5", "cat 6"]
+    
+    // Data Source for UITableView
+    var tripPhotosDataSource = TripPhotoDataSource()
+    
+    // Core Data managed context
+    var managedContext : NSManagedObjectContext?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NSLog("wiewDidLoad")
+        // setup Core Data context
+        coreDataSetup()
+        // load photos in memory
+        loadPhotos()
+        // Attached the data source to the collection view
+        tableView.dataSource = tripPhotosDataSource
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //Number of row in the collection view cell.
-        return 1
-    }
-
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return categories[section]
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("tripCell") as! TripPhotosRow
-        return cell
+    func loadPhotos(){
+        
+        NSLog("loadPhotos")
+        // loadCoreDataImages fct with a completion block
+        loadCoreDataImages { (images) -> Void in
+            NSLog("loadCoreDataImages in")
+            if let images = images {
+                
+                self.tripPhotosDataSource.data += images.map { return (image:$0.image ?? UIImage(),title:$0.title ?? "") }
+                
+                NSLog("start dataSource:%d", self.tripPhotosDataSource.data.count)
+                
+            } else {
+                self.noImagesFound()
+            }
+        }
     }
 }
