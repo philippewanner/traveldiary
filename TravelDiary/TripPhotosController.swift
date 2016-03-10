@@ -1,31 +1,33 @@
 //
-//  PhotosTripsController.swift
+//  TripPhotosController.swift
 //  TravelDiary
 //
-//  Created by Philippe Wanner on 07/03/16.
+//  Created by Philippe Wanner on 09/03/16.
 //  Copyright © 2016 PTPA. All rights reserved.
 //
 
 import UIKit
 
-class TripPhotosController: UIViewController, UITableViewDataSource {
+class TripPhotosController: UITableViewController {
     
-    var trips = ["Action", "Drama", "Science Fiction", "Kids", "Horror"]
+    var categories = ["cat 1", "cat 2", "cat 3", "cat 4", "cat 5", "cat 6"]
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return trips.count
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        //Number of row in the table view cell.
+        return categories.count
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return trips[section]
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //Number of row in the collection view cell.
         return 1
     }
+
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return categories[section]
+    }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("categoryCell") as! TripPhotosRow
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("tripCell") as! TripPhotosRow
         return cell
     }
 }
