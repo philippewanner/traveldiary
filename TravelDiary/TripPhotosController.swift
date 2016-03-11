@@ -14,8 +14,45 @@ class TripPhotosController: UIViewController {
     let model = generateRandomData()
     var storedOffsets = [Int: CGFloat]()
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    
+    var categories = ["cat 1", "cat 2", "cat 3", "cat 4", "cat 5", "cat 6"]
+    
+    // Data Source for UITableView
+//    var tripPhotosDataSource = TripPhotoDataSource()
+    
+    // Core Data managed context
+    var managedContext : NSManagedObjectContext?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NSLog("wiewDidLoad")
+        // setup Core Data context
+//        coreDataSetup()
+        // load photos in memory
+//        loadData()
+        // Attached the data source to the collection view
+//        tableView.dataSource = tripPhotosDataSource
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.count
+        //Number of row in the collection view cell.
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "title"
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        //Number of row in the table view cell.
+        return 4
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
