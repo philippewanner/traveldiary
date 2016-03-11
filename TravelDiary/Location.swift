@@ -8,11 +8,23 @@
 
 import Foundation
 import CoreData
+import MapKit
 
 
 class Location: NSManagedObject {
 
-    func hasCoordinates() -> Bool {
-        return longitude != nil && latitude != nil
+    var coordinate: CLLocationCoordinate2D? {
+        get {
+            guard let latitude = latitude, let longitude = longitude else {
+                return nil
+            }
+            return CLLocationCoordinate2DMake(
+                CLLocationDegrees(latitude), CLLocationDegrees(longitude))
+        }
+        
+        set {
+            latitude = newValue?.latitude
+            longitude = newValue?.longitude
+        }
     }
 }

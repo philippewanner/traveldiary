@@ -19,8 +19,6 @@ class LocationAnnotation: NSObject, MKAnnotation {
         self.location = location
         title = location.name
         subtitle = location.address
-        coordinate = CLLocationCoordinate2DMake(
-            CLLocationDegrees(location.latitude!),
-            CLLocationDegrees(location.longitude!))
+        coordinate = location.coordinate!
     }
 }

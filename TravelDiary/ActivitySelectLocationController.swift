@@ -62,7 +62,7 @@ class ActivitySelectLocationController: UIViewController {
     func showLocation(location: Location) {
         mapView.removeAnnotations(mapView.annotations)
         searchController?.searchBar.text = location.name
-        if location.hasCoordinates() {
+        if location.coordinate != nil {
             let annotation = LocationAnnotation(location: location)
             mapView.addAnnotation(annotation)
             mapView.selectAnnotation(annotation, animated: true)
@@ -72,8 +72,7 @@ class ActivitySelectLocationController: UIViewController {
     func setLocationFrom(placemark placemark: MKPlacemark) -> Location {
         let location = selectedLocation ?? Location(managedObjectContext: managedObjectContext)
         location.name = placemark.name
-        location.latitude = placemark.coordinate.latitude
-        location.longitude = placemark.coordinate.longitude
+        location.coordinate = placemark.coordinate
         location.address = placemark.thoroughfare
         location.countryCode = placemark.countryCode
         return location
