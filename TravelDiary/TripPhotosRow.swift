@@ -8,28 +8,30 @@
 
 import UIKit
 
-class TripPhotosRow : UITableViewCell { }
-
-extension TripPhotosRow : UICollectionViewDataSource {
+class TripPhotosRow: UITableViewCell {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
+    @IBOutlet private weak var collectionView: UICollectionView!
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tripPhotoCell", forIndexPath: indexPath)
-        return cell
-    }
 }
 
-extension TripPhotosRow : UICollectionViewDelegateFlowLayout {
+extension TripPhotosRow {
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let itemsPerRow:CGFloat = 4
-        let hardCodedPadding:CGFloat = 5
-        let itemWidth = (collectionView.bounds.width / itemsPerRow) - hardCodedPadding
-        let itemHeight = collectionView.bounds.height - (2 * hardCodedPadding)
-        return CGSize(width: itemWidth, height: itemHeight)
+    func setCollectionViewDataSourceDelegate<D: protocol<UICollectionViewDataSource, UICollectionViewDelegate>>(dataSourceDelegate: D, forRow row: Int) {
+        
+        collectionView.delegate = dataSourceDelegate
+        collectionView.dataSource = dataSourceDelegate
+        collectionView.tag = row
+        collectionView.setContentOffset(collectionView.contentOffset, animated:false) // Stops collection view if it was scrolling.
+        collectionView.reloadData()
     }
     
+    var collectionViewOffset: CGFloat {
+        set {
+            collectionView.contentOffset.x = newValue
+        }
+        
+        get {
+            return collectionView.contentOffset.x
+        }
+    }
 }
