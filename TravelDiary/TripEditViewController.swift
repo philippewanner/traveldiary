@@ -36,13 +36,24 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constants.saveTripSegue {
-            if self.selectedTrip == nil {
-                self.selectedTrip = Trip(managedObjectContext: self.managedObjectContext)
+            if isNotNullOrEmpty(tripTitle.text) {
+                if self.selectedTrip == nil {
+                    self.selectedTrip = Trip(managedObjectContext: self.managedObjectContext)
+                }
+                selectedTrip?.title = tripTitle.text
+                selectedTrip?.startDate = startDate.date
+                selectedTrip?.endDate = endDate.date
             }
-            selectedTrip?.title = tripTitle.text
-            selectedTrip?.startDate = startDate.date
-            selectedTrip?.endDate = endDate.date
         }
+    }
+    
+    private func isNotNullOrEmpty(aString: NSString?) -> Bool{
+        if let currentSting = aString {
+            if currentSting.trim() != "" {
+                return true
+            }
+        }
+        return false
     }
     
     private func setKnownData(){

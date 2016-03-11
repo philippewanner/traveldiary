@@ -22,6 +22,7 @@
 		7EB3514B1C82048300323D5E /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3514A1C82048300323D5E /* TripsTableViewController.swift */; };
 		7EC3E50E1C8D804300BDA035 /* TripEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EC3E50D1C8D804300BDA035 /* TripEdit.storyboard */; };
 		7EC3E5121C8D87EF00BDA035 /* TripEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC3E5111C8D87EF00BDA035 /* TripEditViewController.swift */; };
+		7EC3E5141C92081100BDA035 /* NSString+trimFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC3E5131C92081100BDA035 /* NSString+trimFunction.swift */; };
 		7EFA1F221C887C560063CC48 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA1F1F1C887C560063CC48 /* ImageViewController.swift */; };
 		7EFA1F231C887C560063CC48 /* TripSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA1F201C887C560063CC48 /* TripSearchController.swift */; };
 		D21C68951C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C68941C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift */; };
@@ -105,6 +106,7 @@
 		7EB3514A1C82048300323D5E /* TripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 		7EC3E50D1C8D804300BDA035 /* TripEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TripEdit.storyboard; sourceTree = "<group>"; };
 		7EC3E5111C8D87EF00BDA035 /* TripEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripEditViewController.swift; sourceTree = "<group>"; };
+		7EC3E5131C92081100BDA035 /* NSString+trimFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+trimFunction.swift"; sourceTree = "<group>"; };
 		7EFA1F1F1C887C560063CC48 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		7EFA1F201C887C560063CC48 /* TripSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSearchController.swift; sourceTree = "<group>"; };
 		D21C68941C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+RequestAuthorization.swift"; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				D644B9001C73C3A300B2D908 /* NSManagedObject+EntityName.swift */,
 				D68212751C7915600046122E /* UIViewController+ManagedObjectContext.swift */,
 				D21C68941C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift */,
+				7EC3E5131C92081100BDA035 /* NSString+trimFunction.swift */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				F0AB01171C9144CC0009E6B8 /* PhotosAllCollectionViewCell.swift in Sources */,
 				D274EC6B1C70B552000AA29D /* MapController.swift in Sources */,
 				7EFA1F221C887C560063CC48 /* ImageViewController.swift in Sources */,
+				7EC3E5141C92081100BDA035 /* NSString+trimFunction.swift in Sources */,
 				D69E7E861C8D81E300638D7C /* Location+CoreDataProperties.swift in Sources */,
 				D69E7E821C8D81E300638D7C /* Photo+CoreDataProperties.swift in Sources */,
 				D69E7E841C8D81E300638D7C /* Trip+CoreDataProperties.swift in Sources */,
