@@ -13,14 +13,13 @@ class TripPhotosRow : UITableViewCell { }
 extension TripPhotosRow : UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return 10
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tripPhotoCell", forIndexPath: indexPath)
         return cell
     }
-    
 }
 
 extension TripPhotosRow : UICollectionViewDelegateFlowLayout {
