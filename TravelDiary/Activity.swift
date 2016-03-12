@@ -19,4 +19,10 @@ class Activity: NSManagedObject {
     func removeLocation(){
         self.location = nil
     }
+    
+    func addPhoto(photo:Photo){
+        let activities = self.mutableSetValueForKey("photos")
+        activities.addObject(photo)
+    }
+
 }

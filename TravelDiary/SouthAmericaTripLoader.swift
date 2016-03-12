@@ -17,7 +17,7 @@ class SouthAmericaTripLoader: BaseTripDataLoader{
     
     private func createIguazuActivity(){
         let iguazu = activityBuilder
-            .with(description: "Ausflug zu den Wasserfällen von Iguazu. Beide Seiten(Argentinien und Barsilien).")
+            .with(description: "Ausflug zu den Wasserfällen von Iguazu. Beide Seiten(Argentinien    und Barsilien).")
             .with(title: "Carataras de Iguazu")
             .build()
         self.currentLocation = locationBuilder
@@ -29,7 +29,7 @@ class SouthAmericaTripLoader: BaseTripDataLoader{
             .with(inActivity: iguazu).build()
         iguazu.location = self.currentLocation
         
-        for index in 1...29{
+        for index in 1...10{
             let imgMachu = UIImage(named: "Iguazu"+String(index))
             let compressionQuality = CGFloat(1.0)
             photoBuilder.with(title: "Iguazu")
