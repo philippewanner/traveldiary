@@ -15,7 +15,7 @@ class PhotosModelHelper {
     // Core Data managed context
     var managedContext : NSManagedObjectContext?
     
-    func getPhotosPerTrip() -> [[Photo]]{
+    func getPhotosPerTrip() -> [[Photo]] {
         
         let allPhotos: [Photo] = self.getAllPhotos()
         
@@ -46,8 +46,6 @@ class PhotosModelHelper {
             
             NSLog("number of photos:%d", result.count)
         }
-        
-        result[0] = Photo()
         
         return result
     }

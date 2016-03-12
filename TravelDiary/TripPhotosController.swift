@@ -11,13 +11,12 @@ import CoreData
 
 class TripPhotosController: UIViewController {
     
-    let model = generateRandomData()
+    var model: [[Photo]] = [[]]
     var storedOffsets = [Int: CGFloat]()
     
     @IBOutlet weak var tableView: UITableView!
     
-    
-    var categories = ["cat 1", "cat 2", "cat 3", "cat 4", "cat 5", "cat 6"]
+    var photosModelHelper = PhotosModelHelper()
     
     // Data Source for UITableView
 //    var tripPhotosDataSource = TripPhotoDataSource()
@@ -29,9 +28,9 @@ class TripPhotosController: UIViewController {
         super.viewDidLoad()
         NSLog("wiewDidLoad")
         // setup Core Data context
-//        coreDataSetup()
+        photosModelHelper.coreDataSetup()
         // load photos in memory
-//        loadData()
+        model = photosModelHelper.getPhotosPerTrip()
         // Attached the data source to the collection view
 //        tableView.dataSource = tripPhotosDataSource
     }
@@ -47,12 +46,13 @@ class TripPhotosController: UIViewController {
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "title"
+        return model[section][0].trip!.title
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         //Number of row in the table view cell.
-        return 4
+        NSLog("number of trips: %d", model.count)
+        return model.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -86,7 +86,7 @@ extension TripPhotosController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tripPhotoCell", forIndexPath: indexPath)
         
-        cell.backgroundColor = model[collectionView.tag][indexPath.item]
+//        cell.backgroundColor = model[collectionView.tag][indexPath.item]
         
         return cell
     }
