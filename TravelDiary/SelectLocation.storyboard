@@ -3,9 +3,10 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Activity Select Location Controller-->
+        <!--Choose location-->
         <scene sceneID="ZxX-Ok-Nh7">
             <objects>
                 <viewController id="bTm-jz-WgZ" customClass="ActivitySelectLocationController" customModule="TravelDiary" sceneMemberID="viewController">
@@ -17,19 +18,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hEL-IT-yRp">
+                                <rect key="frame" x="0.0" y="64" width="600" height="229.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4Jk-0v-eab">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="293.5" width="600" height="306.5"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4Jk-0v-eab" firstAttribute="top" secondItem="HNO-DR-5U9" secondAttribute="bottom" id="07G-eR-PK7"/>
-                            <constraint firstItem="4Jk-0v-eab" firstAttribute="bottom" secondItem="Fj3-QN-GJ1" secondAttribute="top" id="HkV-ow-qmW"/>
-                            <constraint firstItem="4Jk-0v-eab" firstAttribute="leading" secondItem="Xph-eh-AHg" secondAttribute="leading" id="szA-1f-jih"/>
-                            <constraint firstAttribute="trailing" secondItem="4Jk-0v-eab" secondAttribute="trailing" id="tni-rv-sAP"/>
+                            <constraint firstItem="hEL-IT-yRp" firstAttribute="top" secondItem="HNO-DR-5U9" secondAttribute="bottom" id="3bJ-94-JYe"/>
+                            <constraint firstItem="4Jk-0v-eab" firstAttribute="bottom" secondItem="Fj3-QN-GJ1" secondAttribute="top" id="BpB-eR-YBl"/>
+                            <constraint firstItem="hEL-IT-yRp" firstAttribute="height" secondItem="4Jk-0v-eab" secondAttribute="height" multiplier="0.75" id="DXz-YB-gGW"/>
+                            <constraint firstItem="4Jk-0v-eab" firstAttribute="trailing" secondItem="hEL-IT-yRp" secondAttribute="trailing" id="LWW-LZ-lmJ"/>
+                            <constraint firstAttribute="trailing" secondItem="4Jk-0v-eab" secondAttribute="trailing" id="TqL-mE-oR6"/>
+                            <constraint firstItem="4Jk-0v-eab" firstAttribute="leading" secondItem="hEL-IT-yRp" secondAttribute="leading" id="TzA-mX-Ud2"/>
+                            <constraint firstItem="4Jk-0v-eab" firstAttribute="top" secondItem="hEL-IT-yRp" secondAttribute="bottom" id="VOf-ED-Bzg"/>
+                            <constraint firstItem="4Jk-0v-eab" firstAttribute="leading" secondItem="Xph-eh-AHg" secondAttribute="leading" id="xz4-f0-hgx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="uKK-Y4-GKJ">
+                    <navigationItem key="navigationItem" title="Choose location" id="uKK-Y4-GKJ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jQQ-zM-l4H">
                             <connections>
                                 <segue destination="6Qs-gg-ElJ" kind="unwind" unwindAction="unwindSegueCancelLocation:" id="kdt-Ba-diC"/>

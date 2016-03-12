@@ -15,7 +15,6 @@ import MapKit
 class ActivitySelectLocationController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var toolbar: UIToolbar!
     
     var selectedLocation: Location?
     
