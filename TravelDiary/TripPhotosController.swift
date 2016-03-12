@@ -12,6 +12,7 @@ import CoreData
 class TripPhotosController: UIViewController {
     
     var model: [[Photo]] = [[]]
+    var model2 = generateRandomData()
     var storedOffsets = [Int: CGFloat]()
     
     @IBOutlet weak var tableView: UITableView!
@@ -80,13 +81,18 @@ class TripPhotosController: UIViewController {
 
 extension TripPhotosController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model[collectionView.tag].count
+//        NSLog("t: %d s: %d c:%d", collectionView.tag, section, model2[collectionView.tag].count)
+//        NSLog("t-c: %d s-c: %d", model[collectionView.tag].count, model[section].count)
+        NSLog("0: %d %d %d", model[0].count, model[section].count, model[collectionView.tag].count)
+        NSLog("1: %d %d %d", model[1].count, model[section].count, model[collectionView.tag].count)
+        NSLog("section=%d", section)
+        return model2[collectionView.tag].count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tripPhotoCell", forIndexPath: indexPath)
         
-//        cell.backgroundColor = model[collectionView.tag][indexPath.item]
+        cell.backgroundColor = model2[collectionView.tag][indexPath.item]
         
         return cell
     }

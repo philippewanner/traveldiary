@@ -25,8 +25,6 @@ class PhotosModelHelper {
         
         result = allPhotos.groupBy { $0.0.trip?.title == $0.1.trip?.title }
         
-        //        allPhotos.categorise({ $0.trip?.title })
-        
         return result
     }
     
