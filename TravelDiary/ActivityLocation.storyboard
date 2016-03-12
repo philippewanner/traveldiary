@@ -7,10 +7,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Choose location-->
+        <!--Location-->
         <scene sceneID="ZxX-Ok-Nh7">
             <objects>
-                <viewController id="bTm-jz-WgZ" customClass="ActivitySelectLocationController" customModule="TravelDiary" sceneMemberID="viewController">
+                <viewController id="bTm-jz-WgZ" customClass="ActivityLocationController" customModule="TravelDiary" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HNO-DR-5U9"/>
                         <viewControllerLayoutGuide type="bottom" id="Fj3-QN-GJ1"/>
@@ -25,7 +25,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eaq-Ae-Fdw">
                                 <rect key="frame" x="0.0" y="64" width="600" height="306.5"/>
                                 <connections>
-                                    <segue destination="nZR-OF-Q7h" kind="embed" id="SUl-1F-F09"/>
+                                    <segue destination="nZR-OF-Q7h" kind="embed" identifier="EmbedLocationTable" id="SUl-1F-F09"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -41,15 +41,15 @@
                             <constraint firstItem="4Jk-0v-eab" firstAttribute="height" secondItem="Eaq-Ae-Fdw" secondAttribute="height" multiplier="0.75" id="r0x-3Y-Gca"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Choose location" id="uKK-Y4-GKJ">
+                    <navigationItem key="navigationItem" title="Location" id="uKK-Y4-GKJ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jQQ-zM-l4H">
                             <connections>
-                                <segue destination="6Qs-gg-ElJ" kind="unwind" unwindAction="unwindSegueCancelLocation:" id="kdt-Ba-diC"/>
+                                <action selector="cancel:" destination="bTm-jz-WgZ" id="s5l-n5-LAr"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="JVo-KV-ydQ">
                             <connections>
-                                <segue destination="6Qs-gg-ElJ" kind="unwind" unwindAction="unwindSequeSaveLocation:" id="yIX-Cl-RDn"/>
+                                <segue destination="6Qs-gg-ElJ" kind="unwind" unwindAction="unwindSequeSaveLocation:" id="2wd-Xd-NA4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -63,21 +63,37 @@
             </objects>
             <point key="canvasLocation" x="3525" y="376"/>
         </scene>
-        <!--Location Search Controller-->
+        <!--Activity Location Table Controller-->
         <scene sceneID="Aaq-KL-LGi">
             <objects>
-                <tableViewController storyboardIdentifier="LocationSearchController" id="nZR-OF-Q7h" customClass="LocationSearchController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="nZR-OF-Q7h" customClass="ActivityLocationTableController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oqN-Kd-Tn3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="306.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifierCell" id="7LB-Hw-Shh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifierCell" textLabel="nqB-vD-50f" detailTextLabel="9Wg-7a-2Ln" style="IBUITableViewCellStyleSubtitle" id="7LB-Hw-Shh">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7LB-Hw-Shh" id="aec-o1-Bja">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nqB-vD-50f">
+                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Wg-7a-2Ln">
+                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>

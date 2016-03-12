@@ -9,16 +9,15 @@
 import Foundation
 import MapKit
 
-class LocationAnnotation: NSObject, MKAnnotation {
-    let location: Location
+
+class MapItemAnnotation: NSObject, MKAnnotation {
     let title: String?
     let subtitle: String?
     let coordinate: CLLocationCoordinate2D
     
-    init(location: Location) {
-        self.location = location
-        self.coordinate = location.coordinate!
-        title = location.name
-        subtitle = location.address
+    init(mapItem: MKMapItem) {
+        title = mapItem.name
+        subtitle = mapItem.placemark.formattedAddressLines()
+        coordinate = mapItem.placemark.coordinate
     }
 }

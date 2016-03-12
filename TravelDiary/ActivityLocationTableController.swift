@@ -10,9 +10,11 @@ import UIKit
 import MapKit
 import CoreData
 
-class LocationSearchController : UITableViewController {
+class ActivityLocationTableController : UITableViewController {
     
     var delegate: LocationSearchDelegate?
+    var searchController: UISearchController!
+    var search: MKLocalSearch?
 
     private var mapItemsFound:[MKMapItem] = [] {
         didSet {
@@ -24,6 +26,20 @@ class LocationSearchController : UITableViewController {
         static let ReuseIdentifierCell = "reuseIdentifierCell"
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        
+        let searchBar = searchController!.searchBar
+        searchBar.sizeToFit()
+        tableView.tableHeaderView = searchBar
+        
+        definesPresentationContext = true
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mapItemsFound.count
     }
@@ -32,24 +48,18 @@ class LocationSearchController : UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.ReuseIdentifierCell)!
         let mapItem = mapItemsFound[indexPath.row]
         cell.textLabel?.text = mapItem.name
-        cell.detailTextLabel?.text = formatAddressFromPlacemark(mapItem.placemark)
-        
+        cell.detailTextLabel?.text = mapItem.placemark.formattedAddressLines()
         return cell
-    }
-    
-    func formatAddressFromPlacemark(placemark: CLPlacemark) -> String {
-        return (placemark.addressDictionary!["FormattedAddressLines"] as! [String]).joinWithSeparator(", ")
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedMapItem = mapItemsFound[indexPath.row]
-        delegate?.locationFound(selectedMapItem)
-        dismissViewControllerAnimated(true, completion: nil)
+        delegate?.locationSelected(selectedMapItem)
     }
 }
 
 // MARK: - UISearchResultsUpdating
-extension LocationSearchController : UISearchResultsUpdating {
+extension ActivityLocationTableController : UISearchResultsUpdating {
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else {
@@ -57,8 +67,9 @@ extension LocationSearchController : UISearchResultsUpdating {
         }
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchText
-        let search = MKLocalSearch(request: request)
-        search.startWithCompletionHandler { response, _ in
+        search?.cancel()
+        search = MKLocalSearch(request: request)
+        search?.startWithCompletionHandler { response, _ in
             guard let response = response else {
                 return
             }

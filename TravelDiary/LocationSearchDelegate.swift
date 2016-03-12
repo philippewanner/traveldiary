@@ -10,5 +10,5 @@ import Foundation
 import MapKit
 
 protocol LocationSearchDelegate {
-    func locationFound(mapItem: MKMapItem)
+    func locationSelected(mapItem: MKMapItem)
 }

@@ -12,7 +12,7 @@ import MapKit
 
 
 class Location: NSManagedObject {
-
+    
     var coordinate: CLLocationCoordinate2D? {
         get {
             guard let latitude = latitude, let longitude = longitude else {

@@ -27,9 +27,11 @@
 		7EFA1F231C887C560063CC48 /* TripSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA1F201C887C560063CC48 /* TripSearchController.swift */; };
 		D21C68951C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C68941C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift */; };
 		D21C68971C8CD105000C264C /* TripSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C68961C8CD105000C264C /* TripSearchDelegate.swift */; };
+		D2311B571C9455EA00AF67C7 /* CLLocation+FormattedAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2311B561C9455EA00AF67C7 /* CLLocation+FormattedAdress.swift */; };
+		D2311B5B1C948D0300AF67C7 /* MapItemAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2311B5A1C948D0300AF67C7 /* MapItemAnnotation.swift */; };
 		D2519C611C90B57F005B2F68 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2519C601C90B57F005B2F68 /* LocationAnnotation.swift */; };
-		D25734051C8DA57F0017B94E /* SelectLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D25734041C8DA57F0017B94E /* SelectLocation.storyboard */; };
-		D25734091C8DCCFC0017B94E /* LocationSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25734081C8DCCFC0017B94E /* LocationSearchController.swift */; };
+		D25734051C8DA57F0017B94E /* ActivityLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D25734041C8DA57F0017B94E /* ActivityLocation.storyboard */; };
+		D25734091C8DCCFC0017B94E /* ActivityLocationTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25734081C8DCCFC0017B94E /* ActivityLocationTableController.swift */; };
 		D257340D1C8DD0F80017B94E /* LocationSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D257340C1C8DD0F80017B94E /* LocationSearchDelegate.swift */; };
 		D274EC601C70A589000AA29D /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D274EC5E1C70A589000AA29D /* Trips.storyboard */; };
 		D274EC661C70B3A5000AA29D /* PhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D274EC651C70B3A5000AA29D /* PhotosController.swift */; };
@@ -37,7 +39,7 @@
 		D274EC6B1C70B552000AA29D /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D274EC6A1C70B552000AA29D /* MapController.swift */; };
 		D274EC701C70B65D000AA29D /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D274EC6F1C70B65D000AA29D /* Map.storyboard */; };
 		D274EC721C70C009000AA29D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D274EC711C70C009000AA29D /* MapKit.framework */; };
-		D2AB1BFE1C8E09AD00DD5AFC /* ActivitySelectLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB1BFD1C8E09AD00DD5AFC /* ActivitySelectLocationController.swift */; };
+		D2AB1BFE1C8E09AD00DD5AFC /* ActivityLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB1BFD1C8E09AD00DD5AFC /* ActivityLocationController.swift */; };
 		D60083BA1C71DC6A00D2E4A4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B21C71DC6A00D2E4A4 /* Photo.swift */; };
 		D60083BC1C71DC6A00D2E4A4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B41C71DC6A00D2E4A4 /* Location.swift */; };
 		D60083BE1C71DC6A00D2E4A4 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B61C71DC6A00D2E4A4 /* Trip.swift */; };
@@ -113,9 +115,11 @@
 		7EFA1F201C887C560063CC48 /* TripSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSearchController.swift; sourceTree = "<group>"; };
 		D21C68941C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+RequestAuthorization.swift"; sourceTree = "<group>"; };
 		D21C68961C8CD105000C264C /* TripSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSearchDelegate.swift; sourceTree = "<group>"; };
+		D2311B561C9455EA00AF67C7 /* CLLocation+FormattedAdress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+FormattedAdress.swift"; sourceTree = "<group>"; };
+		D2311B5A1C948D0300AF67C7 /* MapItemAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapItemAnnotation.swift; sourceTree = "<group>"; };
 		D2519C601C90B57F005B2F68 /* LocationAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
-		D25734041C8DA57F0017B94E /* SelectLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectLocation.storyboard; sourceTree = "<group>"; };
-		D25734081C8DCCFC0017B94E /* LocationSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchController.swift; sourceTree = "<group>"; };
+		D25734041C8DA57F0017B94E /* ActivityLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ActivityLocation.storyboard; sourceTree = "<group>"; };
+		D25734081C8DCCFC0017B94E /* ActivityLocationTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLocationTableController.swift; sourceTree = "<group>"; };
 		D257340C1C8DD0F80017B94E /* LocationSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchDelegate.swift; sourceTree = "<group>"; };
 		D274EC5F1C70A589000AA29D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Trips.storyboard; sourceTree = "<group>"; };
 		D274EC651C70B3A5000AA29D /* PhotosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosController.swift; sourceTree = "<group>"; };
@@ -123,7 +127,7 @@
 		D274EC6A1C70B552000AA29D /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		D274EC6F1C70B65D000AA29D /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		D274EC711C70C009000AA29D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		D2AB1BFD1C8E09AD00DD5AFC /* ActivitySelectLocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitySelectLocationController.swift; sourceTree = "<group>"; };
+		D2AB1BFD1C8E09AD00DD5AFC /* ActivityLocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLocationController.swift; sourceTree = "<group>"; };
 		D60083B21C71DC6A00D2E4A4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		D60083B41C71DC6A00D2E4A4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		D60083B61C71DC6A00D2E4A4 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
@@ -207,7 +211,7 @@
 			name = sampleData;
 			sourceTree = "<group>";
 		};
-		7E371AC01C89D00100ECACB9 /* managedObjects */ = {
+		7E371AC01C89D00100ECACB9 /* model */ = {
 			isa = PBXGroup;
 			children = (
 				D69E7E7A1C8D81E300638D7C /* Photo+CoreDataProperties.swift */,
@@ -219,7 +223,7 @@
 				D60083B81C71DC6A00D2E4A4 /* Activity.swift */,
 				D60083B41C71DC6A00D2E4A4 /* Location.swift */,
 			);
-			name = managedObjects;
+			name = model;
 			sourceTree = "<group>";
 		};
 		7E371AC11C89D1CC00ECACB9 /* dataBuilderClasses */ = {
@@ -250,6 +254,8 @@
 		D60083AE1C71CBE700D2E4A4 /* map */ = {
 			isa = PBXGroup;
 			children = (
+				D21C68941C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift */,
+				D2311B561C9455EA00AF67C7 /* CLLocation+FormattedAdress.swift */,
 				7EFA1F201C887C560063CC48 /* TripSearchController.swift */,
 				D274EC6F1C70B65D000AA29D /* Map.storyboard */,
 				D274EC6A1C70B552000AA29D /* MapController.swift */,
@@ -262,15 +268,16 @@
 		D60083AF1C71CBED00D2E4A4 /* trip */ = {
 			isa = PBXGroup;
 			children = (
+				D2311B5A1C948D0300AF67C7 /* MapItemAnnotation.swift */,
 				D68212721C78ED220046122E /* CurrentTrip.storyboard */,
 				D6CA868C1C8A144D00C06550 /* CurrentTripDetailAdd.storyboard */,
 				D68212701C78DD810046122E /* ActivityTableViewCell.xib */,
 				D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */,
 				D682126E1C78C7490046122E /* ActivityCell.swift */,
 				D64D30B11C7A0E91009E3740 /* ActivityDetailController.swift */,
-				D2AB1BFD1C8E09AD00DD5AFC /* ActivitySelectLocationController.swift */,
-				D25734041C8DA57F0017B94E /* SelectLocation.storyboard */,
-				D25734081C8DCCFC0017B94E /* LocationSearchController.swift */,
+				D2AB1BFD1C8E09AD00DD5AFC /* ActivityLocationController.swift */,
+				D25734041C8DA57F0017B94E /* ActivityLocation.storyboard */,
+				D25734081C8DCCFC0017B94E /* ActivityLocationTableController.swift */,
 				D257340C1C8DD0F80017B94E /* LocationSearchDelegate.swift */,
 			);
 			name = trip;
@@ -293,7 +300,6 @@
 			children = (
 				D644B9001C73C3A300B2D908 /* NSManagedObject+EntityName.swift */,
 				D68212751C7915600046122E /* UIViewController+ManagedObjectContext.swift */,
-				D21C68941C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift */,
 				7EC3E5131C92081100BDA035 /* NSString+trimFunction.swift */,
 			);
 			name = common;
@@ -325,7 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				D644B8FF1C73C38000B2D908 /* common */,
-				7E371AC01C89D00100ECACB9 /* managedObjects */,
+				7E371AC01C89D00100ECACB9 /* model */,
 				7EA2AD131C7F886800A47422 /* trips */,
 				D60083AF1C71CBED00D2E4A4 /* trip */,
 				D60083B01C71CBF600D2E4A4 /* photo */,
@@ -496,7 +502,7 @@
 				D274EC601C70A589000AA29D /* Trips.storyboard in Resources */,
 				D6EF6ED71C68CD03006D098B /* LaunchScreen.storyboard in Resources */,
 				D274EC701C70B65D000AA29D /* Map.storyboard in Resources */,
-				D25734051C8DA57F0017B94E /* SelectLocation.storyboard in Resources */,
+				D25734051C8DA57F0017B94E /* ActivityLocation.storyboard in Resources */,
 				D6EF6ED41C68CD03006D098B /* Assets.xcassets in Resources */,
 				7EC3E50E1C8D804300BDA035 /* TripEdit.storyboard in Resources */,
 				D274EC691C70B484000AA29D /* Photos.storyboard in Resources */,
@@ -536,6 +542,7 @@
 				F0AB01151C9144B50009E6B8 /* PhotosAllLoading.swift in Sources */,
 				D60083C01C71DC6A00D2E4A4 /* Activity.swift in Sources */,
 				7EB3514B1C82048300323D5E /* TripsTableViewController.swift in Sources */,
+				D2311B571C9455EA00AF67C7 /* CLLocation+FormattedAdress.swift in Sources */,
 				7E371AC71C89E04500ECACB9 /* BaseSampleDataLoader.swift in Sources */,
 				7EFA1F231C887C560063CC48 /* TripSearchController.swift in Sources */,
 				D257340D1C8DD0F80017B94E /* LocationSearchDelegate.swift in Sources */,
@@ -556,16 +563,17 @@
 				D21C68951C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift in Sources */,
 				D60083BC1C71DC6A00D2E4A4 /* Location.swift in Sources */,
 				F0C369621C8DCA550013D461 /* PhotosAllController.swift in Sources */,
-				D25734091C8DCCFC0017B94E /* LocationSearchController.swift in Sources */,
+				D25734091C8DCCFC0017B94E /* ActivityLocationTableController.swift in Sources */,
 				F0AB011F1C929ADA0009E6B8 /* Helpers.swift in Sources */,
 				D68212761C7915600046122E /* UIViewController+ManagedObjectContext.swift in Sources */,
 				7E0DB1801C88D4E4003D6B38 /* SampleDataLoader.swift in Sources */,
 				7E371AC31C89D28500ECACB9 /* ExampleTripDataLoader.swift in Sources */,
+				D2311B5B1C948D0300AF67C7 /* MapItemAnnotation.swift in Sources */,
 				D274EC661C70B3A5000AA29D /* PhotosController.swift in Sources */,
 				F0AB01211C92A6D50009E6B8 /* TripPhotosDataSource.swift in Sources */,
 				D644B9011C73C3A300B2D908 /* NSManagedObject+EntityName.swift in Sources */,
 				7E0DB17B1C88A891003D6B38 /* TripTableViewCell.swift in Sources */,
-				D2AB1BFE1C8E09AD00DD5AFC /* ActivitySelectLocationController.swift in Sources */,
+				D2AB1BFE1C8E09AD00DD5AFC /* ActivityLocationController.swift in Sources */,
 				F0DA6C101C68CFF3007753F8 /* DataModel.xcdatamodeld in Sources */,
 				D6EF6ECB1C68CD03006D098B /* AppDelegate.swift in Sources */,
 				F0AB011D1C91CD770009E6B8 /* TripPhotosLoading.swift in Sources */,

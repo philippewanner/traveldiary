@@ -212,10 +212,10 @@
             </objects>
             <point key="canvasLocation" x="2841" y="402"/>
         </scene>
-        <!--SelectLocation-->
+        <!--ActivityLocation-->
         <scene sceneID="xRD-aH-4rP">
             <objects>
-                <viewControllerPlaceholder storyboardName="SelectLocation" id="GGK-6p-cWP" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="ActivityLocation" id="GGK-6p-cWP" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="EKV-1i-ISg"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0tt-XK-li5" userLabel="First Responder" sceneMemberID="firstResponder"/>
