@@ -31,6 +31,8 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
         
     }
     
+    var fromCamera: Bool = false
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SaveActivity" {
             selectedActivity = selectedActivity ?? Activity(managedObjectContext: self.managedObjectContext)
@@ -43,12 +45,15 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
             photoData.image = image.image
             photoData.createDate = NSDate()
             selectedActivity?.addPhoto(photoData)
-            UIImageWriteToSavedPhotosAlbum(image.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+            if fromCamera{
+                //Only save photo to the libary if it was made with the camera
+                UIImageWriteToSavedPhotosAlbum(image.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+            }
         } else if segue.identifier == "SelectLocation" {
             let navController = segue.destinationViewController as! UINavigationController
             let selectLocationController = navController.topViewController as!ActivitySelectLocationController
             selectLocationController.selectedLocation = selectedActivity?.location
-        }
+        }   
     }
     
     
@@ -72,6 +77,7 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
         picker.delegate = self
         picker.sourceType = .PhotoLibrary
         presentViewController(picker, animated: true, completion: nil)
+        fromCamera = false
         
     }
     @IBAction func takePicture(sender: UIButton) {
@@ -79,8 +85,10 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
         picker.delegate = self
         if UIImagePickerController.isSourceTypeAvailable(.Camera){
             picker.sourceType = .Camera
+            presentViewController(picker, animated: true, completion: nil)
+            fromCamera = true
         }
-        presentViewController(picker, animated: true, completion: nil)
+        
     }
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
