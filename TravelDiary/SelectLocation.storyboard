@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -18,24 +19,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hEL-IT-yRp">
-                                <rect key="frame" x="0.0" y="64" width="600" height="229.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4Jk-0v-eab">
-                                <rect key="frame" x="0.0" y="293.5" width="600" height="306.5"/>
+                                <rect key="frame" x="0.0" y="370.5" width="600" height="229.5"/>
                             </mapView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eaq-Ae-Fdw">
+                                <rect key="frame" x="0.0" y="64" width="600" height="306.5"/>
+                                <connections>
+                                    <segue destination="nZR-OF-Q7h" kind="embed" id="SUl-1F-F09"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hEL-IT-yRp" firstAttribute="top" secondItem="HNO-DR-5U9" secondAttribute="bottom" id="3bJ-94-JYe"/>
-                            <constraint firstItem="4Jk-0v-eab" firstAttribute="bottom" secondItem="Fj3-QN-GJ1" secondAttribute="top" id="BpB-eR-YBl"/>
-                            <constraint firstItem="hEL-IT-yRp" firstAttribute="height" secondItem="4Jk-0v-eab" secondAttribute="height" multiplier="0.75" id="DXz-YB-gGW"/>
-                            <constraint firstItem="4Jk-0v-eab" firstAttribute="trailing" secondItem="hEL-IT-yRp" secondAttribute="trailing" id="LWW-LZ-lmJ"/>
-                            <constraint firstAttribute="trailing" secondItem="4Jk-0v-eab" secondAttribute="trailing" id="TqL-mE-oR6"/>
-                            <constraint firstItem="4Jk-0v-eab" firstAttribute="leading" secondItem="hEL-IT-yRp" secondAttribute="leading" id="TzA-mX-Ud2"/>
-                            <constraint firstItem="4Jk-0v-eab" firstAttribute="top" secondItem="hEL-IT-yRp" secondAttribute="bottom" id="VOf-ED-Bzg"/>
-                            <constraint firstItem="4Jk-0v-eab" firstAttribute="leading" secondItem="Xph-eh-AHg" secondAttribute="leading" id="xz4-f0-hgx"/>
+                            <constraint firstAttribute="trailing" secondItem="Eaq-Ae-Fdw" secondAttribute="trailing" id="38Q-LK-Cmv"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="4Jk-0v-eab" secondAttribute="bottom" id="H1U-Y4-GRo"/>
+                            <constraint firstItem="Eaq-Ae-Fdw" firstAttribute="top" secondItem="HNO-DR-5U9" secondAttribute="bottom" id="HvV-MW-5Qd"/>
+                            <constraint firstItem="Eaq-Ae-Fdw" firstAttribute="trailing" secondItem="4Jk-0v-eab" secondAttribute="trailing" id="Jf8-XN-K12"/>
+                            <constraint firstItem="Eaq-Ae-Fdw" firstAttribute="leading" secondItem="Xph-eh-AHg" secondAttribute="leading" id="KPC-Ly-7qF"/>
+                            <constraint firstItem="4Jk-0v-eab" firstAttribute="top" secondItem="Eaq-Ae-Fdw" secondAttribute="bottom" id="Pbo-vH-flZ"/>
+                            <constraint firstItem="Eaq-Ae-Fdw" firstAttribute="leading" secondItem="4Jk-0v-eab" secondAttribute="leading" id="mO7-gb-H3z"/>
+                            <constraint firstItem="4Jk-0v-eab" firstAttribute="height" secondItem="Eaq-Ae-Fdw" secondAttribute="height" multiplier="0.75" id="r0x-3Y-Gca"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Choose location" id="uKK-Y4-GKJ">
@@ -65,7 +68,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="LocationSearchController" id="nZR-OF-Q7h" customClass="LocationSearchController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oqN-Kd-Tn3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="306.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -86,7 +89,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0rn-zk-jAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3525" y="1095"/>
+            <point key="canvasLocation" x="4201" y="381"/>
         </scene>
     </scenes>
 </document>
