@@ -31,7 +31,6 @@ class ActivitySelectLocationController: UIViewController {
         
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestLocationAuthorization(self)
-        locationManager.delegate = self
         
         let locationSearchController = storyboard!.instantiateViewControllerWithIdentifier(Constants.LocationSearchControllerId) as! LocationSearchController
         searchController = UISearchController(searchResultsController: locationSearchController)
@@ -55,7 +54,7 @@ class ActivitySelectLocationController: UIViewController {
         if let location = selectedLocation {
             showLocation(location)
         } else {
-            locationManager.requestLocation()
+            mapView.userTrackingMode = .Follow
         }
     }
     
@@ -76,29 +75,6 @@ class ActivitySelectLocationController: UIViewController {
         location.address = placemark.thoroughfare
         location.countryCode = placemark.countryCode
         return location
-    }
-}
-
-// MARK: - LocationSearchDelegate
-extension ActivitySelectLocationController: CLLocationManagerDelegate {
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let currentLocation = locations.first {
-            CLGeocoder().reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) -> Void in
-                if let error = error {
-                    print("Reverse geocoder failed with error" + error.localizedDescription)
-                    return
-                }
-                if let placemarks = placemarks {
-                    if placemarks.count > 0 {
-                        let placemark = placemarks[0]
-                        self.setLocationFrom(placemark: MKPlacemark(placemark: placemark))
-                    } else {
-                        print("Problem with the data received from geocoder")
-                    }
-                }
-        })
-        }
     }
 }
 
