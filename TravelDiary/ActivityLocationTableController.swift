@@ -36,7 +36,6 @@ class ActivityLocationTableController : UITableViewController {
         let searchBar = searchController!.searchBar
         searchBar.sizeToFit()
         tableView.tableHeaderView = searchBar
-        
         definesPresentationContext = true
     }
     
