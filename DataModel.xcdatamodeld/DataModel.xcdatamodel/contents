@@ -36,7 +36,7 @@
     <elements>
         <element name="Activity" positionX="-27" positionY="63" width="128" height="150"/>
         <element name="Location" positionX="135" positionY="212" width="128" height="150"/>
-        <element name="Photo" positionX="468" positionY="225" width="128" height="135"/>
+        <element name="Photo" positionX="358" positionY="254" width="128" height="133"/>
         <element name="Trip" positionX="-2" positionY="423" width="128" height="120"/>
     </elements>
 </model>
