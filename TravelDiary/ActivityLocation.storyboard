@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Location-->
@@ -18,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="top" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ohx-Gf-RLl">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ohx-Gf-RLl">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eaq-Ae-Fdw">
@@ -37,12 +38,12 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="4Jk-0v-eab" firstAttribute="height" secondItem="Eaq-Ae-Fdw" secondAttribute="height" id="AxM-1N-gk8"/>
-                                    <constraint firstItem="4Jk-0v-eab" firstAttribute="top" secondItem="Eaq-Ae-Fdw" secondAttribute="bottom" id="V6x-Ho-qQP"/>
+                                    <constraint firstItem="4Jk-0v-eab" firstAttribute="top" secondItem="Eaq-Ae-Fdw" secondAttribute="bottom" priority="999" id="V6x-Ho-qQP"/>
                                     <constraint firstAttribute="trailing" secondItem="Eaq-Ae-Fdw" secondAttribute="trailing" id="hFW-xh-9sF"/>
                                     <constraint firstItem="Eaq-Ae-Fdw" firstAttribute="leading" secondItem="ohx-Gf-RLl" secondAttribute="leading" id="hLD-M8-YKe"/>
                                     <constraint firstAttribute="bottom" secondItem="4Jk-0v-eab" secondAttribute="bottom" id="iiV-Ae-V57"/>
                                     <constraint firstItem="4Jk-0v-eab" firstAttribute="width" secondItem="Eaq-Ae-Fdw" secondAttribute="width" id="n0a-DZ-2KL"/>
-                                    <constraint firstItem="Eaq-Ae-Fdw" firstAttribute="top" secondItem="ohx-Gf-RLl" secondAttribute="top" id="oAK-GA-9cb"/>
+                                    <constraint firstItem="Eaq-Ae-Fdw" firstAttribute="top" secondItem="ohx-Gf-RLl" secondAttribute="top" priority="999" id="oAK-GA-9cb"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -60,16 +61,25 @@
                                 <action selector="cancel:" destination="bTm-jz-WgZ" id="s5l-n5-LAr"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="JVo-KV-ydQ">
-                            <connections>
-                                <segue destination="6Qs-gg-ElJ" kind="unwind" unwindAction="unwindSequeSaveLocation:" id="2wd-Xd-NA4"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="done" systemItem="save" id="JVo-KV-ydQ">
+                                <connections>
+                                    <segue destination="6Qs-gg-ElJ" kind="unwind" unwindAction="unwindSequeSaveLocation:" id="2wd-Xd-NA4"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="hFu-Qn-Fd4">
+                                <connections>
+                                    <action selector="search:" destination="bTm-jz-WgZ" id="aeu-hz-6Gw"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="containerView" destination="Eaq-Ae-Fdw" id="f5z-aT-8ST"/>
                         <outlet property="mapView" destination="4Jk-0v-eab" id="5SF-Nw-tkU"/>
                         <outlet property="saveButton" destination="JVo-KV-ydQ" id="eNs-dD-3hs"/>
+                        <outlet property="searchButton" destination="hFu-Qn-Fd4" id="B3Y-rG-bGg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94B-Ig-4qo" userLabel="First Responder" sceneMemberID="firstResponder"/>
