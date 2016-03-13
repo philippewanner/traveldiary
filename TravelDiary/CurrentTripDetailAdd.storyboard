@@ -151,12 +151,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Activity" id="rcl-oM-0Y7">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="ZuT-QK-UZI">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ZuT-QK-UZI">
                             <connections>
                                 <segue destination="nyR-qZ-IEz" kind="unwind" unwindAction="unwindSegueAddActivity:" id="vY4-mu-cnU"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="5vn-Tx-0BC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="5vn-Tx-0BC">
                             <connections>
                                 <segue destination="nyR-qZ-IEz" kind="unwind" identifier="SaveActivity" unwindAction="unwindSequeSaveActiviy:" id="PGK-zT-Smz"/>
                             </connections>
