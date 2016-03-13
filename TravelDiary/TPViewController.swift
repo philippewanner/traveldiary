@@ -78,24 +78,24 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showImageFromTripView" {
-            NSLog("showImageFromTripView, indexPath=%d", (sender?.indexPath.item)!)
+//            NSLog("showImageFromTripView, indexPath=%d", (sender?.indexPath.item)!)
             
             if sender?.collectionView == nil {
                 NSLog("sender collection view nilllll")
             }
             
-            //Get the number of items selected in the collection view
-            let indexPaths = sender!.collectionView!.indexPathsForSelectedItems()!
-            //Get the first items of those
-            let indexPath = indexPaths[0] as NSIndexPath
-            
-            //Cast the destination view controller to ImageViewController
-            let controller = segue.destinationViewController as! ImageViewController
-
-            //Set the image in the ImageViewController to the selected item in the collection view
-            controller.image = (sender as! TPTableViewCell).data[indexPath.row].image!
-            
-            //Set the title of this image depending of the selected item in the collection view
+//            //Get the number of items selected in the collection view
+//            let indexPaths = sender!.collectionView!.indexPathsForSelectedItems()!
+//            //Get the first items of those
+//            let indexPath = indexPaths[0] as NSIndexPath
+//            
+//            //Cast the destination view controller to ImageViewController
+//            let controller = segue.destinationViewController as! ImageViewController
+//
+//            //Set the image in the ImageViewController to the selected item in the collection view
+//            controller.image = (sender as! TPTableViewCell).data[indexPath.row].image!
+//            
+//            //Set the title of this image depending of the selected item in the collection view
 //            controller.title = sender.collectionViewDataSource.data[indexPath.row].title
         }
     }

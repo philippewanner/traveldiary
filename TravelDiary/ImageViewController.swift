@@ -25,4 +25,9 @@ class ImageViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func onShareButton(sender: AnyObject) {
+        let activityController = UIActivityViewController(activityItems: ["Share photo", imageView.image!], applicationActivities: nil)
+        presentViewController(activityController, animated: true, completion: nil)
+    }
 }
