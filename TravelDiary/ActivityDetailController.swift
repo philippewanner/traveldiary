@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ActivityDetailController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ActivityDetailController: UIViewController, UINavigationControllerDelegate {
     
     var selectedActivity: Activity?
     var selectedPlacemark: MKPlacemark?
@@ -26,6 +26,7 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
             activityDescription.text = selectedActivity.descr
             activityDate.date = selectedActivity.date!
             locationName.text = selectedActivity.location?.name
+            self.title = selectedActivity.title
         }
     }
 
@@ -90,11 +91,6 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
 
     }
 
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        image.image = info [UIImagePickerControllerOriginalImage] as? UIImage;
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-
     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
         if error == nil {
             let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .Alert)
@@ -105,6 +101,13 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
             ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             presentViewController(ac, animated: true, completion: nil)
         }
+    }
+}
+extension ActivityDetailController: UIImagePickerControllerDelegate{
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        image.image = info [UIImagePickerControllerOriginalImage] as? UIImage;
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

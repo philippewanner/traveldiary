@@ -14,6 +14,8 @@ class ActivityCell: UITableViewCell {
     
     @IBOutlet weak var activityDate: UILabel!
     
+    @IBOutlet weak var activityTitle: UILabel!
+    
     //@IBOutlet weak var timelineImage: UIImageView!
     
     override func awakeFromNib() {

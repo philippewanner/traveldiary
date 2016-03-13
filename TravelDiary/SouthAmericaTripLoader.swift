@@ -17,7 +17,7 @@ class SouthAmericaTripLoader: BaseTripDataLoader{
     
     private func createIguazuActivity(){
         let iguazu = activityBuilder
-            .with(description: "Ausflug zu den Wasserfällen von Iguazu. Beide Seiten(Argentinien    und Barsilien).")
+            .with(description: "Ausflug zu den Wasserfällen von Iguazu. Beide Seiten(Argentinien und Barsilien).")
             .with(title: "Carataras de Iguazu")
             .build()
         self.currentLocation = locationBuilder

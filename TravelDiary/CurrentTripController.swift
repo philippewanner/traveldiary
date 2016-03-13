@@ -98,6 +98,7 @@ class CurrentTripController: UITableViewController{
         let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
         cell.activityDescription.text = actitvity.descr
         cell.activityDate.text = dateFormatter.stringFromDate((actitvity.date)!)
+        cell.activityTitle.text = actitvity.title
         return cell
     }
     
