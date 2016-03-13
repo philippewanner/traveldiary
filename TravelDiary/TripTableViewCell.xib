@@ -3,36 +3,46 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="9hM-rS-WMu" customClass="TripTableViewCell" customModule="TravelDiary" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="57" id="9hM-rS-WMu" customClass="TripTableViewCell" customModule="TravelDiary" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9hM-rS-WMu" id="iSE-eK-n80">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date Period" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84Q-yt-68C">
-                        <rect key="frame" x="21" y="0.0" width="291" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Date Period" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84Q-yt-68C">
+                        <rect key="frame" x="13" y="9" width="308" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trip Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iZ-k1-aSi">
-                        <rect key="frame" x="21" y="22" width="283" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iZ-k1-aSi">
+                        <rect key="frame" x="13" y="22" width="308" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="6iZ-k1-aSi" firstAttribute="top" secondItem="84Q-yt-68C" secondAttribute="bottom" constant="1" id="2AP-n0-7zA"/>
+                    <constraint firstItem="6iZ-k1-aSi" firstAttribute="width" secondItem="84Q-yt-68C" secondAttribute="width" id="FVO-S8-Zcw"/>
+                    <constraint firstItem="84Q-yt-68C" firstAttribute="top" secondItem="iSE-eK-n80" secondAttribute="topMargin" constant="1" id="FZ4-7i-tiO"/>
+                    <constraint firstItem="84Q-yt-68C" firstAttribute="leading" secondItem="iSE-eK-n80" secondAttribute="leadingMargin" constant="5" id="GIF-x4-IBb"/>
+                    <constraint firstItem="84Q-yt-68C" firstAttribute="trailing" secondItem="iSE-eK-n80" secondAttribute="trailingMargin" constant="9" id="GgA-g2-Oqo"/>
+                    <constraint firstItem="6iZ-k1-aSi" firstAttribute="top" secondItem="84Q-yt-68C" secondAttribute="bottom" constant="1" id="ekj-3K-oWt"/>
+                    <constraint firstItem="6iZ-k1-aSi" firstAttribute="leading" secondItem="84Q-yt-68C" secondAttribute="leading" id="pyy-Or-5n5"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="tripPeriod" destination="84Q-yt-68C" id="lvP-pc-Ca2"/>
                 <outlet property="tripTitle" destination="6iZ-k1-aSi" id="bdL-tc-aYl"/>
             </connections>
-            <point key="canvasLocation" x="265" y="114"/>
+            <point key="canvasLocation" x="265" y="119.5"/>
         </tableViewCell>
     </objects>
 </document>
