@@ -12,6 +12,13 @@ import CoreData
 
 class ActivityDetailController: UIViewController {
     
+    private struct Constants{
+        static let SaveActivitySegue = "SaveActivity"
+        static let SelectLocationSegue = "SelectLocation"
+        static let ViewPhotoSegue = "viewPhotoSegue"
+        static let ImageReuseIdentifier = "imageReuseIndentifier"
+    }
+    
     @IBOutlet weak var activityDescription: UITextField!
     @IBOutlet weak var activityDate: UIDatePicker!
     @IBOutlet weak var locationName: UITextField!
@@ -23,16 +30,16 @@ class ActivityDetailController: UIViewController {
     // Location placemark from the search
     var selectedPlacemark: MKPlacemark?
     // Whether the Photo was made with the camera or imported from the library
-    var fromCamera: Bool = false
+    private var fromCamera: Bool = false
     //For Updating the collection view
-    var blockOperations: [NSBlockOperation] = []
+    private var blockOperations: [NSBlockOperation] = []
     // Controller to load data
-    var fetchedResultsController: NSFetchedResultsController!
+    private var fetchedResultsController: NSFetchedResultsController!
     
     /*!
         Init method for the fetchedController defining the predicte to load data
     */
-    func initializeFetchedResultsController(){
+    private func initializeFetchedResultsController(){
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: Photo.entityName())
         fetchRequest.predicate = NSPredicate(format: "inActivity == %@", selectedActivity!)
@@ -71,7 +78,7 @@ class ActivityDetailController: UIViewController {
         Segue calls to other ViewControllers
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "SaveActivity" {
+        if segue.identifier == Constants.SaveActivitySegue {
             selectedActivity = selectedActivity ?? Activity(managedObjectContext: self.managedObjectContext)
             selectedActivity?.descr = activityDescription.text
             selectedActivity?.date = activityDate.date
@@ -85,12 +92,12 @@ class ActivityDetailController: UIViewController {
                 location.countryCode = selectedPlacemark.countryCode
                 selectedActivity?.location = location
             }
-        } else if segue.identifier == "SelectLocation" {
+        } else if segue.identifier == Constants.SelectLocationSegue {
             let navController = segue.destinationViewController as! UINavigationController
             let activityLocationController = navController.topViewController as!ActivityLocationController
             activityLocationController.selectedOnMap = selectedPlacemark
             activityLocationController.existingLocation = selectedActivity?.location
-        } else if segue.identifier == "viewPhotoSegue" {
+        } else if segue.identifier == Constants.ViewPhotoSegue {
             let navController = segue.destinationViewController as! UINavigationController
             let activityPhotoController = navController.topViewController as! ActivityPhotoViewController
             let cell = sender as! ActivityPhotoCell
@@ -191,7 +198,7 @@ extension ActivityDetailController: UIImagePickerControllerDelegate{
 extension ActivityDetailController: UICollectionViewDataSource{
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageReuseIndentifier", forIndexPath: indexPath) as! ActivityPhotoCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.ImageReuseIdentifier, forIndexPath: indexPath) as! ActivityPhotoCell
         let photo = fetchedResultsController.objectAtIndexPath(indexPath) as! Photo
         cell.activityPhoto.image = photo.image
         return cell

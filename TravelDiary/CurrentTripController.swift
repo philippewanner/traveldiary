@@ -11,20 +11,24 @@ import CoreData
 
 class CurrentTripController: UITableViewController{
     
+    private struct Constants{
+        static let SegueActivityDetailController = "showActivitySegue"
+        static let addActivitySegue = "addActivitySegue"
+        static let reuseCellIdentifier = "reuseCell"
+        static let ActivityTableViewCell = "ActivityTableViewCell"
+    }
+    
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var navigationBar: UINavigationItem!
     
-    let dateFormatter = NSDateFormatter()
-    let SegueActivityDetailController = "showActivitySegue"
-    let addActivitySegue = "addActivitySegue"
-    
+    private let dateFormatter = NSDateFormatter()
     // Controller to load data
-    var fetchedResultsController: NSFetchedResultsController!
+    private var fetchedResultsController: NSFetchedResultsController!
     // Currently selected trip
     var currentTrip : Trip?
     
-    func initializeFetchedResultsController(){
+    private func initializeFetchedResultsController(){
         if currentTrip == nil{
             loadCurrenTrip()
         }
@@ -49,8 +53,8 @@ class CurrentTripController: UITableViewController{
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         // Do any additional setup after loading the view, typically from a nib.
-        let nib = UINib(nibName: "ActivityTableViewCell", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "reuseCell")
+        let nib = UINib(nibName: Constants.ActivityTableViewCell, bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: Constants.reuseCellIdentifier)
         tableView.separatorColor = UIColor.clearColor()
         dateFormatter.locale = NSLocale(localeIdentifier: "de_CH")
         dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
@@ -67,7 +71,7 @@ class CurrentTripController: UITableViewController{
     /*!
         Loads the current trip if not already present to navigation from the trip table.
     */
-    func loadCurrenTrip(){
+    private func loadCurrenTrip(){
         let request = NSFetchRequest(entityName: Trip.entityName())
         request.returnsObjectsAsFaults = false;
         //TODO search for current trip 1. CurrentDate within trip range 2. future 3. last
@@ -97,7 +101,7 @@ class CurrentTripController: UITableViewController{
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: ActivityCell = self.tableView.dequeueReusableCellWithIdentifier("reuseCell") as! ActivityCell
+        let cell: ActivityCell = self.tableView.dequeueReusableCellWithIdentifier(Constants.reuseCellIdentifier) as! ActivityCell
         let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
         cell.activityDescription.text = actitvity.descr
         cell.activityDate.text = dateFormatter.stringFromDate((actitvity.date)!)
@@ -107,12 +111,12 @@ class CurrentTripController: UITableViewController{
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Perform Segue
-        performSegueWithIdentifier(SegueActivityDetailController, sender: self)
+        performSegueWithIdentifier(Constants.SegueActivityDetailController, sender: self)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SegueActivityDetailController {
+        if segue.identifier == Constants.SegueActivityDetailController {
             if let destination = segue.destinationViewController as? ActivityDetailController {
                destination.selectedActivity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
             }
