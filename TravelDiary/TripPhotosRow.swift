@@ -20,6 +20,7 @@ extension TripPhotosRow {
         
         collectionView.delegate = dataSourceDelegate
         collectionView.dataSource = dataSourceDelegate
+        NSLog("row=%d", row)
         collectionView.tag = row
         collectionView.setContentOffset(collectionView.contentOffset, animated:false) // Stops collection view if it was scrolling.
         collectionView.reloadData()

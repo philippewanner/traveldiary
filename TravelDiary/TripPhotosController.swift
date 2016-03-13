@@ -12,8 +12,12 @@ import CoreData
 class TripPhotosController: UIViewController {
     
     var model: [[Photo]] = [[]]
-    var model2 = generateRandomData()
+//    var model2 = generateRandomData()
     var storedOffsets = [Int: CGFloat]()
+    
+    var whichCollectionView = 0
+    
+    static var nbCollecitonView = 0
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -80,19 +84,29 @@ class TripPhotosController: UIViewController {
 }
 
 extension TripPhotosController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        NSLog("t: %d s: %d c:%d", collectionView.tag, section, model2[collectionView.tag].count)
 //        NSLog("t-c: %d s-c: %d", model[collectionView.tag].count, model[section].count)
         NSLog("0: %d %d %d", model[0].count, model[section].count, model[collectionView.tag].count)
         NSLog("1: %d %d %d", model[1].count, model[section].count, model[collectionView.tag].count)
-        NSLog("section=%d", section)
-        return model2[collectionView.tag].count
+        NSLog("section=%d tag=%d", section, collectionView.tag)
+
+        let count =  model[TripPhotosController.nbCollecitonView].count
+        TripPhotosController.nbCollecitonView += 1
+        NSLog("nbCollectionView=%d", TripPhotosController.nbCollecitonView)
+        return count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tripPhotoCell", forIndexPath: indexPath)
         
-        cell.backgroundColor = model2[collectionView.tag][indexPath.item]
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tripPhotoCell", forIndexPath: indexPath)  as! TripCollectionViewCell
+        
+//        cell.backgroundColor = model[collectionView.tag][indexPath.item]
+        NSLog("tag=%d item=%d", collectionView.tag, indexPath.item)
+//        cell.imageView.image = model[collectionView.tag][indexPath.item].image
+//        let nbImage = model[collectionView.tag].count
+        cell.imageView.image = model[TripPhotosController.nbCollecitonView-1][indexPath.item].image
         
         return cell
     }

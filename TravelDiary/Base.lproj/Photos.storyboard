@@ -100,15 +100,29 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tripPhotoCell" id="0IV-ff-jaO">
-                                                            <rect key="frame" x="0.0" y="13.5" width="73" height="73"/>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tripPhotoCell" id="0IV-ff-jaO" customClass="TripCollectionViewCell" customModule="TravelDiary" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="14" width="73" height="73"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qTg-iL-agB">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
+                                                                    </imageView>
+                                                                </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <color key="backgroundColor" red="0.643778590105472" green="0.92575897293957288" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="qTg-iL-agB" secondAttribute="bottom" id="BtE-7Q-aYP"/>
+                                                                <constraint firstAttribute="trailing" secondItem="qTg-iL-agB" secondAttribute="trailing" id="Xvo-88-euY"/>
+                                                                <constraint firstItem="qTg-iL-agB" firstAttribute="leading" secondItem="0IV-ff-jaO" secondAttribute="leading" id="iVB-o4-Nn0"/>
+                                                                <constraint firstItem="qTg-iL-agB" firstAttribute="top" secondItem="0IV-ff-jaO" secondAttribute="top" id="nXb-y7-hqe"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="imageView" destination="qTg-iL-agB" id="Geq-xZ-oZX"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                     <connections>
