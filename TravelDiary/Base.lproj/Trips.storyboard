@@ -38,7 +38,7 @@
                             <barButtonItem title="Edit" id="VBS-et-sh8" userLabel="Edit Button"/>
                             <barButtonItem title="Add" id="41M-Xt-gDr">
                                 <connections>
-                                    <segue destination="KTM-L9-OcI" kind="presentation" identifier="addNewTripSegue" id="e2P-wg-aHo"/>
+                                    <segue destination="KTM-L9-OcI" kind="presentation" identifier="addOrEditTripSegue" id="e2P-wg-aHo"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>

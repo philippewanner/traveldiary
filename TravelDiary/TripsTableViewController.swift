@@ -11,8 +11,7 @@ class TripsTableViewController : UITableViewController{
         static let tripTableViewCellNibName = "TripTableViewCell"
         static let cellReuseIdentifier = "reuseTripTableViewCell"
         static let showCurrentTripSegue = "showCurrentTripSegue"
-        static let addNewTripSegue = "addNewTripSegue"
-        static let editTripSegue = "editTripSegue"
+        static let addOrEditTripSegue = "addOrEditTripSegue"
         static let localeIdentifier = "de_CH"
         static let sortKey = "startDate"
         static let sortAscending = true
@@ -27,6 +26,7 @@ class TripsTableViewController : UITableViewController{
     private var currentTrip: Trip!
     private var tripsAreEditable = false
     private let searchController = UISearchController(searchResultsController: nil)
+    private var editAnExistingTrip = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,34 +45,27 @@ class TripsTableViewController : UITableViewController{
         instantiateSearchBar()
     }
     
-    private func instantiateSearchBar(){
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.delegate = self
-        definesPresentationContext = true
-        
-        let searchBar = searchController.searchBar
-        searchBar.sizeToFit()
-        searchBar.placeholder = Constants.SearchBarPlaceholder
-        navigationItem.titleView = searchBar
-    }
-    
-    private func filterContentForSearchText(searchText: String) {
-        self.filteredTrips = trips?.filter { trip in
-            if let title = trip.title {
-                return title.lowercaseString.containsString(searchText.lowercaseString)
-            }else {
-                return false
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Constants.showCurrentTripSegue {
+            NSLog("prepare seque: " + Constants.showCurrentTripSegue)
+            if let currentTripController = segue.destinationViewController as? CurrentTripController {
+                currentTripController.currentTrip = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Trip
+            }
+        } else if segue.identifier == Constants.addOrEditTripSegue {
+            NSLog("prepare seque: " + Constants.addOrEditTripSegue)
+            if editAnExistingTrip {
+                NSLog("prepare an existing trip to edit")
+                if let navigationController = segue.destinationViewController as? UINavigationController {
+                    if let tripEditController = navigationController.viewControllers.first as? TripEditViewController {
+                        NSLog("selected trip: \(self.currentTrip)")
+                        tripEditController.currentTrip = self.currentTrip
+                    }
+                } else{
+                    NSLog("no destination view controllor defined!")
+                }
+                editAnExistingTrip = false
             }
         }
-        tableView.reloadData()
-    }
-    
-    override func setEditing(editing: Bool, animated: Bool) {
-        NSLog("setEditing(editing: \(editing), animated: \(animated))")
-        tripsAreEditable = editing
-        super.setEditing(editing, animated: animated)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -90,31 +83,12 @@ class TripsTableViewController : UITableViewController{
         return tripCell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Constants.showCurrentTripSegue {
-            NSLog("prepare seque: " + Constants.showCurrentTripSegue)
-            if let currentTripController = segue.destinationViewController as? CurrentTripController {
-                currentTripController.currentTrip = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Trip
-            }
-        } else if segue.identifier == Constants.addNewTripSegue {
-            NSLog("prepare seque: " + Constants.addNewTripSegue)
-            NSLog("\(segue.destinationViewController)")
-            if let navigationController = segue.destinationViewController as? UINavigationController {
-                if let tripEditController = navigationController.viewControllers.first as? TripEditViewController {
-                    NSLog("selected trip: \(self.currentTrip)")
-                    tripEditController.currentTrip = self.currentTrip
-                }
-            } else{
-                NSLog("no destination view controllor defined!")
-            }
-        }
-    }
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.currentTrip = fetchedResultsController.objectAtIndexPath(indexPath) as? Trip
         if self.tripsAreEditable {
-            NSLog("performing " + Constants.addNewTripSegue)
-            performSegueWithIdentifier(Constants.addNewTripSegue, sender: self)
+            editAnExistingTrip = true
+            NSLog("performing " + Constants.addOrEditTripSegue)
+            performSegueWithIdentifier(Constants.addOrEditTripSegue, sender: self)
         }else{
             NSLog("performing " + Constants.showCurrentTripSegue)
             performSegueWithIdentifier(Constants.showCurrentTripSegue, sender: self)
@@ -161,6 +135,12 @@ class TripsTableViewController : UITableViewController{
         return numberOfSections
     }
     
+    override func setEditing(editing: Bool, animated: Bool) {
+        NSLog("setEditing(editing: \(editing), animated: \(animated))")
+        tripsAreEditable = editing
+        super.setEditing(editing, animated: animated)
+    }
+    
     // segue which is called when the cancel button on the TripEditViewController is called
     @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {
         NSLog("canceled 'adding new trip'")
@@ -169,6 +149,30 @@ class TripsTableViewController : UITableViewController{
     // segue which is called when the save button on the TripEditViewController is pressed
     @IBAction func unwindSequeSaveActiviy(segue: UIStoryboardSegue){
         self.performSavingData()
+    }
+    
+    private func instantiateSearchBar(){
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        
+        let searchBar = searchController.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = Constants.SearchBarPlaceholder
+        navigationItem.titleView = searchBar
+    }
+    
+    private func filterContentForSearchText(searchText: String) {
+        self.filteredTrips = trips?.filter { trip in
+            if let title = trip.title {
+                return title.lowercaseString.containsString(searchText.lowercaseString)
+            }else {
+                return false
+            }
+        }
+        tableView.reloadData()
     }
     
     private func isSearchBarActiveAndNotEmpty() -> Bool{
@@ -258,7 +262,6 @@ extension TripsTableViewController: NSFetchedResultsControllerDelegate{
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         self.tableView.beginUpdates()
     }
-    
     
     func controller(controller: NSFetchedResultsController, didChangeObject object: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         switch type {
