@@ -62,7 +62,6 @@ class CurrentTripController: UITableViewController{
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
         }
-        //navigationBar.title = currentTrip?.title
     }
     
     func loadCurrenTrip(){

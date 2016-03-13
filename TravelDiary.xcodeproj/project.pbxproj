@@ -64,6 +64,7 @@
 		D6EF6ED71C68CD03006D098B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6EF6ED51C68CD03006D098B /* LaunchScreen.storyboard */; };
 		D6EF6EE21C68CD03006D098B /* TravelDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6EE11C68CD03006D098B /* TravelDiaryTests.swift */; };
 		D6EF6EED1C68CD03006D098B /* TravelDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6EEC1C68CD03006D098B /* TravelDiaryUITests.swift */; };
+		D6F9EAEF1C95DA210079481F /* ActivityPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F9EAEE1C95DA210079481F /* ActivityPhotoCell.swift */; };
 		F06FED971C94AB0C00F9AFE7 /* PhotosModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FED961C94AB0C00F9AFE7 /* PhotosModelHelper.swift */; };
 		F0A2B9B01C8DEE7600709ECF /* TPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2B9AF1C8DEE7600709ECF /* TPViewController.swift */; };
 		F0AB01151C9144B50009E6B8 /* PhotosAllLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB01141C9144B50009E6B8 /* PhotosAllLoading.swift */; };
@@ -156,6 +157,7 @@
 		D6EF6EE81C68CD03006D098B /* TravelDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelDiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EF6EEC1C68CD03006D098B /* TravelDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDiaryUITests.swift; sourceTree = "<group>"; };
 		D6EF6EEE1C68CD03006D098B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6F9EAEE1C95DA210079481F /* ActivityPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPhotoCell.swift; sourceTree = "<group>"; };
 		F06FED961C94AB0C00F9AFE7 /* PhotosModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosModelHelper.swift; sourceTree = "<group>"; };
 		F0A2B9AF1C8DEE7600709ECF /* TPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPViewController.swift; sourceTree = "<group>"; };
 		F0AB01141C9144B50009E6B8 /* PhotosAllLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosAllLoading.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				D25734041C8DA57F0017B94E /* ActivityLocation.storyboard */,
 				D25734081C8DCCFC0017B94E /* ActivityLocationTableController.swift */,
 				D257340C1C8DD0F80017B94E /* LocationSearchDelegate.swift */,
+				D6F9EAEE1C95DA210079481F /* ActivityPhotoCell.swift */,
 			);
 			name = trip;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				7EFA1F231C887C560063CC48 /* TripSearchController.swift in Sources */,
 				D257340D1C8DD0F80017B94E /* LocationSearchDelegate.swift in Sources */,
 				D60083BA1C71DC6A00D2E4A4 /* Photo.swift in Sources */,
+				D6F9EAEF1C95DA210079481F /* ActivityPhotoCell.swift in Sources */,
 				7E371ABD1C88E76700ECACB9 /* PhotoBuilder.swift in Sources */,
 				7E0DB1841C88DF47003D6B38 /* BaseBuilder.swift in Sources */,
 				D2519C611C90B57F005B2F68 /* LocationAnnotation.swift in Sources */,
