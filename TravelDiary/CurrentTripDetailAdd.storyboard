@@ -141,6 +141,7 @@
                                                 </view>
                                                 <connections>
                                                     <outlet property="activityPhoto" destination="fkt-oA-BSP" id="eID-Ib-BNn"/>
+                                                    <segue destination="rym-Up-3T5" kind="presentation" identifier="viewPhotoSegue" id="ZL2-Gm-xec"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -264,6 +265,40 @@
             </objects>
             <point key="canvasLocation" x="2841" y="402"/>
         </scene>
+        <!--Activity Photo View Controller-->
+        <scene sceneID="KuC-GK-bxi">
+            <objects>
+                <viewController id="ZgJ-QI-gtB" customClass="ActivityPhotoViewController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B0i-4d-IY3"/>
+                        <viewControllerLayoutGuide type="bottom" id="fS7-CP-MIe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nk5-Jo-eAP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gbe-jm-Sdq">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nus-GM-DoT">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="TN9-yq-BkY">
+                            <connections>
+                                <segue destination="5Yr-gz-fGK" kind="unwind" unwindAction="unwindSegueBackToActivity:" id="1qx-QA-TMg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityPhoto" destination="gbe-jm-Sdq" id="Qr4-wQ-bTR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HBf-jE-R4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5Yr-gz-fGK" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3612" y="1211"/>
+        </scene>
         <!--ActivityLocation-->
         <scene sceneID="xRD-aH-4rP">
             <objects>
@@ -273,6 +308,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0tt-XK-li5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3525" y="402"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5gV-aa-9D3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rym-Up-3T5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fBK-Ek-VLp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZgJ-QI-gtB" kind="relationship" relationship="rootViewController" id="Ufx-2W-0NT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dXD-LE-b14" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2800" y="1211"/>
         </scene>
     </scenes>
 </document>

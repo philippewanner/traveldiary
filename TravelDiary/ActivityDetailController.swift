@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreData
 
-class ActivityDetailController: UIViewController, UINavigationControllerDelegate {
+class ActivityDetailController: UIViewController {
     
     @IBOutlet weak var activityDescription: UITextField!
     @IBOutlet weak var activityDate: UIDatePicker!
@@ -18,15 +18,20 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var activityTitle: UITextField!
     @IBOutlet weak var activityPhotoCollectionView: UICollectionView!
     
+    // Selected Activity from the Activity tabel
     var selectedActivity: Activity?
+    // Location placemark from the search
     var selectedPlacemark: MKPlacemark?
+    // Whether the Photo was made with the camera or imported from the library
     var fromCamera: Bool = false
-    var imageCameraOrLibrary : UIImage?
     //For Updating the collection view
     var blockOperations: [NSBlockOperation] = []
-    
+    // Controller to load data
     var fetchedResultsController: NSFetchedResultsController!
     
+    /*!
+        Init method for the fetchedController defining the predicte to load data
+    */
     func initializeFetchedResultsController(){
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: Photo.entityName())
@@ -61,7 +66,10 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
             }
         }
     }
-
+    
+    /*!
+        Segue calls to other ViewControllers
+    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SaveActivity" {
             selectedActivity = selectedActivity ?? Activity(managedObjectContext: self.managedObjectContext)
@@ -82,10 +90,16 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
             let activityLocationController = navController.topViewController as!ActivityLocationController
             activityLocationController.selectedOnMap = selectedPlacemark
             activityLocationController.existingLocation = selectedActivity?.location
+        } else if segue.identifier == "viewPhotoSegue" {
+            let navController = segue.destinationViewController as! UINavigationController
+            let activityPhotoController = navController.topViewController as! ActivityPhotoViewController
+            let cell = sender as! ActivityPhotoCell
+            let indexPath = self.activityPhotoCollectionView!.indexPathForCell(cell)
+            let selectedPhoto = fetchedResultsController.objectAtIndexPath(indexPath!) as? Photo
+            activityPhotoController.photo = selectedPhoto
         }
     }
 
-    
     /*!
         segue which is called when the save button on the modal location dialog is pressed
     */
@@ -95,7 +109,15 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
             locationName.text = selectedPlacemark?.name
         }
     }
-
+    
+    /*!
+        segue to return from the image view.
+    */
+    @IBAction func unwindSegueBackToActivity(segue: UIStoryboardSegue){}
+    
+    /*!
+        Access photo library to import a photo
+    */
     @IBAction func accessPhotoLibrary(sender: UIButton) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -104,6 +126,10 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
         fromCamera = false
 
     }
+    
+    /*!
+        Make a picture using the build in camera functionality
+    */
     @IBAction func takePicture(sender: UIButton) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -114,7 +140,20 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
         }
 
     }
+    
+    // Cancel all block operations when ViewController deallocates
+    deinit {
+        for operation: NSBlockOperation in blockOperations {
+            operation.cancel()
+        }
+        blockOperations.removeAll(keepCapacity: false)
+    }
+}
 
+
+//MARK: - UINavigationControllerDelegate - Delegate for save action on the camera
+extension ActivityDetailController: UINavigationControllerDelegate{
+    
     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
         if error == nil {
             let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .Alert)
@@ -126,22 +165,13 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
             presentViewController(ac, animated: true, completion: nil)
         }
     }
-    
-    deinit {
-        // Cancel all block operations when ViewController deallocates
-        for operation: NSBlockOperation in blockOperations {
-            operation.cancel()
-        }
-        
-        blockOperations.removeAll(keepCapacity: false)
-    }
-
-    
 }
+
+//MARK: - UIImagePickerControllerDelegate - Delegate for the save action on the PickerController
 extension ActivityDetailController: UIImagePickerControllerDelegate{
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        imageCameraOrLibrary = info [UIImagePickerControllerOriginalImage] as? UIImage;
+        let imageCameraOrLibrary = info [UIImagePickerControllerOriginalImage] as? UIImage;
         if imageCameraOrLibrary != nil{
             let photoData = Photo(managedObjectContext: self.managedObjectContext)
             photoData.image = imageCameraOrLibrary
@@ -152,12 +182,12 @@ extension ActivityDetailController: UIImagePickerControllerDelegate{
             if fromCamera{
                 UIImageWriteToSavedPhotosAlbum(imageCameraOrLibrary!, self, "image:didFinishSavingWithError:contextInfo:", nil)
             }
-            
         }
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
+//MARK: - UICollectionViewDataSource - Datasource for the CollectionView which fetches from the FetchedResultController
 extension ActivityDetailController: UICollectionViewDataSource{
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

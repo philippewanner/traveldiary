@@ -13,15 +13,15 @@ class CurrentTripController: UITableViewController{
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
-    
     @IBOutlet weak var navigationBar: UINavigationItem!
     
     let dateFormatter = NSDateFormatter()
     let SegueActivityDetailController = "showActivitySegue"
     let addActivitySegue = "addActivitySegue"
     
+    // Controller to load data
     var fetchedResultsController: NSFetchedResultsController!
-    
+    // Currently selected trip
     var currentTrip : Trip?
     
     func initializeFetchedResultsController(){
@@ -64,6 +64,9 @@ class CurrentTripController: UITableViewController{
         }
     }
     
+    /*!
+        Loads the current trip if not already present to navigation from the trip table.
+    */
     func loadCurrenTrip(){
         let request = NSFetchRequest(entityName: Trip.entityName())
         request.returnsObjectsAsFaults = false;
@@ -84,6 +87,7 @@ class CurrentTripController: UITableViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections {
             let currentSection = sections[section]
@@ -92,7 +96,7 @@ class CurrentTripController: UITableViewController{
         return 0
     }
     
-   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: ActivityCell = self.tableView.dequeueReusableCellWithIdentifier("reuseCell") as! ActivityCell
         let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
         cell.activityDescription.text = actitvity.descr

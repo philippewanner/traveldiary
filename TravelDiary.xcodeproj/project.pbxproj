@@ -65,6 +65,7 @@
 		D6EF6EE21C68CD03006D098B /* TravelDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6EE11C68CD03006D098B /* TravelDiaryTests.swift */; };
 		D6EF6EED1C68CD03006D098B /* TravelDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6EEC1C68CD03006D098B /* TravelDiaryUITests.swift */; };
 		D6F9EAEF1C95DA210079481F /* ActivityPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F9EAEE1C95DA210079481F /* ActivityPhotoCell.swift */; };
+		D6F9EAF11C95FD610079481F /* ActivityPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F9EAF01C95FD610079481F /* ActivityPhotoViewController.swift */; };
 		F06FED971C94AB0C00F9AFE7 /* PhotosModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FED961C94AB0C00F9AFE7 /* PhotosModelHelper.swift */; };
 		F0A2B9B01C8DEE7600709ECF /* TPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2B9AF1C8DEE7600709ECF /* TPViewController.swift */; };
 		F0AB01151C9144B50009E6B8 /* PhotosAllLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB01141C9144B50009E6B8 /* PhotosAllLoading.swift */; };
@@ -158,6 +159,7 @@
 		D6EF6EEC1C68CD03006D098B /* TravelDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDiaryUITests.swift; sourceTree = "<group>"; };
 		D6EF6EEE1C68CD03006D098B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6F9EAEE1C95DA210079481F /* ActivityPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPhotoCell.swift; sourceTree = "<group>"; };
+		D6F9EAF01C95FD610079481F /* ActivityPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPhotoViewController.swift; sourceTree = "<group>"; };
 		F06FED961C94AB0C00F9AFE7 /* PhotosModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosModelHelper.swift; sourceTree = "<group>"; };
 		F0A2B9AF1C8DEE7600709ECF /* TPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPViewController.swift; sourceTree = "<group>"; };
 		F0AB01141C9144B50009E6B8 /* PhotosAllLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosAllLoading.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				D25734081C8DCCFC0017B94E /* ActivityLocationTableController.swift */,
 				D257340C1C8DD0F80017B94E /* LocationSearchDelegate.swift */,
 				D6F9EAEE1C95DA210079481F /* ActivityPhotoCell.swift */,
+				D6F9EAF01C95FD610079481F /* ActivityPhotoViewController.swift */,
 			);
 			name = trip;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				7EC3E5121C8D87EF00BDA035 /* TripEditViewController.swift in Sources */,
 				F0A2B9B01C8DEE7600709ECF /* TPViewController.swift in Sources */,
 				F0AB01191C9144D90009E6B8 /* PhotosAllCollectionViewDataSource.swift in Sources */,
+				D6F9EAF11C95FD610079481F /* ActivityPhotoViewController.swift in Sources */,
 				D682126F1C78C7490046122E /* ActivityCell.swift in Sources */,
 				D665DC341C8DD986002A77CB /* SouthAmericaTripLoader.swift in Sources */,
 				D69E7E881C8D81E300638D7C /* Activity+CoreDataProperties.swift in Sources */,
