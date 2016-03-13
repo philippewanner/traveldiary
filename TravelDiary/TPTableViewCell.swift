@@ -8,10 +8,10 @@
 
 import UIKit
 
-class TPTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
+class TPTableViewCell: UITableViewCell, UICollectionViewDataSource {
     
     var data : [Photo] = []
-    var selectedPhoto: Photo = Photo()
+    var viewController = UIViewController()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -30,10 +30,5 @@ class TPTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollection
         return data.count
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        //When someone clicks on the cell
-        NSLog("click on image in collection trip view, indexPath %d", indexPath.item)
-        selectedPhoto = data[indexPath.item]
-//        self.performSegueWithIdentifier("showImage", sender: self)
-    }
+
 }

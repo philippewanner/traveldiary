@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TPViewController: UIViewController, UITableViewDelegate{
+class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewDelegate{
     
     var model: [[Photo]] = [[]]
     var storedOffsets = [Int: CGFloat]()
@@ -65,14 +65,20 @@ class TPViewController: UIViewController, UITableViewDelegate{
 
         tableViewCell.data = model[indexPath.section]
         tableViewCell.collectionView.dataSource = tableViewCell
-        tableViewCell.collectionView.delegate = tableViewCell
+        tableViewCell.collectionView.delegate = self
         tableViewCell.collectionView.reloadData()
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        //When someone clicks on the cell
+        NSLog("click on image in collection trip view, indexPath=%d", indexPath.item)
+//        self.performSegueWithIdentifier("showImageFromTripView", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showImageFromTripView" {
-            NSLog("showImageFromTripView, indexPath")
+            NSLog("showImageFromTripView, indexPath=%d", (sender?.indexPath.item)!)
             
             if sender?.collectionView == nil {
                 NSLog("sender collection view nilllll")
