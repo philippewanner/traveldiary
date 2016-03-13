@@ -70,6 +70,16 @@ class TripsTableViewController : UITableViewController{
         return 0
     }
     
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            let tripToDelete = fetchedResultsController.objectAtIndexPath(indexPath) as! Trip
+            NSLog("Trip '\(tripToDelete.title)' deleted")
+            saveContext()
+        }
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
     }
