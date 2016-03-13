@@ -21,6 +21,7 @@ class TripsTableViewController : UITableViewController{
     private let dateFormatter = NSDateFormatter()
     private var fetchedResultsController:NSFetchedResultsController!
     private var currentTrip: Trip!
+    private var tripsAreEditable = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,14 @@ class TripsTableViewController : UITableViewController{
         self.initializeFetchedResultsController()
         
         self.performFetchData()
+        
+        tableView.allowsSelectionDuringEditing = true
+    }
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        NSLog("setEditing(editing: \(editing), animated: \(animated))")
+        tripsAreEditable = editing
+        super.setEditing(editing, animated: animated)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -47,18 +56,33 @@ class TripsTableViewController : UITableViewController{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constants.showCurrentTripSegue {
+            NSLog("prepare seque: " + Constants.showCurrentTripSegue)
             if let currentTripController = segue.destinationViewController as? CurrentTripController {
                 currentTripController.currentTrip = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Trip
             }
-        } else if segue.identifier == Constants.editTripSegue {
-            if let tripEditController = segue.destinationViewController as? TripEditViewController {
-                tripEditController.selectedTrip = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Trip
+        } else if segue.identifier == Constants.addNewTripSegue {
+            NSLog("prepare seque: " + Constants.addNewTripSegue)
+            NSLog("\(segue.destinationViewController)")
+            if let navigationController = segue.destinationViewController as? UINavigationController {
+                if let tripEditController = navigationController.viewControllers.first as? TripEditViewController {
+                    NSLog("selected trip: \(self.currentTrip)")
+                    tripEditController.currentTrip = self.currentTrip
+                }
+            } else{
+                NSLog("no destination view controllor defined!")
             }
         }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(Constants.showCurrentTripSegue, sender: self)
+        self.currentTrip = fetchedResultsController.objectAtIndexPath(indexPath) as? Trip
+        if self.tripsAreEditable {
+            NSLog("performing " + Constants.addNewTripSegue)
+            performSegueWithIdentifier(Constants.addNewTripSegue, sender: self)
+        }else{
+            NSLog("performing " + Constants.showCurrentTripSegue)
+            performSegueWithIdentifier(Constants.showCurrentTripSegue, sender: self)
+        }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
