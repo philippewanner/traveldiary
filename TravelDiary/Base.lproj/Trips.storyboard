@@ -62,7 +62,7 @@
             </objects>
             <point key="canvasLocation" x="710" y="-387"/>
         </scene>
-        <!--Title-->
+        <!--Activities-->
         <scene sceneID="Rng-lT-F8p">
             <objects>
                 <tableViewController id="sXi-wW-bik" customClass="CurrentTripController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -89,7 +89,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Trips" image="second" id="NJ2-k1-Xpb"/>
-                    <navigationItem key="navigationItem" title="Title" id="Qel-9j-LQo" userLabel="Navigation Bar">
+                    <navigationItem key="navigationItem" title="Activities" id="Qel-9j-LQo" userLabel="Navigation Bar">
                         <rightBarButtonItems>
                             <barButtonItem title="Edit" id="ej8-fs-RjJ" userLabel="Edit"/>
                             <barButtonItem title="Add" id="l3O-1F-PP2">
