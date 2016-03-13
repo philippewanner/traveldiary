@@ -43,6 +43,7 @@
 		D60083BC1C71DC6A00D2E4A4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B41C71DC6A00D2E4A4 /* Location.swift */; };
 		D60083BE1C71DC6A00D2E4A4 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B61C71DC6A00D2E4A4 /* Trip.swift */; };
 		D60083C01C71DC6A00D2E4A4 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B81C71DC6A00D2E4A4 /* Activity.swift */; };
+		D6301CCE1C95C7E300BF5655 /* NSCompoundPredicateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6301CCD1C95C7E300BF5655 /* NSCompoundPredicateTest.swift */; };
 		D644B8FC1C73B34000B2D908 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D644B8FB1C73B34000B2D908 /* CoreDataHelper.swift */; };
 		D644B9011C73C3A300B2D908 /* NSManagedObject+EntityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D644B9001C73C3A300B2D908 /* NSManagedObject+EntityName.swift */; };
 		D64D30B21C7A0E91009E3740 /* ActivityDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D30B11C7A0E91009E3740 /* ActivityDetailController.swift */; };
@@ -128,6 +129,7 @@
 		D60083B41C71DC6A00D2E4A4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		D60083B61C71DC6A00D2E4A4 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		D60083B81C71DC6A00D2E4A4 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		D6301CCD1C95C7E300BF5655 /* NSCompoundPredicateTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSCompoundPredicateTest.swift; sourceTree = "<group>"; };
 		D644B8FB1C73B34000B2D908 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		D644B9001C73C3A300B2D908 /* NSManagedObject+EntityName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+EntityName.swift"; sourceTree = "<group>"; };
 		D64D30B11C7A0E91009E3740 /* ActivityDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailController.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				D6EF6EE11C68CD03006D098B /* TravelDiaryTests.swift */,
 				D6EF6EE31C68CD03006D098B /* Info.plist */,
 				D644B8FB1C73B34000B2D908 /* CoreDataHelper.swift */,
+				D6301CCD1C95C7E300BF5655 /* NSCompoundPredicateTest.swift */,
 			);
 			path = TravelDiaryTests;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6301CCE1C95C7E300BF5655 /* NSCompoundPredicateTest.swift in Sources */,
 				D644B8FC1C73B34000B2D908 /* CoreDataHelper.swift in Sources */,
 				D6EF6EE21C68CD03006D098B /* TravelDiaryTests.swift in Sources */,
 			);
