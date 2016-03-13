@@ -20,9 +20,6 @@ class TPViewController: UIViewController {
     
     var photosModelHelper = PhotosModelHelper()
     
-    // Data Source for UITableView
-//    var tripPhotosDataSource = TripPhotoDataSource()
-    
     // Core Data managed context
     var managedContext : NSManagedObjectContext?
     
@@ -33,8 +30,6 @@ class TPViewController: UIViewController {
         photosModelHelper.coreDataSetup()
         // load photos in memory
         model = photosModelHelper.getPhotosPerTrip()
-        // Attached the data source to the collection view
-//        tableView.dataSource = tripPhotosDataSource
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,41 +62,10 @@ class TPViewController: UIViewController {
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
         guard let tableViewCell = cell as? TPTableViewCell else { return }
-        
-        tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
-        tableViewCell.collectionViewOffset = storedOffsets[indexPath.row] ?? 0
-    }
-    
-    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        guard let tableViewCell = cell as? TPTableViewCell else { return }
-        
-        storedOffsets[indexPath.row] = tableViewCell.collectionViewOffset
-    }
-}
 
-extension TPViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        let count =  model[whichCollecitonView].count
-        whichCollecitonView += 1
-        return count
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tripPhotoCell", forIndexPath: indexPath)  as! TPCollectionViewCell
-        
-        
-        NSLog("tableViewCell=%d collectionViewCell=%d", whichCollecitonView-1, indexPath.item)
-        
-        cell.imageView.image = model[whichCollecitonView-1][indexPath.item].image
-        
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("Collection view at row \(whichCollecitonView-1) selected index path \(indexPath)")
+        tableViewCell.data = model[indexPath.section]
+        tableViewCell.collectionView.dataSource = tableViewCell
+        tableViewCell.collectionView.delegate = tableViewCell
+        tableViewCell.collectionView.reloadData()
     }
 }

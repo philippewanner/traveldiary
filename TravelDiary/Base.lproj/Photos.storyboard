@@ -101,7 +101,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tripPhotoCell" id="0IV-ff-jaO" customClass="TPCollectionViewCell" customModule="TravelDiary" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="14" width="73" height="73"/>
+                                                            <rect key="frame" x="0.0" y="13.5" width="73" height="73"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
