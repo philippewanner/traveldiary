@@ -55,6 +55,7 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
         } else if segue.identifier == "SelectLocation" {
             let navController = segue.destinationViewController as! UINavigationController
             let activityLocationController = navController.topViewController as!ActivityLocationController
+            activityLocationController.selectedOnMap = selectedPlacemark
             activityLocationController.existingLocation = selectedActivity?.location
         }
     }

@@ -15,6 +15,7 @@ class ActivityLocationTableController : UITableViewController {
     var delegate: LocationSearchDelegate?
     var searchController: UISearchController!
     var search: MKLocalSearch?
+    var initialSearchText: String?
 
     var placemarks:[MKPlacemark] = [] {
         didSet {
@@ -35,6 +36,7 @@ class ActivityLocationTableController : UITableViewController {
         
         let searchBar = searchController!.searchBar
         searchBar.sizeToFit()
+        searchBar.text = initialSearchText
         tableView.tableHeaderView = searchBar
         definesPresentationContext = true
     }
