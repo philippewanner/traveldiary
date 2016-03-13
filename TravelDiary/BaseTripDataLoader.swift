@@ -46,10 +46,10 @@ class BaseTripDataLoader {
         do{
             results = try managedObjectContext.executeFetchRequest(createRequest(tripTitle))
             if (results.count > 0){
-                NSLog("sample data already loaded")
+                NSLog("sample data for trip '\(tripTitle)' already loaded")
                 return true
             } else {
-                NSLog("sample data not yet loaded")
+                NSLog("sample data for trip '\(tripTitle)'  not yet loaded")
                 return false
             }
         }catch let error as NSError  {

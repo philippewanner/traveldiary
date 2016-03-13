@@ -32,7 +32,7 @@ class TripsTableViewController : UITableViewController{
         self.initializeDateFormatter()
         self.initializeFetchedResultsController()
         
-        self.fetchTripsData()
+        self.performFetchData()
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -63,23 +63,53 @@ class TripsTableViewController : UITableViewController{
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var numberOfObjects: Int = 0
+        
         if let sections = fetchedResultsController.sections {
             let currentSection = sections[section]
-            return currentSection.numberOfObjects
+            numberOfObjects = currentSection.numberOfObjects
         }
-        return 0
+        
+        NSLog("number of objects at section \(section): \(numberOfObjects)")
+        return numberOfObjects
+    }
+    
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let tripToDelete = fetchedResultsController.objectAtIndexPath(indexPath) as! Trip
+            NSLog("deleting trip '\(tripToDelete.title!)' at row \(indexPath.row)")
+            self.managedObjectContext.deleteObject(tripToDelete)
+            self.performSavingData()
+        }
+    }
+    
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return fetchedResultsController.sections?.count ?? 0
+        var numberOfSections: Int = 0
+        numberOfSections = fetchedResultsController.sections?.count ?? 0
+        NSLog("number of sections in table view: \(numberOfSections)")
+        return numberOfSections
     }
     
     // segue which is called when the cancel button on the TripEditViewController is called
-    @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {}
+    @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {
+        NSLog("canceled 'adding new trip'")
+    }
     
     // segue which is called when the save button on the TripEditViewController is pressed
     @IBAction func unwindSequeSaveActiviy(segue: UIStoryboardSegue){
+        self.performSavingData()
+    }
+    
+    private func performSavingData(){
         saveContext()
+        NSLog("saving data performed")
     }
     
     private func getTripTitle(trip:Trip) -> String {
@@ -115,7 +145,7 @@ class TripsTableViewController : UITableViewController{
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
     }
     
-    private func fetchTripsData() {
+    private func performFetchData() {
         do {
             try fetchedResultsController.performFetch()
             NSLog("data fetching successfully accomplished")
@@ -128,7 +158,6 @@ class TripsTableViewController : UITableViewController{
     private func registerNibFile(nibName: String){
         let nib = UINib(nibName: nibName, bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: Constants.cellReuseIdentifier)
-        
         NSLog("nib file registered: " + Constants.tripTableViewCellNibName)
     }
     
@@ -166,6 +195,7 @@ extension TripsTableViewController: NSFetchedResultsControllerDelegate{
             self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
         case .Delete:
+            NSLog("deleting row \(indexPath!.row)")
             self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
         }
     }

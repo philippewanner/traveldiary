@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TripCollectionViewCell: UICollectionViewCell {
+class TPCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
 }

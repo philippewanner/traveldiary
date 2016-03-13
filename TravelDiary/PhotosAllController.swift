@@ -65,16 +65,11 @@ class PhotosAllController: UIViewController, UICollectionViewDelegate {
     }
     
     func loadPhotos(){
-        
-        NSLog("loadPhotos")
         // loadCoreDataImages fct with a completion block
         loadCoreDataImages { (images) -> Void in
-            NSLog("loadCoreDataImages in")
             if let images = images {
                 
                 self.collectionViewDataSource.data += images.map { return (image:$0.image ?? UIImage(),title:$0.title ?? "") }
-                
-                NSLog("start dataSource:%d", self.collectionViewDataSource.data.count)
                 
             } else {
                 self.noImagesFound()

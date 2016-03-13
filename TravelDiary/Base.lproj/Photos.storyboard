@@ -68,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="1401" y="205"/>
         </scene>
-        <!--Trip Photos Controller-->
+        <!--View Controller-->
         <scene sceneID="QCI-Yh-xDT">
             <objects>
-                <viewController id="TxA-3J-BKm" customClass="TripPhotosController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TxA-3J-BKm" customClass="TPViewController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b5t-Tv-KVD"/>
                         <viewControllerLayoutGuide type="bottom" id="OAM-aE-Qqd"/>
@@ -84,7 +84,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" rowHeight="100" id="Kw5-uS-kYu" customClass="TripPhotosRow" customModule="TravelDiary" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" rowHeight="100" id="Kw5-uS-kYu" customClass="TPTableViewCell" customModule="TravelDiary" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kw5-uS-kYu" id="4Ja-HE-kSl">
@@ -122,6 +122,7 @@
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="imageView" destination="qTg-iL-agB" id="Geq-xZ-oZX"/>
+                                                                <segue destination="YJD-qQ-bJh" kind="show" identifier="showImageFromTripView" id="Mpx-j0-ZCv"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -163,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cSq-bl-1Nk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2307" y="205"/>
+            <point key="canvasLocation" x="2268" y="205"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="u1a-vG-xU4">
@@ -174,11 +175,11 @@
                         <viewControllerLayoutGuide type="bottom" id="ceY-uw-uNx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="A3x-TN-GJO">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mZg-9k-YBS">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -281,9 +282,6 @@
                             <label userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CT7-Sg-39Y">
                                 <rect key="frame" x="0.0" y="570" width="600" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Ojr-mw-MgU"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <color key="textColor" red="0.55939503205128205" green="0.55939503205128205" blue="0.55939503205128205" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -291,26 +289,15 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="leading" secondItem="cdR-8Y-IqC" secondAttribute="leadingMargin" id="3ny-gx-8jo"/>
-                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="trailing" secondItem="cdR-8Y-IqC" secondAttribute="trailingMargin" constant="20" id="AiB-Bk-Efb"/>
-                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="leading" secondItem="cdR-8Y-IqC" secondAttribute="leadingMargin" id="DHt-wj-86t"/>
-                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="leading" secondItem="cdR-8Y-IqC" secondAttribute="leadingMargin" id="Foo-tR-oN1"/>
-                            <constraint firstItem="xEk-Bl-KCl" firstAttribute="top" secondItem="CT7-Sg-39Y" secondAttribute="bottom" id="Jo7-3R-sCJ"/>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="top" secondItem="bZT-z9-Bb9" secondAttribute="bottom" constant="570" id="TwS-pX-eUm"/>
                             <constraint firstItem="eUD-hH-te5" firstAttribute="top" secondItem="cdR-8Y-IqC" secondAttribute="top" id="U8d-kZ-VRN"/>
-                            <constraint firstAttribute="bottom" secondItem="CT7-Sg-39Y" secondAttribute="bottom" id="YBY-Ab-7l7"/>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="bottom" secondItem="xEk-Bl-KCl" secondAttribute="top" id="ZuY-1E-jJR"/>
                             <constraint firstItem="eUD-hH-te5" firstAttribute="leading" secondItem="cdR-8Y-IqC" secondAttribute="leading" id="aIf-IQ-z5R"/>
-                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="top" secondItem="eUD-hH-te5" secondAttribute="bottom" constant="-30" id="bIQ-Pw-QYt"/>
-                            <constraint firstItem="eUD-hH-te5" firstAttribute="leading" secondItem="CT7-Sg-39Y" secondAttribute="leading" id="gDh-J5-vI8"/>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="bottom" secondItem="eUD-hH-te5" secondAttribute="bottom" id="i7L-q4-KUv"/>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="trailing" secondItem="eUD-hH-te5" secondAttribute="trailing" id="iFV-oC-Pjb"/>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="leading" secondItem="eUD-hH-te5" secondAttribute="leading" id="xTs-ez-Yhq"/>
                             <constraint firstAttribute="trailing" secondItem="eUD-hH-te5" secondAttribute="trailing" id="ybz-WZ-rqp"/>
-                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="trailing" secondItem="cdR-8Y-IqC" secondAttribute="trailingMargin" constant="20" id="zM1-uc-RZk"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="3ny-gx-8jo"/>
-                                <exclude reference="DHt-wj-86t"/>
-                                <exclude reference="Foo-tR-oN1"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="eUD-hH-te5" id="Xid-s9-Cht"/>
@@ -326,4 +313,7 @@
     <resources>
         <image name="first" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Mpx-j0-ZCv"/>
+    </inferredMetricsTieBreakers>
 </document>

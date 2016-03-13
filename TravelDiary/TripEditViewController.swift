@@ -39,6 +39,9 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
             if isNotNullOrEmpty(tripTitle.text) {
                 if self.selectedTrip == nil {
                     self.selectedTrip = Trip(managedObjectContext: self.managedObjectContext)
+                    NSLog("added new trip: '\(tripTitle.text!)'")
+                }else{
+                    NSLog("edited trip: '\(tripTitle.text!)'")
                 }
                 selectedTrip?.title = tripTitle.text
                 selectedTrip?.startDate = startDate.date
