@@ -16,11 +16,11 @@ class ActivityLocationController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
     var existingLocation: Location?
-    var selectedOnMap: MKMapItem? {
+    var selectedOnMap: MKPlacemark? {
         didSet {
             if let selectedOnMap = selectedOnMap {
                 saveButton.enabled = true
-                showAnnotation(MapItemAnnotation(mapItem: selectedOnMap))
+                showAnnotation(MKPlaceMarkAnnotation(placemark: selectedOnMap))
             }
         }
     }
@@ -81,6 +81,7 @@ class ActivityLocationController: UIViewController {
                 if let placemark = placemarks?.first {
                     annotation.title = placemark.name
                     annotation.subtitle = placemark.formattedAddressLines()
+                    self.selectedOnMap = MKPlacemark(placemark: placemark)
                     self.showAnnotation(annotation)
                 } else {
                     annotation.title = "Unknown Place"
@@ -95,6 +96,9 @@ class ActivityLocationController: UIViewController {
         if (segue.identifier == Constants.SequeEmbedLocationTable) {
             let tableController = segue.destinationViewController as! ActivityLocationTableController
             tableController.delegate = self
+            if let selectedOnMap = selectedOnMap {
+                tableController.placemarks.append(selectedOnMap)
+            }
         }
     }
     
@@ -106,8 +110,8 @@ class ActivityLocationController: UIViewController {
 // MARK: - LocationSearchDelegate
 extension ActivityLocationController: LocationSearchDelegate {
     
-    func locationSelected(mapItem: MKMapItem) {
-        selectedOnMap = mapItem;
+    func locationSelected(placemark: MKPlacemark) {
+        selectedOnMap = placemark;
     }
     
 }

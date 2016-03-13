@@ -16,7 +16,7 @@ class ActivityLocationTableController : UITableViewController {
     var searchController: UISearchController!
     var search: MKLocalSearch?
 
-    private var mapItemsFound:[MKMapItem] = [] {
+    var placemarks:[MKPlacemark] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -40,20 +40,20 @@ class ActivityLocationTableController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mapItemsFound.count
+        return placemarks.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.ReuseIdentifierCell)!
-        let mapItem = mapItemsFound[indexPath.row]
-        cell.textLabel?.text = mapItem.name
-        cell.detailTextLabel?.text = mapItem.placemark.formattedAddressLines()
+        let placemark = placemarks[indexPath.row]
+        cell.textLabel?.text = placemark.name
+        cell.detailTextLabel?.text = placemark.formattedAddressLines()
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedMapItem = mapItemsFound[indexPath.row]
-        delegate?.locationSelected(selectedMapItem)
+        let placemark = placemarks[indexPath.row]
+        delegate?.locationSelected(placemark)
     }
 }
 
@@ -72,7 +72,7 @@ extension ActivityLocationTableController : UISearchResultsUpdating {
             guard let response = response else {
                 return
             }
-            self.mapItemsFound = response.mapItems
+            self.placemarks = response.mapItems.map{ item in item.placemark}
         }
     }
 }

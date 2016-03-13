@@ -10,14 +10,14 @@ import Foundation
 import MapKit
 
 
-class MapItemAnnotation: NSObject, MKAnnotation {
+class MKPlaceMarkAnnotation: NSObject, MKAnnotation {
     let title: String?
     let subtitle: String?
     let coordinate: CLLocationCoordinate2D
     
-    init(mapItem: MKMapItem) {
-        title = mapItem.name
-        subtitle = mapItem.placemark.formattedAddressLines()
-        coordinate = mapItem.placemark.coordinate
+    init(placemark: MKPlacemark) {
+        title = placemark.name
+        subtitle = placemark.formattedAddressLines()
+        coordinate = placemark.coordinate
     }
 }

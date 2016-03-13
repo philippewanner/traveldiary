@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import MapKit
 
 class ActivityDetailController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var selectedActivity: Activity?
+    var selectedPlacemark: MKPlacemark?
 
     @IBOutlet weak var activityDescription: UITextField!
     @IBOutlet weak var activityDate: UIDatePicker!
@@ -18,8 +20,8 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var image: UIImageView!
     var fromCamera: Bool = false
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         if let selectedActivity = selectedActivity {
             activityDescription.text = selectedActivity.descr
             activityDate.date = selectedActivity.date!
@@ -32,9 +34,7 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
             selectedActivity = selectedActivity ?? Activity(managedObjectContext: self.managedObjectContext)
             selectedActivity?.descr = activityDescription.text
             selectedActivity?.date = activityDate.date
-            if locationName.text == nil {
-                selectedActivity?.location = nil
-            }
+            
             let photoData = Photo(managedObjectContext: self.managedObjectContext)
             photoData.image = image.image
             photoData.createDate = NSDate()
@@ -42,6 +42,15 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
             if fromCamera{
                 //Only save photo to the libary if it was made with the camera
                 UIImageWriteToSavedPhotosAlbum(image.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+            }
+            
+            if let selectedPlacemark = selectedPlacemark {
+                let location = selectedActivity?.location ?? Location(managedObjectContext: self.managedObjectContext)
+                location.name = selectedPlacemark.name
+                location.address = selectedPlacemark.formattedAddressLines()
+                location.coordinate = selectedPlacemark.coordinate
+                location.countryCode = selectedPlacemark.countryCode
+                selectedActivity?.location = location
             }
         } else if segue.identifier == "SelectLocation" {
             let navController = segue.destinationViewController as! UINavigationController
@@ -55,16 +64,8 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
     // segue which is called when the save button on the modal location dialog is pressed
     @IBAction func unwindSequeSaveLocation(segue: UIStoryboardSegue){
         if let selectLocationController = segue.sourceViewController as? ActivityLocationController {
-            if let mapItem = selectLocationController.selectedOnMap {
-                var location = selectedActivity?.location
-                if location == nil {
-                    location = Location(managedObjectContext: managedObjectContext)
-                }
-                location?.name = mapItem.name
-                location?.address = mapItem.placemark.formattedAddressLines()
-                location?.coordinate = mapItem.placemark.coordinate
-                location?.countryCode = mapItem.placemark.countryCode
-            }
+            selectedPlacemark = selectLocationController.selectedOnMap
+            locationName.text = selectedPlacemark?.name
         }
     }
 
