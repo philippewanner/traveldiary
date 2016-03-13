@@ -8,20 +8,19 @@
 
 import UIKit
 
-class TripPhotosRow: UITableViewCell {
+class TPTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var collectionView: UICollectionView!
+    var sectionNumber = 0
     
 }
 
-extension TripPhotosRow {
+extension TPTableViewCell {
     
     func setCollectionViewDataSourceDelegate<D: protocol<UICollectionViewDataSource, UICollectionViewDelegate>>(dataSourceDelegate: D, forRow row: Int) {
         
         collectionView.delegate = dataSourceDelegate
         collectionView.dataSource = dataSourceDelegate
-        NSLog("row=%d", row)
-        collectionView.tag = row
         collectionView.setContentOffset(collectionView.contentOffset, animated:false) // Stops collection view if it was scrolling.
         collectionView.reloadData()
     }

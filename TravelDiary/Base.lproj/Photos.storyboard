@@ -68,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="1401" y="205"/>
         </scene>
-        <!--Trip Photos Controller-->
+        <!--View Controller-->
         <scene sceneID="QCI-Yh-xDT">
             <objects>
-                <viewController id="TxA-3J-BKm" customClass="TripPhotosController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TxA-3J-BKm" customClass="TPViewController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b5t-Tv-KVD"/>
                         <viewControllerLayoutGuide type="bottom" id="OAM-aE-Qqd"/>
@@ -84,7 +84,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" rowHeight="100" id="Kw5-uS-kYu" customClass="TripPhotosRow" customModule="TravelDiary" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" rowHeight="100" id="Kw5-uS-kYu" customClass="TPTableViewCell" customModule="TravelDiary" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kw5-uS-kYu" id="4Ja-HE-kSl">
@@ -100,7 +100,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tripPhotoCell" id="0IV-ff-jaO" customClass="TripCollectionViewCell" customModule="TravelDiary" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tripPhotoCell" id="0IV-ff-jaO" customClass="TPCollectionViewCell" customModule="TravelDiary" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="14" width="73" height="73"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
