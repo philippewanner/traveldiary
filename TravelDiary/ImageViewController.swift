@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ImageViewController: UIViewController {
+class ImageViewController: UIViewController, UIScrollViewDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     
     var image = UIImage()
@@ -17,8 +18,10 @@ class ImageViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         self.imageView.image = self.image
+        self.scrollView.minimumZoomScale = 1.0
+        self.scrollView.maximumZoomScale = 8.0
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,5 +32,9 @@ class ImageViewController: UIViewController {
     @IBAction func onShareButton(sender: AnyObject) {
         let activityController = UIActivityViewController(activityItems: ["Share photo", imageView.image!], applicationActivities: nil)
         presentViewController(activityController, animated: true, completion: nil)
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.imageView
     }
 }

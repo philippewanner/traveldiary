@@ -33,6 +33,7 @@ class ActivityLocationTableController : UITableViewController {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
         
         let searchBar = searchController!.searchBar
         searchBar.sizeToFit()

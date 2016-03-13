@@ -19,7 +19,7 @@ extension CLLocationManager {
         } else if (status == .Denied) {
             let alertController = UIAlertController(
                 title: "Location Access Disabled",
-                message: "In order to display your current location, please open this app's settings and allow access to location.",
+                message: "We need access to your location to help you saving and displaying the places of your trip.",
                 preferredStyle: .Alert)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
