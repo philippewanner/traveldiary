@@ -11,6 +11,7 @@ import UIKit
 class TPTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var data : [Photo] = []
+    var selectedPhoto: Photo = Photo()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -25,13 +26,14 @@ class TPTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        let count =  data.count
-        NSLog("%d images in trip", count)
-        return count
+        NSLog("%d images in trip", data.count)
+        return data.count
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("Collection view selected index path \(indexPath.item)")
+        //When someone clicks on the cell
+        NSLog("click on image in collection trip view, indexPath %d", indexPath.item)
+        selectedPhoto = data[indexPath.item]
+//        self.performSegueWithIdentifier("showImage", sender: self)
     }
 }

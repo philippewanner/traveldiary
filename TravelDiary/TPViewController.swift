@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TPViewController: UIViewController {
+class TPViewController: UIViewController, UITableViewDelegate{
     
     var model: [[Photo]] = [[]]
     var storedOffsets = [Int: CGFloat]()
@@ -67,5 +67,30 @@ class TPViewController: UIViewController {
         tableViewCell.collectionView.dataSource = tableViewCell
         tableViewCell.collectionView.delegate = tableViewCell
         tableViewCell.collectionView.reloadData()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "showImageFromTripView" {
+            NSLog("showImageFromTripView, indexPath")
+            
+            if sender?.collectionView == nil {
+                NSLog("sender collection view nilllll")
+            }
+            
+            //Get the number of items selected in the collection view
+            let indexPaths = sender!.collectionView!.indexPathsForSelectedItems()!
+            //Get the first items of those
+            let indexPath = indexPaths[0] as NSIndexPath
+            
+            //Cast the destination view controller to ImageViewController
+            let controller = segue.destinationViewController as! ImageViewController
+
+            //Set the image in the ImageViewController to the selected item in the collection view
+            controller.image = (sender as! TPTableViewCell).data[indexPath.row].image!
+            
+            //Set the title of this image depending of the selected item in the collection view
+//            controller.title = sender.collectionViewDataSource.data[indexPath.row].title
+        }
     }
 }

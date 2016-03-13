@@ -71,7 +71,7 @@
 		F0AB01191C9144D90009E6B8 /* PhotosAllCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB01181C9144D90009E6B8 /* PhotosAllCollectionViewDataSource.swift */; };
 		F0C369621C8DCA550013D461 /* PhotosAllController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C369611C8DCA550013D461 /* PhotosAllController.swift */; };
 		F0CA4EA51C94E93C0052C85B /* TPCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CA4EA41C94E93C0052C85B /* TPCollectionViewCell.swift */; };
-		F0CA4EA71C956F040052C85B /* TPCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CA4EA61C956F040052C85B /* TPCollectionViewDataSource.swift */; };
+		F0CA4EA71C956F040052C85B /* TPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CA4EA61C956F040052C85B /* TPTableViewCell.swift */; };
 		F0DA6C101C68CFF3007753F8 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0DA6C0E1C68CFF3007753F8 /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -163,7 +163,7 @@
 		F0AB01181C9144D90009E6B8 /* PhotosAllCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosAllCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		F0C369611C8DCA550013D461 /* PhotosAllController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosAllController.swift; sourceTree = "<group>"; };
 		F0CA4EA41C94E93C0052C85B /* TPCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCollectionViewCell.swift; sourceTree = "<group>"; };
-		F0CA4EA61C956F040052C85B /* TPCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		F0CA4EA61C956F040052C85B /* TPTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTableViewCell.swift; sourceTree = "<group>"; };
 		F0DA6C0F1C68CFF3007753F8 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -378,7 +378,7 @@
 			children = (
 				F0CA4EA41C94E93C0052C85B /* TPCollectionViewCell.swift */,
 				F0A2B9AF1C8DEE7600709ECF /* TPViewController.swift */,
-				F0CA4EA61C956F040052C85B /* TPCollectionViewDataSource.swift */,
+				F0CA4EA61C956F040052C85B /* TPTableViewCell.swift */,
 			);
 			name = tripPhotos;
 			sourceTree = "<group>";
@@ -534,7 +534,7 @@
 				D64D30B21C7A0E91009E3740 /* ActivityDetailController.swift in Sources */,
 				7E0DB1861C88E009003D6B38 /* ActivityBuilder.swift in Sources */,
 				7E0DB1881C88E57F003D6B38 /* LocationBuilder.swift in Sources */,
-				F0CA4EA71C956F040052C85B /* TPCollectionViewDataSource.swift in Sources */,
+				F0CA4EA71C956F040052C85B /* TPTableViewCell.swift in Sources */,
 				F0AB01151C9144B50009E6B8 /* PhotosAllLoading.swift in Sources */,
 				D60083C01C71DC6A00D2E4A4 /* Activity.swift in Sources */,
 				7EB3514B1C82048300323D5E /* TripsTableViewController.swift in Sources */,
