@@ -16,36 +16,34 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
     @IBOutlet weak var endDate: UIDatePicker!
     @IBOutlet var navItem: UINavigationItem!
     
-    private let dateFormatter = NSDateFormatter()
-    
-    var selectedTrip: Trip?
-    
     private struct Constants{
-        static let localeIdentifier = "de_CH"
         static let editTripTitle = "Edit Trip"
         static let newTripTitle = "New Trip"
         static let saveTripSegue = "saveTripUnwindSegue"
     }
     
+    private let dateFormatter = NSDateFormatter()
+    var currentTrip: Trip?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dateFormatter.locale = NSLocale.currentLocale()
-        setKnownData()
+        self.dateFormatter.locale = NSLocale.currentLocale()
+        self.setKnownData()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constants.saveTripSegue {
             if isNotNullOrEmpty(tripTitle.text) {
-                if self.selectedTrip == nil {
-                    self.selectedTrip = Trip(managedObjectContext: self.managedObjectContext)
+                if self.currentTrip == nil {
+                    self.currentTrip = Trip(managedObjectContext: self.managedObjectContext)
                     NSLog("added new trip: '\(tripTitle.text!)'")
                 }else{
                     NSLog("edited trip: '\(tripTitle.text!)'")
                 }
-                selectedTrip?.title = tripTitle.text
-                selectedTrip?.startDate = startDate.date
-                selectedTrip?.endDate = endDate.date
+                self.currentTrip?.title = tripTitle.text
+                self.currentTrip?.startDate = startDate.date
+                self.currentTrip?.endDate = endDate.date
             }
         }
     }
@@ -56,20 +54,24 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
                 return true
             }
         }
+        NSLog("no trip title set!")
         return false
     }
     
     private func setKnownData(){
-        
-        if selectedTrip != nil {
-            navItem.title = Constants.editTripTitle
-            dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
-            tripTitle.text = selectedTrip?.title
-            startDate.date = (selectedTrip?.startDate)!
-            endDate.date = (selectedTrip?.endDate)!
+        NSLog("setting known trip data")
+        if self.currentTrip == nil {
+            self.navItem.title = Constants.newTripTitle
         }else{
-            navItem.title = Constants.newTripTitle
+            self.navItem.title = Constants.editTripTitle
+            self.dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+            self.tripTitle.text = currentTrip?.title
+            if let startDate = currentTrip?.startDate {
+                self.startDate.date = startDate
+            }
+            if let endDate = currentTrip?.endDate{
+                self.endDate.date = endDate
+            }
         }
-        
     }
 }
