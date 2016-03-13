@@ -28,8 +28,8 @@
                     <tabBarItem key="tabBarItem" title="Current Trip" image="first" id="5iz-N8-tpY"/>
                     <navigationItem key="navigationItem" title="Activities" id="yjU-5u-0cy">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" id="May-FJ-9x4"/>
-                            <barButtonItem title="Add" id="XLl-Ha-wfb">
+                            <barButtonItem systemItem="edit" id="May-FJ-9x4"/>
+                            <barButtonItem systemItem="add" id="XLl-Ha-wfb">
                                 <connections>
                                     <segue destination="l4a-Gg-gZm" kind="presentation" id="K3d-hP-AGR"/>
                                 </connections>

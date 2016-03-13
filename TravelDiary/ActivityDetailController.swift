@@ -34,14 +34,15 @@ class ActivityDetailController: UIViewController, UINavigationControllerDelegate
             selectedActivity = selectedActivity ?? Activity(managedObjectContext: self.managedObjectContext)
             selectedActivity?.descr = activityDescription.text
             selectedActivity?.date = activityDate.date
-            
-            let photoData = Photo(managedObjectContext: self.managedObjectContext)
-            photoData.image = image.image
-            photoData.createDate = NSDate()
-            selectedActivity?.addPhoto(photoData)
-            if fromCamera{
-                //Only save photo to the libary if it was made with the camera
-                UIImageWriteToSavedPhotosAlbum(image.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+            if image.image != nil{
+                let photoData = Photo(managedObjectContext: self.managedObjectContext)
+                photoData.image = image.image
+                photoData.createDate = NSDate()
+                selectedActivity?.addPhoto(photoData)
+                if fromCamera{
+                    //Only save photo to the libary if it was made with the camera
+                    UIImageWriteToSavedPhotosAlbum(image.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+                }
             }
             
             if let selectedPlacemark = selectedPlacemark {
