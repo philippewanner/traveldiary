@@ -16,12 +16,17 @@ class TripsTableViewController : UITableViewController{
         static let localeIdentifier = "de_CH"
         static let sortKey = "startDate"
         static let sortAscending = true
+        static let TripSearchControllerId = "TripSearchController"
+        static let SearchBarPlaceholder = "Search for trips"
     }
     
+    private var filteredTrips:[Trip]? = []
+    private var trips:[Trip]? = []
     private let dateFormatter = NSDateFormatter()
     private var fetchedResultsController:NSFetchedResultsController!
     private var currentTrip: Trip!
     private var tripsAreEditable = false
+    private let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +41,32 @@ class TripsTableViewController : UITableViewController{
         self.performFetchData()
         
         tableView.allowsSelectionDuringEditing = true
+        
+        instantiateSearchBar()
+    }
+    
+    private func instantiateSearchBar(){
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        
+        let searchBar = searchController.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = Constants.SearchBarPlaceholder
+        navigationItem.titleView = searchBar
+    }
+    
+    private func filterContentForSearchText(searchText: String) {
+        self.filteredTrips = trips?.filter { trip in
+            if let title = trip.title {
+                return title.lowercaseString.containsString(searchText.lowercaseString)
+            }else {
+                return false
+            }
+        }
+        tableView.reloadData()
     }
     
     override func setEditing(editing: Bool, animated: Bool) {
@@ -46,7 +77,12 @@ class TripsTableViewController : UITableViewController{
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let tripCell: TripTableViewCell = self.tableView.dequeueReusableCellWithIdentifier(Constants.cellReuseIdentifier) as! TripTableViewCell
-        self.currentTrip = fetchedResultsController.objectAtIndexPath(indexPath) as! Trip
+        
+        if self.isSearchBarActiveAndNotEmpty(){
+            self.currentTrip = self.filteredTrips![indexPath.row]
+        }else {
+            self.currentTrip = fetchedResultsController.objectAtIndexPath(indexPath) as! Trip
+        }
         
         tripCell.tripTitle.text = getTripTitle(self.currentTrip)
         tripCell.tripPeriod.text = getTripPeriod(self.currentTrip)
@@ -89,9 +125,13 @@ class TripsTableViewController : UITableViewController{
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var numberOfObjects: Int = 0
         
-        if let sections = fetchedResultsController.sections {
-            let currentSection = sections[section]
-            numberOfObjects = currentSection.numberOfObjects
+        if self.isSearchBarActiveAndNotEmpty() {
+            numberOfObjects = self.filteredTrips!.count
+        }else{
+            if let sections = fetchedResultsController.sections {
+                let currentSection = sections[section]
+                numberOfObjects = currentSection.numberOfObjects
+            }
         }
         
         NSLog("number of objects at section \(section): \(numberOfObjects)")
@@ -129,6 +169,15 @@ class TripsTableViewController : UITableViewController{
     // segue which is called when the save button on the TripEditViewController is pressed
     @IBAction func unwindSequeSaveActiviy(segue: UIStoryboardSegue){
         self.performSavingData()
+    }
+    
+    private func isSearchBarActiveAndNotEmpty() -> Bool{
+        if searchController.active && searchController.searchBar.text != "" {
+            NSLog("search bar is active and not empty")
+            return true
+        }else{
+            return false
+        }
     }
     
     private func performSavingData(){
@@ -173,6 +222,8 @@ class TripsTableViewController : UITableViewController{
         do {
             try fetchedResultsController.performFetch()
             NSLog("data fetching successfully accomplished")
+            self.trips = fetchedResultsController.fetchedObjects as? [Trip]
+            NSLog("number of fetched trips: \(filteredTrips!.count)")
         } catch {
             let fetchError = error as NSError
             NSLog("\(fetchError), \(fetchError.userInfo)")
@@ -226,5 +277,20 @@ extension TripsTableViewController: NSFetchedResultsControllerDelegate{
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension TripsTableViewController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        self.filterContentForSearchText(searchBar.text!)
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+extension TripsTableViewController : UISearchResultsUpdating {
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        self.filterContentForSearchText(searchController.searchBar.text!)
     }
 }
