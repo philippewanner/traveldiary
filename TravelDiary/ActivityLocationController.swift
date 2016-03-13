@@ -53,6 +53,7 @@ class ActivityLocationController: UIViewController {
             }
         } else {
             locationManager.requestLocation();
+            mapView.showsUserLocation = true
             containerView.hidden = false;
         }
     }
@@ -64,36 +65,35 @@ class ActivityLocationController: UIViewController {
         navigationItem.title = annotation.title!
     }
     
-    @IBAction func longPressRecognized(sender: UILongPressGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.Began {
-            let touchPoint = sender.locationInView(mapView)
-            let coordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
-            dropAnnotationOnMap(coordinates);
-        }
-    }
-    
-    func dropAnnotationOnMap(coordinates: CLLocationCoordinate2D) {
+    func dropAnnotationOnMap(coordinate: CLLocationCoordinate2D) {
         containerView.hidden = true
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinates
-        CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude), completionHandler: {(placemarks, error) -> Void in
+        CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), completionHandler: {(placemarks, error) -> Void in
             guard error == nil else  {
                 print("Reverse geocoder failed with error \(error)")
                 return
             }
             
             if let placemark = placemarks?.first {
-                annotation.title = placemark.name
-                annotation.subtitle = placemark.formattedAddressLines()
                 let newPlacemark = MKPlacemark(placemark: placemark)
+                let annotation = self.createAnnotationFrom(newPlacemark)
                 self.selectedOnMap = newPlacemark
                 self.saveButton.enabled = true
                 self.showAnnotation(annotation)
             } else {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
                 annotation.title = "Unknown Place"
                 self.showAnnotation(annotation)
             }
         })
+    }
+    
+    func createAnnotationFrom(placemark: MKPlacemark) -> MKAnnotation {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        annotation.subtitle = placemark.formattedAddressLines()
+        return annotation
     }
     
     // MARK: Navigation
@@ -102,6 +102,15 @@ class ActivityLocationController: UIViewController {
             let tableController = segue.destinationViewController as! ActivityLocationTableController
             tableController.delegate = self
             tableController.initialSearchText = existingLocation?.name
+        }
+    }
+    
+    // MARK: Actions
+    @IBAction func longPressRecognized(sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.Began {
+            let touchPoint = sender.locationInView(mapView)
+            let coordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
+            dropAnnotationOnMap(coordinates);
         }
     }
     
@@ -120,11 +129,11 @@ extension ActivityLocationController: LocationSearchDelegate {
     func locationSelected(placemark: MKPlacemark) {
         selectedOnMap = placemark;
         self.saveButton.enabled = true
-        self.showAnnotation(MKPlaceMarkAnnotation(placemark: placemark))
+        self.showAnnotation(createAnnotationFrom(placemark))
     }
 }
 
-// MARK: - LocationSearchDelegate
+// MARK: - CLLocationManagerDelegate
 extension ActivityLocationController: CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
