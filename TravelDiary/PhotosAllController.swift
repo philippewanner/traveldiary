@@ -18,7 +18,7 @@ class PhotosAllController: UIViewController, UICollectionViewDelegate {
     var collectionViewDataSource = CollectionDataSource()
     
     // Core Data managed context
-    var managedContext : NSManagedObjectContext?
+//    var managedContext : NSManagedObjectContext?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,7 @@ class PhotosAllController: UIViewController, UICollectionViewDelegate {
         loadCoreDataImages { (images) -> Void in
             if let images = images {
                 
-                self.collectionViewDataSource.data += images.map { return (image:$0.thumbnailBlob?.thumbnail ?? UIImage(),title:$0.title ?? "") }
+                self.collectionViewDataSource.data += images.map { return (image:$0.thumbnail ?? UIImage(),title:$0.title ?? "") }
                 
             } else {
                 self.noImagesFound()

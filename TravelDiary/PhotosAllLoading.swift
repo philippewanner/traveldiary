@@ -22,15 +22,11 @@ extension PhotosAllController {
         
         NSLog("loadCoreDataImages extension")
         
-        guard let moc = managedContext else {
-            NSLog("no managed context")
-            return
-        }
-        
         let fetchRequest = NSFetchRequest(entityName: "Photo")
+        fetchRequest.relationshipKeyPathsForPrefetching = ["thumbnailBlob"]
         
         do {
-            let results = try moc.executeFetchRequest(fetchRequest)
+            let results = try managedObjectContext.executeFetchRequest(fetchRequest)
             let photos = results as? [Photo]
             NSLog("%d photos found", (photos?.count)!)
             //Execute function in parameter
