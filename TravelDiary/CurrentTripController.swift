@@ -29,6 +29,7 @@ class CurrentTripController: UITableViewController{
     private let searchController = UISearchController(searchResultsController: nil)
     // Currently selected trip
     var currentTrip : Trip?
+    var activitiesAreEditable = false;
     
     private var filteredActivities:[Activity]? = []
     
@@ -60,40 +61,17 @@ class CurrentTripController: UITableViewController{
         dateFormatter.locale = NSLocale(localeIdentifier: "de_CH")
         dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
         
-        if currentTrip == nil{
-            loadCurrenTrip()
-        }
-        if currentTrip != nil{
-            initializeFetchedResultsController()
-            instantiateSearchBar()
-        }
+        initializeFetchedResultsController()
+        instantiateSearchBar()
+        
+        tableView.allowsSelectionDuringEditing = true
+        
         do {
             try fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
         }
-    }
-    
-    /*!
-        Loads the current trip if not already present to navigation from the trip table.
-    */
-    private func loadCurrenTrip(){
-        let request = NSFetchRequest(entityName: Trip.entityName())
-        request.returnsObjectsAsFaults = false;
-        //TODO search for current trip 1. CurrentDate within trip range 2. future 3. last
-        let today = NSDate()
-        request.predicate = NSPredicate(format:"(startDate <= %@ AND endDate >= %@) OR (endDate <= %@) OR (startDate >= %@)", today,today,today,today)
-        var results:NSArray
-        do{
-            results = try managedObjectContext.executeFetchRequest(request)
-            if(results.count != 0){
-                currentTrip = results[0] as? Trip
-            }
-        }catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        }
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,7 +111,13 @@ class CurrentTripController: UITableViewController{
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Perform Segue
-        performSegueWithIdentifier(Constants.SegueActivityDetailController, sender: self)
+        if self.activitiesAreEditable {
+            //editAnExistingTrip = true
+            //NSLog("performing " + Constants.addOrEditTripSegue)
+            //performSegueWithIdentifier(Constants.addOrEditTripSegue, sender: self)
+        }else{
+            performSegueWithIdentifier(Constants.SegueActivityDetailController, sender: self)
+        }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -155,6 +139,19 @@ class CurrentTripController: UITableViewController{
             saveContext()
         }
     }
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        NSLog("setEditing(editing: \(editing), animated: \(animated))")
+        activitiesAreEditable = editing
+        super.setEditing(editing, animated: animated)
+    }
+    
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+
     
     /*!
         segue which is called when the cancel button on the ActivityDetailContoller is called
