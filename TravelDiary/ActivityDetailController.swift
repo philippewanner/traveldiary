@@ -82,16 +82,16 @@ class ActivityDetailController: UIViewController {
             selectedActivity = selectedActivity ?? Activity(managedObjectContext: self.managedObjectContext)
             selectedActivity?.descr = activityDescription.text
             selectedActivity?.date = activityDate.date
-            
-            
+
+            let location = selectedActivity?.location ?? Location(managedObjectContext: self.managedObjectContext)
             if let selectedPlacemark = selectedPlacemark {
-                let location = selectedActivity?.location ?? Location(managedObjectContext: self.managedObjectContext)
-                location.name = selectedPlacemark.name
                 location.address = selectedPlacemark.formattedAddressLines()
                 location.coordinate = selectedPlacemark.coordinate
                 location.countryCode = selectedPlacemark.countryCode
-                selectedActivity?.location = location
+                location.inActivity = selectedActivity
             }
+            location.name = locationName.text
+            
         } else if segue.identifier == Constants.SelectLocationSegue {
             let navController = segue.destinationViewController as! UINavigationController
             let activityLocationController = navController.topViewController as!ActivityLocationController
@@ -99,11 +99,11 @@ class ActivityDetailController: UIViewController {
             activityLocationController.existingLocation = selectedActivity?.location
         } else if segue.identifier == Constants.ViewPhotoSegue {
             let navController = segue.destinationViewController as! UINavigationController
-            let activityPhotoController = navController.topViewController as! ActivityPhotoViewController
+            let imageViewController = navController.topViewController as! ImageViewController
             let cell = sender as! ActivityPhotoCell
             let indexPath = self.activityPhotoCollectionView!.indexPathForCell(cell)
             let selectedPhoto = fetchedResultsController.objectAtIndexPath(indexPath!) as? Photo
-            activityPhotoController.photo = selectedPhoto
+            imageViewController.image = (selectedPhoto?.image)!
         }
     }
 

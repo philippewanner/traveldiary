@@ -52,6 +52,7 @@
 		D68212711C78DD820046122E /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68212701C78DD810046122E /* ActivityTableViewCell.xib */; };
 		D68212741C78ED220046122E /* CurrentTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D68212721C78ED220046122E /* CurrentTrip.storyboard */; };
 		D68212761C7915600046122E /* UIViewController+ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68212751C7915600046122E /* UIViewController+ManagedObjectContext.swift */; };
+		D69467501C96CBB100C4712B /* ImageView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D694674F1C96CBB100C4712B /* ImageView.storyboard */; };
 		D69E7E821C8D81E300638D7C /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69E7E7A1C8D81E300638D7C /* Photo+CoreDataProperties.swift */; };
 		D69E7E841C8D81E300638D7C /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69E7E7C1C8D81E300638D7C /* Trip+CoreDataProperties.swift */; };
 		D69E7E861C8D81E300638D7C /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69E7E7E1C8D81E300638D7C /* Location+CoreDataProperties.swift */; };
@@ -140,6 +141,7 @@
 		D68212701C78DD810046122E /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		D68212731C78ED220046122E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CurrentTrip.storyboard; sourceTree = "<group>"; };
 		D68212751C7915600046122E /* UIViewController+ManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ManagedObjectContext.swift"; sourceTree = "<group>"; };
+		D694674F1C96CBB100C4712B /* ImageView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImageView.storyboard; sourceTree = "<group>"; };
 		D69E7E7A1C8D81E300638D7C /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photo+CoreDataProperties.swift"; path = "../Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D69E7E7C1C8D81E300638D7C /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataProperties.swift"; path = "../Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D69E7E7E1C8D81E300638D7C /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "../Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				F0A2B9B31C90807000709ECF /* allPhotos */,
 				7EFA1F1F1C887C560063CC48 /* ImageViewController.swift */,
 				D274EC671C70B484000AA29D /* Photos.storyboard */,
+				D694674F1C96CBB100C4712B /* ImageView.storyboard */,
 				D274EC651C70B3A5000AA29D /* PhotosController.swift */,
 				F06FED961C94AB0C00F9AFE7 /* PhotosModelHelper.swift */,
 			);
@@ -502,6 +505,7 @@
 				D274EC601C70A589000AA29D /* Trips.storyboard in Resources */,
 				D6EF6ED71C68CD03006D098B /* LaunchScreen.storyboard in Resources */,
 				D274EC701C70B65D000AA29D /* Map.storyboard in Resources */,
+				D69467501C96CBB100C4712B /* ImageView.storyboard in Resources */,
 				D25734051C8DA57F0017B94E /* ActivityLocation.storyboard in Resources */,
 				D6EF6ED41C68CD03006D098B /* Assets.xcassets in Resources */,
 				7EC3E50E1C8D804300BDA035 /* TripEdit.storyboard in Resources */,
