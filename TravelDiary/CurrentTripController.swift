@@ -157,7 +157,9 @@ class CurrentTripController: UITableViewController{
     /*!
         segue which is called when the cancel button on the ActivityDetailContoller is called
     */
-    @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {}
+    @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {
+        // TODO Delete the create Activity in case of addActivity
+    }
     
     /*!
         segue which is called when the save button on the ActivityDetailContoller is pressed
