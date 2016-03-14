@@ -42,7 +42,12 @@ class ActivityDetailController: UIViewController {
     private func initializeFetchedResultsController(){
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: Photo.entityName())
-        fetchRequest.predicate = NSPredicate(format: "inActivity == %@", selectedActivity!)
+        if selectedActivity != nil{
+            fetchRequest.predicate = NSPredicate(format: "inActivity == %@", selectedActivity!)
+        }else{
+            //Well not the best idea yet but without a NSPredicate all photos are loaded
+            fetchRequest.predicate = NSPredicate(format: "inActivity.title == %@", "...NewActivityCreate...")
+        }
         
         // Add Sort Descriptors
         let sortDescriptor = NSSortDescriptor(key: "createDate", ascending: true)
@@ -63,14 +68,16 @@ class ActivityDetailController: UIViewController {
             activityDate.date = selectedActivity.date!
             locationName.text = selectedActivity.location?.name
             activityTitle.text = selectedActivity.title
-            
-            initializeFetchedResultsController()
-            do {
-                try fetchedResultsController.performFetch()
-            } catch {
-                let fetchError = error as NSError
-                print("\(fetchError), \(fetchError.userInfo)")
-            }
+            let currentTrip = selectedActivity.trip
+            let minimumDate = currentTrip!.startDate
+            let maximumDate = currentTrip!.endDate
+        }
+        initializeFetchedResultsController()
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("\(fetchError), \(fetchError.userInfo)")
         }
     }
     
@@ -82,6 +89,7 @@ class ActivityDetailController: UIViewController {
             selectedActivity = selectedActivity ?? Activity(managedObjectContext: self.managedObjectContext)
             selectedActivity?.descr = activityDescription.text
             selectedActivity?.date = activityDate.date
+            selectedActivity?.title = activityTitle.text
 
             let location = selectedActivity?.location ?? Location(managedObjectContext: self.managedObjectContext)
             if let selectedPlacemark = selectedPlacemark {
