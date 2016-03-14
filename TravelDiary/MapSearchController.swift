@@ -94,7 +94,7 @@ extension MapSearchController: UISearchResultsUpdating {
             return
         }
         
-        fetchRequest.predicate = NSPredicate(format:"longitude != nil AND latitude != nil AND name contains[c] %@", searchText)
+        fetchRequest.predicate = NSPredicate(format:"longitude != nil AND latitude != nil AND name CONTAINS[c] %@", searchText)
         print(searchText)
         
         do {

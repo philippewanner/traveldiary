@@ -77,7 +77,7 @@ class PhotosModelHelper {
     }
     
     func coreDataSetup() {
-        managedContext = AppDelegate().managedObjectContext
+        managedContext = AppDelegate().coreDataController.managedObjectContext
     }
 }
 

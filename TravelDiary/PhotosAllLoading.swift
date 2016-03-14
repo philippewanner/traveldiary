@@ -22,7 +22,7 @@ extension PhotosAllController {
         
         NSLog("loadCoreDataImages extension")
         
-        guard let moc = self.managedContext else {
+        guard let moc = managedContext else {
             NSLog("no managed context")
             return
         }
@@ -43,9 +43,5 @@ extension PhotosAllController {
 
     func noImagesFound() {
         NSLog("No photo found")
-    }
-    
-    func coreDataSetup() {
-        self.managedContext = AppDelegate().managedObjectContext
     }
 }

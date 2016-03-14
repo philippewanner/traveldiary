@@ -15,7 +15,7 @@ extension UIViewController {
     */
     var managedObjectContext:NSManagedObjectContext {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        return appDelegate.managedObjectContext
+        return appDelegate.coreDataController.managedObjectContext
     }
     
     /*!

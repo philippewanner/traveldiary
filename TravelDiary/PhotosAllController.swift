@@ -23,8 +23,6 @@ class PhotosAllController: UIViewController, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("wiewDidLoad")
-        // setup Core Data context
-        coreDataSetup()
         // load photos in memory
         loadPhotos()
         // Attached the data source to the collection view
