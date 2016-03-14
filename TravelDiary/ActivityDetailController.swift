@@ -187,11 +187,18 @@ extension ActivityDetailController: UIImagePickerControllerDelegate{
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let imageCameraOrLibrary = info [UIImagePickerControllerOriginalImage] as? UIImage;
         if imageCameraOrLibrary != nil{
-            let photoData = Photo(managedObjectContext: self.managedObjectContext)
-            photoData.imageBlob?.image = imageCameraOrLibrary
-            photoData.createDate = NSDate()
-            photoData.title = selectedActivity?.title
-            photoData.inActivity = selectedActivity
+            let photoToSave = Photo(managedObjectContext: self.managedObjectContext)
+            photoToSave.image = imageCameraOrLibrary
+            photoToSave.thumbnail = imageCameraOrLibrary
+            photoToSave.createDate = NSDate()
+            photoToSave.title = selectedActivity?.title
+            photoToSave.inActivity = selectedActivity
+            let photoData = BlobImage(managedObjectContext: self.managedObjectContext)
+            photoData.image = imageCameraOrLibrary
+            photoToSave.imageBlob = photoData
+            let thumbnailData = BlobThumbnail(managedObjectContext: self.managedObjectContext)
+            thumbnailData.thumbnail = imageCameraOrLibrary
+            photoToSave.thumbnailBlob = thumbnailData
             self.saveContext()
             if fromCamera{
                 UIImageWriteToSavedPhotosAlbum(imageCameraOrLibrary!, self, "image:didFinishSavingWithError:contextInfo:", nil)
@@ -207,7 +214,7 @@ extension ActivityDetailController: UICollectionViewDataSource{
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.ImageReuseIdentifier, forIndexPath: indexPath) as! ActivityPhotoCell
         let photo = fetchedResultsController.objectAtIndexPath(indexPath) as! Photo
-        cell.activityPhoto.image = photo.imageBlob?.image
+        cell.activityPhoto.image = photo.thumbnail
         return cell
     }
     
