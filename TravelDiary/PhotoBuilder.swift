@@ -14,6 +14,7 @@ class PhotoBuilder: BaseBuilder{
     
     private var createDate = NSDate()
     private var imageData = NSData()
+    private var thumbnailData = NSData()
     private var title: String?
     private var inActivity: Activity?
     private var location: Location?
@@ -23,6 +24,7 @@ class PhotoBuilder: BaseBuilder{
         let photo = Photo(managedObjectContext: self.managedObjectContext)
         photo.createDate = self.createDate
         photo.imageData = self.imageData
+        photo.thumbnailData = self.thumbnailData
         photo.title = self.title
         photo.inActivity = self.inActivity
         photo.location = self.location
@@ -52,6 +54,12 @@ class PhotoBuilder: BaseBuilder{
     
     func with(imageData imageData: NSData) -> PhotoBuilder {
         self.imageData = imageData
+        self.thumbnailData = imageData
+        return self
+    }
+    
+    func with(thumbnailData thumbnailData: NSData) -> PhotoBuilder {
+        self.thumbnailData = thumbnailData
         return self
     }
     

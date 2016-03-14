@@ -12,7 +12,7 @@ import UIKit
 
 
 class Photo: NSManagedObject {
-
+    
     var image : UIImage? {
         get {
             if let imageData = imageData {
@@ -23,6 +23,21 @@ class Photo: NSManagedObject {
         set(value) {
             if let value = value {
                 imageData = UIImageJPEGRepresentation(value, 1)
+            }
+        }
+    }
+
+    var thumbnail : UIImage? {
+        get {
+            if let thumbnailData = thumbnailData {
+                return UIImage(data: thumbnailData)
+            }
+            return nil
+        }
+        set(value) {
+            if let value = value {
+                let image = resizeImage(value, width: 200)
+                imageData = UIImageJPEGRepresentation(image, 1)
             }
         }
     }
@@ -40,4 +55,17 @@ class Photo: NSManagedObject {
             }
         }
     }
+    
+    func resizeImage(imageToResize: UIImage, width: CGFloat) -> UIImage
+    {
+        let scale = width / imageToResize.size.width
+        let height = imageToResize.size.height * scale
+        UIGraphicsBeginImageContext(CGSizeMake(width, height))
+        imageToResize.drawInRect(CGRectMake(0, 0, width, height))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
+
 }

@@ -9,6 +9,14 @@
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="inActivity" inverseEntity="Photo" syncable="YES"/>
         <relationship name="trip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="activities" inverseEntity="Trip" syncable="YES"/>
     </entity>
+    <entity name="BlobImage" representedClassName=".BlobImage" syncable="YES">
+        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="imageBlob" inverseEntity="Photo" syncable="YES"/>
+    </entity>
+    <entity name="BlobThumbnail" representedClassName=".BlobThumbnail" syncable="YES">
+        <attribute name="thumbnailData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="thumbnailBlob" inverseEntity="Photo" syncable="YES"/>
+    </entity>
     <entity name="Location" representedClassName=".Location" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,11 +28,11 @@
     </entity>
     <entity name="Photo" representedClassName=".Photo" syncable="YES">
         <attribute name="createDate" attributeType="Date" syncable="YES"/>
-        <attribute name="imageData" attributeType="Binary" allowsExternalBinaryDataStorage="YES" storedInTruthFile="YES" syncable="YES"/>
-        <attribute name="thumbnailData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <relationship name="imageBlob" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlobImage" inverseName="photo" inverseEntity="BlobImage" syncable="YES"/>
         <relationship name="inActivity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Activity" inverseName="photos" inverseEntity="Activity" syncable="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="photos" inverseEntity="Location" syncable="YES"/>
+        <relationship name="thumbnailBlob" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlobThumbnail" inverseName="photo" inverseEntity="BlobThumbnail" syncable="YES"/>
         <relationship name="trip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="pictures" inverseEntity="Trip" syncable="YES"/>
     </entity>
     <entity name="Trip" representedClassName=".Trip" syncable="YES">
@@ -39,5 +47,7 @@
         <element name="Location" positionX="288" positionY="3" width="128" height="150"/>
         <element name="Photo" positionX="358" positionY="254" width="128" height="148"/>
         <element name="Trip" positionX="-2" positionY="423" width="128" height="120"/>
+        <element name="BlobImage" positionX="556" positionY="279" width="128" height="73"/>
+        <element name="BlobThumbnail" positionX="556" positionY="369" width="128" height="73"/>
     </elements>
 </model>
