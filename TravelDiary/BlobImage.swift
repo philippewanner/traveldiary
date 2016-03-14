@@ -13,7 +13,10 @@ import UIKit
 
 class BlobImage: NSManagedObject {
 
-    var image : UIImage? {
+    @NSManaged private var imageData: NSData?
+    @NSManaged private var photo: Photo?
+    
+    var image: UIImage? {
         get {
             if let imgData = self.imageData {
                 return UIImage(data: imgData)
@@ -26,5 +29,4 @@ class BlobImage: NSManagedObject {
             }
         }
     }
-
 }

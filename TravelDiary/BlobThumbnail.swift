@@ -12,6 +12,9 @@ import UIKit
 
 
 class BlobThumbnail: NSManagedObject {
+    
+    @NSManaged private var thumbnailData: NSData?
+    @NSManaged private var photo: Photo?
 
     var thumbnail : UIImage? {
         get {

@@ -16,6 +16,6 @@ class ActivityPhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityPhoto.image = photo?.image
+        activityPhoto.image = photo?.imageBlob?.image
     }
 }

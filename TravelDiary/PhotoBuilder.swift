@@ -13,8 +13,6 @@ import CoreData;
 class PhotoBuilder: BaseBuilder{
     
     private var createDate = NSDate()
-    private var imageData = NSData()
-    private var thumbnailData = NSData()
     private var title: String?
     private var inActivity: Activity?
     private var location: Location?
@@ -54,14 +52,30 @@ class PhotoBuilder: BaseBuilder{
         return self
     }
     
+    func with(imageBlob imageBlob: BlobImage) -> PhotoBuilder {
+        self.imageBlob = imageBlob
+        return self
+    }
+    
+    func with(thumbnailBlob thumbnailBlob: BlobThumbnail) -> PhotoBuilder {
+        self.thumbnailBlob = thumbnailBlob
+        return self
+    }
+    
     func with(imageData imageData: NSData) -> PhotoBuilder {
-        self.imageData = imageData
-        self.thumbnailData = imageData
+        let imgblob = BlobImage(managedObjectContext: self.managedObjectContext)
+        imgblob.image = UIImage(data: imageData)
+        let thumbBlob = BlobThumbnail(managedObjectContext: self.managedObjectContext)
+        thumbBlob.thumbnail = UIImage(data: imageData)
+        self.imageBlob = imgblob
+        self.thumbnailBlob = thumbBlob
         return self
     }
     
     func with(thumbnailData thumbnailData: NSData) -> PhotoBuilder {
-        self.thumbnailData = thumbnailData
+        let blob = BlobThumbnail(managedObjectContext: self.managedObjectContext)
+        blob.thumbnail = UIImage(data: thumbnailData)
+        self.thumbnailBlob = blob
         return self
     }
     

@@ -22,7 +22,7 @@ class TPTableViewCell: UITableViewCell, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tripPhotoCell", forIndexPath: indexPath) as! TPCollectionViewCell
         
         NSLog("load image #%i in a TPTableViewCell", indexPath.row)
-        cell.imageView.image = data[indexPath.row].image
+        cell.imageView.image = data[indexPath.row].imageBlob?.image
         cell.indexTable = self.tableIndex;
         
         return cell
