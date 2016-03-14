@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E085CE41C97455D007312B0 /* NSDate+addingDaysFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E085CE31C97455D007312B0 /* NSDate+addingDaysFunction.swift */; };
 		7E0DB1791C88A78B003D6B38 /* TripTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E0DB1781C88A78B003D6B38 /* TripTableViewCell.xib */; };
 		7E0DB17B1C88A891003D6B38 /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0DB17A1C88A891003D6B38 /* TripTableViewCell.swift */; };
 		7E0DB17D1C88CF46003D6B38 /* TripBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0DB17C1C88CF46003D6B38 /* TripBuilder.swift */; };
@@ -100,6 +101,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E085CE31C97455D007312B0 /* NSDate+addingDaysFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+addingDaysFunction.swift"; sourceTree = "<group>"; };
 		7E0DB1781C88A78B003D6B38 /* TripTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripTableViewCell.xib; sourceTree = "<group>"; };
 		7E0DB17A1C88A891003D6B38 /* TripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
 		7E0DB17C1C88CF46003D6B38 /* TripBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripBuilder.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				D68212751C7915600046122E /* UIViewController+ManagedObjectContext.swift */,
 				7EC3E5131C92081100BDA035 /* NSString+trimFunction.swift */,
 				F06FED961C94AB0C00F9AFE7 /* CollectionType+GroupBy.swift */,
+				7E085CE31C97455D007312B0 /* NSDate+addingDaysFunction.swift */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				F0068B351C96F26C00BCF5F5 /* BlobImage.swift in Sources */,
 				D2AB1BFE1C8E09AD00DD5AFC /* ActivityLocationController.swift in Sources */,
 				F0068B381C96F26C00BCF5F5 /* BlobThumbnail.swift in Sources */,
+				7E085CE41C97455D007312B0 /* NSDate+addingDaysFunction.swift in Sources */,
 				F0DA6C101C68CFF3007753F8 /* DataModel.xcdatamodeld in Sources */,
 				D6EF6ECB1C68CD03006D098B /* AppDelegate.swift in Sources */,
 				F0AB01171C9144CC0009E6B8 /* PhotosAllCollectionViewCell.swift in Sources */,

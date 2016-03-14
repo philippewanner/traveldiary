@@ -18,66 +18,104 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iq9-5z-Q1j">
-                                <rect key="frame" x="40" y="94" width="520" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jex-bq-cP3" userLabel="Title Textfield">
-                                <rect key="frame" x="40" y="117" width="520" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNp-J4-cBZ">
-                                <rect key="frame" x="40" y="177" width="520" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZGn-Zd-4QP" userLabel="Start Date Picker">
-                                <rect key="frame" x="40" y="200" width="520" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="70i-8k-DFI"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="479037904.05863601">
-                                    <!--2016-03-07 10:05:04 +0000-->
-                                </date>
-                            </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pc3-vh-D7B">
-                                <rect key="frame" x="40" y="286" width="520" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="vmt-6h-xJc" userLabel="End Date Picker">
-                                <rect key="frame" x="40" y="309" width="520" height="56"/>
-                                <date key="date" timeIntervalSinceReferenceDate="479037904.05863601">
-                                    <!--2016-03-07 10:05:04 +0000-->
-                                </date>
-                            </datePicker>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fYj-9s-gkI">
+                                <rect key="frame" x="20" y="82" width="560" height="585"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wTp-zH-PgU">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="51"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iq9-5z-Q1j" userLabel="Title Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jex-bq-cP3" userLabel="Title Textfield">
+                                                <rect key="frame" x="0.0" y="21" width="560" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R9B-LD-3Ga">
+                                        <rect key="frame" x="0.0" y="51" width="560" height="51"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNp-J4-cBZ" userLabel="Start Date Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fQU-A5-fc6" userLabel="Start Date">
+                                                <rect key="frame" x="0.0" y="21" width="560" height="30"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <connections>
+                                                    <action selector="startDateEditingDidBegin:" destination="ira-WP-H41" eventType="editingDidBegin" id="FIO-bc-BLJ"/>
+                                                    <action selector="startDateEditingDidEnd:" destination="ira-WP-H41" eventType="editingDidEnd" id="hk3-KR-Y7U"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mmi-Kx-kap" userLabel="Start Date Picker Stack View">
+                                        <rect key="frame" x="0.0" y="102" width="560" height="216"/>
+                                        <subviews>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZGn-Zd-4QP" userLabel="Start Date Picker">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="216"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="479037904.05863601">
+                                                    <!--2016-03-07 10:05:04 +0000-->
+                                                </date>
+                                                <connections>
+                                                    <action selector="startDatePickerValueChanged:" destination="ira-WP-H41" eventType="valueChanged" id="HnQ-C3-7z6"/>
+                                                </connections>
+                                            </datePicker>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ofU-wh-7fQ">
+                                        <rect key="frame" x="0.0" y="318" width="560" height="51"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pc3-vh-D7B" userLabel="End Date Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U1t-Jd-130" userLabel="End Date">
+                                                <rect key="frame" x="0.0" y="21" width="560" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="endDateEditingDidBegin:" destination="ira-WP-H41" eventType="editingDidBegin" id="nH6-6o-jAO"/>
+                                                    <action selector="endDateEditingDidEnd:" destination="ira-WP-H41" eventType="editingDidEnd" id="okp-Qn-RSm"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fda-fg-yyg" userLabel="End Date Picker Stack View">
+                                        <rect key="frame" x="0.0" y="369" width="560" height="216"/>
+                                        <subviews>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="vmt-6h-xJc" userLabel="End Date Picker">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="216"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="479037904.05863601">
+                                                    <!--2016-03-07 10:05:04 +0000-->
+                                                </date>
+                                                <connections>
+                                                    <action selector="endDatePickerValueChanged:" destination="ira-WP-H41" eventType="valueChanged" id="P3V-uQ-BlX"/>
+                                                </connections>
+                                            </datePicker>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vmt-6h-xJc" firstAttribute="leading" secondItem="iq9-5z-Q1j" secondAttribute="leading" id="0sx-Ns-cHf"/>
-                            <constraint firstItem="iq9-5z-Q1j" firstAttribute="top" secondItem="l3a-vu-pbK" secondAttribute="bottom" constant="30" id="3cS-Zs-xTI"/>
-                            <constraint firstItem="Jex-bq-cP3" firstAttribute="width" secondItem="iq9-5z-Q1j" secondAttribute="width" id="4Jx-Ld-TgL"/>
-                            <constraint firstItem="cNp-J4-cBZ" firstAttribute="leading" secondItem="iq9-5z-Q1j" secondAttribute="leading" id="DcV-xO-xwU"/>
-                            <constraint firstItem="cNp-J4-cBZ" firstAttribute="width" secondItem="iq9-5z-Q1j" secondAttribute="width" id="DvW-1w-GuE"/>
-                            <constraint firstItem="Pc3-vh-D7B" firstAttribute="leading" secondItem="iq9-5z-Q1j" secondAttribute="leading" id="Mcr-OW-85G"/>
-                            <constraint firstItem="ZGn-Zd-4QP" firstAttribute="top" secondItem="cNp-J4-cBZ" secondAttribute="bottom" constant="2" id="NEE-FH-CHe"/>
-                            <constraint firstItem="cNp-J4-cBZ" firstAttribute="top" secondItem="Jex-bq-cP3" secondAttribute="bottom" constant="30" id="Rbv-8H-omj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iq9-5z-Q1j" secondAttribute="trailing" constant="20" id="SrM-LL-ehI"/>
-                            <constraint firstItem="Jex-bq-cP3" firstAttribute="leading" secondItem="iq9-5z-Q1j" secondAttribute="leading" id="TpL-xW-e37"/>
-                            <constraint firstItem="vmt-6h-xJc" firstAttribute="top" secondItem="Pc3-vh-D7B" secondAttribute="bottom" constant="2" id="UuZ-go-uMX"/>
-                            <constraint firstItem="vmt-6h-xJc" firstAttribute="width" secondItem="iq9-5z-Q1j" secondAttribute="width" id="WKZ-Bz-OaU"/>
-                            <constraint firstItem="Pc3-vh-D7B" firstAttribute="top" secondItem="ZGn-Zd-4QP" secondAttribute="bottom" constant="30" id="ayS-BC-7rD"/>
-                            <constraint firstItem="Pc3-vh-D7B" firstAttribute="width" secondItem="iq9-5z-Q1j" secondAttribute="width" id="dQV-IA-o1R"/>
-                            <constraint firstItem="vmt-6h-xJc" firstAttribute="height" secondItem="ZGn-Zd-4QP" secondAttribute="height" id="iI0-5R-rit"/>
-                            <constraint firstItem="Jex-bq-cP3" firstAttribute="top" secondItem="iq9-5z-Q1j" secondAttribute="bottom" constant="2" id="j6q-la-2zz"/>
-                            <constraint firstItem="ZGn-Zd-4QP" firstAttribute="width" secondItem="iq9-5z-Q1j" secondAttribute="width" id="lOH-3k-8bt"/>
-                            <constraint firstItem="ZGn-Zd-4QP" firstAttribute="leading" secondItem="iq9-5z-Q1j" secondAttribute="leading" id="nBI-Fk-48A"/>
-                            <constraint firstItem="iq9-5z-Q1j" firstAttribute="leading" secondItem="815-MT-JKW" secondAttribute="leadingMargin" constant="20" id="xQl-Gt-bIW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="fYj-9s-gkI" secondAttribute="leading" id="Ce5-Rt-tNQ"/>
+                            <constraint firstItem="fYj-9s-gkI" firstAttribute="top" secondItem="l3a-vu-pbK" secondAttribute="bottom" constant="18" id="fev-7V-DXz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fYj-9s-gkI" secondAttribute="trailing" id="tYk-a7-KAh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Trip" id="pPl-wV-PGD">
@@ -93,10 +131,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="endDate" destination="vmt-6h-xJc" id="GQO-0s-EPr"/>
+                        <outlet property="endDatePicker" destination="vmt-6h-xJc" id="0FW-DV-PU2"/>
+                        <outlet property="endDatePickerStackView" destination="Fda-fg-yyg" id="Za1-df-ZBF"/>
+                        <outlet property="endDateTextField" destination="U1t-Jd-130" id="WZ8-MB-HXn"/>
                         <outlet property="navItem" destination="pPl-wV-PGD" id="jwi-cy-LwZ"/>
                         <outlet property="navigationItem" destination="pPl-wV-PGD" id="05H-eo-M9b"/>
-                        <outlet property="startDate" destination="ZGn-Zd-4QP" id="euz-bB-Ouu"/>
+                        <outlet property="startDatePicker" destination="ZGn-Zd-4QP" id="1Du-79-oaZ"/>
+                        <outlet property="startDatePickerStackView" destination="mmi-Kx-kap" id="gq8-Hy-u2f"/>
+                        <outlet property="startDateTextField" destination="fQU-A5-fc6" id="grP-F0-rBR"/>
                         <outlet property="tripTitle" destination="Jex-bq-cP3" id="wI4-ph-oID"/>
                     </connections>
                 </viewController>
