@@ -79,7 +79,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="psy-oE-dlI" kind="show" identifier="showActivitySegue" id="oKU-Xk-rLQ"/>
+                                    <segue destination="jxE-2C-fee" kind="show" identifier="showActivitySegue" id="MN7-RV-1Hu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -94,7 +94,7 @@
                             <barButtonItem systemItem="edit" id="ej8-fs-RjJ" userLabel="Edit"/>
                             <barButtonItem systemItem="add" id="l3O-1F-PP2">
                                 <connections>
-                                    <segue destination="yrz-ZJ-fkE" kind="presentation" id="2K3-fM-IJ1"/>
+                                    <segue destination="yrz-ZJ-fkE" kind="presentation" identifier="editActivitySegue" id="2K3-fM-IJ1"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -102,15 +102,25 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Peb-hy-mpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1178" y="-337"/>
+            <point key="canvasLocation" x="1230" y="-381"/>
         </scene>
-        <!--UIViewController-9cW-2f-bWL-->
-        <scene sceneID="BQP-CK-rty">
+        <!--View Controller-->
+        <scene sceneID="kal-Wi-FbV">
             <objects>
-                <viewControllerPlaceholder storyboardName="CurrentTripDetailAdd" referencedIdentifier="UIViewController-9cW-2f-bWL" id="psy-oE-dlI" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ldl-bW-BPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="jxE-2C-fee" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KTS-17-iW7"/>
+                        <viewControllerLayoutGuide type="bottom" id="373-9O-nd8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dni-en-v7G">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nUE-NS-I27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1757" y="-311"/>
+            <point key="canvasLocation" x="2240" y="-487"/>
         </scene>
         <!--UINavigationController-Ivu-xv-Jdl-->
         <scene sceneID="xVe-py-o8P">

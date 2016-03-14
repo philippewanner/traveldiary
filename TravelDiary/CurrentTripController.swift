@@ -12,7 +12,8 @@ import CoreData
 class CurrentTripController: UITableViewController{
     
     private struct Constants{
-        static let SegueActivityDetailController = "showActivitySegue"
+        static let showActivitySeque = "showActivitySegue"
+        static let editActivitySegue = "editActivitySegue"
         static let addActivitySegue = "addActivitySegue"
         static let reuseCellIdentifier = "reuseCell"
         static let ActivityTableViewCell = "ActivityTableViewCell"
@@ -29,7 +30,9 @@ class CurrentTripController: UITableViewController{
     private let searchController = UISearchController(searchResultsController: nil)
     // Currently selected trip
     var currentTrip : Trip?
-    var activitiesAreEditable = false;
+    private var activitiesAreEditable = false;
+    
+    private var editingExistingActivity = false;
     
     private var filteredActivities:[Activity]? = []
     
@@ -112,21 +115,20 @@ class CurrentTripController: UITableViewController{
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Perform Segue
         if self.activitiesAreEditable {
-            //editAnExistingTrip = true
-            //NSLog("performing " + Constants.addOrEditTripSegue)
-            //performSegueWithIdentifier(Constants.addOrEditTripSegue, sender: self)
+            editingExistingActivity = true
+            performSegueWithIdentifier(Constants.editActivitySegue, sender: self)
         }else{
-            performSegueWithIdentifier(Constants.SegueActivityDetailController, sender: self)
+            performSegueWithIdentifier(Constants.showActivitySeque, sender: self)
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Constants.SegueActivityDetailController {
-            if let destination = segue.destinationViewController as? ActivityDetailController {
-               destination.selectedActivity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
+        if segue.identifier == Constants.editActivitySegue {
+            let navController = segue.destinationViewController as! UINavigationController
+            let activityLocationController = navController.topViewController as!ActivityDetailController
+            activityLocationController.selectedActivity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
             }
-        }
     }
     
     /*!
