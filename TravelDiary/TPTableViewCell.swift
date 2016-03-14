@@ -15,12 +15,15 @@ class TPTableViewCell: UITableViewCell, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var tableIndex = 0
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("tripPhotoCell", forIndexPath: indexPath) as! TPCollectionViewCell
         
         NSLog("load image #%i in a TPTableViewCell", indexPath.row)
         cell.imageView.image = data[indexPath.row].image
+        cell.indexTable = self.tableIndex;
         
         return cell
     }
@@ -29,6 +32,4 @@ class TPTableViewCell: UITableViewCell, UICollectionViewDataSource {
         NSLog("%d images in trip", data.count)
         return data.count
     }
-    
-
 }

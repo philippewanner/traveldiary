@@ -122,7 +122,6 @@
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="imageView" destination="qTg-iL-agB" id="Geq-xZ-oZX"/>
-                                                                <segue destination="YJD-qQ-bJh" kind="show" identifier="showImageFromTripView" id="Mpx-j0-ZCv"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -160,6 +159,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="389-xT-K6U" id="dVS-G1-p2U"/>
+                        <segue destination="YJD-qQ-bJh" kind="show" identifier="showImageFromTripView" id="bmZ-R6-8M9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cSq-bl-1Nk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -226,6 +226,7 @@
                             <constraint firstItem="yXU-c0-Rz3" firstAttribute="top" secondItem="q91-Md-aJ1" secondAttribute="bottom" id="ERv-Kq-kdG"/>
                             <constraint firstItem="jgR-uD-TTJ" firstAttribute="bottom" secondItem="ceY-uw-uNx" secondAttribute="top" id="Rr4-Ep-qDl"/>
                             <constraint firstItem="yXU-c0-Rz3" firstAttribute="leading" secondItem="A3x-TN-GJO" secondAttribute="leading" id="fjw-r6-cpD"/>
+                            <constraint firstItem="yXU-c0-Rz3" firstAttribute="top" secondItem="jgR-uD-TTJ" secondAttribute="top" id="kGh-ao-Bi1"/>
                             <constraint firstAttribute="trailing" secondItem="yXU-c0-Rz3" secondAttribute="trailing" id="xh4-OW-gmS"/>
                         </constraints>
                     </view>
@@ -355,6 +356,6 @@
         <image name="shareButton" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mpx-j0-ZCv"/>
+        <segue reference="bmZ-R6-8M9"/>
     </inferredMetricsTieBreakers>
 </document>

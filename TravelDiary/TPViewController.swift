@@ -12,7 +12,6 @@ import CoreData
 class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewDelegate{
     
     var model: [[Photo]] = [[]]
-    var storedOffsets = [Int: CGFloat]()
     
     var whichCollecitonView = 0
     
@@ -67,36 +66,25 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
         tableViewCell.collectionView.dataSource = tableViewCell
         tableViewCell.collectionView.delegate = self
         tableViewCell.collectionView.reloadData()
+        tableViewCell.tableIndex = indexPath.section
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         //When someone clicks on the cell
-        NSLog("click on image in collection trip view, indexPath=%d", indexPath.item)
-//        self.performSegueWithIdentifier("showImageFromTripView", sender: self)
+        NSLog("Cell in collectionView indexPath=%d", indexPath.item)
+        self.performSegueWithIdentifier("showImageFromTripView", sender: collectionView.cellForItemAtIndexPath(indexPath) )
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "showImageFromTripView" {
-//            NSLog("showImageFromTripView, indexPath=%d", (sender?.indexPath.item)!)
+    
+        if segue.identifier == "showImageFromTripView" {    
             
-            if sender?.collectionView == nil {
-                NSLog("sender collection view nilllll")
-            }
-            
-//            //Get the number of items selected in the collection view
-//            let indexPaths = sender!.collectionView!.indexPathsForSelectedItems()!
-//            //Get the first items of those
-//            let indexPath = indexPaths[0] as NSIndexPath
-//            
-//            //Cast the destination view controller to ImageViewController
-//            let controller = segue.destinationViewController as! ImageViewController
-//
-//            //Set the image in the ImageViewController to the selected item in the collection view
-//            controller.image = (sender as! TPTableViewCell).data[indexPath.row].image!
-//            
-//            //Set the title of this image depending of the selected item in the collection view
-//            controller.title = sender.collectionViewDataSource.data[indexPath.row].title
+            //Cast the destination view controller to ImageViewController
+            let controller = segue.destinationViewController as! ImageViewController
+
+            //Set the image in the ImageViewController to the selected item in the collection view
+            controller.image = (sender as! TPCollectionViewCell).imageView.image!
         }
     }
 }

@@ -11,4 +11,6 @@ import UIKit
 class TPCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
+    
+    var indexTable = 0
 }
