@@ -170,6 +170,7 @@ class CurrentTripController: UITableViewController{
                 self.managedObjectContext.deleteObject(temp)
             }
             self.managedObjectContext.deleteObject(activityToDelete!)
+            self.saveContext()
         }
     }
     
