@@ -47,12 +47,12 @@ class TripsTableViewController : UITableViewController{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constants.showCurrentTripSegue {
-            NSLog("prepare seque: " + Constants.showCurrentTripSegue)
+            NSLog("prepare for seque '\(Constants.showCurrentTripSegue)'")
             if let currentTripController = segue.destinationViewController as? CurrentTripController {
                 currentTripController.currentTrip = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Trip
             }
         } else if segue.identifier == Constants.addOrEditTripSegue {
-            NSLog("prepare seque: " + Constants.addOrEditTripSegue)
+            NSLog("prepare for seque '\(Constants.addOrEditTripSegue)'")
             if editAnExistingTrip {
                 NSLog("prepare an existing trip to edit")
                 if let navigationController = segue.destinationViewController as? UINavigationController {
