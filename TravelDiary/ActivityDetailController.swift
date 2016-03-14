@@ -192,7 +192,7 @@ extension ActivityDetailController: UIImagePickerControllerDelegate{
             photoToSave.image = imageCameraOrLibrary
             photoToSave.thumbnail = imageCameraOrLibrary
             photoToSave.createDate = NSDate()
-            photoToSave.title = selectedActivity?.title
+            photoToSave.title = activityTitle.text
             photoToSave.inActivity = selectedActivity
             let photoData = BlobImage(managedObjectContext: self.managedObjectContext)
             photoData.image = imageCameraOrLibrary
