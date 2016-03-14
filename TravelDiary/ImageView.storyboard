@@ -47,7 +47,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.28963881444103551" green="0.27880974769742078" blue="0.30210336538461535" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="fEx-SJ-3Tx" firstAttribute="centerY" secondItem="yXU-c0-Rz3" secondAttribute="centerY" id="EpM-7Q-zDR"/>
                                     <constraint firstAttribute="height" constant="50" id="Yv1-mo-1hs"/>
@@ -57,7 +57,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jgR-uD-TTJ" firstAttribute="trailing" secondItem="yXU-c0-Rz3" secondAttribute="trailing" id="79E-0X-Wb9"/>
                             <constraint firstItem="jgR-uD-TTJ" firstAttribute="leading" secondItem="yXU-c0-Rz3" secondAttribute="leading" id="8A1-JJ-LS3"/>

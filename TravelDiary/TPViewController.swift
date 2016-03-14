@@ -32,7 +32,7 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return model[section][0].trip!.title
+        return model[section][0].trip?.title
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
