@@ -12,31 +12,43 @@ import UIKit
 
 
 class Photo: NSManagedObject {
-
+    
+    @NSManaged var createDate: NSDate?
+    @NSManaged var title: String?
+    @NSManaged var imageBlob: BlobImage?
+    @NSManaged var inActivity: Activity?
+    @NSManaged var location: Location?
+    @NSManaged var thumbnailBlob: BlobThumbnail?
+    @NSManaged var trip: Trip?
+    
     var image : UIImage? {
         get {
-            if let imageData = imageData {
-                return UIImage(data: imageData)
-            }
-            return nil
+            return self.imageBlob?.image
         }
         set(value) {
-            if let value = value {
-                imageData = UIImageJPEGRepresentation(value, 1)
-            }
+            self.imageBlob?.image = value
+        }
+    }
+
+    var thumbnail : UIImage? {
+        get {
+            return self.thumbnailBlob?.thumbnail
+        }
+        set(value) {
+            self.thumbnailBlob?.thumbnail = value
         }
     }
     
     var text : String? {
         get {
-            if let value = title {
+            if let value = self.title {
                 return value
             }
             return nil
         }
         set(value) {
             if let value = value {
-                title = value
+                self.title = value
             }
         }
     }

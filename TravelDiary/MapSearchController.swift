@@ -18,17 +18,12 @@ class MapSearchController: UITableViewController {
     var fetchRequest: NSFetchRequest!
 
     private struct Constants {
-        static let CacheName = "mapSearchCache"
         static let ReuseIdentifierCell = "reuseIdentifierCell"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeFetchedResultsController()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        NSFetchedResultsController.deleteCacheWithName(Constants.CacheName)
     }
     
     func initializeFetchedResultsController() {
@@ -93,9 +88,8 @@ extension MapSearchController: UISearchResultsUpdating {
         guard let searchText = searchController.searchBar.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) else {
             return
         }
-        
-        fetchRequest.predicate = NSPredicate(format:"longitude != nil AND latitude != nil AND name contains[c] %@", searchText)
-        print(searchText)
+    
+        fetchRequest.predicate = NSPredicate(format:"longitude != nil AND latitude != nil AND name CONTAINS[c] %@", searchText)
         
         do {
             try fetchedResultsController.performFetch()

@@ -13,22 +13,12 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
     
     var model: [[Photo]] = [[]]
     
-    var whichCollecitonView = 0
-    
     @IBOutlet weak var tableView: UITableView!
-    
-    var photosModelHelper = PhotosModelHelper()
-    
-    // Core Data managed context
-    var managedContext : NSManagedObjectContext?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("wiewDidLoad")
-        // setup Core Data context
-        photosModelHelper.coreDataSetup()
         // load photos in memory
-        model = photosModelHelper.getPhotosPerTrip()
+        model = getPhotosPerTrip()
     }
     
     override func didReceiveMemoryWarning() {
@@ -84,7 +74,64 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
             let controller = segue.destinationViewController as! ImageViewController
 
             //Set the image in the ImageViewController to the selected item in the collection view
-            controller.image = (sender as! TPCollectionViewCell).imageView.image!
+            controller.image = (sender as! TPCollectionViewCell).photo.image!
         }
     }
+
+    func getPhotosPerTrip() -> [[Photo]] {
+        
+        let allPhotos: [Photo] = self.getAllPhotos()
+        
+        var result: [[Photo]] = [[]]
+        
+        NSLog("Get photos from core data sorted per trip")
+        
+        result = allPhotos.groupBy { $0.0.trip?.title == $0.1.trip?.title }
+        
+        return result
+    }
+    
+    func getAllPhotos() -> [Photo]{
+        
+        NSLog("Get all photos from core data")
+        var result: [Photo] = []
+        // loadCoreDataImages fct with a completion block
+        loadCoreDataImages { (fetchedImages:[Photo]?) -> Void in
+            
+            guard let fetchedImages = fetchedImages else {
+                self.noImagesFound()
+                return
+            }
+            
+            result = fetchedImages
+            
+            NSLog("number of photos:%d", result.count)
+        }
+        
+        return result
+    }
+    
+    func loadCoreDataImages(fetched:(fetchedImages:[Photo]?) -> Void) {
+        
+        NSLog("loadCoreDataImages extension")
+        
+        let fetchRequest = NSFetchRequest(entityName: "Photo")
+        
+        do {
+            let results = try managedObjectContext.executeFetchRequest(fetchRequest)
+            let imageData = results as? [Photo]
+            NSLog("imageData %d", (imageData?.count)!)
+            //Execute function in parameter
+            fetched(fetchedImages: imageData)
+        } catch {
+            noImagesFound()
+            return
+        }
+    }
+    
+    func noImagesFound() {
+        
+        NSLog("No image found")
+    }
 }
+

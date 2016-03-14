@@ -70,7 +70,7 @@
                 <viewControllerPlaceholder storyboardName="CurrentTripDetailAdd" referencedIdentifier="UIViewController-9cW-2f-bWL" id="pzj-Bu-Mlc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdA-SG-XVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="477"/>
+            <point key="canvasLocation" x="1301" y="469"/>
         </scene>
         <!--UINavigationController-Ivu-xv-Jdl-->
         <scene sceneID="HlE-Xs-4pd">

@@ -18,47 +18,26 @@ extension PhotosAllController {
      
      - parameter fetched: Completion Block for the background fetch.
      */
-    func loadCoreDataImages(fetched:(fetchedImages:[Photo]?) -> Void) {
+    func loadCoreDataImages(fetched:(fetchedThumbnails:[Photo]?) -> Void) {
         
         NSLog("loadCoreDataImages extension")
         
-        guard let moc = self.managedContext else {
-            NSLog("no managed context")
-            return
-        }
-        
         let fetchRequest = NSFetchRequest(entityName: "Photo")
+        fetchRequest.relationshipKeyPathsForPrefetching = ["thumbnailBlob"]
         
         do {
-            let results = try moc.executeFetchRequest(fetchRequest)
-            let imageData = results as? [Photo]
-            NSLog("imageData %d", (imageData?.count)!)
+            let results = try managedObjectContext.executeFetchRequest(fetchRequest)
+            let photos = results as? [Photo]
+            NSLog("%d photos found", (photos?.count)!)
             //Execute function in parameter
-            fetched(fetchedImages: imageData)
+            fetched(fetchedThumbnails: photos)
         } catch {
             noImagesFound()
             return
         }
     }
-    
-    /**
-     Display Alert when loadImages had no results
-     */
+
     func noImagesFound() {
-        
-        let alertAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
-        
-        let alertVC = UIAlertController(title: "No Images Found", message: "There were no images saved in Core Data", preferredStyle: .Alert)
-        
-        alertVC.addAction(alertAction)
-        
-        self.presentViewController(alertVC, animated: true, completion: nil)
-    }
-    
-    /**
-     Start Core Data managed context on the correct queue
-     */
-    func coreDataSetup() {
-        self.managedContext = AppDelegate().managedObjectContext
+        NSLog("No photo found")
     }
 }

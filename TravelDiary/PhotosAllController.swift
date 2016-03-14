@@ -17,14 +17,9 @@ class PhotosAllController: UIViewController, UICollectionViewDelegate {
     // Data Source for UICollectionView
     var collectionViewDataSource = CollectionDataSource()
     
-    // Core Data managed context
-    var managedContext : NSManagedObjectContext?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("wiewDidLoad")
-        // setup Core Data context
-        coreDataSetup()
         // load photos in memory
         loadPhotos()
         // Attached the data source to the collection view
@@ -51,7 +46,9 @@ class PhotosAllController: UIViewController, UICollectionViewDelegate {
             let controller = segue.destinationViewController as! ImageViewController
             
             //Set the image in the ImageViewController to the selected item in the collection view
-            controller.image = self.collectionViewDataSource.data[indexPath.row].image
+            let photo = self.collectionViewDataSource.data[indexPath.row]
+            controller.image = photo.image!
+            controller.title = photo.title
             
             //Set the title of this image depending of the selected item in the collection view
             controller.title = self.collectionViewDataSource.data[indexPath.row].title
@@ -66,10 +63,10 @@ class PhotosAllController: UIViewController, UICollectionViewDelegate {
     
     func loadPhotos(){
         // loadCoreDataImages fct with a completion block
-        loadCoreDataImages { (images) -> Void in
-            if let images = images {
+        loadCoreDataImages { (photos) -> Void in
+            if let photos = photos {
                 
-                self.collectionViewDataSource.data += images.map { return (image:$0.image ?? UIImage(),title:$0.title ?? "") }
+                self.collectionViewDataSource.data += photos
                 
             } else {
                 self.noImagesFound()

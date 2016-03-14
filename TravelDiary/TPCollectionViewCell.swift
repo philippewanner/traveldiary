@@ -12,5 +12,7 @@ class TPCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    var photo: Photo!
+    
     var indexTable = 0
 }

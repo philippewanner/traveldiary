@@ -149,6 +149,7 @@ class TripsTableViewController : UITableViewController{
     // segue which is called when the save button on the TripEditViewController is pressed
     @IBAction func unwindSequeSaveActiviy(segue: UIStoryboardSegue){
         self.performSavingData()
+        self.performFetchData()
     }
     
     private func instantiateSearchBar(){
