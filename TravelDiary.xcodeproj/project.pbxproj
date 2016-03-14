@@ -53,7 +53,6 @@
 		D665DC341C8DD986002A77CB /* SouthAmericaTripLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D665DC331C8DD986002A77CB /* SouthAmericaTripLoader.swift */; };
 		D682126F1C78C7490046122E /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D682126E1C78C7490046122E /* ActivityCell.swift */; };
 		D68212711C78DD820046122E /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68212701C78DD810046122E /* ActivityTableViewCell.xib */; };
-		D68212741C78ED220046122E /* CurrentTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D68212721C78ED220046122E /* CurrentTrip.storyboard */; };
 		D68212761C7915600046122E /* UIViewController+ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68212751C7915600046122E /* UIViewController+ManagedObjectContext.swift */; };
 		D69467501C96CBB100C4712B /* ImageView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D694674F1C96CBB100C4712B /* ImageView.storyboard */; };
 		D6CA868D1C8A144D00C06550 /* CurrentTripDetailAdd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6CA868C1C8A144D00C06550 /* CurrentTripDetailAdd.storyboard */; };
@@ -146,7 +145,6 @@
 		D665DC331C8DD986002A77CB /* SouthAmericaTripLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SouthAmericaTripLoader.swift; sourceTree = "<group>"; };
 		D682126E1C78C7490046122E /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		D68212701C78DD810046122E /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
-		D68212731C78ED220046122E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CurrentTrip.storyboard; sourceTree = "<group>"; };
 		D68212751C7915600046122E /* UIViewController+ManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ManagedObjectContext.swift"; sourceTree = "<group>"; };
 		D694674F1C96CBB100C4712B /* ImageView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImageView.storyboard; sourceTree = "<group>"; };
 		D6CA868C1C8A144D00C06550 /* CurrentTripDetailAdd.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CurrentTripDetailAdd.storyboard; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 		D60083AF1C71CBED00D2E4A4 /* trip */ = {
 			isa = PBXGroup;
 			children = (
-				D68212721C78ED220046122E /* CurrentTrip.storyboard */,
 				D6CA868C1C8A144D00C06550 /* CurrentTripDetailAdd.storyboard */,
 				D68212701C78DD810046122E /* ActivityTableViewCell.xib */,
 				D6EF6ECC1C68CD03006D098B /* CurrentTripController.swift */,
@@ -525,7 +522,6 @@
 				D68212711C78DD820046122E /* ActivityTableViewCell.xib in Resources */,
 				D6EF6ED21C68CD03006D098B /* Main.storyboard in Resources */,
 				D6CA868D1C8A144D00C06550 /* CurrentTripDetailAdd.storyboard in Resources */,
-				D68212741C78ED220046122E /* CurrentTrip.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,14 +652,6 @@
 				D274EC681C70B484000AA29D /* Base */,
 			);
 			name = Photos.storyboard;
-			sourceTree = "<group>";
-		};
-		D68212721C78ED220046122E /* CurrentTrip.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D68212731C78ED220046122E /* Base */,
-			);
-			name = CurrentTrip.storyboard;
 			sourceTree = "<group>";
 		};
 		D6EF6ED01C68CD03006D098B /* Main.storyboard */ = {

@@ -12,10 +12,12 @@ import CoreData
 class CurrentTripController: UITableViewController{
     
     private struct Constants{
-        static let SegueActivityDetailController = "showActivitySegue"
+        static let showActivitySeque = "showActivitySegue"
+        static let editActivitySegue = "editActivitySegue"
         static let addActivitySegue = "addActivitySegue"
         static let reuseCellIdentifier = "reuseCell"
         static let ActivityTableViewCell = "ActivityTableViewCell"
+        static let SearchBarPlaceholder = "Search for trips"
     }
     
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -25,13 +27,14 @@ class CurrentTripController: UITableViewController{
     private let dateFormatter = NSDateFormatter()
     // Controller to load data
     private var fetchedResultsController: NSFetchedResultsController!
+    private let searchController = UISearchController(searchResultsController: nil)
     // Currently selected trip
     var currentTrip : Trip?
+    private var activitiesAreEditable = false;
+    
+    private var filteredActivities:[Activity]? = []
     
     private func initializeFetchedResultsController(){
-        if currentTrip == nil{
-            loadCurrenTrip()
-        }
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: Activity.entityName())
         fetchRequest.predicate = NSPredicate(format: "trip == %@", currentTrip!)
@@ -58,32 +61,18 @@ class CurrentTripController: UITableViewController{
         tableView.separatorColor = UIColor.clearColor()
         dateFormatter.locale = NSLocale(localeIdentifier: "de_CH")
         dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+        
         initializeFetchedResultsController()
-       
+        instantiateSearchBar()
+        
+        tableView.allowsSelectionDuringEditing = true
+        
         do {
             try fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
         }
-    }
-    
-    /*!
-        Loads the current trip if not already present to navigation from the trip table.
-    */
-    private func loadCurrenTrip(){
-        let request = NSFetchRequest(entityName: Trip.entityName())
-        request.returnsObjectsAsFaults = false;
-        //TODO search for current trip 1. CurrentDate within trip range 2. future 3. last
-        request.predicate = NSPredicate(format:"title CONTAINS 'An Example Trip' ")
-        var results:NSArray
-        do{
-            results = try managedObjectContext.executeFetchRequest(request)
-            currentTrip = results[0] as? Trip
-        }catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        }
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,32 +82,50 @@ class CurrentTripController: UITableViewController{
     
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let sections = fetchedResultsController.sections {
-            let currentSection = sections[section]
-            return currentSection.numberOfObjects
+        var numberOfObjects: Int = 0
+        if self.isSearchBarActiveAndNotEmpty() {
+            numberOfObjects = self.filteredActivities!.count
         }
-        return 0
+        else{
+            if let sections = fetchedResultsController.sections {
+                let currentSection = sections[section]
+                numberOfObjects = currentSection.numberOfObjects
+            }
+        }
+        return numberOfObjects
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: ActivityCell = self.tableView.dequeueReusableCellWithIdentifier(Constants.reuseCellIdentifier) as! ActivityCell
-        let actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as! Activity
-        cell.activityDescription.text = actitvity.descr
-        cell.activityDate.text = dateFormatter.stringFromDate((actitvity.date)!)
-        cell.activityTitle.text = actitvity.title
+        var actitvity: Activity?
+        if self.isSearchBarActiveAndNotEmpty(){
+            actitvity = self.filteredActivities![indexPath.row]
+        }else {
+            actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as? Activity
+
+        }
+        cell.activityDescription.text = actitvity!.descr
+        cell.activityDate.text = dateFormatter.stringFromDate((actitvity!.date)!)
+        cell.activityTitle.text = actitvity!.title
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Perform Segue
-        performSegueWithIdentifier(Constants.SegueActivityDetailController, sender: self)
+        if self.activitiesAreEditable {
+            performSegueWithIdentifier(Constants.editActivitySegue, sender: self)
+        }else{
+            performSegueWithIdentifier(Constants.showActivitySeque, sender: self)
+        }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Constants.SegueActivityDetailController {
-            if let destination = segue.destinationViewController as? ActivityDetailController {
-               destination.selectedActivity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
+        if segue.identifier == Constants.editActivitySegue {
+            if activitiesAreEditable {
+                let navController = segue.destinationViewController as! UINavigationController
+                let activityLocationController = navController.topViewController as!ActivityDetailController
+                activityLocationController.selectedActivity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
             }
         }
     }
@@ -134,10 +141,25 @@ class CurrentTripController: UITableViewController{
         }
     }
     
+    override func setEditing(editing: Bool, animated: Bool) {
+        NSLog("setEditing(editing: \(editing), animated: \(animated))")
+        activitiesAreEditable = editing
+        super.setEditing(editing, animated: animated)
+    }
+    
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+
+    
     /*!
         segue which is called when the cancel button on the ActivityDetailContoller is called
     */
-    @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {}
+    @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {
+        // TODO Delete the create Activity in case of addActivity
+    }
     
     /*!
         segue which is called when the save button on the ActivityDetailContoller is pressed
@@ -147,6 +169,42 @@ class CurrentTripController: UITableViewController{
             let activityToSave = detailController.selectedActivity
             currentTrip?.addActitiesObject(activityToSave!)
             saveContext()
+        }
+    }
+    
+    private func instantiateSearchBar(){
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        
+        let searchBar = searchController.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = Constants.SearchBarPlaceholder
+        tableView.tableHeaderView = searchBar
+        let searchBarHeight = searchBar.frame.size.height
+        tableView.contentOffset = CGPoint(x: 0, y: searchBarHeight)
+    }
+    
+    private func filterContentForSearchText(searchText: String) {
+        let activities:[Activity] = fetchedResultsController.fetchedObjects as! [Activity]
+        self.filteredActivities = activities.filter { activity in
+            if let title = activity.title {
+                return title.lowercaseString.containsString(searchText.lowercaseString)
+            }else {
+                return false
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    private func isSearchBarActiveAndNotEmpty() -> Bool{
+        if searchController.active && searchController.searchBar.text != "" {
+            NSLog("search bar is active and not empty")
+            return true
+        }else{
+            return false
         }
     }
 }
@@ -173,5 +231,20 @@ extension CurrentTripController: NSFetchedResultsControllerDelegate{
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension CurrentTripController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        self.filterContentForSearchText(searchBar.text!)
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+extension CurrentTripController : UISearchResultsUpdating {
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        self.filterContentForSearchText(searchController.searchBar.text!)
     }
 }
