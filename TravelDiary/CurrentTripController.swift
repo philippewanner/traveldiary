@@ -32,8 +32,6 @@ class CurrentTripController: UITableViewController{
     var currentTrip : Trip?
     private var activitiesAreEditable = false;
     
-    private var editingExistingActivity = false;
-    
     private var filteredActivities:[Activity]? = []
     
     private func initializeFetchedResultsController(){
@@ -115,7 +113,6 @@ class CurrentTripController: UITableViewController{
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Perform Segue
         if self.activitiesAreEditable {
-            editingExistingActivity = true
             performSegueWithIdentifier(Constants.editActivitySegue, sender: self)
         }else{
             performSegueWithIdentifier(Constants.showActivitySeque, sender: self)
@@ -125,10 +122,12 @@ class CurrentTripController: UITableViewController{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constants.editActivitySegue {
-            let navController = segue.destinationViewController as! UINavigationController
-            let activityLocationController = navController.topViewController as!ActivityDetailController
-            activityLocationController.selectedActivity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
+            if activitiesAreEditable {
+                let navController = segue.destinationViewController as! UINavigationController
+                let activityLocationController = navController.topViewController as!ActivityDetailController
+                activityLocationController.selectedActivity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
             }
+        }
     }
     
     /*!
