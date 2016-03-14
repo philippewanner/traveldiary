@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="252" height="101"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CLj-Ti-x4X" id="XXd-3Y-qOc">
-                <rect key="frame" x="0.0" y="0.0" width="252" height="100.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="252" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJn-2z-laV">
@@ -45,7 +45,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="gJW-Ug-LQk" secondAttribute="trailing" constant="9" id="LLI-Wx-pox"/>
                     <constraint firstItem="khw-kM-SOO" firstAttribute="leading" secondItem="XXd-3Y-qOc" secondAttribute="leadingMargin" constant="17" id="MHF-bi-eMC"/>
                     <constraint firstItem="kJn-2z-laV" firstAttribute="top" secondItem="gJW-Ug-LQk" secondAttribute="bottom" constant="8" symbolic="YES" id="QI4-Zj-tXZ"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="khw-kM-SOO" secondAttribute="bottom" id="YgM-Nv-ugZ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="khw-kM-SOO" secondAttribute="bottom" constant="-1" id="YgM-Nv-ugZ"/>
                     <constraint firstItem="gJW-Ug-LQk" firstAttribute="trailing" secondItem="kJn-2z-laV" secondAttribute="trailing" id="k6P-Kh-LZu"/>
                     <constraint firstItem="gJW-Ug-LQk" firstAttribute="leading" secondItem="XXd-3Y-qOc" secondAttribute="leadingMargin" id="lQk-RS-8s1"/>
                     <constraint firstItem="khw-kM-SOO" firstAttribute="trailing" secondItem="XXd-3Y-qOc" secondAttribute="trailingMargin" id="muM-wL-vei"/>

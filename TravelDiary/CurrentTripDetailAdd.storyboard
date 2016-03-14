@@ -139,7 +139,7 @@
                                                 </view>
                                                 <connections>
                                                     <outlet property="activityPhoto" destination="fkt-oA-BSP" id="eID-Ib-BNn"/>
-                                                    <segue destination="i93-Xa-FjK" kind="show" id="z0I-v2-94h"/>
+                                                    <segue destination="i93-Xa-FjK" kind="show" identifier="viewPhotoSegue" id="z0I-v2-94h"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>

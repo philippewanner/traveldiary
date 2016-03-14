@@ -98,8 +98,7 @@ class ActivityDetailController: UIViewController {
             activityLocationController.selectedOnMap = selectedPlacemark
             activityLocationController.existingLocation = selectedActivity?.location
         } else if segue.identifier == Constants.ViewPhotoSegue {
-            let navController = segue.destinationViewController as! UINavigationController
-            let imageViewController = navController.topViewController as! ImageViewController
+            let imageViewController = segue.destinationViewController as! ImageViewController
             let cell = sender as! ActivityPhotoCell
             let indexPath = self.activityPhotoCollectionView!.indexPathForCell(cell)
             let selectedPhoto = fetchedResultsController.objectAtIndexPath(indexPath!) as? Photo
