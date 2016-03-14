@@ -78,7 +78,7 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
-        if segue.identifier == "showImageFromTripView" {    
+        if segue.identifier == "showImageFromTripView" {
             
             //Cast the destination view controller to ImageViewController
             let controller = segue.destinationViewController as! ImageViewController

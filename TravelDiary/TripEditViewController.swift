@@ -20,6 +20,7 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
         static let editTripTitle = "Edit Trip"
         static let newTripTitle = "New Trip"
         static let saveTripSegue = "saveTripUnwindSegue"
+        static let cancelTripSegue = "cancelEditTripUnwindSegue"
     }
     
     private let dateFormatter = NSDateFormatter()
@@ -34,18 +35,25 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constants.saveTripSegue {
+            NSLog("prepare for segue '\(Constants.saveTripSegue)'")
             if isNotNullOrEmpty(tripTitle.text) {
-                if self.currentTrip == nil {
-                    self.currentTrip = Trip(managedObjectContext: self.managedObjectContext)
-                    NSLog("added new trip: '\(tripTitle.text!)'")
-                }else{
-                    NSLog("edited trip: '\(tripTitle.text!)'")
-                }
-                self.currentTrip?.title = tripTitle.text
-                self.currentTrip?.startDate = startDate.date
-                self.currentTrip?.endDate = endDate.date
+                prepareTripDataToSave()
             }
+        }else if segue.identifier == Constants.cancelTripSegue {
+            NSLog("prepare for segue '\(Constants.cancelTripSegue)'")
         }
+    }
+    
+    private func prepareTripDataToSave(){
+        if self.currentTrip == nil {
+            self.currentTrip = Trip(managedObjectContext: self.managedObjectContext)
+            NSLog("added new trip: '\(tripTitle.text!)'")
+        }else{
+            NSLog("edited trip: '\(tripTitle.text!)'")
+        }
+        self.currentTrip?.title = tripTitle.text
+        self.currentTrip?.startDate = startDate.date
+        self.currentTrip?.endDate = endDate.date
     }
     
     private func isNotNullOrEmpty(aString: NSString?) -> Bool{

@@ -21,6 +21,7 @@
     <entity name="Photo" representedClassName=".Photo" syncable="YES">
         <attribute name="createDate" attributeType="Date" syncable="YES"/>
         <attribute name="imageData" attributeType="Binary" allowsExternalBinaryDataStorage="YES" storedInTruthFile="YES" syncable="YES"/>
+        <attribute name="thumbnailData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <relationship name="inActivity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Activity" inverseName="photos" inverseEntity="Activity" syncable="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="photos" inverseEntity="Location" syncable="YES"/>
@@ -35,8 +36,8 @@
     </entity>
     <elements>
         <element name="Activity" positionX="-27" positionY="63" width="128" height="150"/>
-        <element name="Location" positionX="135" positionY="212" width="128" height="150"/>
-        <element name="Photo" positionX="358" positionY="254" width="128" height="133"/>
+        <element name="Location" positionX="288" positionY="3" width="128" height="150"/>
+        <element name="Photo" positionX="358" positionY="254" width="128" height="148"/>
         <element name="Trip" positionX="-2" positionY="423" width="128" height="120"/>
     </elements>
 </model>
