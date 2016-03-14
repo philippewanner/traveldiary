@@ -40,6 +40,7 @@
 		D274EC721C70C009000AA29D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D274EC711C70C009000AA29D /* MapKit.framework */; };
 		D2AB1BFE1C8E09AD00DD5AFC /* ActivityLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB1BFD1C8E09AD00DD5AFC /* ActivityLocationController.swift */; };
 		D2DEC9CC1C96F374001B1AC1 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DEC9CB1C96F374001B1AC1 /* CoreDataController.swift */; };
+		D2DEC9CE1C96FD82001B1AC1 /* AppDelegate+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DEC9CD1C96FD82001B1AC1 /* AppDelegate+Appearance.swift */; };
 		D60083BA1C71DC6A00D2E4A4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B21C71DC6A00D2E4A4 /* Photo.swift */; };
 		D60083BC1C71DC6A00D2E4A4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B41C71DC6A00D2E4A4 /* Location.swift */; };
 		D60083BE1C71DC6A00D2E4A4 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60083B61C71DC6A00D2E4A4 /* Trip.swift */; };
@@ -134,6 +135,7 @@
 		D274EC711C70C009000AA29D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D2AB1BFD1C8E09AD00DD5AFC /* ActivityLocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLocationController.swift; sourceTree = "<group>"; };
 		D2DEC9CB1C96F374001B1AC1 /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		D2DEC9CD1C96FD82001B1AC1 /* AppDelegate+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Appearance.swift"; sourceTree = "<group>"; };
 		D60083B21C71DC6A00D2E4A4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		D60083B41C71DC6A00D2E4A4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		D60083B61C71DC6A00D2E4A4 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				D6EF6ED01C68CD03006D098B /* Main.storyboard */,
 				D6EF6ED51C68CD03006D098B /* LaunchScreen.storyboard */,
 				D2DEC9CB1C96F374001B1AC1 /* CoreDataController.swift */,
+				D2DEC9CD1C96FD82001B1AC1 /* AppDelegate+Appearance.swift */,
 				D6EF6ECA1C68CD03006D098B /* AppDelegate.swift */,
 				D6EF6ED31C68CD03006D098B /* Assets.xcassets */,
 				D6EF6ED81C68CD03006D098B /* Info.plist */,
@@ -587,6 +590,7 @@
 				D665DC341C8DD986002A77CB /* SouthAmericaTripLoader.swift in Sources */,
 				D21C68951C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift in Sources */,
 				F0F015B41C96FA1E00AE3DF9 /* BlobImage+CoreDataProperties.swift in Sources */,
+				D2DEC9CE1C96FD82001B1AC1 /* AppDelegate+Appearance.swift in Sources */,
 				D60083BC1C71DC6A00D2E4A4 /* Location.swift in Sources */,
 				F0C369621C8DCA550013D461 /* PhotosAllController.swift in Sources */,
 				D25734091C8DCCFC0017B94E /* ActivityLocationTableController.swift in Sources */,
