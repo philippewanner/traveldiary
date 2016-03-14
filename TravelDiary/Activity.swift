@@ -21,8 +21,8 @@ class Activity: NSManagedObject {
     }
     
     func addPhoto(photo:Photo){
-        let activities = self.mutableSetValueForKey("photos")
-        activities.addObject(photo)
+        let photos = self.mutableSetValueForKey("photos")
+        photos.addObject(photo)
     }
 
 }

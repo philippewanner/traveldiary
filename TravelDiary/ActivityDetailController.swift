@@ -42,12 +42,7 @@ class ActivityDetailController: UIViewController {
     private func initializeFetchedResultsController(){
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: Photo.entityName())
-        if selectedActivity != nil{
-            fetchRequest.predicate = NSPredicate(format: "inActivity == %@", selectedActivity!)
-        }else{
-            //Well not the best idea yet but without a NSPredicate all photos are loaded
-            fetchRequest.predicate = NSPredicate(format: "inActivity.title == %@", "...NewActivityCreate...")
-        }
+        fetchRequest.predicate = NSPredicate(format: "inActivity == %@", selectedActivity!)
         
         // Add Sort Descriptors
         let sortDescriptor = NSSortDescriptor(key: "createDate", ascending: true)
@@ -68,9 +63,15 @@ class ActivityDetailController: UIViewController {
             activityDate.date = selectedActivity.date!
             locationName.text = selectedActivity.location?.name
             activityTitle.text = selectedActivity.title
-            let currentTrip = selectedActivity.trip
-            let minimumDate = currentTrip!.startDate
-            let maximumDate = currentTrip!.endDate
+            // TODO set date range
+        }else{
+            //Create dummy activity when creating a new one
+            let uuid = NSUUID().UUIDString
+            let tempName = "activity\(uuid)"
+            selectedActivity = Activity(managedObjectContext: self.managedObjectContext)
+            selectedActivity?.title = tempName
+            self.saveContext()
+            
         }
         initializeFetchedResultsController()
         do {

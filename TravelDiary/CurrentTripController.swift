@@ -162,7 +162,15 @@ class CurrentTripController: UITableViewController{
         segue which is called when the cancel button on the ActivityDetailContoller is called
     */
     @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {
-        // TODO Delete the create Activity in case of addActivity
+        if let detailController = segue.sourceViewController as? ActivityDetailController {
+            let activityToDelete = detailController.selectedActivity
+            let photosToDelete = activityToDelete?.photos
+            for photo in photosToDelete!{
+                let temp = photo as! Photo
+                self.managedObjectContext.deleteObject(temp)
+            }
+            self.managedObjectContext.deleteObject(activityToDelete!)
+        }
     }
     
     /*!
