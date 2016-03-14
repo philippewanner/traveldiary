@@ -2,7 +2,7 @@
 //  Location+CoreDataProperties.swift
 //  TravelDiary
 //
-//  Created by Andreas Heubeck on 07/03/16.
+//  Created by Philippe Wanner on 14/03/16.
 //  Copyright © 2016 PTPA. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
