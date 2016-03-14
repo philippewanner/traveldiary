@@ -161,7 +161,9 @@ class TripsTableViewController : UITableViewController{
         let searchBar = searchController.searchBar
         searchBar.sizeToFit()
         searchBar.placeholder = Constants.SearchBarPlaceholder
-        navigationItem.titleView = searchBar
+        tableView.tableHeaderView = searchBar
+        let searchBarHeight = searchBar.frame.size.height
+        tableView.contentOffset = CGPoint(x: 0, y: searchBarHeight)
     }
     
     private func filterContentForSearchText(searchText: String) {
