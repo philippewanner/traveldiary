@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="a4N-TO-8yT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="a4N-TO-8yT">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SqV-ZE-QAY" id="fYY-k3-dGZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -75,11 +75,11 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8VW-Ru-gfa" id="TeQ-bS-WYQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="91"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="91.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="jxE-2C-fee" kind="show" identifier="showActivitySegue" id="MN7-RV-1Hu"/>
+                                    <segue destination="iou-XT-5Ec" kind="show" identifier="showActivitySegue" id="MN7-RV-1Hu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -104,24 +104,6 @@
             </objects>
             <point key="canvasLocation" x="1230" y="-381"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="kal-Wi-FbV">
-            <objects>
-                <viewController id="jxE-2C-fee" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KTS-17-iW7"/>
-                        <viewControllerLayoutGuide type="bottom" id="373-9O-nd8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Dni-en-v7G">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nUE-NS-I27" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2240" y="-487"/>
-        </scene>
         <!--UINavigationController-Ivu-xv-Jdl-->
         <scene sceneID="xVe-py-o8P">
             <objects>
@@ -145,6 +127,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKs-e6-xxA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-484" y="-361"/>
+        </scene>
+        <!--ViewActivity-->
+        <scene sceneID="9HQ-Uh-rbB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ViewActivity" id="iou-XT-5Ec" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bLe-KH-9Sb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2240" y="-487"/>
         </scene>
     </scenes>
     <resources>
