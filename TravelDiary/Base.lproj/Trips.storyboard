@@ -33,7 +33,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Trips" image="second" id="cPa-gy-q4n"/>
-                    <navigationItem key="navigationItem" id="IC9-SC-Zqf" userLabel="Navigation Bar">
+                    <navigationItem key="navigationItem" title="Trips Overview" id="IC9-SC-Zqf" userLabel="Navigation Bar">
                         <rightBarButtonItems>
                             <barButtonItem title="Edit" id="VBS-et-sh8" userLabel="Edit Button"/>
                             <barButtonItem title="Add" id="41M-Xt-gDr">
