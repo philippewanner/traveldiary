@@ -8,10 +8,23 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 
 class BlobImage: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    var image : UIImage? {
+        get {
+            if let imgData = self.imageData {
+                return UIImage(data: imgData)
+            }
+            return nil
+        }
+        set(value) {
+            if let value = value {
+                self.imageData = UIImageJPEGRepresentation(value, 1)
+            }
+        }
+    }
 
 }

@@ -16,10 +16,10 @@ extension Photo {
 
     @NSManaged var createDate: NSDate?
     @NSManaged var title: String?
+    @NSManaged var imageBlob: BlobImage?
     @NSManaged var inActivity: Activity?
     @NSManaged var location: Location?
-    @NSManaged var trip: Trip?
-    @NSManaged var imageBlob: BlobImage?
     @NSManaged var thumbnailBlob: BlobThumbnail?
+    @NSManaged var trip: Trip?
 
 }

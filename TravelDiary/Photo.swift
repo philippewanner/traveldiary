@@ -15,43 +15,32 @@ class Photo: NSManagedObject {
     
     var image : UIImage? {
         get {
-            if let imageData = self.imageBlob?.imageData {
-                return UIImage(data: imageData)
-            }
-            return nil
+            return self.imageBlob?.image
         }
         set(value) {
-            if let value = value {
-                self.imageBlob?.imageData = UIImageJPEGRepresentation(value, 1)
-            }
+            self.imageBlob?.image = value
         }
     }
 
     var thumbnail : UIImage? {
         get {
-            if let thumbnailData = self.thumbnailBlob?.thumbnailData {
-                return UIImage(data: thumbnailData)
-            }
-            return nil
+            return self.thumbnailBlob?.thumbnail
         }
         set(value) {
-            if let value = value {
-                let image = resizeImage(value, width: 200)
-                self.thumbnailBlob?.thumbnailData = UIImageJPEGRepresentation(image, 1)
-            }
+            self.thumbnailBlob?.thumbnail = value
         }
     }
     
     var text : String? {
         get {
-            if let value = title {
+            if let value = self.title {
                 return value
             }
             return nil
         }
         set(value) {
             if let value = value {
-                title = value
+                self.title = value
             }
         }
     }
@@ -66,6 +55,4 @@ class Photo: NSManagedObject {
         UIGraphicsEndImageContext()
         return image
     }
-    
-
 }

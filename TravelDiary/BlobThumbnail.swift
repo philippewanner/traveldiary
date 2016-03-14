@@ -8,10 +8,23 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 
 class BlobThumbnail: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    var thumbnail : UIImage? {
+        get {
+            if let thumbData = self.thumbnailData {
+                return UIImage(data: thumbData)
+            }
+            return nil
+        }
+        set(value) {
+            if let value = value {
+                self.thumbnailData = UIImageJPEGRepresentation(value, 1)
+            }
+        }
+    }
 
 }

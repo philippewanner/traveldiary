@@ -14,7 +14,7 @@
         <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="imageBlob" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <entity name="BlobThumbnail" representedClassName=".BlobThumbnail" syncable="YES">
-        <attribute name="thumbnailData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="thumbnailData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="thumbnailBlob" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <entity name="Location" representedClassName=".Location" syncable="YES">
@@ -44,10 +44,10 @@
     </entity>
     <elements>
         <element name="Activity" positionX="-27" positionY="63" width="128" height="150"/>
+        <element name="BlobImage" positionX="556" positionY="279" width="128" height="73"/>
+        <element name="BlobThumbnail" positionX="556" positionY="369" width="128" height="73"/>
         <element name="Location" positionX="288" positionY="3" width="128" height="150"/>
         <element name="Photo" positionX="358" positionY="254" width="128" height="148"/>
         <element name="Trip" positionX="-2" positionY="423" width="128" height="120"/>
-        <element name="BlobImage" positionX="556" positionY="279" width="128" height="73"/>
-        <element name="BlobThumbnail" positionX="556" positionY="369" width="128" height="73"/>
     </elements>
 </model>

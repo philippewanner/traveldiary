@@ -63,14 +63,8 @@
 		D6EF6EED1C68CD03006D098B /* TravelDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EF6EEC1C68CD03006D098B /* TravelDiaryUITests.swift */; };
 		D6F9EAEF1C95DA210079481F /* ActivityPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F9EAEE1C95DA210079481F /* ActivityPhotoCell.swift */; };
 		D6F9EAF11C95FD610079481F /* ActivityPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F9EAF01C95FD610079481F /* ActivityPhotoViewController.swift */; };
-		F0068B321C96F26C00BCF5F5 /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0068B2A1C96F26C00BCF5F5 /* Activity+CoreDataProperties.swift */; };
-		F0068B331C96F26C00BCF5F5 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0068B2B1C96F26C00BCF5F5 /* Location+CoreDataProperties.swift */; };
-		F0068B341C96F26C00BCF5F5 /* BlobImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0068B2C1C96F26C00BCF5F5 /* BlobImage+CoreDataProperties.swift */; };
 		F0068B351C96F26C00BCF5F5 /* BlobImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0068B2D1C96F26C00BCF5F5 /* BlobImage.swift */; };
-		F0068B361C96F26C00BCF5F5 /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0068B2E1C96F26C00BCF5F5 /* Trip+CoreDataProperties.swift */; };
-		F0068B371C96F26C00BCF5F5 /* BlobThumbnail+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0068B2F1C96F26C00BCF5F5 /* BlobThumbnail+CoreDataProperties.swift */; };
 		F0068B381C96F26C00BCF5F5 /* BlobThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0068B301C96F26C00BCF5F5 /* BlobThumbnail.swift */; };
-		F0068B391C96F26C00BCF5F5 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0068B311C96F26C00BCF5F5 /* Photo+CoreDataProperties.swift */; };
 		F06FED971C94AB0C00F9AFE7 /* PhotosModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FED961C94AB0C00F9AFE7 /* PhotosModelHelper.swift */; };
 		F0A2B9B01C8DEE7600709ECF /* TPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2B9AF1C8DEE7600709ECF /* TPViewController.swift */; };
 		F0AB01151C9144B50009E6B8 /* PhotosAllLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB01141C9144B50009E6B8 /* PhotosAllLoading.swift */; };
@@ -80,6 +74,12 @@
 		F0CA4EA51C94E93C0052C85B /* TPCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CA4EA41C94E93C0052C85B /* TPCollectionViewCell.swift */; };
 		F0CA4EA71C956F040052C85B /* TPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CA4EA61C956F040052C85B /* TPTableViewCell.swift */; };
 		F0DA6C101C68CFF3007753F8 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0DA6C0E1C68CFF3007753F8 /* DataModel.xcdatamodeld */; };
+		F0F015B01C96FA1E00AE3DF9 /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F015AA1C96FA1E00AE3DF9 /* Trip+CoreDataProperties.swift */; };
+		F0F015B11C96FA1E00AE3DF9 /* BlobThumbnail+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F015AB1C96FA1E00AE3DF9 /* BlobThumbnail+CoreDataProperties.swift */; };
+		F0F015B21C96FA1E00AE3DF9 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F015AC1C96FA1E00AE3DF9 /* Photo+CoreDataProperties.swift */; };
+		F0F015B31C96FA1E00AE3DF9 /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F015AD1C96FA1E00AE3DF9 /* Activity+CoreDataProperties.swift */; };
+		F0F015B41C96FA1E00AE3DF9 /* BlobImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F015AE1C96FA1E00AE3DF9 /* BlobImage+CoreDataProperties.swift */; };
+		F0F015B51C96FA1E00AE3DF9 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F015AF1C96FA1E00AE3DF9 /* Location+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,14 +162,8 @@
 		D6EF6EEE1C68CD03006D098B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6F9EAEE1C95DA210079481F /* ActivityPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPhotoCell.swift; sourceTree = "<group>"; };
 		D6F9EAF01C95FD610079481F /* ActivityPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPhotoViewController.swift; sourceTree = "<group>"; };
-		F0068B2A1C96F26C00BCF5F5 /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F0068B2B1C96F26C00BCF5F5 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F0068B2C1C96F26C00BCF5F5 /* BlobImage+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlobImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F0068B2D1C96F26C00BCF5F5 /* BlobImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlobImage.swift; sourceTree = "<group>"; };
-		F0068B2E1C96F26C00BCF5F5 /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F0068B2F1C96F26C00BCF5F5 /* BlobThumbnail+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlobThumbnail+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F0068B301C96F26C00BCF5F5 /* BlobThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlobThumbnail.swift; sourceTree = "<group>"; };
-		F0068B311C96F26C00BCF5F5 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F06FED961C94AB0C00F9AFE7 /* PhotosModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosModelHelper.swift; sourceTree = "<group>"; };
 		F0A2B9AF1C8DEE7600709ECF /* TPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPViewController.swift; sourceTree = "<group>"; };
 		F0AB01141C9144B50009E6B8 /* PhotosAllLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosAllLoading.swift; sourceTree = "<group>"; };
@@ -179,6 +173,12 @@
 		F0CA4EA41C94E93C0052C85B /* TPCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCollectionViewCell.swift; sourceTree = "<group>"; };
 		F0CA4EA61C956F040052C85B /* TPTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTableViewCell.swift; sourceTree = "<group>"; };
 		F0DA6C0F1C68CFF3007753F8 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		F0F015AA1C96FA1E00AE3DF9 /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F0F015AB1C96FA1E00AE3DF9 /* BlobThumbnail+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlobThumbnail+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F0F015AC1C96FA1E00AE3DF9 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F0F015AD1C96FA1E00AE3DF9 /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F0F015AE1C96FA1E00AE3DF9 /* BlobImage+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlobImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F0F015AF1C96FA1E00AE3DF9 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,17 +224,17 @@
 		7E371AC01C89D00100ECACB9 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				F0068B2A1C96F26C00BCF5F5 /* Activity+CoreDataProperties.swift */,
+				F0F015AA1C96FA1E00AE3DF9 /* Trip+CoreDataProperties.swift */,
+				F0F015AB1C96FA1E00AE3DF9 /* BlobThumbnail+CoreDataProperties.swift */,
+				F0F015AC1C96FA1E00AE3DF9 /* Photo+CoreDataProperties.swift */,
+				F0F015AD1C96FA1E00AE3DF9 /* Activity+CoreDataProperties.swift */,
+				F0F015AE1C96FA1E00AE3DF9 /* BlobImage+CoreDataProperties.swift */,
+				F0F015AF1C96FA1E00AE3DF9 /* Location+CoreDataProperties.swift */,
 				D60083B81C71DC6A00D2E4A4 /* Activity.swift */,
-				F0068B2B1C96F26C00BCF5F5 /* Location+CoreDataProperties.swift */,
 				D60083B41C71DC6A00D2E4A4 /* Location.swift */,
-				F0068B2C1C96F26C00BCF5F5 /* BlobImage+CoreDataProperties.swift */,
 				F0068B2D1C96F26C00BCF5F5 /* BlobImage.swift */,
-				F0068B2E1C96F26C00BCF5F5 /* Trip+CoreDataProperties.swift */,
 				D60083B61C71DC6A00D2E4A4 /* Trip.swift */,
-				F0068B2F1C96F26C00BCF5F5 /* BlobThumbnail+CoreDataProperties.swift */,
 				F0068B301C96F26C00BCF5F5 /* BlobThumbnail.swift */,
-				F0068B311C96F26C00BCF5F5 /* Photo+CoreDataProperties.swift */,
 				D60083B21C71DC6A00D2E4A4 /* Photo.swift */,
 			);
 			name = model;
@@ -551,14 +551,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D60083BE1C71DC6A00D2E4A4 /* Trip.swift in Sources */,
-				F0068B371C96F26C00BCF5F5 /* BlobThumbnail+CoreDataProperties.swift in Sources */,
 				7E0DB17D1C88CF46003D6B38 /* TripBuilder.swift in Sources */,
 				F0CA4EA51C94E93C0052C85B /* TPCollectionViewCell.swift in Sources */,
 				D64D30B21C7A0E91009E3740 /* ActivityDetailController.swift in Sources */,
 				7E0DB1861C88E009003D6B38 /* ActivityBuilder.swift in Sources */,
 				7E0DB1881C88E57F003D6B38 /* LocationBuilder.swift in Sources */,
 				F0CA4EA71C956F040052C85B /* TPTableViewCell.swift in Sources */,
-				F0068B391C96F26C00BCF5F5 /* Photo+CoreDataProperties.swift in Sources */,
 				F0AB01151C9144B50009E6B8 /* PhotosAllLoading.swift in Sources */,
 				D60083C01C71DC6A00D2E4A4 /* Activity.swift in Sources */,
 				7EB3514B1C82048300323D5E /* TripsTableViewController.swift in Sources */,
@@ -566,8 +564,9 @@
 				7E371AC71C89E04500ECACB9 /* BaseSampleDataLoader.swift in Sources */,
 				7EFA1F231C887C560063CC48 /* MapSearchController.swift in Sources */,
 				D257340D1C8DD0F80017B94E /* LocationSearchDelegate.swift in Sources */,
+				F0F015B21C96FA1E00AE3DF9 /* Photo+CoreDataProperties.swift in Sources */,
+				F0F015B31C96FA1E00AE3DF9 /* Activity+CoreDataProperties.swift in Sources */,
 				D60083BA1C71DC6A00D2E4A4 /* Photo.swift in Sources */,
-				F0068B331C96F26C00BCF5F5 /* Location+CoreDataProperties.swift in Sources */,
 				D6F9EAEF1C95DA210079481F /* ActivityPhotoCell.swift in Sources */,
 				7E371ABD1C88E76700ECACB9 /* PhotoBuilder.swift in Sources */,
 				7E0DB1841C88DF47003D6B38 /* BaseBuilder.swift in Sources */,
@@ -575,6 +574,7 @@
 				7E371AC51C89DC7100ECACB9 /* AustraliaTripDataLoader.swift in Sources */,
 				7E0DB1821C88DCAF003D6B38 /* BaseTripDataLoader.swift in Sources */,
 				D21C68971C8CD105000C264C /* MapSearchDelegate.swift in Sources */,
+				F0F015B51C96FA1E00AE3DF9 /* Location+CoreDataProperties.swift in Sources */,
 				F06FED971C94AB0C00F9AFE7 /* PhotosModelHelper.swift in Sources */,
 				7EC3E5121C8D87EF00BDA035 /* TripEditViewController.swift in Sources */,
 				F0A2B9B01C8DEE7600709ECF /* TPViewController.swift in Sources */,
@@ -583,16 +583,16 @@
 				D682126F1C78C7490046122E /* ActivityCell.swift in Sources */,
 				D665DC341C8DD986002A77CB /* SouthAmericaTripLoader.swift in Sources */,
 				D21C68951C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift in Sources */,
+				F0F015B41C96FA1E00AE3DF9 /* BlobImage+CoreDataProperties.swift in Sources */,
 				D60083BC1C71DC6A00D2E4A4 /* Location.swift in Sources */,
 				F0C369621C8DCA550013D461 /* PhotosAllController.swift in Sources */,
 				D25734091C8DCCFC0017B94E /* ActivityLocationTableController.swift in Sources */,
-				F0068B361C96F26C00BCF5F5 /* Trip+CoreDataProperties.swift in Sources */,
 				D68212761C7915600046122E /* UIViewController+ManagedObjectContext.swift in Sources */,
 				7E0DB1801C88D4E4003D6B38 /* SampleDataLoader.swift in Sources */,
-				F0068B341C96F26C00BCF5F5 /* BlobImage+CoreDataProperties.swift in Sources */,
 				7E371AC31C89D28500ECACB9 /* ExampleTripDataLoader.swift in Sources */,
 				D274EC661C70B3A5000AA29D /* PhotosController.swift in Sources */,
 				D644B9011C73C3A300B2D908 /* NSManagedObject+EntityName.swift in Sources */,
+				F0F015B01C96FA1E00AE3DF9 /* Trip+CoreDataProperties.swift in Sources */,
 				7E0DB17B1C88A891003D6B38 /* TripTableViewCell.swift in Sources */,
 				F0068B351C96F26C00BCF5F5 /* BlobImage.swift in Sources */,
 				D2AB1BFE1C8E09AD00DD5AFC /* ActivityLocationController.swift in Sources */,
@@ -601,8 +601,8 @@
 				D6EF6ECB1C68CD03006D098B /* AppDelegate.swift in Sources */,
 				F0AB01171C9144CC0009E6B8 /* PhotosAllCollectionViewCell.swift in Sources */,
 				D274EC6B1C70B552000AA29D /* MapController.swift in Sources */,
-				F0068B321C96F26C00BCF5F5 /* Activity+CoreDataProperties.swift in Sources */,
 				7EFA1F221C887C560063CC48 /* ImageViewController.swift in Sources */,
+				F0F015B11C96FA1E00AE3DF9 /* BlobThumbnail+CoreDataProperties.swift in Sources */,
 				7EC3E5141C92081100BDA035 /* NSString+trimFunction.swift in Sources */,
 				D6EF6ECD1C68CD03006D098B /* CurrentTripController.swift in Sources */,
 			);

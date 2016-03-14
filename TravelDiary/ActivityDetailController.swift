@@ -102,7 +102,7 @@ class ActivityDetailController: UIViewController {
             let cell = sender as! ActivityPhotoCell
             let indexPath = self.activityPhotoCollectionView!.indexPathForCell(cell)
             let selectedPhoto = fetchedResultsController.objectAtIndexPath(indexPath!) as? Photo
-            imageViewController.image = (selectedPhoto?.image)!
+            imageViewController.image = (selectedPhoto?.imageBlob?.image)!
         }
     }
 
@@ -180,7 +180,7 @@ extension ActivityDetailController: UIImagePickerControllerDelegate{
         let imageCameraOrLibrary = info [UIImagePickerControllerOriginalImage] as? UIImage;
         if imageCameraOrLibrary != nil{
             let photoData = Photo(managedObjectContext: self.managedObjectContext)
-            photoData.image = imageCameraOrLibrary
+            photoData.imageBlob?.image = imageCameraOrLibrary
             photoData.createDate = NSDate()
             photoData.title = selectedActivity?.title
             photoData.inActivity = selectedActivity
@@ -199,7 +199,7 @@ extension ActivityDetailController: UICollectionViewDataSource{
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.ImageReuseIdentifier, forIndexPath: indexPath) as! ActivityPhotoCell
         let photo = fetchedResultsController.objectAtIndexPath(indexPath) as! Photo
-        cell.activityPhoto.image = photo.image
+        cell.activityPhoto.image = photo.imageBlob?.image
         return cell
     }
     
