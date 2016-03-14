@@ -39,10 +39,10 @@
             </objects>
             <point key="canvasLocation" x="1394" y="827"/>
         </scene>
-        <!--Trip Search Controller-->
+        <!--Map Search Controller-->
         <scene sceneID="v2I-tc-iQk">
             <objects>
-                <tableViewController storyboardIdentifier="TripSearchController" id="nbx-ll-Rzd" customClass="TripSearchController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MapSearchController" id="nbx-ll-Rzd" customClass="MapSearchController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5th-Tw-zcn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

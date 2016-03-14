@@ -27,7 +27,7 @@ class MapController: UIViewController {
  
     private struct Constants {
         static let ReuseIdentifierAnnotation = "identifier_annotation_view"
-        static let TripSearchControllerId = "TripSearchController"
+        static let MapSearchControllerId = "MapSearchController"
         static let CalloutImageFrame = CGRect(x: 0, y: 0, width: 50, height: 50)
         static let SearchBarPlaceholder = "Search for trips"
     }
@@ -40,11 +40,10 @@ class MapController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestLocationAuthorization(self)
         
-        let tripSearchController = storyboard!.instantiateViewControllerWithIdentifier(Constants.TripSearchControllerId) as! TripSearchController
-        resultSearchController = UISearchController(searchResultsController: tripSearchController)
-        resultSearchController?.searchResultsUpdater = tripSearchController
+        let mapSearchController = storyboard!.instantiateViewControllerWithIdentifier(Constants.MapSearchControllerId) as! MapSearchController
+        resultSearchController = UISearchController(searchResultsController: mapSearchController)
+        resultSearchController?.searchResultsUpdater = mapSearchController
         resultSearchController?.hidesNavigationBarDuringPresentation = false
-        resultSearchController?.dimsBackgroundDuringPresentation = true
         
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
@@ -55,46 +54,13 @@ class MapController: UIViewController {
         navigationItem.rightBarButtonItem = trackingBarButton
         definesPresentationContext = true
         
-        tripSearchController.tripSearchDelegate = self
-
-        loadLocations(
-            managedObjectContext,
-            success: {locations in
-                let annotations = locations.map {location in LocationAnnotation(location: location)}
-                self.mapView.addAnnotations(annotations)
-                self.mapView.showAnnotations(self.mapView.annotations, animated: true)
-            },
-            failed: {error in
-                print("Could not fetch locations \(error)")
-            }
-        )
-    }
-    
-    func loadLocations(managedObjectContext: NSManagedObjectContext, success: ([Location]) -> Void, failed: (NSError) -> Void) {
-        let fetchRequest = NSFetchRequest(entityName: Location.entityName())
-        fetchRequest.returnsObjectsAsFaults = false
-        fetchRequest.relationshipKeyPathsForPrefetching = ["activities", "activities.location"]
-        
-        fetchRequest.predicate = NSPredicate(format:"longitude != nil AND latitude != nil")
-        let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { (asynchronousFetchResult) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if let locations = asynchronousFetchResult.finalResult{
-                    success(locations as! [Location])
-                }
-            })
-        }
-        
-        do {
-            try managedObjectContext.executeRequest(asynchronousFetchRequest)
-        } catch let error as NSError {
-            failed(error)
-        }
+        mapSearchController.delegate = self
     }
 }
 
 // MARK: - MKMapViewDelegate
 extension MapController : MKMapViewDelegate {
-    
+
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? LocationAnnotation {
             let view: MKPinAnnotationView
@@ -153,7 +119,7 @@ extension MapController : MKMapViewDelegate {
 }
 
 // MARK: - TripSearchDelegate
-extension MapController: TripSearchDelegate {
+extension MapController: MapSearchDelegate {
     
     func tripFound(trip: Trip) {
         resultSearchController?.searchBar.text = trip.title

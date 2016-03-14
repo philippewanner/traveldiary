@@ -9,6 +9,6 @@
 import Foundation
 import UIKit
 
-protocol TripSearchDelegate {
+protocol MapSearchDelegate {
     func tripFound(trip: Trip)
 }

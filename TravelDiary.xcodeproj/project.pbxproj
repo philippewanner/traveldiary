@@ -24,9 +24,9 @@
 		7EC3E5121C8D87EF00BDA035 /* TripEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC3E5111C8D87EF00BDA035 /* TripEditViewController.swift */; };
 		7EC3E5141C92081100BDA035 /* NSString+trimFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC3E5131C92081100BDA035 /* NSString+trimFunction.swift */; };
 		7EFA1F221C887C560063CC48 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA1F1F1C887C560063CC48 /* ImageViewController.swift */; };
-		7EFA1F231C887C560063CC48 /* TripSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA1F201C887C560063CC48 /* TripSearchController.swift */; };
+		7EFA1F231C887C560063CC48 /* MapSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA1F201C887C560063CC48 /* MapSearchController.swift */; };
 		D21C68951C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C68941C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift */; };
-		D21C68971C8CD105000C264C /* TripSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C68961C8CD105000C264C /* TripSearchDelegate.swift */; };
+		D21C68971C8CD105000C264C /* MapSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C68961C8CD105000C264C /* MapSearchDelegate.swift */; };
 		D2311B571C9455EA00AF67C7 /* CLLocation+FormattedAdress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2311B561C9455EA00AF67C7 /* CLLocation+FormattedAdress.swift */; };
 		D2519C611C90B57F005B2F68 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2519C601C90B57F005B2F68 /* LocationAnnotation.swift */; };
 		D25734051C8DA57F0017B94E /* ActivityLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D25734041C8DA57F0017B94E /* ActivityLocation.storyboard */; };
@@ -112,9 +112,9 @@
 		7EC3E5111C8D87EF00BDA035 /* TripEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripEditViewController.swift; sourceTree = "<group>"; };
 		7EC3E5131C92081100BDA035 /* NSString+trimFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+trimFunction.swift"; sourceTree = "<group>"; };
 		7EFA1F1F1C887C560063CC48 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
-		7EFA1F201C887C560063CC48 /* TripSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSearchController.swift; sourceTree = "<group>"; };
+		7EFA1F201C887C560063CC48 /* MapSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSearchController.swift; sourceTree = "<group>"; };
 		D21C68941C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+RequestAuthorization.swift"; sourceTree = "<group>"; };
-		D21C68961C8CD105000C264C /* TripSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSearchDelegate.swift; sourceTree = "<group>"; };
+		D21C68961C8CD105000C264C /* MapSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSearchDelegate.swift; sourceTree = "<group>"; };
 		D2311B561C9455EA00AF67C7 /* CLLocation+FormattedAdress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+FormattedAdress.swift"; sourceTree = "<group>"; };
 		D2519C601C90B57F005B2F68 /* LocationAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		D25734041C8DA57F0017B94E /* ActivityLocation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ActivityLocation.storyboard; sourceTree = "<group>"; };
@@ -256,10 +256,10 @@
 			children = (
 				D21C68941C8C314F000C264C /* CLLocationManager+RequestAuthorization.swift */,
 				D2311B561C9455EA00AF67C7 /* CLLocation+FormattedAdress.swift */,
-				7EFA1F201C887C560063CC48 /* TripSearchController.swift */,
 				D274EC6F1C70B65D000AA29D /* Map.storyboard */,
 				D274EC6A1C70B552000AA29D /* MapController.swift */,
-				D21C68961C8CD105000C264C /* TripSearchDelegate.swift */,
+				7EFA1F201C887C560063CC48 /* MapSearchController.swift */,
+				D21C68961C8CD105000C264C /* MapSearchDelegate.swift */,
 				D2519C601C90B57F005B2F68 /* LocationAnnotation.swift */,
 			);
 			name = map;
@@ -546,7 +546,7 @@
 				7EB3514B1C82048300323D5E /* TripsTableViewController.swift in Sources */,
 				D2311B571C9455EA00AF67C7 /* CLLocation+FormattedAdress.swift in Sources */,
 				7E371AC71C89E04500ECACB9 /* BaseSampleDataLoader.swift in Sources */,
-				7EFA1F231C887C560063CC48 /* TripSearchController.swift in Sources */,
+				7EFA1F231C887C560063CC48 /* MapSearchController.swift in Sources */,
 				D257340D1C8DD0F80017B94E /* LocationSearchDelegate.swift in Sources */,
 				D60083BA1C71DC6A00D2E4A4 /* Photo.swift in Sources */,
 				D6F9EAEF1C95DA210079481F /* ActivityPhotoCell.swift in Sources */,
@@ -555,7 +555,7 @@
 				D2519C611C90B57F005B2F68 /* LocationAnnotation.swift in Sources */,
 				7E371AC51C89DC7100ECACB9 /* AustraliaTripDataLoader.swift in Sources */,
 				7E0DB1821C88DCAF003D6B38 /* BaseTripDataLoader.swift in Sources */,
-				D21C68971C8CD105000C264C /* TripSearchDelegate.swift in Sources */,
+				D21C68971C8CD105000C264C /* MapSearchDelegate.swift in Sources */,
 				F06FED971C94AB0C00F9AFE7 /* PhotosModelHelper.swift in Sources */,
 				7EC3E5121C8D87EF00BDA035 /* TripEditViewController.swift in Sources */,
 				F0A2B9B01C8DEE7600709ECF /* TPViewController.swift in Sources */,
