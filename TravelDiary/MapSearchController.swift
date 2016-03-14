@@ -15,8 +15,7 @@ class MapSearchController: UITableViewController {
     var delegate: MapSearchDelegate?
 
     var fetchedResultsController: NSFetchedResultsController!
-    var fetchRequest: NSFetchRequest!
-
+    
     private struct Constants {
         static let ReuseIdentifierCell = "reuseIdentifierCell"
     }
@@ -28,16 +27,14 @@ class MapSearchController: UITableViewController {
     
     func initializeFetchedResultsController() {
         
-        fetchRequest = NSFetchRequest(entityName: Location.entityName())
+        let fetchRequest = NSFetchRequest(entityName: Location.entityName())
         fetchRequest.relationshipKeyPathsForPrefetching = ["inActivity", "inActivity.location"]
 
         let tripSort = NSSortDescriptor(key: "inActivity.trip.title", ascending: true)
         let nameSort = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [tripSort, nameSort]
-        
+
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "inActivity.trip.title", cacheName: nil)
-        
-        self.fetchedResultsController.delegate = self
     }
 
     // MARK: TableView
@@ -89,51 +86,14 @@ extension MapSearchController: UISearchResultsUpdating {
             return
         }
     
-        fetchRequest.predicate = NSPredicate(format:"longitude != nil AND latitude != nil AND name CONTAINS[c] %@", searchText)
+        fetchedResultsController.fetchRequest.predicate = NSPredicate(format:"longitude != nil AND latitude != nil AND name CONTAINS[c] %@", searchText)
         
         do {
             try fetchedResultsController.performFetch()
+            self.tableView.reloadData()
+            
         } catch let error as NSError {
             print("Failed to load map data \(error.localizedDescription)")
         }
-    }
-}
-
-//MARK: - NSFetchedResultsControllerDelegate
-extension MapSearchController: NSFetchedResultsControllerDelegate {
-    
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.beginUpdates()
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        switch type {
-        case .Insert:
-            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-        case .Delete:
-            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-        case .Move:
-            break
-        case .Update:
-            break
-        }
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeObject object: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        switch type {
-        case .Insert:
-            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-        case .Update:
-            self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-        case .Move:
-            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-        case .Delete:
-            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-        }
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.endUpdates()
     }
 }
