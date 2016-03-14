@@ -12,7 +12,7 @@ import CoreData;
 class TripBuilder: BaseBuilder{
     
     private var startDate: NSDate = NSDate()
-    private var endDate: NSDate?
+    private var endDate: NSDate = NSDate()
     private var title: String?
     private var activities: NSMutableSet?
     
