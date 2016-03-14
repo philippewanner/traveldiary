@@ -13,6 +13,14 @@ import UIKit
 
 class Photo: NSManagedObject {
     
+    @NSManaged var createDate: NSDate?
+    @NSManaged var title: String?
+    @NSManaged var imageBlob: BlobImage?
+    @NSManaged var inActivity: Activity?
+    @NSManaged var location: Location?
+    @NSManaged var thumbnailBlob: BlobThumbnail?
+    @NSManaged var trip: Trip?
+    
     var image : UIImage? {
         get {
             return self.imageBlob?.image

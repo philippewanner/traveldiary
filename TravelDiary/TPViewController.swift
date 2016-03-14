@@ -74,7 +74,7 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
             let controller = segue.destinationViewController as! ImageViewController
 
             //Set the image in the ImageViewController to the selected item in the collection view
-            controller.image = (sender as! TPCollectionViewCell).imageView.image!
+            controller.image = (sender as! TPCollectionViewCell).photo.image!
         }
     }
 

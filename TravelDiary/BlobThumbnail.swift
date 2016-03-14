@@ -29,10 +29,10 @@ class BlobThumbnail: NSManagedObject {
             if let value = value {
                 var thumbResized: UIImage
                 if(value.size.width > maxThumbnailSize.width){
-                    NSLog("resize")
+                    NSLog("resize thumbnail")
                     thumbResized = resizeImage(value, width: maxThumbnailSize.width)
                 } else {
-                    NSLog("no resizing")
+                    NSLog("no resizing thumbnail")
                     thumbResized = value
                 }
                 self.thumbnailData = UIImageJPEGRepresentation(thumbResized, 1)
