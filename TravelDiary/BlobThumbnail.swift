@@ -15,6 +15,8 @@ class BlobThumbnail: NSManagedObject {
     
     @NSManaged private var thumbnailData: NSData?
     @NSManaged private var photo: Photo?
+    
+    private let maxThumbnailSize: CGSize = CGSize(width: 200, height: 200)
 
     var thumbnail : UIImage? {
         get {
@@ -25,9 +27,27 @@ class BlobThumbnail: NSManagedObject {
         }
         set(value) {
             if let value = value {
-                self.thumbnailData = UIImageJPEGRepresentation(value, 1)
+                var thumbResized: UIImage
+                if(value.size.width > maxThumbnailSize.width){
+                    NSLog("resize")
+                    thumbResized = resizeImage(value, width: maxThumbnailSize.width)
+                } else {
+                    NSLog("no resizing")
+                    thumbResized = value
+                }
+                self.thumbnailData = UIImageJPEGRepresentation(thumbResized, 1)
             }
         }
     }
-
+    
+    private func resizeImage(imageToResize: UIImage, width: CGFloat) -> UIImage
+    {
+        let scale = width / imageToResize.size.width
+        let height = imageToResize.size.height * scale
+        UIGraphicsBeginImageContext(CGSizeMake(width, height))
+        imageToResize.drawInRect(CGRectMake(0, 0, width, height))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
 }
