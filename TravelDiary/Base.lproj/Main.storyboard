@@ -29,7 +29,7 @@
         <scene sceneID="g8I-ya-Ok8">
             <objects>
                 <viewControllerPlaceholder storyboardName="Trips" id="vf7-Km-Uy1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Trips" id="8yO-bX-cJu"/>
+                    <tabBarItem key="tabBarItem" title="Trips" image="trips" selectedImage="trips-selected" id="8yO-bX-cJu"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZH-m8-Aps" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,7 +39,7 @@
         <scene sceneID="3Oj-WP-rwU">
             <objects>
                 <viewControllerPlaceholder storyboardName="Photos" id="hit-9p-Ezu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Photos" image="first" id="0n0-zS-sBu"/>
+                    <tabBarItem key="tabBarItem" title="Photos" image="gallery" selectedImage="gallery-selected" id="0n0-zS-sBu"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efS-vc-DIG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,7 +49,7 @@
         <scene sceneID="woG-L0-9iz">
             <objects>
                 <viewControllerPlaceholder storyboardName="Map" id="hSw-f2-sXO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="second" id="LKK-Kf-tjI"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" selectedImage="map-selected" id="LKK-Kf-tjI"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDW-BA-ARQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,7 +57,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="gallery" width="38" height="38"/>
+        <image name="gallery-selected" width="38" height="38"/>
+        <image name="map" width="38" height="38"/>
+        <image name="map-selected" width="38" height="38"/>
+        <image name="trips" width="38" height="38"/>
+        <image name="trips-selected" width="38" height="38"/>
     </resources>
 </document>
