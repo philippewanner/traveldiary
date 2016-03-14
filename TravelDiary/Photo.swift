@@ -15,21 +15,21 @@ class Photo: NSManagedObject {
     
     var image : UIImage? {
         get {
-            if let imageData = imageData {
+            if let imageData = self.imageBlob?.imageData {
                 return UIImage(data: imageData)
             }
             return nil
         }
         set(value) {
             if let value = value {
-                imageData = UIImageJPEGRepresentation(value, 1)
+                self.imageBlob?.imageData = UIImageJPEGRepresentation(value, 1)
             }
         }
     }
 
     var thumbnail : UIImage? {
         get {
-            if let thumbnailData = thumbnailData {
+            if let thumbnailData = self.thumbnailBlob?.thumbnailData {
                 return UIImage(data: thumbnailData)
             }
             return nil
@@ -37,7 +37,7 @@ class Photo: NSManagedObject {
         set(value) {
             if let value = value {
                 let image = resizeImage(value, width: 200)
-                imageData = UIImageJPEGRepresentation(image, 1)
+                self.thumbnailBlob?.thumbnailData = UIImageJPEGRepresentation(image, 1)
             }
         }
     }

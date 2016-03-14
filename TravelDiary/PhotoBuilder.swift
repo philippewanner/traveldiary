@@ -19,12 +19,14 @@ class PhotoBuilder: BaseBuilder{
     private var inActivity: Activity?
     private var location: Location?
     private var trip: Trip?
+    private var thumbnailBlob: BlobThumbnail?
+    private var imageBlob : BlobImage?
     
     func build() -> Photo {
         let photo = Photo(managedObjectContext: self.managedObjectContext)
         photo.createDate = self.createDate
-        photo.imageData = self.imageData
-        photo.thumbnailData = self.thumbnailData
+        photo.imageBlob = self.imageBlob
+        photo.thumbnailBlob = self.thumbnailBlob
         photo.title = self.title
         photo.inActivity = self.inActivity
         photo.location = self.location

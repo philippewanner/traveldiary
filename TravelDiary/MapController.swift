@@ -87,7 +87,7 @@ extension MapController : MKMapViewDelegate {
             let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
             dispatch_async(dispatch_get_global_queue(qos, 0)) { _ in
                 if let randomPhoto = location.photos?.anyObject() {
-                    let imageData = (randomPhoto as! Photo).imageData
+                    let imageData = (randomPhoto as! Photo).imageBlob?.imageData
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         let imageView = view.detailCalloutAccessoryView as! UIImageView
