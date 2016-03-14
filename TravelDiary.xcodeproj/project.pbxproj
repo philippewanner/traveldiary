@@ -67,7 +67,7 @@
 		D6F9EAF11C95FD610079481F /* ActivityPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F9EAF01C95FD610079481F /* ActivityPhotoViewController.swift */; };
 		F0068B351C96F26C00BCF5F5 /* BlobImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0068B2D1C96F26C00BCF5F5 /* BlobImage.swift */; };
 		F0068B381C96F26C00BCF5F5 /* BlobThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0068B301C96F26C00BCF5F5 /* BlobThumbnail.swift */; };
-		F06FED971C94AB0C00F9AFE7 /* PhotosModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FED961C94AB0C00F9AFE7 /* PhotosModelHelper.swift */; };
+		F06FED971C94AB0C00F9AFE7 /* CollectionType+GroupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FED961C94AB0C00F9AFE7 /* CollectionType+GroupBy.swift */; };
 		F0A2B9B01C8DEE7600709ECF /* TPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A2B9AF1C8DEE7600709ECF /* TPViewController.swift */; };
 		F0AB01151C9144B50009E6B8 /* PhotosAllLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB01141C9144B50009E6B8 /* PhotosAllLoading.swift */; };
 		F0AB01171C9144CC0009E6B8 /* PhotosAllCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB01161C9144CC0009E6B8 /* PhotosAllCollectionViewCell.swift */; };
@@ -168,7 +168,7 @@
 		D6F9EAF01C95FD610079481F /* ActivityPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPhotoViewController.swift; sourceTree = "<group>"; };
 		F0068B2D1C96F26C00BCF5F5 /* BlobImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlobImage.swift; sourceTree = "<group>"; };
 		F0068B301C96F26C00BCF5F5 /* BlobThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlobThumbnail.swift; sourceTree = "<group>"; };
-		F06FED961C94AB0C00F9AFE7 /* PhotosModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosModelHelper.swift; sourceTree = "<group>"; };
+		F06FED961C94AB0C00F9AFE7 /* CollectionType+GroupBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+GroupBy.swift"; sourceTree = "<group>"; };
 		F0A2B9AF1C8DEE7600709ECF /* TPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPViewController.swift; sourceTree = "<group>"; };
 		F0AB01141C9144B50009E6B8 /* PhotosAllLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosAllLoading.swift; sourceTree = "<group>"; };
 		F0AB01161C9144CC0009E6B8 /* PhotosAllCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosAllCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -311,7 +311,6 @@
 				D274EC671C70B484000AA29D /* Photos.storyboard */,
 				D694674F1C96CBB100C4712B /* ImageView.storyboard */,
 				D274EC651C70B3A5000AA29D /* PhotosController.swift */,
-				F06FED961C94AB0C00F9AFE7 /* PhotosModelHelper.swift */,
 			);
 			name = photo;
 			sourceTree = "<group>";
@@ -322,6 +321,7 @@
 				D644B9001C73C3A300B2D908 /* NSManagedObject+EntityName.swift */,
 				D68212751C7915600046122E /* UIViewController+ManagedObjectContext.swift */,
 				7EC3E5131C92081100BDA035 /* NSString+trimFunction.swift */,
+				F06FED961C94AB0C00F9AFE7 /* CollectionType+GroupBy.swift */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -581,7 +581,7 @@
 				7E0DB1821C88DCAF003D6B38 /* BaseTripDataLoader.swift in Sources */,
 				D21C68971C8CD105000C264C /* MapSearchDelegate.swift in Sources */,
 				F0F015B51C96FA1E00AE3DF9 /* Location+CoreDataProperties.swift in Sources */,
-				F06FED971C94AB0C00F9AFE7 /* PhotosModelHelper.swift in Sources */,
+				F06FED971C94AB0C00F9AFE7 /* CollectionType+GroupBy.swift in Sources */,
 				7EC3E5121C8D87EF00BDA035 /* TripEditViewController.swift in Sources */,
 				F0A2B9B01C8DEE7600709ECF /* TPViewController.swift in Sources */,
 				F0AB01191C9144D90009E6B8 /* PhotosAllCollectionViewDataSource.swift in Sources */,
