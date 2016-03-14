@@ -81,12 +81,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Trip" id="pPl-wV-PGD">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="MUW-a8-oEb">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="MUW-a8-oEb">
                             <connections>
                                 <segue destination="2vw-sP-YzI" kind="unwind" identifier="cancelEditTripUnwindSegue" unwindAction="unwindSegueAddActivity:" id="nX9-X5-MgB"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="WrE-FL-8Oo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="WrE-FL-8Oo">
                             <connections>
                                 <segue destination="2vw-sP-YzI" kind="unwind" identifier="saveTripUnwindSegue" unwindAction="unwindSequeSaveActiviy:" id="lI7-t1-APQ"/>
                             </connections>

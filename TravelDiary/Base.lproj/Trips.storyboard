@@ -35,8 +35,8 @@
                     <tabBarItem key="tabBarItem" title="Trips" image="second" id="cPa-gy-q4n"/>
                     <navigationItem key="navigationItem" title="Trips Overview" id="IC9-SC-Zqf" userLabel="Navigation Bar">
                         <rightBarButtonItems>
-                            <barButtonItem title="Edit" id="VBS-et-sh8" userLabel="Edit Button"/>
-                            <barButtonItem title="Add" id="41M-Xt-gDr">
+                            <barButtonItem systemItem="edit" id="VBS-et-sh8" userLabel="Edit Button"/>
+                            <barButtonItem systemItem="add" id="41M-Xt-gDr">
                                 <connections>
                                     <segue destination="KTM-L9-OcI" kind="presentation" identifier="addOrEditTripSegue" id="e2P-wg-aHo"/>
                                 </connections>
@@ -91,8 +91,8 @@
                     <tabBarItem key="tabBarItem" title="Trips" image="second" id="NJ2-k1-Xpb"/>
                     <navigationItem key="navigationItem" title="Activities" id="Qel-9j-LQo" userLabel="Navigation Bar">
                         <rightBarButtonItems>
-                            <barButtonItem title="Edit" id="ej8-fs-RjJ" userLabel="Edit"/>
-                            <barButtonItem title="Add" id="l3O-1F-PP2">
+                            <barButtonItem systemItem="edit" id="ej8-fs-RjJ" userLabel="Edit"/>
+                            <barButtonItem systemItem="add" id="l3O-1F-PP2">
                                 <connections>
                                     <segue destination="yrz-ZJ-fkE" kind="presentation" id="2K3-fM-IJ1"/>
                                 </connections>
