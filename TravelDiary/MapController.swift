@@ -28,7 +28,7 @@ class MapController: UIViewController {
     private struct Constants {
         static let ReuseIdentifierAnnotation = "identifier_annotation_view"
         static let MapSearchControllerId = "MapSearchController"
-        static let CalloutImageFrame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        static let CalloutImageFrame = CGRect(x: 0, y: 0, width: 200, height: 200)
         static let SearchBarPlaceholder = "Search for trips"
     }
     
@@ -86,8 +86,8 @@ extension MapController : MKMapViewDelegate {
             let location = annotation.location
             let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
             dispatch_async(dispatch_get_global_queue(qos, 0)) { _ in
-                if let randomPhoto = location.photos?.anyObject() {
-                    let image = (randomPhoto as! Photo).image
+                if let randomPhoto = location.photos?.anyObject() as? Photo {
+                    let image = randomPhoto.thumbnail
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         let imageView = view.detailCalloutAccessoryView as! UIImageView
