@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Activity Controller-->
         <scene sceneID="kal-Wi-FbV">
             <objects>
-                <viewController id="jxE-2C-fee" sceneMemberID="viewController">
+                <viewController id="jxE-2C-fee" customClass="ViewActivityController" customModule="TravelDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KTS-17-iW7"/>
                         <viewControllerLayoutGuide type="bottom" id="373-9O-nd8"/>

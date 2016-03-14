@@ -51,6 +51,7 @@
 		D64D30B21C7A0E91009E3740 /* ActivityDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D30B11C7A0E91009E3740 /* ActivityDetailController.swift */; };
 		D665DC341C8DD986002A77CB /* SouthAmericaTripLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D665DC331C8DD986002A77CB /* SouthAmericaTripLoader.swift */; };
 		D6711F5A1C97499600A4AFF5 /* ViewActivity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6711F591C97499600A4AFF5 /* ViewActivity.storyboard */; };
+		D6711F5C1C974A8A00A4AFF5 /* ViewActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6711F5B1C974A8A00A4AFF5 /* ViewActivityController.swift */; };
 		D682126F1C78C7490046122E /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D682126E1C78C7490046122E /* ActivityCell.swift */; };
 		D68212711C78DD820046122E /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68212701C78DD810046122E /* ActivityTableViewCell.xib */; };
 		D68212761C7915600046122E /* UIViewController+ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68212751C7915600046122E /* UIViewController+ManagedObjectContext.swift */; };
@@ -143,6 +144,7 @@
 		D64D30B11C7A0E91009E3740 /* ActivityDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailController.swift; sourceTree = "<group>"; };
 		D665DC331C8DD986002A77CB /* SouthAmericaTripLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SouthAmericaTripLoader.swift; sourceTree = "<group>"; };
 		D6711F591C97499600A4AFF5 /* ViewActivity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewActivity.storyboard; sourceTree = "<group>"; };
+		D6711F5B1C974A8A00A4AFF5 /* ViewActivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewActivityController.swift; sourceTree = "<group>"; };
 		D682126E1C78C7490046122E /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		D68212701C78DD810046122E /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		D68212751C7915600046122E /* UIViewController+ManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ManagedObjectContext.swift"; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				D257340C1C8DD0F80017B94E /* LocationSearchDelegate.swift */,
 				D6F9EAEE1C95DA210079481F /* ActivityPhotoCell.swift */,
 				D6F9EAF01C95FD610079481F /* ActivityPhotoViewController.swift */,
+				D6711F5B1C974A8A00A4AFF5 /* ViewActivityController.swift */,
 			);
 			name = trip;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				D68212761C7915600046122E /* UIViewController+ManagedObjectContext.swift in Sources */,
 				D2DEC9CC1C96F374001B1AC1 /* CoreDataController.swift in Sources */,
 				7E0DB1801C88D4E4003D6B38 /* SampleDataLoader.swift in Sources */,
+				D6711F5C1C974A8A00A4AFF5 /* ViewActivityController.swift in Sources */,
 				7E371AC31C89D28500ECACB9 /* ExampleTripDataLoader.swift in Sources */,
 				D274EC661C70B3A5000AA29D /* PhotosController.swift in Sources */,
 				D644B9011C73C3A300B2D908 /* NSManagedObject+EntityName.swift in Sources */,
