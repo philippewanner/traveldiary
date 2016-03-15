@@ -23,6 +23,10 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
     @IBOutlet weak var endDateAlertMessage: UILabel!
     @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
     
+    enum TripDateType {
+        case Start, End
+    }
+    
     private struct Constants{
         static let editTripTitle = "Edit Trip"
         static let newTripTitle = "New Trip"
@@ -46,6 +50,7 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
             disableSaveButton()
         }
     }
+    
     @IBAction func startDateEditingDidBegin(startDate: UITextField) {
         NSLog("startDateEditingDidBegin()")
         startDateBeforeEditing = startDatePicker.date
@@ -57,15 +62,6 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
         NSLog("startDateEditingDidEnd()")
         startDatePickerStackView.hidden = true
         startDateTextField.userInteractionEnabled = true
-        self.changeEndDateIfStartDateIsNewer()
-        self.checkDateRanges()
-        if self.isCurrentDateRangeConflicting() {
-            self.showStartDateAlertMessage(getAlertMessage())
-            self.disableSaveButton()
-        }else{
-            self.hideAndClearAlerts()
-            self.enableSaveButtonIfTitleIsSet()
-        }
     }
     
     @IBAction func endDateEditingDidBegin(endDate: UITextField) {
@@ -79,23 +75,16 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
         NSLog("endDateEditingDidEnd()")
         endDatePickerStackView.hidden = true
         endDate.userInteractionEnabled = true
-        self.changeEndDateIfStartDateIsNewer()
-        self.checkDateRanges()
-        if self.isCurrentDateRangeConflicting() {
-            self.showEndDateAlertMessage(getAlertMessage())
-            self.disableSaveButton()
-        }else{
-            self.hideAndClearAlerts()
-            self.enableSaveButtonIfTitleIsSet()
-        }
     }
     
     @IBAction func startDatePickerValueChanged(startDatePicker: UIDatePicker) {
         self.startDateTextField.text = getStringFromDate(startDatePicker.date)
+        self.checkConflictsAndAdaptUserFeedbackFor(TripDateType.Start)
     }
     
     @IBAction func endDatePickerValueChanged(endDatePicker: UIDatePicker) {
         self.endDateTextField.text = getStringFromDate(endDatePicker.date)
+        self.checkConflictsAndAdaptUserFeedbackFor(TripDateType.End)
     }
     
     /*!
@@ -123,6 +112,24 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
             }
         }else if segue.identifier == Constants.cancelTripSegue {
             NSLog("prepare for segue '\(Constants.cancelTripSegue)'")
+        }
+    }
+    
+    private func checkConflictsAndAdaptUserFeedbackFor(tripDateType: TripDateType){
+        self.changeEndDateIfStartDateIsNewer()
+        self.checkDateRanges()
+        if self.isCurrentDateRangeConflicting() {
+            let alertMessage = getAlertMessage()
+            switch tripDateType {
+            case .Start:
+                self.showStartDateAlertMessage(alertMessage)
+            case .End:
+                self.showEndDateAlertMessage(alertMessage)
+            }
+            self.disableSaveButton()
+        }else{
+            self.hideAndClearAlerts()
+            self.enableSaveButtonIfTitleIsSet()
         }
     }
     
