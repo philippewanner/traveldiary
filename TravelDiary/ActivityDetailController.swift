@@ -19,7 +19,8 @@ class ActivityDetailController: UIViewController {
         static let ImageReuseIdentifier = "imageReuseIndentifier"
     }
     
-    @IBOutlet weak var activityDescription: UITextField!
+    
+    @IBOutlet weak var activityDescription: UITextView!
     @IBOutlet weak var activityDate: UIDatePicker!
     @IBOutlet weak var locationName: UITextField!
     @IBOutlet weak var activityTitle: UITextField!
@@ -58,12 +59,16 @@ class ActivityDetailController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityDescription.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
+        activityDescription.layer.borderWidth = 1.0
+        activityDescription.layer.cornerRadius = 5
+        
         if let selectedActivity = selectedActivity {
             activityDescription.text = selectedActivity.descr
             activityDate.date = selectedActivity.date!
             locationName.text = selectedActivity.location?.name
             activityTitle.text = selectedActivity.title
-            // TODO set date range
         }else{
             //Create dummy activity when creating a new one
             let uuid = NSUUID().UUIDString
@@ -113,6 +118,9 @@ class ActivityDetailController: UIViewController {
             let selectedPhoto = fetchedResultsController.objectAtIndexPath(indexPath!) as? Photo
             imageViewController.image = (selectedPhoto?.imageBlob?.image)!
         }
+    }
+    @IBAction func hideKeyboard(sender: AnyObject) {
+        activityDescription.endEditing(true)
     }
 
     /*!
