@@ -36,37 +36,13 @@
                                     <outlet property="delegate" destination="YJD-qQ-bJh" id="Rgy-nd-bgo"/>
                                 </connections>
                             </scrollView>
-                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXU-c0-Rz3">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEx-SJ-3Tx">
-                                        <rect key="frame" x="556" y="0.0" width="44" height="50"/>
-                                        <state key="normal" image="shareButton"/>
-                                        <connections>
-                                            <action selector="onShareButton:" destination="YJD-qQ-bJh" eventType="touchUpInside" id="dW8-0z-vyI"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="fEx-SJ-3Tx" firstAttribute="centerY" secondItem="yXU-c0-Rz3" secondAttribute="centerY" id="EpM-7Q-zDR"/>
-                                    <constraint firstAttribute="height" constant="50" id="Yv1-mo-1hs"/>
-                                    <constraint firstItem="fEx-SJ-3Tx" firstAttribute="top" secondItem="yXU-c0-Rz3" secondAttribute="top" id="apH-Mp-Xzf"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="hiI-Km-ScA"/>
-                                    <constraint firstAttribute="trailing" secondItem="fEx-SJ-3Tx" secondAttribute="trailing" id="rIr-bR-lqt"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jgR-uD-TTJ" firstAttribute="trailing" secondItem="yXU-c0-Rz3" secondAttribute="trailing" id="79E-0X-Wb9"/>
-                            <constraint firstItem="jgR-uD-TTJ" firstAttribute="leading" secondItem="yXU-c0-Rz3" secondAttribute="leading" id="8A1-JJ-LS3"/>
-                            <constraint firstItem="jgR-uD-TTJ" firstAttribute="top" secondItem="yXU-c0-Rz3" secondAttribute="top" id="AYj-xh-4bV"/>
-                            <constraint firstItem="yXU-c0-Rz3" firstAttribute="top" secondItem="q91-Md-aJ1" secondAttribute="bottom" id="ERv-Kq-kdG"/>
                             <constraint firstItem="jgR-uD-TTJ" firstAttribute="bottom" secondItem="ceY-uw-uNx" secondAttribute="top" id="Rr4-Ep-qDl"/>
-                            <constraint firstItem="yXU-c0-Rz3" firstAttribute="leading" secondItem="A3x-TN-GJO" secondAttribute="leading" id="fjw-r6-cpD"/>
-                            <constraint firstItem="yXU-c0-Rz3" firstAttribute="top" secondItem="jgR-uD-TTJ" secondAttribute="top" id="kGh-ao-Bi1"/>
-                            <constraint firstAttribute="trailing" secondItem="yXU-c0-Rz3" secondAttribute="trailing" id="xh4-OW-gmS"/>
+                            <constraint firstAttribute="trailing" secondItem="jgR-uD-TTJ" secondAttribute="trailing" id="a8y-oc-ZCO"/>
+                            <constraint firstItem="jgR-uD-TTJ" firstAttribute="leading" secondItem="A3x-TN-GJO" secondAttribute="leading" id="bM6-l5-2Tq"/>
+                            <constraint firstItem="jgR-uD-TTJ" firstAttribute="top" secondItem="q91-Md-aJ1" secondAttribute="bottom" id="g6h-9H-aOJ"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -84,7 +60,4 @@
             <point key="canvasLocation" x="2268" y="1040"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="shareButton" width="44" height="44"/>
-    </resources>
 </document>
