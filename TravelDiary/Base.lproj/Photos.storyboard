@@ -169,7 +169,7 @@
         <scene sceneID="vEM-dg-sSb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WID-iT-h8S" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Gallery" image="first" id="Xgy-cA-b3N"/>
+                    <tabBarItem key="tabBarItem" title="Gallery" image="gallery" selectedImage="gallery-selected" id="Xgy-cA-b3N"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x6U-tO-Au8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -285,7 +285,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
+        <image name="gallery" width="38" height="38"/>
+        <image name="gallery-selected" width="38" height="38"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="bmZ-R6-8M9"/>

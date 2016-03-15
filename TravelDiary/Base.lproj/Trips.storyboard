@@ -32,7 +32,7 @@
                             <outlet property="delegate" destination="Xn7-I5-s14" id="hOJ-Ah-nUx"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Trips" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Trips" image="trips" selectedImage="trips-selected" id="cPa-gy-q4n"/>
                     <navigationItem key="navigationItem" title="Trips" id="IC9-SC-Zqf" userLabel="Navigation Bar">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="edit" id="VBS-et-sh8" userLabel="Edit Button"/>
@@ -139,5 +139,7 @@
     </scenes>
     <resources>
         <image name="second" width="30" height="30"/>
+        <image name="trips" width="38" height="38"/>
+        <image name="trips-selected" width="38" height="38"/>
     </resources>
 </document>

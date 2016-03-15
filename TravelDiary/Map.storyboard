@@ -87,7 +87,7 @@
         <scene sceneID="2d5-hl-umN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sSh-Z4-PtT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="first" id="mFI-ho-ZFj"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" selectedImage="map-selected" id="mFI-ho-ZFj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="74U-hv-HHR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -104,6 +104,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
+        <image name="map" width="38" height="38"/>
+        <image name="map-selected" width="38" height="38"/>
     </resources>
 </document>
