@@ -10,5 +10,5 @@ import Foundation
 import UIKit
 
 protocol MapSearchDelegate {
-    func tripFound(trip: Trip)
+    func locationSelected(location: Location)
 }

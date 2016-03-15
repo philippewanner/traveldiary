@@ -10,10 +10,15 @@ import Foundation
 import MapKit
 
 class LocationAnnotation: NSObject, MKAnnotation {
+    
     let location: Location
     let title: String?
     let subtitle: String?
     let coordinate: CLLocationCoordinate2D
+    
+    // optional attributes
+    var isStartLocation = false
+    var isSelectedLocation = false
     
     init(location: Location) {
         self.location = location

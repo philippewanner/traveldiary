@@ -29,7 +29,7 @@ class MapController: UIViewController {
         static let ReuseIdentifierAnnotation = "identifier_annotation_view"
         static let MapSearchControllerId = "MapSearchController"
         static let CalloutImageFrame = CGRect(x: 0, y: 0, width: 200, height: 200)
-        static let SearchBarPlaceholder = "Search for trips"
+        static let SearchBarPlaceholder = "Search for location names"
     }
     
     @IBOutlet weak var toolbar: UIToolbar!
@@ -74,8 +74,8 @@ extension MapController : MKMapViewDelegate {
                 view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
                 let imageView = UIImageView(frame: Constants.CalloutImageFrame)
                 view.detailCalloutAccessoryView = imageView
-
             }
+            view.pinTintColor = annotation.isStartLocation ? UIColor.greenColor() : UIColor.redColor()
             return view
         }
         return nil
@@ -88,7 +88,6 @@ extension MapController : MKMapViewDelegate {
             dispatch_async(dispatch_get_global_queue(qos, 0)) { _ in
                 if let randomPhoto = location.photos?.anyObject() as? Photo {
                     let image = randomPhoto.thumbnail
-                    
                     dispatch_async(dispatch_get_main_queue()) {
                         let imageView = view.detailCalloutAccessoryView as! UIImageView
                         imageView.image = image
@@ -121,12 +120,11 @@ extension MapController : MKMapViewDelegate {
 // MARK: - TripSearchDelegate
 extension MapController: MapSearchDelegate {
     
-    func tripFound(trip: Trip) {
-        resultSearchController?.searchBar.text = trip.title
-        
+    func locationSelected(selectedLocation: Location) {
         mapView.removeAnnotations(mapView.annotations)
         mapView.removeOverlays(mapView.overlays)
         
+        let trip = selectedLocation.inActivity!.trip!;
         let activities: [Activity] = trip.activities?.allObjects as! [Activity]
         let annotations = activities
             .filter { activity in
@@ -137,8 +135,14 @@ extension MapController: MapSearchDelegate {
                 return date1.compare(date2) == .OrderedAscending
             }
             .flatMap {activity in activity.location}
-            .map {location in LocationAnnotation(location: location)}
-        
+            .map {location -> LocationAnnotation in
+                let annotation = LocationAnnotation(location: location)
+                annotation.isSelectedLocation = location === selectedLocation
+                return annotation}
+        if let firstAnnotation = annotations.first {
+            firstAnnotation.isStartLocation = true
+        }
+
         var coordinates = annotations.flatMap {annotation in annotation.coordinate}
         if annotations.count >= 2 {
             let geodesicPolyline = MKGeodesicPolyline(coordinates: &coordinates, count: annotations.count)

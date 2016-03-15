@@ -28,11 +28,11 @@ class MapSearchController: UITableViewController {
     func initializeFetchedResultsController() {
         
         let fetchRequest = NSFetchRequest(entityName: Location.entityName())
-        fetchRequest.relationshipKeyPathsForPrefetching = ["inActivity", "inActivity.location"]
+        fetchRequest.relationshipKeyPathsForPrefetching = ["inActivity", "inActivity.location", "inActivity.trip"]
 
-        let tripSort = NSSortDescriptor(key: "inActivity.trip.title", ascending: true)
-        let nameSort = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [tripSort, nameSort]
+        let sortByTripTitle = NSSortDescriptor(key: "inActivity.trip.title", ascending: true)
+        let sortByActivityDate = NSSortDescriptor(key: "inActivity.date", ascending: true)
+        fetchRequest.sortDescriptors = [sortByTripTitle, sortByActivityDate]
 
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "inActivity.trip.title", cacheName: nil)
     }
@@ -72,7 +72,7 @@ class MapSearchController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let location = fetchedResultsController.objectAtIndexPath(indexPath) as! Location
-        delegate?.tripFound(location.inActivity!.trip!)
+        delegate?.locationSelected(location)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         dismissViewControllerAnimated(true, completion: nil)
     }
