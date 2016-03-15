@@ -16,12 +16,11 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     var image = UIImage()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         self.imageView.image = self.image
         self.scrollView.minimumZoomScale = 1.0
         self.scrollView.maximumZoomScale = 8.0
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "onShareButton")
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,7 +28,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onShareButton(sender: AnyObject) {
+    func onShareButton() {
         let activityController = UIActivityViewController(activityItems: ["Share photo", imageView.image!], applicationActivities: nil)
         presentViewController(activityController, animated: true, completion: nil)
     }
