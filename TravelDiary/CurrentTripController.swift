@@ -185,6 +185,12 @@ class CurrentTripController: UITableViewController{
         }
     }
     
+    /*!
+        Dismiss the keyboard when pressing return
+    */
+    @IBAction func textFieldDoneEditing(sender: UITextField) {
+        sender.resignFirstResponder()}
+    
     private func instantiateSearchBar(){
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = self

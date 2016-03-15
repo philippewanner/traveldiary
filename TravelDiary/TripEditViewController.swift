@@ -98,6 +98,13 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
         self.endDateTextField.text = getStringFromDate(endDatePicker.date)
     }
     
+    /*!
+        Dismiss the keyboard when pressing return
+    */
+    @IBAction func textFieldDoneEditing(sender: UITextField) {
+        sender.resignFirstResponder()}
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setDatePickerDateFormatterProperties()
