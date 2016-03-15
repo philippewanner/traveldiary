@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fYj-9s-gkI">
-                                <rect key="frame" x="20" y="82" width="560" height="567"/>
+                                <rect key="frame" x="20" y="82" width="560" height="595"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wTp-zH-PgU">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="45"/>
@@ -34,11 +34,14 @@
                                                 <rect key="frame" x="0.0" y="15" width="560" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="titleEditingChanged:" destination="ira-WP-H41" eventType="editingChanged" id="RIa-7h-av7"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R9B-LD-3Ga">
-                                        <rect key="frame" x="0.0" y="45" width="560" height="45"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R9B-LD-3Ga" userLabel="Start Date Stack View">
+                                        <rect key="frame" x="0.0" y="45" width="560" height="59"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNp-J4-cBZ" userLabel="Start Date Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="15"/>
@@ -58,12 +61,18 @@
                                                     <action selector="startDateEditingDidEnd:" destination="ira-WP-H41" eventType="editingDidEnd" id="hk3-KR-Y7U"/>
                                                 </connections>
                                             </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alert Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="11" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfF-s2-GG0" userLabel="Start Date Alert Message">
+                                                <rect key="frame" x="0.0" y="45" width="560" height="14"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mmi-Kx-kap" userLabel="Start Date Picker Stack View">
-                                        <rect key="frame" x="0.0" y="90" width="560" height="216"/>
+                                        <rect key="frame" x="0.0" y="104" width="560" height="216"/>
                                         <subviews>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZGn-Zd-4QP" userLabel="Start Date Picker">
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZGn-Zd-4QP" userLabel="Start Date Picker">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="216"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="479037904.05863601">
                                                     <!--2016-03-07 10:05:04 +0000-->
@@ -74,8 +83,8 @@
                                             </datePicker>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ofU-wh-7fQ">
-                                        <rect key="frame" x="0.0" y="306" width="560" height="45"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ofU-wh-7fQ" userLabel="End Date Stack View">
+                                        <rect key="frame" x="0.0" y="320" width="560" height="59"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pc3-vh-D7B" userLabel="End Date Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="15"/>
@@ -92,12 +101,18 @@
                                                     <action selector="endDateEditingDidEnd:" destination="ira-WP-H41" eventType="editingDidEnd" id="okp-Qn-RSm"/>
                                                 </connections>
                                             </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alert Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibK-sp-dsE" userLabel="End Date Alert Message">
+                                                <rect key="frame" x="0.0" y="45" width="560" height="14"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fda-fg-yyg" userLabel="End Date Picker Stack View">
-                                        <rect key="frame" x="0.0" y="351" width="560" height="216"/>
+                                        <rect key="frame" x="0.0" y="379" width="560" height="216"/>
                                         <subviews>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="vmt-6h-xJc" userLabel="End Date Picker">
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="vmt-6h-xJc" userLabel="End Date Picker">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="216"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="479037904.05863601">
                                                     <!--2016-03-07 10:05:04 +0000-->
@@ -131,11 +146,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="endDateAlertMessage" destination="ibK-sp-dsE" id="ZRq-K6-GAG"/>
                         <outlet property="endDatePicker" destination="vmt-6h-xJc" id="0FW-DV-PU2"/>
                         <outlet property="endDatePickerStackView" destination="Fda-fg-yyg" id="Za1-df-ZBF"/>
                         <outlet property="endDateTextField" destination="U1t-Jd-130" id="WZ8-MB-HXn"/>
                         <outlet property="navItem" destination="pPl-wV-PGD" id="jwi-cy-LwZ"/>
                         <outlet property="navigationItem" destination="pPl-wV-PGD" id="05H-eo-M9b"/>
+                        <outlet property="saveBarButtonItem" destination="WrE-FL-8Oo" id="lWa-hM-Oo7"/>
+                        <outlet property="startDateAlertMessage" destination="gfF-s2-GG0" id="ixe-Nr-uiU"/>
                         <outlet property="startDatePicker" destination="ZGn-Zd-4QP" id="1Du-79-oaZ"/>
                         <outlet property="startDatePickerStackView" destination="mmi-Kx-kap" id="gq8-Hy-u2f"/>
                         <outlet property="startDateTextField" destination="fQU-A5-fc6" id="grP-F0-rBR"/>

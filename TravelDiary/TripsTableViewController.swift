@@ -53,11 +53,14 @@ class TripsTableViewController : UITableViewController{
             }
         } else if segue.identifier == Constants.addOrEditTripSegue {
             NSLog("prepare for seque '\(Constants.addOrEditTripSegue)'")
-            if editAnExistingTrip {
-                NSLog("prepare an existing trip to edit")
-                if let navigationController = segue.destinationViewController as? UINavigationController {
-                    if let tripEditController = navigationController.viewControllers.first as? TripEditViewController {
-                        NSLog("selected trip: \(self.currentTrip)")
+            if let navigationController = segue.destinationViewController as? UINavigationController {
+                if let tripEditController = navigationController.viewControllers.first as? TripEditViewController {
+                    if let fetchedTrips = self.trips {
+                        NSLog("hand over \(fetchedTrips.count) fetchted trips to edit trip view")
+                        tripEditController.trips = fetchedTrips
+                    }
+                    if editAnExistingTrip {
+                        NSLog("prepare selected trip '\(self.currentTrip.title!)' to edit")
                         tripEditController.currentTrip = self.currentTrip
                     }
                 } else{

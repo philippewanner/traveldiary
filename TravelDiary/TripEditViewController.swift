@@ -16,9 +16,12 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
     @IBOutlet weak var startDatePickerStackView: UIStackView!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var startDateTextField: UITextField!
+    @IBOutlet weak var startDateAlertMessage: UILabel!
     @IBOutlet weak var endDatePickerStackView: UIStackView!
     @IBOutlet weak var endDatePicker: UIDatePicker!
     @IBOutlet weak var endDateTextField: UITextField!
+    @IBOutlet weak var endDateAlertMessage: UILabel!
+    @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
     
     private struct Constants{
         static let editTripTitle = "Edit Trip"
@@ -26,12 +29,26 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
         static let saveTripSegue = "saveTripUnwindSegue"
         static let cancelTripSegue = "cancelEditTripUnwindSegue"
         static let defaultStartToEndDateDaysOffset: Int = 7
+        static let alertMessageDateFormat = "dd.MM.yyyy hh:mm a"
+        static let dateTextFieldDateFormat = "EEEE, dd. MMMM yyyy hh:mm a"
     }
     private let dateFormatter = NSDateFormatter()
+    private var startDateBeforeEditing = NSDate()
+    private var endDateBeforeEditing = NSDate()
+    var trips: [Trip] = []
+    var conflictingTrips: [Trip] = []
     var currentTrip: Trip?
     
+    @IBAction func titleEditingChanged(title: UITextField) {
+        if self.isTitleNotNullOrEmpty(){
+            enableSaveButtonIfNoConflictsExists()
+        }else{
+            disableSaveButton()
+        }
+    }
     @IBAction func startDateEditingDidBegin(startDate: UITextField) {
         NSLog("startDateEditingDidBegin()")
+        startDateBeforeEditing = startDatePicker.date
         startDatePickerStackView.hidden = false
         startDate.userInteractionEnabled = false
     }
@@ -40,11 +57,20 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
         NSLog("startDateEditingDidEnd()")
         startDatePickerStackView.hidden = true
         startDateTextField.userInteractionEnabled = true
-        changeEndDateIfStartDateIsNewer()
+        self.changeEndDateIfStartDateIsNewer()
+        self.checkDateRanges()
+        if self.isCurrentDateRangeConflicting() {
+            self.showStartDateAlertMessage(getAlertMessage())
+            self.disableSaveButton()
+        }else{
+            self.hideAndClearAlerts()
+            self.enableSaveButtonIfTitleIsSet()
+        }
     }
     
     @IBAction func endDateEditingDidBegin(endDate: UITextField) {
         NSLog("endDateEditingDidBegin()")
+        endDateBeforeEditing = endDatePicker.date
         endDatePickerStackView.hidden = false
         endDate.userInteractionEnabled = false
     }
@@ -54,6 +80,14 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
         endDatePickerStackView.hidden = true
         endDate.userInteractionEnabled = true
         self.changeEndDateIfStartDateIsNewer()
+        self.checkDateRanges()
+        if self.isCurrentDateRangeConflicting() {
+            self.showEndDateAlertMessage(getAlertMessage())
+            self.disableSaveButton()
+        }else{
+            self.hideAndClearAlerts()
+            self.enableSaveButtonIfTitleIsSet()
+        }
     }
     
     @IBAction func startDatePickerValueChanged(startDatePicker: UIDatePicker) {
@@ -66,9 +100,10 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setDateFormatterProperties()
-        self.hideDatePickers()
+        self.setDatePickerDateFormatterProperties()
+        self.hideDatePickersAlertMessages()
         self.setKnownData()
+        disableSaveButton()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -82,6 +117,90 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
         }else if segue.identifier == Constants.cancelTripSegue {
             NSLog("prepare for segue '\(Constants.cancelTripSegue)'")
         }
+    }
+    
+    private func getAlertMessage() -> NSString{
+        return self.getDateRangeConflictingMessage(requestedDateStart: startDatePicker.date, requestedDateEnd: endDatePicker.date)
+    }
+    
+    private func enableSaveButtonIfNoConflictsExists(){
+        if !self.isCurrentDateRangeConflicting(){
+            self.enableSaveButton()
+        }
+    }
+    
+    private func enableSaveButtonIfTitleIsSet(){
+        if self.isTitleNotNullOrEmpty(){
+            self.enableSaveButton()
+        }
+    }
+    
+    private func isTitleNotNullOrEmpty() -> Bool{
+        return self.isNotNullOrEmpty(tripTitle.text)
+    }
+    
+    private func checkDateRanges(){
+        self.filterDateRangeConflictingTrips(startDate: self.startDatePicker.date, endDate: self.endDatePicker.date)
+    }
+    
+    private func getDateRangeConflictingMessage(requestedDateStart requestedDateStart: NSDate, requestedDateEnd: NSDate) -> NSString {
+        self.setAlertMessageDateFormatterProperties()
+        
+        var message = "The requested period '"
+            message += getStringFromDate(requestedDateStart) + " - " + getStringFromDate(requestedDateEnd)
+            message += "' must not overlap existing period(s): \r\n\r\n"
+        for trip in conflictingTrips {
+            if let title = trip.title {
+                message += " " + title + ": "
+            }
+            if let startDate = trip.startDate {
+                message += getStringFromDate(startDate) + " - "
+            }
+            if let endDate = trip.endDate {
+                message += getStringFromDate(endDate)
+            }
+            message += "\r\n"
+        }
+        
+        self.setDatePickerDateFormatterProperties()
+        return message
+    }
+    
+    private func enableSaveButton(){
+        saveBarButtonItem.enabled = true
+    }
+    
+    private func disableSaveButton(){
+        saveBarButtonItem.enabled = false
+    }
+    
+    private func hideAndClearAlerts(){
+        self.hideAndClearEndDateAlertMessage()
+        self.hideAndClearStartDateAlertMessage()
+    }
+    
+    private func showEndDateAlertMessage(message: NSString){
+        self.endDateAlertMessage.hidden = false
+        self.endDateAlertMessage.text = message as String
+    }
+    
+    private func hideAndClearEndDateAlertMessage(){
+        self.endDateAlertMessage.hidden = true
+        self.endDateAlertMessage.text = ""
+    }
+    
+    private func showStartDateAlertMessage(message: NSString){
+        self.startDateAlertMessage.hidden = false
+        self.startDateAlertMessage.text = message as String
+    }
+    
+    private func hideAndClearStartDateAlertMessage(){
+        self.startDateAlertMessage.hidden = true
+        self.startDateAlertMessage.text = ""
+    }
+    
+    private func isCurrentDateRangeConflicting() -> Bool {
+        return self.conflictingTrips.count > 0
     }
     
     private func changeEndDateIfStartDateIsNewer(){
@@ -120,28 +239,88 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
         if self.currentTrip == nil {
             self.navItem.title = Constants.newTripTitle
             let defaultStartDate = NSDate()
-            setStartDate(defaultStartDate)
-            setEndDate(defaultStartDate.addDays(Constants.defaultStartToEndDateDaysOffset))
+            self.setStartDate(defaultStartDate)
+            self.setEndDate(defaultStartDate.addDays(Constants.defaultStartToEndDateDaysOffset))
+            self.disableSaveButton()
         }else{
             self.navItem.title = Constants.editTripTitle
             self.tripTitle.text = currentTrip?.title
             if let startDate = currentTrip?.startDate {
-                setStartDate(startDate)
+                self.setStartDate(startDate)
             }
             if let endDate = currentTrip?.endDate{
-                setEndDate(endDate)
+                self.setEndDate(endDate)
             }
         }
     }
     
-    private func setDateFormatterProperties(){
-        self.dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+    private func setAlertMessageDateFormatterProperties(){
         self.dateFormatter.locale = NSLocale.currentLocale()
+        self.dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        self.dateFormatter.dateFormat = Constants.alertMessageDateFormat
     }
     
-    private func hideDatePickers(){
+    private func setDatePickerDateFormatterProperties(){
+        self.dateFormatter.locale = NSLocale.currentLocale()
+        self.dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+        self.dateFormatter.dateFormat = Constants.dateTextFieldDateFormat
+    }
+    
+    private func hideDatePickersAlertMessages(){
         startDatePickerStackView.hidden = true
         endDatePickerStackView.hidden = true
+        startDateAlertMessage.hidden = true
+        endDateAlertMessage.hidden = true
+    }
+    
+    private func filterDateRangeConflictingTrips(startDate startDate: NSDate, endDate: NSDate){
+        self.conflictingTrips = trips.filter { trip in
+            if trip == self.currentTrip {
+                return false
+            }
+            
+            if let currentStartDate = trip.startDate {
+                let startDateIsOlderOrEqual = isFirstDateOlderOrEqualToSecondDate(first: startDate, second: currentStartDate)
+                let endDateIsOlderOrEqual = isFirstDateOlderOrEqualToSecondDate(first: endDate, second: currentStartDate)
+                if startDateIsOlderOrEqual && endDateIsOlderOrEqual {
+                    NSLog("requested date range '\(startDate) - \(endDate)' is not conflicting with the current start date '\(currentStartDate)'")
+                    return false
+                }
+                
+                if let currentEndDate = trip.endDate {
+                    let startDateIsNewerOrEqual = isFirstDateNewerOrEqualToSecondDate(first: startDate, second: currentEndDate)
+                    let endDateIsNewerOrEqual = isFirstDateNewerOrEqualToSecondDate(first: endDate, second: currentEndDate)
+                    if startDateIsNewerOrEqual && endDateIsNewerOrEqual {
+                        NSLog("requested date range '\(startDate) - \(endDate)' is not conflicting with the current date range '\(currentStartDate) - \(currentEndDate)'")
+                        return false
+                    }
+                    NSLog("requested date range '\(startDate) - \(endDate)' is conflicting with the current date range '\(currentStartDate) - \(currentEndDate)'")
+                    return true
+                }
+            }
+            return false
+        }
+    }
+    
+    private func isFirstDateOlderOrEqualToSecondDate(first firstDate: NSDate, second secondDate: NSDate) -> Bool{
+        let firstDateIsNewer = isFirstDateNewerThanSecondDate(first: firstDate, second: secondDate)
+        let firstDateIsEqual = isFirstDateEqualToSecondDate(first: firstDate, second: secondDate)
+        return !firstDateIsNewer || firstDateIsEqual
+    }
+    
+    private func isFirstDateNewerOrEqualToSecondDate(first firstDate: NSDate, second secondDate: NSDate) -> Bool{
+        let firstDateIsNewer = isFirstDateNewerThanSecondDate(first: firstDate, second: secondDate)
+        let firstDateIsEqual = isFirstDateEqualToSecondDate(first: firstDate, second: secondDate)
+        return firstDateIsNewer || firstDateIsEqual
+    }
+    
+    private func isFirstDateEqualToSecondDate(first firstDate: NSDate, second secondDate: NSDate) -> Bool{
+        var firstDateIsEqual = false
+        let dateComparisionResult:NSComparisonResult = firstDate.compare(secondDate)
+        if dateComparisionResult == NSComparisonResult.OrderedSame {
+            firstDateIsEqual = true
+        }
+        return firstDateIsEqual
     }
     
     private func isFirstDateNewerThanSecondDate(first firstDate: NSDate, second secondDate: NSDate) -> Bool{
