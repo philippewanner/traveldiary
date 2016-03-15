@@ -180,6 +180,11 @@ class CurrentTripController: UITableViewController{
     @IBAction func unwindSequeSaveActiviy(segue: UIStoryboardSegue){
         if let detailController = segue.sourceViewController as? ActivityDetailController {
             let activityToSave = detailController.selectedActivity
+            let photos = activityToSave?.photos
+            for photo in photos!{
+                let temp = photo as! Photo
+                temp.title = activityToSave?.title
+            }
             currentTrip?.addActitiesObject(activityToSave!)
             saveContext()
         }
