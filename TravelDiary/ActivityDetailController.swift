@@ -37,6 +37,8 @@ class ActivityDetailController: UIViewController {
     // Controller to load data
     private var fetchedResultsController: NSFetchedResultsController!
     
+    var addMode = false
+    
     /*!
         Init method for the fetchedController defining the predicte to load data
     */

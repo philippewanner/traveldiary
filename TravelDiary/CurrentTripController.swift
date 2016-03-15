@@ -129,10 +129,13 @@ class CurrentTripController: UITableViewController{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constants.editActivitySegue {
+            let navController = segue.destinationViewController as! UINavigationController
+            let activityDetailController = navController.topViewController as!ActivityDetailController
             if activitiesAreEditable {
-                let navController = segue.destinationViewController as! UINavigationController
-                let activityLocationController = navController.topViewController as!ActivityDetailController
-                activityLocationController.selectedActivity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
+                activityDetailController.selectedActivity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
+                activityDetailController.addMode = false
+            }else{
+                activityDetailController.addMode = true
             }
         }
         if segue.identifier == Constants.showActivitySeque{
@@ -169,15 +172,17 @@ class CurrentTripController: UITableViewController{
         segue which is called when the cancel button on the ActivityDetailContoller is called
     */
     @IBAction func unwindSegueAddActivity(segue:UIStoryboardSegue) {
-        if let detailController = segue.sourceViewController as? ActivityDetailController {
-            let activityToDelete = detailController.selectedActivity
-            let photosToDelete = activityToDelete?.photos
-            for photo in photosToDelete!{
-                let temp = photo as! Photo
-                self.managedObjectContext.deleteObject(temp)
+        if let detailController = segue.sourceViewController as? ActivityDetailController{
+            if detailController.addMode{
+                let activityToDelete = detailController.selectedActivity
+                let photosToDelete = activityToDelete?.photos
+                for photo in photosToDelete!{
+                    let temp = photo as! Photo
+                    self.managedObjectContext.deleteObject(temp)
+                }
+                self.managedObjectContext.deleteObject(activityToDelete!)
+                self.saveContext()
             }
-            self.managedObjectContext.deleteObject(activityToDelete!)
-            self.saveContext()
         }
     }
     
