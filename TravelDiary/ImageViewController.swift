@@ -15,12 +15,18 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     
     var image = UIImage()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imageView.image = self.image
+        self.imageView.userInteractionEnabled = true
         self.scrollView.minimumZoomScale = 1.0
         self.scrollView.maximumZoomScale = 8.0
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "onShareButton")
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "toggleNavigationBar")
+        tapGestureRecognizer.numberOfTapsRequired = 1;
+        tapGestureRecognizer.numberOfTouchesRequired = 1;
+        self.imageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,5 +41,16 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return self.imageView
+    }
+    
+    func toggleNavigationBar() {
+        if navigationController?.navigationBar.hidden == false && tabBarController?.tabBar.hidden == false{
+            navigationController?.navigationBar.hidden = true
+            tabBarController?.tabBar.hidden = true
+        }
+        else{
+            navigationController?.navigationBar.hidden = false
+            tabBarController?.tabBar.hidden = false
+        }
     }
 }
