@@ -104,9 +104,16 @@ class CurrentTripController: UITableViewController{
             actitvity = fetchedResultsController.objectAtIndexPath(indexPath) as? Activity
 
         }
-        cell.activityDescription.text = actitvity!.descr
+        //cell.activityDescription.text = actitvity!.descr
         cell.activityDate.text = dateFormatter.stringFromDate((actitvity!.date)!)
         cell.activityTitle.text = actitvity!.title
+        cell.activityLocation.text = actitvity?.location?.name
+        let photos = actitvity?.photos
+        if photos?.count > 0{
+            let temp = (photos?.allObjects)! as NSArray
+            let firstPhoto = temp[0] as! Photo
+            cell.activityImage.image = firstPhoto.thumbnailBlob?.thumbnail
+        }
         return cell
     }
     

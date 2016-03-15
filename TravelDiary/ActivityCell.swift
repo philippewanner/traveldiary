@@ -10,17 +10,14 @@ import UIKit
 
 class ActivityCell: UITableViewCell {
 
-    @IBOutlet weak var activityDescription: UILabel!
-    
     @IBOutlet weak var activityDate: UILabel!
-    
     @IBOutlet weak var activityTitle: UILabel!
+    @IBOutlet weak var activityImage: UIImageView!
+    @IBOutlet weak var activityLocation: UILabel!
     
-    //@IBOutlet weak var timelineImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
