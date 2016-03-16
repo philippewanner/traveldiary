@@ -110,6 +110,7 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
             }else{
                 NSLog("no trip title set!")
             }
+            resignFirstResponder()
         }else if segue.identifier == Constants.cancelTripSegue {
             NSLog("prepare for segue '\(Constants.cancelTripSegue)'")
         }
