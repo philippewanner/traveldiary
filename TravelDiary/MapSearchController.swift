@@ -86,7 +86,7 @@ extension MapSearchController: UISearchResultsUpdating {
             return
         }
     
-        fetchedResultsController.fetchRequest.predicate = NSPredicate(format:"longitude != nil AND latitude != nil AND name CONTAINS[c] %@", searchText)
+        fetchedResultsController.fetchRequest.predicate = NSPredicate(format:"longitude != nil AND latitude != nil AND (name CONTAINS[c] %@ OR inActivity.title CONTAINS[c] %@ OR inActivity.trip.title CONTAINS[c] %@)", searchText, searchText, searchText)
         
         do {
             try fetchedResultsController.performFetch()

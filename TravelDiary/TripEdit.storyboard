@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fYj-9s-gkI">
-                                <rect key="frame" x="20" y="82" width="560" height="595"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="fYj-9s-gkI">
+                                <rect key="frame" x="20" y="82" width="560" height="653"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wTp-zH-PgU">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="45"/>
@@ -41,8 +41,8 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R9B-LD-3Ga" userLabel="Start Date Stack View">
-                                        <rect key="frame" x="0.0" y="45" width="560" height="59"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R9B-LD-3Ga" userLabel="Start Date Stack View">
+                                        <rect key="frame" x="0.0" y="60" width="560" height="58"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNp-J4-cBZ" userLabel="Start Date Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="15"/>
@@ -70,8 +70,8 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mmi-Kx-kap" userLabel="Start Date Picker Stack View">
-                                        <rect key="frame" x="0.0" y="104" width="560" height="216"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mmi-Kx-kap" userLabel="Start Date Picker Stack View">
+                                        <rect key="frame" x="0.0" y="133" width="560" height="216"/>
                                         <subviews>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZGn-Zd-4QP" userLabel="Start Date Picker">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="216"/>
@@ -84,8 +84,8 @@
                                             </datePicker>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ofU-wh-7fQ" userLabel="End Date Stack View">
-                                        <rect key="frame" x="0.0" y="320" width="560" height="59"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ofU-wh-7fQ" userLabel="End Date Stack View">
+                                        <rect key="frame" x="0.0" y="364" width="560" height="58"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pc3-vh-D7B" userLabel="End Date Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="15"/>
@@ -110,8 +110,8 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fda-fg-yyg" userLabel="End Date Picker Stack View">
-                                        <rect key="frame" x="0.0" y="379" width="560" height="216"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fda-fg-yyg" userLabel="End Date Picker Stack View">
+                                        <rect key="frame" x="0.0" y="437" width="560" height="216"/>
                                         <subviews>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="vmt-6h-xJc" userLabel="End Date Picker">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="216"/>

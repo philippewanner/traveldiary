@@ -28,7 +28,7 @@ class MapController: UIViewController {
     private struct Constants {
         static let ReuseIdentifierAnnotation = "identifier_annotation_view"
         static let MapSearchControllerId = "MapSearchController"
-        static let SearchBarPlaceholder = "Search for location names"
+        static let SearchBarPlaceholder = "Search for locations, activities or trips"
     }
     
     @IBOutlet weak var toolbar: UIToolbar!
@@ -82,16 +82,11 @@ extension MapController : MKMapViewDelegate {
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         if let annotation = view.annotation as? LocationAnnotation {
             let location = annotation.location
-            let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
-            dispatch_async(dispatch_get_global_queue(qos, 0)) { _ in
-                if let randomPhoto = location.photos?.anyObject() as? Photo {
-                    let image = randomPhoto.thumbnail
-                    dispatch_async(dispatch_get_main_queue()) {
-                        let imageView = view.detailCalloutAccessoryView as! UIImageView
-                        imageView.image = image
-                        annotation.isSelectedLocation = true
-                    }
-                }
+            if let randomPhoto = location.photos?.anyObject() as? Photo {
+                let image = randomPhoto.thumbnail
+                let imageView = view.detailCalloutAccessoryView as! UIImageView
+                imageView.image = image
+                annotation.isSelectedLocation = true
             }
         }
     }
@@ -141,7 +136,14 @@ extension MapController: MapSearchDelegate {
             .sort { (activity1, activity2) in
                 let date1 = activity1.date ?? NSDate.distantPast()
                 let date2 = activity2.date ?? NSDate.distantPast()
-                return date1.compare(date2) == .OrderedAscending
+                let title1 = activity1.title ?? ""
+                let title2 = activity2.title ?? ""
+                let comparisionDates = date1.compare(date2)
+                if comparisionDates == .OrderedSame {
+                    return title1.compare(title2) == .OrderedAscending
+                } else {
+                    return comparisionDates == .OrderedAscending
+                }
             }
             .flatMap {activity in activity.location}
             .map {location -> LocationAnnotation in
@@ -158,6 +160,6 @@ extension MapController: MapSearchDelegate {
             mapView.addOverlay(geodesicPolyline)
         }
         mapView.addAnnotations(annotations)
-        mapView.showAnnotations(self.mapView.annotations, animated: true)
+        mapView.showAnnotations(annotations, animated: true)
     }
 }
