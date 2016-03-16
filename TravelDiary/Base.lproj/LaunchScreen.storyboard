@@ -16,7 +16,31 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Application Development" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEf-cM-gTw">
+                                <rect key="frame" x="0.0" y="293" width="600" height="69"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travel Diary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiN-uJ-O17">
+                                <rect key="frame" x="0.0" y="237" width="600" height="70"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.30980392156862746" green="0.71764705882352942" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="uiN-uJ-O17" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="217" id="4sD-zK-EH0"/>
+                            <constraint firstAttribute="trailing" secondItem="uiN-uJ-O17" secondAttribute="trailing" id="EMO-Pb-ME6"/>
+                            <constraint firstItem="YEf-cM-gTw" firstAttribute="trailing" secondItem="uiN-uJ-O17" secondAttribute="trailing" id="Gfu-2O-QgT"/>
+                            <constraint firstItem="YEf-cM-gTw" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="273" id="Pf3-GY-ndn"/>
+                            <constraint firstItem="uiN-uJ-O17" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Q6Q-c8-wx1"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="YEf-cM-gTw" secondAttribute="bottom" constant="238" id="UTd-fs-k3L"/>
+                            <constraint firstItem="YEf-cM-gTw" firstAttribute="leading" secondItem="uiN-uJ-O17" secondAttribute="leading" id="bOu-oi-Ovg"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="uiN-uJ-O17" secondAttribute="bottom" constant="293" id="xXO-hb-3ft"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
