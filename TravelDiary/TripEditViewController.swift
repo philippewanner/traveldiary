@@ -317,18 +317,6 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
         }
     }
     
-    private func isFirstDateOlderOrEqualToSecondDate(first firstDate: NSDate, second secondDate: NSDate) -> Bool{
-        let firstDateIsNewer = isFirstDateNewerThanSecondDate(first: firstDate, second: secondDate)
-        let firstDateIsEqual = isFirstDateEqualToSecondDate(first: firstDate, second: secondDate)
-        return !firstDateIsNewer || firstDateIsEqual
-    }
-    
-    private func isFirstDateNewerOrEqualToSecondDate(first firstDate: NSDate, second secondDate: NSDate) -> Bool{
-        let firstDateIsNewer = isFirstDateNewerThanSecondDate(first: firstDate, second: secondDate)
-        let firstDateIsEqual = isFirstDateEqualToSecondDate(first: firstDate, second: secondDate)
-        return firstDateIsNewer || firstDateIsEqual
-    }
-    
     private func isFirstDateEqualToSecondDate(first firstDateToCompare: NSDate, second secondDateToCompare: NSDate) -> Bool{
         var firstDateIsEqual = false
         let firstDate = self.overrideDateTime(firstDateToCompare)
@@ -374,9 +362,9 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
     
     private func overrideDateTime(dateToOverride: NSDate) -> NSDate {
         let cal: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let midnightDateTime: NSDate = cal.dateBySettingHour(0, minute: 0, second: 0, ofDate: dateToOverride, options: NSCalendarOptions())!
-        NSLog("override  '\(dateToOverride)' to '\(midnightDateTime)'")
-        return midnightDateTime
+        let dateTimeReset: NSDate = cal.dateBySettingHour(0, minute: 0, second: 0, ofDate: dateToOverride, options: NSCalendarOptions())!
+        NSLog("override  '\(dateToOverride)' to '\(dateTimeReset)'")
+        return dateTimeReset
     }
     
     private func getStringFromDate(date: NSDate)-> String{
