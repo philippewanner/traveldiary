@@ -26,13 +26,24 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        model.removeAll()
+        self.reloadInputViews()
+        self.viewDidLoad()
+        self.tableView.reloadData()
+        self.tableView.reloadInputViews()
+        self.tableView.reloadSectionIndexTitles()
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //Number of row in the collection view cell.
         return 1
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return model[section][0].trip?.title
+        if(model.isEmpty || model[section].isEmpty) {return "No photo related to display"}
+        else if (model[section][0].trip == nil) { return "Uncategorized"}
+        else {return model[section][0].trip?.title}
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -51,7 +62,7 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
         guard let tableViewCell = cell as? TPTableViewCell else { return }
-
+        
         tableViewCell.data = model[indexPath.section]
         tableViewCell.collectionView.dataSource = tableViewCell
         tableViewCell.collectionView.delegate = self
@@ -67,17 +78,17 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    
+        
         if segue.identifier == "showImageFromTripView" {
             
             //Cast the destination view controller to ImageViewController
             let controller = segue.destinationViewController as! ImageViewController
-
+            
             //Set the image in the ImageViewController to the selected item in the collection view
             controller.photo = (sender as! TPCollectionViewCell).photo
         }
     }
-
+    
     func getPhotosPerTrip() -> [[Photo]] {
         
         let allPhotos: [Photo] = self.getAllPhotos()

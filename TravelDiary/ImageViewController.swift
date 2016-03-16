@@ -43,7 +43,9 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func onDeleteButton() {
+        NSLog("Photo deleted")
         managedObjectContext.deleteObject(self.photo)
+        saveContext()
         imageView.opaque = true
         imageView.alpha = 0.6
     }
