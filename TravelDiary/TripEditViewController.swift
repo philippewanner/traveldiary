@@ -298,7 +298,6 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
                 let startDateIsOlder = isFirstDateOlderThanSecondDate(first: startDate, second: currentStartDate)
                 let endDateIsOlder = isFirstDateOlderThanSecondDate(first: endDate, second: currentStartDate)
                 if startDateIsOlder && endDateIsOlder {
-                    NSLog("requested period '\(startDate) - \(endDate)' is not overlapping the current start date '\(currentStartDate)'")
                     return false
                 }
                 
@@ -306,7 +305,6 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
                     let startDateIsNewer = isFirstDateNewerThanSecondDate(first: startDate, second: currentEndDate)
                     let endDateIsNewer = isFirstDateNewerThanSecondDate(first: endDate, second: currentEndDate)
                     if startDateIsNewer && endDateIsNewer {
-                        NSLog("requested period '\(startDate) - \(endDate)' is not overlapping the current period '\(currentStartDate) - \(currentEndDate)'")
                         return false
                     }
                     NSLog("requested period '\(startDate) - \(endDate)' is overlapping the current period '\(currentStartDate) - \(currentEndDate)'")
@@ -326,7 +324,6 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
         if dateComparisionResult == NSComparisonResult.OrderedSame {
             firstDateIsEqual = true
         }
-        NSLog("\(firstDateToCompare) is equal to \(secondDateToCompare) => \(firstDateIsEqual)")
         return firstDateIsEqual
     }
     
@@ -343,7 +340,6 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
                 firstDateIsOlder = true
             }
         }
-        NSLog("\(firstDate) is older than \(secondDate) => \(firstDateIsOlder)")
         return firstDateIsOlder
     }
     
@@ -356,14 +352,12 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
         if dateComparisionResult == NSComparisonResult.OrderedDescending{
             firstDateIsNewer = true
         }
-        NSLog("\(firstDate) is newer than \(secondDate) => \(firstDateIsNewer)")
         return firstDateIsNewer
     }
     
     private func overrideDateTime(dateToOverride: NSDate) -> NSDate {
         let cal: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         let dateTimeReset: NSDate = cal.dateBySettingHour(0, minute: 0, second: 0, ofDate: dateToOverride, options: NSCalendarOptions())!
-        NSLog("override  '\(dateToOverride)' to '\(dateTimeReset)'")
         return dateTimeReset
     }
     
