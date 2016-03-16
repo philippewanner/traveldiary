@@ -80,8 +80,8 @@ class TripsTableViewController : UITableViewController{
             self.currentTrip = fetchedResultsController.objectAtIndexPath(indexPath) as! Trip
         }
         
-        tripCell.tripTitle.text = getTripTitle(self.currentTrip)
-        tripCell.tripPeriod.text = getTripPeriod(self.currentTrip)
+        tripCell.tripTitle.text = currentTrip.title
+        tripCell.tripPeriod.text = currentTrip.tripPeriod
         
         return tripCell
     }
@@ -193,30 +193,6 @@ class TripsTableViewController : UITableViewController{
     private func performSavingData(){
         saveContext()
         NSLog("saving data performed")
-    }
-    
-    private func getTripTitle(trip:Trip) -> String {
-        var tripTitle = ""
-        if let title = trip.title {
-            tripTitle = title
-        }
-        NSLog("trip title set: " + tripTitle)
-        
-        return tripTitle
-    }
-    
-    private func getTripPeriod(trip: Trip) -> String{
-        var tripPeriod = ""
-        if let startDate = trip.startDate {
-            tripPeriod = dateFormatter.stringFromDate((startDate))
-        }else{
-            dateFormatter.stringFromDate((NSDate()))
-        }
-        if let endDate = trip.endDate {
-            tripPeriod += " - " + dateFormatter.stringFromDate((endDate))
-        }
-        NSLog("trip period set: " + tripPeriod)
-        return tripPeriod
     }
     
     private func initializeTableViewColor() {

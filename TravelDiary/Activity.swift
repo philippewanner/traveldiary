@@ -11,6 +11,20 @@ import CoreData
 
 
 class Activity: NSManagedObject {
+    
+    private static var dateFormatter: NSDateFormatter {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.currentLocale()
+        dateFormatter.dateStyle = .MediumStyle
+        return dateFormatter
+    }
+    
+    var dateAsString: String? {
+        guard let date = date else {
+            return nil
+        }
+        return Activity.dateFormatter.stringFromDate(date)
+    }
 
     func addLocation(newLocation:Location){
         self.location = newLocation

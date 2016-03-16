@@ -29,7 +29,11 @@ class CurrentTripController: UITableViewController{
     private var fetchedResultsController: NSFetchedResultsController!
     private let searchController = UISearchController(searchResultsController: nil)
     // Currently selected trip
-    var currentTrip : Trip?
+    var currentTrip : Trip? {
+        didSet {
+            navigationItem.title = currentTrip?.title
+        }
+    }
     private var activitiesAreEditable = false;
     
     private var filteredActivities:[Activity]? = []
@@ -59,7 +63,7 @@ class CurrentTripController: UITableViewController{
         let nib = UINib(nibName: Constants.ActivityTableViewCell, bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: Constants.reuseCellIdentifier)
         tableView.separatorColor = UIColor.clearColor()
-        dateFormatter.locale = NSLocale(localeIdentifier: "de_CH")
+        dateFormatter.locale = NSLocale.currentLocale()
         dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
         
         initializeFetchedResultsController()
@@ -121,10 +125,11 @@ class CurrentTripController: UITableViewController{
         // Perform Segue
         if self.activitiesAreEditable {
             performSegueWithIdentifier(Constants.editActivitySegue, sender: self)
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }else{
             performSegueWithIdentifier(Constants.showActivitySeque, sender: self)
         }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        //tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -166,7 +171,6 @@ class CurrentTripController: UITableViewController{
         // Return false if you do not want the specified item to be editable.
         return true
     }
-
     
     /*!
         segue which is called when the cancel button on the ActivityDetailContoller is called
