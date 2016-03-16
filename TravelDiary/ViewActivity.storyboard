@@ -72,6 +72,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="rootStackView" destination="X3B-pg-03w" id="64U-Lh-wrr"/>
                         <outlet property="scrollView" destination="1D2-B0-JLF" id="sMr-9I-s0v"/>
                         <outlet property="subtitleLabel" destination="kQi-aW-ULj" id="WoW-uH-qQc"/>
                         <outlet property="textView" destination="ypq-Fo-0Wn" id="DdU-dz-Jjj"/>

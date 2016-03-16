@@ -15,6 +15,7 @@ class ViewActivityController: UIViewController {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var rootStackView: UIStackView!
     
     var selectedActivity: Activity!
     
@@ -41,7 +42,7 @@ class ViewActivityController: UIViewController {
             let image = photo.image
             let imgView = UIImageView(image: image)
             imgView.sizeToFit()
-            scrollView.addSubview(imgView)
+            rootStackView.addArrangedSubview(imgView)
         }
     }
 }

@@ -32,8 +32,8 @@
                                             <!--2016-02-29 10:33:56 +0000-->
                                         </date>
                                     </datePicker>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Na-Eo-Rd5">
-                                        <rect key="frame" x="8" y="412" width="113" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Na-Eo-Rd5">
+                                        <rect key="frame" x="8" y="412" width="51" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="SVf-Um-Hc3"/>
                                         </constraints>
@@ -57,8 +57,8 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osa-k2-mOh">
-                                        <rect key="frame" x="303" y="374" width="64" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osa-k2-mOh">
+                                        <rect key="frame" x="303" y="374" width="64" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="zI7-Yd-nQV"/>
                                         </constraints>
