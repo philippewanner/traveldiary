@@ -20,10 +20,6 @@ class CurrentTripController: UITableViewController{
         static let SearchBarPlaceholder = "Search for trips"
     }
     
-    @IBOutlet weak var addButton: UIBarButtonItem!
-    @IBOutlet weak var editButton: UIBarButtonItem!
-    @IBOutlet weak var navigationBar: UINavigationItem!
-    
     private let dateFormatter = NSDateFormatter()
     // Controller to load data
     private var fetchedResultsController: NSFetchedResultsController!

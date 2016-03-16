@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ivu-xv-Jdl">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -177,7 +177,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="111" id="OnE-1T-OHS"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
@@ -241,7 +241,7 @@
                     <navigationItem key="navigationItem" title="Activity" id="rcl-oM-0Y7">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ZuT-QK-UZI">
                             <connections>
-                                <segue destination="nyR-qZ-IEz" kind="unwind" unwindAction="unwindSegueAddActivity:" id="vY4-mu-cnU"/>
+                                <segue destination="nyR-qZ-IEz" kind="unwind" unwindAction="unwindSegueAddActivity:" id="zdJ-D2-1y1"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="5vn-Tx-0BC">

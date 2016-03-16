@@ -13,27 +13,37 @@ class ViewActivityController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    var selectedActivity: Activity?
+    var selectedActivity: Activity!
+    
+    private struct Constants{
+        static let EditActivitySegue = "EditActivitySeque"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let selectedActivity = selectedActivity {
-            titleLabel.text = selectedActivity.title
-            if selectedActivity.dateAsString != nil {
-                subtitleLabel.text = selectedActivity.dateAsString
-            } else {
-                subtitleLabel.hidden = true
-            }
+        titleLabel.text = selectedActivity.title
+        if selectedActivity.dateAsString != nil {
+            subtitleLabel.text = selectedActivity.dateAsString
+        } else {
+            subtitleLabel.hidden = true
+        }
         
-            if let descr = selectedActivity.descr {
-                textView.text = descr
-            } else {
-                textView.hidden = true
-            }
-            
+        if let descr = selectedActivity.descr {
+            textView.text = descr
+        } else {
+            textView.hidden = true
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Constants.EditActivitySegue {
+            let navController = segue.destinationViewController as! UINavigationController
+            let activityDetailController = navController.topViewController as!ActivityDetailController
+            activityDetailController.addMode = false
+            activityDetailController.selectedActivity = selectedActivity
         }
     }
 }
