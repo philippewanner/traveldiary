@@ -28,11 +28,8 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
     
     override func viewDidAppear(animated: Bool) {
         model.removeAll()
-        self.reloadInputViews()
         self.viewDidLoad()
         self.tableView.reloadData()
-        self.tableView.reloadInputViews()
-        self.tableView.reloadSectionIndexTitles()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
