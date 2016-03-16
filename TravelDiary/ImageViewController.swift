@@ -48,6 +48,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         saveContext()
         imageView.opaque = true
         imageView.alpha = 0.6
+        self.navigationController!.popViewControllerAnimated(true)
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
