@@ -33,8 +33,8 @@ class TripEditViewController : UIViewController, UINavigationControllerDelegate{
         static let saveTripSegue = "saveTripUnwindSegue"
         static let cancelTripSegue = "cancelEditTripUnwindSegue"
         static let defaultStartToEndDateDaysOffset: Int = 7
-        static let alertMessageDateFormat = "dd.MM.yyyy hh:mm a"
-        static let dateTextFieldDateFormat = "EEEE, dd. MMMM yyyy hh:mm a"
+        static let alertMessageDateFormat = "dd.MM.yyyy"
+        static let dateTextFieldDateFormat = "EEEE, dd. MMMM yyyy"
     }
     private let dateFormatter = NSDateFormatter()
     private var startDateBeforeEditing = NSDate()
