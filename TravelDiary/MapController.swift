@@ -28,7 +28,6 @@ class MapController: UIViewController {
     private struct Constants {
         static let ReuseIdentifierAnnotation = "identifier_annotation_view"
         static let MapSearchControllerId = "MapSearchController"
-        static let CalloutImageFrame = CGRect(x: 0, y: 0, width: 200, height: 200)
         static let SearchBarPlaceholder = "Search for location names"
     }
     
@@ -71,8 +70,7 @@ extension MapController : MKMapViewDelegate {
             } else {
                 view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: Constants.ReuseIdentifierAnnotation)
                 view.canShowCallout = true
-                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
-                let imageView = UIImageView(frame: Constants.CalloutImageFrame)
+                let imageView = UIImageView()
                 view.detailCalloutAccessoryView = imageView
             }
             view.pinTintColor = annotation.isStartLocation ? UIColor.greenColor() : UIColor.redColor()
@@ -91,16 +89,27 @@ extension MapController : MKMapViewDelegate {
                     dispatch_async(dispatch_get_main_queue()) {
                         let imageView = view.detailCalloutAccessoryView as! UIImageView
                         imageView.image = image
-                        imageView.frame = Constants.CalloutImageFrame
+                        annotation.isSelectedLocation = true
                     }
                 }
             }
         }
     }
     
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        let locationAnnotation = view.annotation as! LocationAnnotation
-        print(locationAnnotation.location.inActivity);
+    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+        if let annotation = view.annotation as? LocationAnnotation {
+            annotation.isSelectedLocation = false
+        }
+    }
+    
+    func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
+        views.forEach { view in
+            if let annotation = view.annotation as? LocationAnnotation {
+                if annotation.isSelectedLocation {
+                    mapView.selectAnnotation(annotation, animated: true)
+                }
+            }
+        }
     }
     
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {

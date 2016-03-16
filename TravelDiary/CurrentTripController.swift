@@ -126,10 +126,9 @@ class CurrentTripController: UITableViewController{
         if self.activitiesAreEditable {
             performSegueWithIdentifier(Constants.editActivitySegue, sender: self)
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        }else{
+        } else {
             performSegueWithIdentifier(Constants.showActivitySeque, sender: self)
         }
-        //tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
