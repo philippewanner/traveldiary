@@ -82,11 +82,17 @@ extension MapController : MKMapViewDelegate {
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         if let annotation = view.annotation as? LocationAnnotation {
             let location = annotation.location
-            if let randomPhoto = location.photos?.anyObject() as? Photo {
-                let image = randomPhoto.thumbnail
-                let imageView = view.detailCalloutAccessoryView as! UIImageView
-                imageView.image = image
-                annotation.isSelectedLocation = true
+            let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
+            dispatch_async(dispatch_get_global_queue(qos, 0)) { _ in
+                if location.photos?.count > 0 {
+                    let photo = location.photos?.anyObject() as! Photo
+                    let image = photo.thumbnail
+                    dispatch_async(dispatch_get_main_queue()) {
+                        let imageView = view.detailCalloutAccessoryView as! UIImageView
+                        imageView.image = image
+                        annotation.isSelectedLocation = true
+                    }
+                }
             }
         }
     }

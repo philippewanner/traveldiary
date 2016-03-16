@@ -106,6 +106,13 @@ class ActivityDetailController: UIViewController {
                 location.countryCode = selectedPlacemark.countryCode
                 location.inActivity = selectedActivity
             }
+            if let photos = selectedActivity?.photos {
+                photos.forEach { photo in
+                    let photo = photo as! Photo
+                    photo.location = location
+                }
+            };
+
             location.name = locationName.text
             
         } else if segue.identifier == Constants.SelectLocationSegue {
@@ -121,6 +128,7 @@ class ActivityDetailController: UIViewController {
             imageViewController.photo = selectedPhoto!
         }
     }
+    
     @IBAction func hideKeyboard(sender: AnyObject) {
         activityDescription.endEditing(true)
     }
