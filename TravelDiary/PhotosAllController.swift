@@ -33,6 +33,13 @@ class PhotosAllController: UIViewController, UICollectionViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        collectionViewDataSource.data = []
+        self.reloadInputViews()
+        self.collectionView.reloadData()
+        self.viewDidLoad()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showImage" {
