@@ -31,7 +31,7 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
         self.viewDidLoad()
         self.tableView.reloadData()
     }
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //Number of row in the collection view cell.
         return 1
@@ -59,7 +59,7 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
         guard let tableViewCell = cell as? TPTableViewCell else { return }
-        
+
         tableViewCell.data = model[indexPath.section]
         tableViewCell.collectionView.dataSource = tableViewCell
         tableViewCell.collectionView.delegate = self
@@ -75,17 +75,17 @@ class TPViewController: UIViewController, UITableViewDelegate, UICollectionViewD
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+
         if segue.identifier == "showImageFromTripView" {
             
             //Cast the destination view controller to ImageViewController
             let controller = segue.destinationViewController as! ImageViewController
-            
+
             //Set the image in the ImageViewController to the selected item in the collection view
             controller.photo = (sender as! TPCollectionViewCell).photo
         }
     }
-    
+
     func getPhotosPerTrip() -> [[Photo]] {
         
         let allPhotos: [Photo] = self.getAllPhotos()
