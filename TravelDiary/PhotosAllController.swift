@@ -46,12 +46,7 @@ class PhotosAllController: UIViewController, UICollectionViewDelegate {
             let controller = segue.destinationViewController as! ImageViewController
             
             //Set the image in the ImageViewController to the selected item in the collection view
-            let photo = self.collectionViewDataSource.data[indexPath.row]
-            controller.image = photo.image!
-            controller.title = photo.title
-            
-            //Set the title of this image depending of the selected item in the collection view
-            controller.title = self.collectionViewDataSource.data[indexPath.row].title
+            controller.photo = self.collectionViewDataSource.data[indexPath.row]
         }
     }
     

@@ -118,7 +118,7 @@ class ActivityDetailController: UIViewController {
             let cell = sender as! ActivityPhotoCell
             let indexPath = self.activityPhotoCollectionView!.indexPathForCell(cell)
             let selectedPhoto = fetchedResultsController.objectAtIndexPath(indexPath!) as? Photo
-            imageViewController.image = (selectedPhoto?.imageBlob?.image)!
+            imageViewController.photo = selectedPhoto!
         }
     }
     @IBAction func hideKeyboard(sender: AnyObject) {

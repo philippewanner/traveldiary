@@ -217,7 +217,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pb0-jE-6PA">
-                                                    <rect key="frame" x="0.0" y="71.5" width="100" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="72" width="100" height="21"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -249,19 +249,21 @@
                             <label userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CT7-Sg-39Y">
                                 <rect key="frame" x="0.0" y="570" width="600" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ka7-hL-GMS"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <color key="textColor" red="0.55939503205128205" green="0.55939503205128205" blue="0.55939503205128205" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="top" secondItem="bZT-z9-Bb9" secondAttribute="bottom" constant="570" id="TwS-pX-eUm"/>
+                            <constraint firstItem="xEk-Bl-KCl" firstAttribute="top" secondItem="CT7-Sg-39Y" secondAttribute="bottom" id="LMH-jg-m0s"/>
+                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="leading" secondItem="cdR-8Y-IqC" secondAttribute="leading" id="N8I-sc-Kbx"/>
+                            <constraint firstAttribute="trailing" secondItem="CT7-Sg-39Y" secondAttribute="trailing" id="RR5-ci-n9q"/>
                             <constraint firstItem="eUD-hH-te5" firstAttribute="top" secondItem="cdR-8Y-IqC" secondAttribute="top" id="U8d-kZ-VRN"/>
-                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="bottom" secondItem="xEk-Bl-KCl" secondAttribute="top" id="ZuY-1E-jJR"/>
                             <constraint firstItem="eUD-hH-te5" firstAttribute="leading" secondItem="cdR-8Y-IqC" secondAttribute="leading" id="aIf-IQ-z5R"/>
-                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="bottom" secondItem="eUD-hH-te5" secondAttribute="bottom" id="i7L-q4-KUv"/>
-                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="trailing" secondItem="eUD-hH-te5" secondAttribute="trailing" id="iFV-oC-Pjb"/>
-                            <constraint firstItem="CT7-Sg-39Y" firstAttribute="leading" secondItem="eUD-hH-te5" secondAttribute="leading" id="xTs-ez-Yhq"/>
+                            <constraint firstItem="eUD-hH-te5" firstAttribute="bottom" secondItem="xEk-Bl-KCl" secondAttribute="top" id="sQs-a0-Qfq"/>
                             <constraint firstAttribute="trailing" secondItem="eUD-hH-te5" secondAttribute="trailing" id="ybz-WZ-rqp"/>
                         </constraints>
                     </view>
@@ -289,6 +291,6 @@
         <image name="gallery-selected" width="38" height="38"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bmZ-R6-8M9"/>
+        <segue reference="ZrS-Ta-aFo"/>
     </inferredMetricsTieBreakers>
 </document>
