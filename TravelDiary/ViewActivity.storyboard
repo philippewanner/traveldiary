@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Activity Controller-->
@@ -18,45 +17,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="X3B-pg-03w">
-                                <rect key="frame" x="20" y="72" width="560" height="528"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1D2-B0-JLF">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BlL-2V-MYY">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="42.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="X3B-pg-03w">
+                                        <rect key="frame" x="0.0" y="0.0" width="1224" height="84"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNW-j9-5yk" userLabel="Title">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="21.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date, Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQi-aW-ULj">
-                                                <rect key="frame" x="0.0" y="25.5" width="560" height="17"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BlL-2V-MYY">
+                                                <rect key="frame" x="0.0" y="0.0" width="1224" height="42.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNW-j9-5yk" userLabel="Title">
+                                                        <rect key="frame" x="0.0" y="0.0" width="1224" height="21.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date, Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQi-aW-ULj">
+                                                        <rect key="frame" x="0.0" y="25" width="1224" height="17"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypq-Fo-0Wn">
+                                                <rect key="frame" x="0.0" y="46" width="1224" height="37.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </string>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="84" id="y70-fD-1Px"/>
+                                        </constraints>
                                     </stackView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypq-Fo-0Wn">
-                                        <rect key="frame" x="0.0" y="46.5" width="560" height="79"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </string>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1D2-B0-JLF">
-                                        <rect key="frame" x="0.0" y="129.5" width="560" height="398.5"/>
-                                    </scrollView>
                                 </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstItem="X3B-pg-03w" firstAttribute="leading" secondItem="1D2-B0-JLF" secondAttribute="leading" id="FEg-T4-hKs"/>
+                                    <constraint firstAttribute="bottom" secondItem="X3B-pg-03w" secondAttribute="bottom" id="Kf5-Fg-dE8"/>
+                                    <constraint firstItem="X3B-pg-03w" firstAttribute="top" secondItem="1D2-B0-JLF" secondAttribute="top" id="Qyh-eS-hJh"/>
+                                    <constraint firstAttribute="trailing" secondItem="X3B-pg-03w" secondAttribute="trailing" id="lcM-nd-5co"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="X3B-pg-03w" firstAttribute="leading" secondItem="Dni-en-v7G" secondAttribute="leadingMargin" id="Exb-Sa-YP4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="X3B-pg-03w" secondAttribute="trailing" id="YnE-xp-ZuE"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="X3B-pg-03w" secondAttribute="bottom" id="icb-nM-hbb"/>
-                            <constraint firstItem="X3B-pg-03w" firstAttribute="top" secondItem="KTS-17-iW7" secondAttribute="bottom" constant="8" symbolic="YES" id="vov-NN-3pf"/>
+                            <constraint firstItem="1D2-B0-JLF" firstAttribute="leading" secondItem="Dni-en-v7G" secondAttribute="leading" id="dOa-df-sI5"/>
+                            <constraint firstItem="1D2-B0-JLF" firstAttribute="top" secondItem="KTS-17-iW7" secondAttribute="bottom" id="eY2-ZW-Dre"/>
+                            <constraint firstItem="1D2-B0-JLF" firstAttribute="bottom" secondItem="373-9O-nd8" secondAttribute="top" id="ed4-k9-mNU"/>
+                            <constraint firstAttribute="trailing" secondItem="1D2-B0-JLF" secondAttribute="trailing" id="ykj-CV-dr6"/>
                         </constraints>
                     </view>
                     <toolbarItems/>

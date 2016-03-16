@@ -40,6 +40,7 @@ class ViewActivityController: UIViewController {
         photos.forEach { photo in
             let image = photo.image
             let imgView = UIImageView(image: image)
+            imgView.sizeToFit()
             scrollView.addSubview(imgView)
         }
     }
