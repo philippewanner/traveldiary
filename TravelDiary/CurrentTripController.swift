@@ -140,7 +140,8 @@ class CurrentTripController: UITableViewController{
         }
         if segue.identifier == Constants.showActivitySeque{
             let viewActivityController = segue.destinationViewController as! ViewActivityController
-            viewActivityController.selectedActivity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
+            let activity = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as? Activity
+            viewActivityController.selectedActivity = activity
         }
     }
     
